@@ -1,0 +1,1437 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌿 四季八里都蘭共學堂 ╳ 四季八里自然莊園 | 一手拿滑鼠，一手摸泥土</title>
+  <meta name="description" content="四季八里都蘭共學堂提供結合在地自然、生活慢活與 AI 科技賦能的共學體驗。">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================
+       四季八里都蘭共學堂 - 內嵌樣式表 (CSS)
+       ========================================== */
+    :root {
+      --bg-base: #090d16;
+      --bg-surface: rgba(15, 23, 42, 0.65);
+      --bg-surface-opaque: #0f172a;
+      --bg-card: rgba(30, 41, 59, 0.45);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --primary-color: #3b82f6;
+      --secondary-color: #10b981;
+      --accent-color: #f59e0b;
+      --accent-glow: rgba(245, 158, 11, 0.15);
+      --gradient-hero: linear-gradient(135deg, #1e3a8a, #064e3b);
+      --gradient-highlight: linear-gradient(135deg, #60a5fa, #34d399);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+      --glass-glow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      --font-title: 'Outfit', 'Noto Sans TC', sans-serif;
+      --font-body: 'Noto Sans TC', sans-serif;
+    }
+
+    html.light {
+      --bg-base: #f8fafc;
+      --bg-surface: rgba(255, 255, 255, 0.7);
+      --bg-surface-opaque: #ffffff;
+      --bg-card: rgba(241, 245, 249, 0.8);
+      --border-color: rgba(15, 23, 42, 0.08);
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --primary-color: #1d4ed8;
+      --secondary-color: #047857;
+      --accent-color: #d97706;
+      --accent-glow: rgba(217, 119, 6, 0.1);
+      --gradient-hero: linear-gradient(135deg, #eff6ff, #ecfdf5);
+      --gradient-highlight: linear-gradient(135deg, #1d4ed8, #059669);
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 16px 32px rgba(15, 23, 42, 0.12);
+      --glass-glow: 0 8px 32px 0 rgba(15, 23, 42, 0.05);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.625;
+      overflow-x: hidden;
+      position: relative;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+    .glow-bg {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(150px);
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.25;
+    }
+    .glow-1 { background: radial-gradient(circle, var(--primary-color), transparent 70%); top: 10%; right: -10%; }
+    .glow-2 { background: radial-gradient(circle, var(--secondary-color), transparent 70%); bottom: 10%; left: -10%; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      box-shadow: var(--glass-glow);
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .navbar-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(var(--bg-base), 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-family: var(--font-title);
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+    .nav-menu { display: flex; align-items: center; gap: 1.8rem; }
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+    .nav-link:hover { color: var(--text-primary); }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-highlight);
+      transition: width 0.2s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+    .nav-actions { display: flex; align-items: center; gap: 1rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      border: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(59, 130, 246, 0.35); }
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+    .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); color: var(--text-primary); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+    .btn-outline:hover { background: var(--text-primary); color: var(--bg-base); }
+    .btn-block { display: block; width: 100%; }
+    .nav-btn {
+      composes: btn;
+      background: var(--gradient-highlight);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0.5rem 1.1rem;
+      border-radius: 0.4rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+    }
+    .theme-toggle, .mobile-toggle {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      border: 1px solid var(--border-color);
+    }
+    .sun-icon { display: block; }
+    .moon-icon { display: none; }
+    html.light .sun-icon { display: none; }
+    html.light .moon-icon { display: block; }
+    .mobile-toggle { display: none; }
+
+    .hero-section { padding-top: 9rem; padding-bottom: 5rem; }
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: center;
+      gap: 3.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--secondary-color);
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .badge-amber {
+      color: var(--accent-color);
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+    }
+    .hero-title {
+      font-family: var(--font-title);
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+    .highlight-gradient {
+      background: var(--gradient-highlight);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 2.2rem; }
+    .hero-actions { display: flex; gap: 1rem; }
+    .image-wrapper { padding: 0.6rem; border-radius: 1.2rem; overflow: hidden; }
+    .image-wrapper img { width: 100%; height: auto; border-radius: 0.8rem; display: block; }
+
+    section { padding: 6rem 0; }
+    .section-header { text-align: center; max-width: 35rem; margin: 0 auto 4rem auto; }
+    .section-title { font-family: var(--font-title); font-size: 2.25rem; font-weight: 800; margin-bottom: 1rem; }
+    .section-subtitle { font-size: 1rem; color: var(--text-secondary); }
+
+    .grid { display: grid; gap: 2rem; }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .claim-card { padding: 2.2rem 1.8rem; display: flex; flex-direction: column; align-items: flex-start; }
+    .claim-card:hover { transform: translateY(-5px); }
+    .card-icon-wrap { width: 3.5rem; height: 3.5rem; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: #ffffff; }
+    .bg-blue-glow { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+    .bg-green-glow { background: linear-gradient(135deg, #10b981, #047857); }
+    .bg-amber-glow { background: linear-gradient(135deg, #f59e0b, #b45309); }
+    .bg-purple-glow { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+    .card-title { font-family: var(--font-title); font-size: 1.25rem; font-weight: 700; margin-bottom: 0.8rem; }
+    .card-desc { font-size: 0.92rem; color: var(--text-secondary); }
+
+    .daily-notice { display: flex; align-items: center; gap: 1.2rem; padding: 1.2rem 1.8rem; margin-bottom: 2rem; border-left: 4px solid var(--primary-color); }
+    .notice-icon { font-size: 1.8rem; }
+    .notice-text { font-size: 0.95rem; }
+    .table-responsive { overflow-x: auto; border-radius: 1rem; }
+    .schedule-table { width: 100%; border-collapse: collapse; text-align: left; min-width: 750px; }
+    .schedule-table th { background: rgba(255, 255, 255, 0.02); padding: 1.2rem 1.5rem; font-size: 0.9rem; border-bottom: 2px solid var(--border-color); }
+    .schedule-table td { padding: 1.2rem 1.5rem; font-size: 0.92rem; border-bottom: 1px solid var(--border-color); }
+    .time-col { font-family: var(--font-title); font-weight: 600; color: var(--primary-color); }
+    .tag { display: inline-block; padding: 0.2rem 0.6rem; font-size: 0.75rem; font-weight: 600; border-radius: 0.3rem; }
+    .tag-weekly { background: rgba(59, 130, 246, 0.1); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.2); }
+    .tag-tutor { background: rgba(16, 185, 129, 0.1); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.2); }
+    .tag-core { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.2); }
+    .tag-monthly { background: rgba(245, 158, 11, 0.1); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.2); }
+
+    .camp-desc { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; }
+    .mentor-row { display: flex; gap: 1.5rem; padding: 1.5rem; margin-bottom: 2rem; }
+    .mentor-avatar { width: 3.5rem; height: 3.5rem; background: var(--gradient-hero); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; }
+    .mentor-info h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .mentor-info p { font-size: 0.9rem; color: var(--text-secondary); }
+    .pricing-card { padding: 2rem; border-left: 4px solid var(--accent-color); }
+    .price-header { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 1rem; }
+    .price-amount { font-family: var(--font-title); font-size: 2.2rem; font-weight: 800; color: var(--accent-color); }
+    .price-period { font-size: 0.9rem; color: var(--text-secondary); }
+    .barter-notice p { font-size: 0.88rem; color: var(--text-secondary); margin-top: 0.6rem; }
+    .tag-barter { background: var(--accent-glow); color: var(--accent-color); border: 1px solid rgba(245, 158, 11, 0.3); }
+
+    .camp-themes { display: flex; flex-direction: column; gap: 1.5rem; }
+    .themes-title { font-family: var(--font-title); font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .theme-card { display: flex; gap: 1.5rem; padding: 1.8rem; }
+    .theme-emoji { font-size: 2rem; }
+    .theme-body h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .theme-body p { font-size: 0.9rem; color: var(--text-secondary); }
+
+    .carousel-container { position: relative; overflow: hidden; margin-bottom: 2rem; border-radius: 1rem; }
+    .story-slide { display: none; opacity: 0; transition: opacity 0.5s ease; }
+    .story-slide.active { display: block; opacity: 1; }
+    .story-card { display: grid; grid-template-columns: 1.1fr 1.3fr; overflow: hidden; }
+    .story-img-wrap { position: relative; height: 100%; min-height: 320px; }
+    .story-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .story-badge { position: absolute; top: 1rem; left: 1rem; padding: 0.4rem 0.8rem; font-size: 0.75rem; font-weight: 700; border-radius: 0.3rem; color: #ffffff; }
+    .story-content { padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
+    .story-content h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .story-meta { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .story-text { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 2rem; }
+    .story-footer { border-top: 1px solid var(--border-color); padding-top: 1.2rem; }
+    .story-highlight { font-size: 0.88rem; font-weight: 600; color: var(--accent-color); }
+    .carousel-dots { display: flex; justify-content: center; gap: 0.8rem; margin-top: 1.5rem; }
+    .dot { width: 0.7rem; height: 0.7rem; border-radius: 50%; background: var(--border-color); border: none; cursor: pointer; }
+    .dot.active { background: var(--primary-color); transform: scale(1.3); }
+
+    .podcast-layout { display: grid; grid-template-columns: 1fr 1.3fr; overflow: hidden; }
+    .podcast-playlist { border-right: 1px solid var(--border-color); background: rgba(255, 255, 255, 0.01); }
+    .playlist-header { padding: 1.5rem 1.8rem; font-size: 1.15rem; font-weight: 700; border-bottom: 1px solid var(--border-color); }
+    .playlist-item { display: flex; align-items: center; gap: 1rem; padding: 1.4rem 1.8rem; border-bottom: 1px solid var(--border-color); cursor: pointer; }
+    .playlist-item.active { background: rgba(59, 130, 246, 0.06); border-left: 4px solid var(--primary-color); }
+    .play-indicator { font-size: 0.8rem; color: var(--text-muted); }
+    .playlist-item.active .play-indicator { color: var(--primary-color); }
+    .item-meta h4 { font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .playlist-item.active .item-meta h4 { color: var(--primary-color); }
+    .item-meta p { font-size: 0.8rem; color: var(--text-muted); }
+    .item-duration { font-size: 0.8rem; color: var(--text-muted); margin-left: auto; }
+    .podcast-player-container { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; }
+    .player-visual-area { display: flex; align-items: center; gap: 2.2rem; }
+    .disc-wrapper { perspective: 1000px; }
+    .vinyl-disc {
+      width: 6.5rem; height: 6.5rem; border-radius: 50%;
+      background: radial-gradient(circle, #2d2d2d 30%, #0d0d0d 60%, #1a1a1a 70%);
+      border: 4px solid #000; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      display: flex; align-items: center; justify-content: center;
+      animation: rotateDisc 10s linear infinite; animation-play-state: paused;
+    }
+    @keyframes rotateDisc { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .vinyl-center { width: 2.2rem; height: 2.2rem; background: var(--bg-card); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+    .track-details h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .track-details p { font-size: 0.88rem; color: var(--text-secondary); }
+    .time-slider-container { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+    .time-slider-container span { font-size: 0.78rem; color: var(--text-muted); width: 2.5rem; }
+    .time-slider { flex-grow: 1; -webkit-appearance: none; appearance: none; height: 5px; border-radius: 3px; background: var(--border-color); outline: none; }
+    .time-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%; background: var(--primary-color); cursor: pointer; }
+    .control-buttons { display: flex; justify-content: center; align-items: center; gap: 1.8rem; }
+    .btn-ctrl { background: transparent; border: none; cursor: pointer; color: var(--text-secondary); display: flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 50%; }
+    .btn-play { width: 3.5rem; height: 3.5rem; background: var(--primary-color); color: #ffffff; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.35); }
+    .hidden { display: none !important; }
+    .transcript-box { border-top: 1px solid var(--border-color); padding-top: 1.2rem; }
+    .transcript-header { display: flex; justify-content: space-between; align-items: center; font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0.8rem; }
+    .btn-text { background: transparent; border: none; color: var(--primary-color); font-weight: 600; cursor: pointer; }
+    .transcript-content { max-height: 5.5rem; overflow-y: auto; padding-right: 0.5rem; font-size: 0.85rem; line-height: 1.8; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.6rem; scroll-behavior: smooth; }
+    .transcript-content.expanded { max-height: 15rem; }
+    .lyric-line.active { color: var(--text-primary); font-weight: 500; }
+
+    .archive-links-wrap { display: flex; justify-content: center; gap: 1.5rem; margin-top: 3rem; flex-wrap: wrap; }
+    .archive-btn { display: inline-flex; align-items: center; padding: 0.85rem 1.6rem; border-radius: 0.5rem; text-decoration: none; font-size: 0.9rem; font-weight: 600; border: 1px solid var(--border-color); }
+    .btn-yt { background: rgba(239, 68, 68, 0.08); color: #ef4444; border-color: rgba(239, 68, 68, 0.2); }
+    .btn-md { background: var(--bg-card); color: var(--text-primary); }
+
+    .register-layout { display: grid; grid-template-columns: 1fr 1.3fr; overflow: hidden; }
+    .register-info-panel { background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(16, 185, 129, 0.05)); padding: 4rem 3rem; border-right: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: center; }
+    .panel-badge { color: var(--primary-color); font-weight: 700; font-size: 0.85rem; margin-bottom: 1rem; }
+    .register-info-panel h2 { font-size: 2.2rem; font-weight: 800; line-height: 1.25; margin-bottom: 1.5rem; }
+    .register-info-panel p { color: var(--text-secondary); margin-bottom: 2.5rem; }
+    .benefit-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .benefit-list li { display: flex; gap: 0.8rem; font-size: 0.9rem; color: var(--text-secondary); }
+    .benefit-list li::before { content: "✦"; color: var(--secondary-color); font-weight: bold; }
+    .register-form-panel { padding: 4rem 3rem; }
+    .form-group { margin-bottom: 1.8rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    label { display: block; font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.6rem; }
+    input[type="text"], input[type="tel"], textarea { width: 100%; padding: 0.85rem 1rem; font-family: var(--font-body); font-size: 0.92rem; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: 0.5rem; color: var(--text-primary); outline: none; }
+    html.light input[type="text"], html.light input[type="tel"], html.light textarea { background: rgba(15, 23, 42, 0.02); }
+    input[type="text"]:focus, input[type="tel"]:focus, textarea:focus { border-color: var(--primary-color); background: rgba(255, 255, 255, 0.05); }
+    textarea { resize: vertical; min-height: 80px; }
+    .radio-group { display: flex; flex-direction: column; gap: 1rem; margin-top: 0.5rem; }
+    .radio-label { display: flex; gap: 1rem; cursor: pointer; position: relative; padding: 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; background: rgba(255, 255, 255, 0.01); }
+    .radio-label input[type="radio"] { position: absolute; opacity: 0; }
+    .custom-radio { width: 1.25rem; height: 1.25rem; border-radius: 50%; border: 2px solid var(--text-muted); display: flex; align-items: center; justify-content: center; margin-top: 0.15rem; flex-shrink: 0; }
+    .radio-label input[type="radio"]:checked ~ .custom-radio { border-color: var(--primary-color); }
+    .custom-radio::after { content: ""; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--primary-color); transform: scale(0); transition: transform 0.2s ease; }
+    .radio-label input[type="radio"]:checked ~ .custom-radio::after { transform: scale(1); }
+    .radio-text strong { display: block; font-size: 0.9rem; color: var(--text-primary); margin-bottom: 0.15rem; }
+    .radio-text p { font-size: 0.78rem; color: var(--text-secondary); }
+    .payment-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem; }
+    .payment-box { display: flex; align-items: center; justify-content: center; padding: 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; cursor: pointer; font-weight: 600; font-size: 0.9rem; background: rgba(255, 255, 255, 0.01); }
+    .payment-box input[type="radio"] { position: absolute; opacity: 0; }
+    .payment-box.active { border-color: var(--accent-color); background: var(--accent-glow); color: var(--accent-color); }
+    .barter-details-panel { background: rgba(245, 158, 11, 0.03); border: 1px dashed rgba(245, 158, 11, 0.25); padding: 1.5rem; border-radius: 0.5rem; }
+    .lodging-panel { background: rgba(59, 130, 246, 0.03); border: 1px dashed rgba(59, 130, 246, 0.2); padding: 1.2rem; border-radius: 0.5rem; }
+    .checkbox-label { display: flex; align-items: center; gap: 0.8rem; cursor: pointer; font-weight: 500; }
+    .checkbox-label input[type="checkbox"] { position: absolute; opacity: 0; }
+    .custom-checkbox { width: 1.15rem; height: 1.15rem; border: 2px solid var(--text-muted); border-radius: 0.25rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .checkbox-label input[type="checkbox"]:checked ~ .custom-checkbox { border-color: var(--primary-color); background: var(--primary-color); }
+    .custom-checkbox::after { content: "✔"; color: #ffffff; font-size: 0.75rem; font-weight: bold; transform: scale(0); }
+    .checkbox-label input[type="checkbox"]:checked ~ .custom-checkbox::after { transform: scale(1); }
+
+    .contact-badge { font-family: var(--font-title); font-weight: 700; font-size: 0.8rem; color: var(--primary-color); margin-bottom: 0.8rem; }
+    .contact-card { padding: 3rem; display: flex; flex-direction: column; align-items: flex-start; }
+    .contact-card h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 1.2rem; }
+    .card-divider { width: 100%; border: none; border-top: 1px solid var(--border-color); margin-bottom: 1.5rem; }
+    .contact-details-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; width: 100%; margin-bottom: 2.2rem; }
+    .contact-details-list li { font-size: 0.92rem; color: var(--text-secondary); }
+    .contact-details-list li strong { color: var(--text-primary); }
+    .contact-card .btn { width: 100%; }
+
+    .footer-area { background: rgba(15, 23, 42, 0.4); border-top: 1px solid var(--border-color); padding: 4rem 0 3rem 0; }
+    .footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-brand { display: flex; align-items: center; gap: 0.6rem; }
+    .footer-brand h4 { font-family: var(--font-title); font-size: 1.15rem; font-weight: 800; }
+    .footer-moto { font-size: 0.9rem; color: var(--text-secondary); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1.8rem; flex-wrap: wrap; gap: 1rem; }
+    .copyright { font-size: 0.8rem; color: var(--text-muted); }
+    .location-stamp { font-size: 0.8rem; color: var(--text-muted); }
+
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(9, 13, 22, 0.7); backdrop-filter: blur(8px); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+    .modal-content { max-width: 480px; width: 100%; padding: 3rem 2.5rem; text-align: center; }
+    .modal-success-icon { font-size: 3.5rem; display: block; margin-bottom: 1.5rem; }
+    .modal-content h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.6rem; }
+    .modal-content p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+    .modal-summary { padding: 1.2rem 1.5rem; margin-bottom: 1.5rem; text-align: left; background: rgba(255, 255, 255, 0.02); }
+    .modal-summary p { margin-bottom: 0.5rem; font-size: 0.85rem; }
+    .modal-next-steps { font-size: 0.85rem !important; color: var(--accent-color) !important; font-weight: 600; margin-bottom: 2rem !important; }
+
+    @media (max-width: 992px) {
+      .hero-container { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+      .hero-subtitle { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .camp-section .grid-2 { grid-template-columns: 1fr; gap: 3rem; }
+      .story-card { grid-template-columns: 1fr; }
+      .story-img-wrap { height: 250px; min-height: auto; }
+      .story-content { padding: 2.2rem; }
+      .podcast-layout { grid-template-columns: 1fr; }
+      .podcast-playlist { border-right: none; border-bottom: 1px solid var(--border-color); }
+      .register-layout { grid-template-columns: 1fr; }
+      .register-info-panel { border-right: none; border-bottom: 1px solid var(--border-color); padding: 3rem 2rem; }
+      .register-form-panel { padding: 3rem 2rem; }
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 4rem 0; }
+      .hero-title { font-size: 2.6rem; }
+      .section-title { font-size: 1.8rem; }
+      .mobile-toggle { display: flex; }
+      .nav-menu {
+        position: fixed; top: 4.8rem; left: 0; width: 100%; height: 0;
+        background: var(--bg-surface-opaque); flex-direction: column;
+        gap: 1.5rem; padding: 0; overflow: hidden; transition: all 0.3s ease;
+        box-shadow: var(--shadow-lg); border-bottom: 1px solid var(--border-color);
+      }
+      .nav-menu.open { height: auto; padding: 2rem 1.5rem; }
+      .nav-link { font-size: 1.1rem; width: 100%; text-align: center; padding: 0.5rem 0; }
+      .nav-btn { width: 100%; text-align: center; padding: 0.75rem 0; }
+      .grid-4 { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .payment-selector { grid-template-columns: 1fr; }
+      .footer-top, .footer-bottom { flex-direction: column; text-align: center; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Glows -->
+  <div class="glow-bg glow-1"></div>
+  <div class="glow-bg glow-2"></div>
+
+  <!-- Header / Navbar -->
+  <header class="navbar-header" id="navbar">
+    <div class="navbar-container">
+      <a href="#" class="nav-logo" id="navLogo">
+        <span class="logo-emoji">🌿</span>
+        <span class="logo-text">四季八里都蘭共學堂</span>
+      </a>
+      
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="#philosophy" class="nav-link" id="link-philosophy">理念核心</a>
+        <a href="#schedule" class="nav-link" id="link-schedule">山海週曆</a>
+        <a href="#camp" class="nav-link" id="link-camp">哈爸共創營</a>
+        <a href="#stories" class="nav-link" id="link-stories">實戰故事</a>
+        <a href="#podcast" class="nav-link" id="link-podcast">播客影音</a>
+        <a href="#contact" class="nav-link" id="link-contact">據點聯絡</a>
+        <a href="#register" class="nav-btn" id="link-register">預約報名</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="切換深淺模式">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="打開選單">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="badge" id="heroBadge">🌿 在地共創 ╳ AI 賦能</div>
+        <h1 class="hero-title" id="heroTitle">一手拿滑鼠，<br><span class="highlight-gradient">一手摸泥土</span></h1>
+        <p class="hero-subtitle" id="heroSubtitle">以山海為教室，在都蘭的太平洋風光與山林節律中，開啟第二人生的自由、科技賦能與共生聚落。</p>
+        <div class="hero-actions">
+          <a href="#register" class="btn btn-primary" id="heroBtnRegister">線上報名共創營</a>
+          <a href="#schedule" class="btn btn-secondary" id="heroBtnSchedule">檢視活動週曆</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="image-wrapper glass-card">
+          <!-- ⚠️ 注意：此處需更換為您上傳至 Google Drive 的公開圖片網址，或在此保留相對路徑（若與 assets 放在同目錄） -->
+          <img src="assets/hero_bg.jpg" alt="都蘭山海與 AI 科技的融合" id="heroImg">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Claims (四大核心主張) -->
+  <section class="philosophy-section" id="philosophy">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" id="philosophyTitle">四大核心主張</h2>
+        <p class="section-subtitle" id="philosophySubtitle">結合在地自然農法、藝術美學、山海運動與數位第二大腦</p>
+      </div>
+      <div class="grid grid-4" id="philosophyGrid">
+        
+        <!-- Card 1 -->
+        <div class="claim-card glass-card">
+          <div class="card-icon-wrap bg-blue-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.5 0 2.5 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.5 0 2.5 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.5 0 2.5 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>
+          </div>
+          <h3 class="card-title">🌊 山海教室</h3>
+          <p class="card-desc">告別硬邦邦的傳統教室，以都蘭山為呼吸、太平洋為節奏，寓教於樂、自然融入生活與學習。</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="claim-card glass-card">
+          <div class="card-icon-wrap bg-green-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+          </div>
+          <h3 class="card-title">🤖 科技賦能</h3>
+          <p class="card-desc">運用 Gemini 與 NotebookLM 等 AI 工具，不需寫代碼，用說話與拍照輕鬆打造數位第二大腦。</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="claim-card glass-card">
+          <div class="card-icon-wrap bg-amber-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 5-5-3-5 3"/><path d="m17 19-5 3-5-3"/><path d="M2 12h20"/><path d="m5 7 3 5-3 5"/><path d="m19 7-3 5 3 5"/></svg>
+          </div>
+          <h3 class="card-title">🌅 第二人生</h3>
+          <p class="card-desc">跨世代經驗傳承與對話，每個人都能整合人生閱歷、站上舞台，做自己的主人。</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="claim-card glass-card">
+          <div class="card-icon-wrap bg-purple-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="card-title">🤝 共生創生</h3>
+          <p class="card-desc">以「關懷愛心互助合作社」模式運作，支持以自產農產或勞務支援進行「以物易物」學費折抵。</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Weekly Calendar (山海共學生態週曆) -->
+  <section class="schedule-section" id="schedule">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" id="scheduleTitle">山海共學生態週曆</h2>
+        <p class="section-subtitle" id="scheduleSubtitle">規律的生活節奏，在山海與音符中汲取平靜與活力</p>
+      </div>
+
+      <div class="daily-notice glass-card" id="dailyNotice">
+        <span class="notice-icon">🌊</span>
+        <div class="notice-text">
+          <strong>每日山海節律：</strong> 每天下午 16:00 ｜ 鉛橋海灘衝浪與海洋漂浮（視天候海象狀況進行）
+        </div>
+      </div>
+
+      <div class="table-responsive glass-card">
+        <table class="schedule-table" id="scheduleTable">
+          <thead>
+            <tr>
+              <th>頻率 / 時段</th>
+              <th>活動名稱</th>
+              <th>內容重點</th>
+              <th>上課地點</th>
+              <th>類別標籤</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time-col">每週二 09:00</td>
+              <td class="event-name">🎸 彈吉他學音樂</td>
+              <td>古典吉他指法練習、樂理與彈撥交流</td>
+              <td>都蘭 四季八里莊園</td>
+              <td><span class="tag tag-weekly">每週常態</span></td>
+            </tr>
+            <tr>
+              <td class="time-col">每週二 10:30</td>
+              <td class="event-name">🧘 身心靈探索</td>
+              <td>內觀靜心、身心整合與心靈探索</td>
+              <td>都蘭 四季八里莊園</td>
+              <td><span class="tag tag-weekly">每週常態</span></td>
+            </tr>
+            <tr>
+              <td class="time-col">每週三 14:00</td>
+              <td class="event-name">💻 哈爸 AI 補課與操作輔導</td>
+              <td>課堂重點複習、手機與 AI 工具一對一排障</td>
+              <td>台東市 生活管家就醬點</td>
+              <td><span class="tag tag-tutor">每週輔導</span></td>
+            </tr>
+            <tr>
+              <td class="time-col">隔週五 19:30</td>
+              <td class="event-name">🤖 哈爸 AI 慢活共創營</td>
+              <td>雙師線上授課 ＋ 實體課後一小時陪伴實作</td>
+              <td>都蘭莊園 / 市區雙教室 / 線上</td>
+              <td><span class="tag tag-core">重點課程</span></td>
+            </tr>
+            <tr>
+              <td class="time-col">每月第一週 08:00</td>
+              <td class="event-name">🎶 恆春古調傳唱與採集</td>
+              <td>傳統民謠演唱、聲音採集與文化交流</td>
+              <td>都蘭 四季八里莊園</td>
+              <td><span class="tag tag-monthly">每月主題</span></td>
+            </tr>
+            <tr>
+              <td class="time-col">每月首週週日</td>
+              <td class="event-name">🦅 都蘭山定點生態觀察</td>
+              <td>鳥類（烏頭翁、大冠鷲）與植物記錄踏查</td>
+              <td>都蘭山步道</td>
+              <td><span class="tag tag-monthly">每月主題</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Camp Details (哈爸 AI 慢活共創營) -->
+  <section class="camp-section" id="camp">
+    <div class="container">
+      <div class="grid grid-2">
+        <div class="camp-intro">
+          <div class="badge badge-amber">重點課程</div>
+          <h2 class="section-title" style="text-align: left; margin-top: 1rem;" id="campTitle">哈爸 AI 慢活共創營</h2>
+          <p class="camp-desc" id="campDesc">
+            專為在地居民、小農、民宿主與樂齡創作者量身打造的雙師陪伴共學。
+          </p>
+          <div class="mentor-row glass-card">
+            <div class="mentor-avatar">👨‍💻</div>
+            <div class="mentor-info">
+              <h4>雙師授課 ╳ 在地陪伴</h4>
+              <p>由國家主權 AI (TAIDE) 第一代 PM <strong>哈爸 (許武龍)</strong> 線上授課，在地教練 <strong>阿鐘 (陳豊鍾)</strong> 與 <strong>陳品碩</strong> 現場實體手把手操作。</p>
+            </div>
+          </div>
+          <div class="pricing-card glass-card">
+            <div class="price-header">
+              <span class="price-amount">NT$ 3,000</span>
+              <span class="price-period">/ 全期 6 次 (共 12 週)</span>
+            </div>
+            <div class="barter-notice">
+              <span class="tag tag-barter">🤝 支持以物易物</span>
+              <p>支持以自產農特產品（如咖啡豆、蜂蜜、稻米等）或勞務支援進行學費折抵。</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="camp-themes">
+          <h3 class="themes-title">三大實戰應用主題</h3>
+          <div class="theme-card glass-card">
+            <span class="theme-emoji">✍️</span>
+            <div class="theme-body">
+              <h4>主題一：生命寫書與創作</h4>
+              <p>透過語音口述錄音，由 AI 自動梳理生命故事、撰寫品牌文案與書籍目錄架構。</p>
+            </div>
+          </div>
+          <div class="theme-card glass-card">
+            <span class="theme-emoji">💰</span>
+            <div class="theme-body">
+              <h4>主題二：進銷存與生活管理</h4>
+              <p>運用 Google 試算表與 AI 進行日常記帳、小農客戶名冊管理與營運流程簡化。</p>
+            </div>
+          </div>
+          <div class="theme-card glass-card">
+            <span class="theme-emoji">🌿</span>
+            <div class="theme-body">
+              <h4>主題三：在地民宿與社群行銷</h4>
+              <p>利用手機拍照辨識地方生態或農作物，自動生成 Facebook 與 LINE 社群分享圖文與短影音。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies / Real Stories (都蘭實戰故事) -->
+  <section class="stories-section" id="stories">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" id="storiesTitle">都蘭共學實戰故事</h2>
+        <p class="section-subtitle" id="storiesSubtitle">AI 在都蘭不是冰冷的科技，而是連接人與人、人與土地的溫度</p>
+      </div>
+
+      <!-- Carousel Container -->
+      <div class="carousel-container">
+        
+        <!-- Story 1 -->
+        <div class="story-slide active" id="story-1">
+          <div class="story-card glass-card">
+            <div class="story-img-wrap">
+              <img src="assets/rescue_phone.jpg" alt="用 Gemini 救回鎖死的手機">
+              <span class="story-badge bg-blue-glow">數位雪巴排障</span>
+            </div>
+            <div class="story-content">
+              <h3>📱 救回貴美阿嬤鎖死的三星手機</h3>
+              <p class="story-meta">💡 都蘭共學堂第二堂課的真實數位救援冒險</p>
+              <div class="story-text">
+                貴美阿嬤在課堂上意外設定了開機密碼並忘記，手機瞬間鎖死變「磚頭」。由於是美版二手機無購買證明，官方維修站直接拒收。阿中教練沒有查死板的手冊，而是把 Google Gemini 當成「數位雪巴嚮導」進行實時互動排障，Gemini 精確指引「必須先接上傳輸線連接電腦，再長按特定按鍵組合 7 秒」才能順利進入 Android 工程模式，最終成功強制重置手機，保住了阿嬤的手機與笑臉！
+              </div>
+              <div class="story-footer">
+                <span class="story-highlight">啟示：AI 提供的是「互動決策」而非死板的百科全書。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 2 -->
+        <div class="story-slide" id="story-2">
+          <div class="story-card glass-card">
+            <div class="story-img-wrap">
+              <img src="assets/barter_system.jpg" alt="當老師的價值只剩下陪伴">
+              <span class="story-badge bg-green-glow">以物易物與陪伴</span>
+            </div>
+            <div class="story-content">
+              <h3>🌾 用米換一堂 AI 課：當老師只剩陪伴</h3>
+              <p class="story-meta">💡 阿芬的雨中補課記，與「精通壓縮」的奇蹟</p>
+              <div class="story-text">
+                在一個大雨滂沱的都蘭下午，學員阿芬無法出門。阿中教練利用線上補課，手把手引導她使用 Gemini 與 NotebookLM。阿芬學會了將 NotebookLM 比喻為「五星級廚房」，放入文本文獻作為食材，下指令點餐，最後自動產出所需的企劃案。在不到一小時內，她跨越了傳統需要學習三年半的知識鴻溝，甚至直接利用 AI 來規劃在農地上興建資材室的法律與設計，真正打破了專業門檻！
+              </div>
+              <div class="story-footer">
+                <span class="story-highlight">啟示：當 AI 隨時在線且回覆更完美時，老師的角色退居為給予情感支持的「生命陪伴者」。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 3 -->
+        <div class="story-slide" id="story-3">
+          <div class="story-card glass-card">
+            <div class="story-img-wrap">
+              <img src="assets/companionship.jpg" alt="個人 AI 的四桶金">
+              <span class="story-badge bg-amber-glow">人生四桶金</span>
+            </div>
+            <div class="story-content">
+              <h3>🌅 個人 AI 四桶金：從中央廚房到黃金提煉機</h3>
+              <p class="story-meta">💡 整理自阿中教練的個人 AI 實踐與心理反思</p>
+              <div class="story-text">
+                阿中教練利用 NotebookLM 作為個人「黃金提煉機」，成功把人生閱歷轉化為四桶金：第一桶「健康紅利」，用 AI 精準分析個人健檢並監控健康；第二桶「財經冷靜劑」，篩選紛雜的財經新聞以做出理智投資；第三桶「創作自我實現」，把語音紀錄、靈感寫成多本書籍與播客；第四桶「時間紅利」，讓 AI 託管繁重行政，省下數天時間去海邊衝浪與生活。
+              </div>
+              <div class="story-footer">
+                <span class="story-highlight">啟示：學習是「私有化」的自我成長，有了 AI 廚房，人人都可自主掌控人生的主廚。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Carousel Navigation Dots -->
+      <div class="carousel-dots" id="carouselDots">
+        <button class="dot active" data-target="story-1" aria-label="故事一"></button>
+        <button class="dot" data-target="story-2" aria-label="故事二"></button>
+        <button class="dot" data-target="story-3" aria-label="故事三"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcast & Audio Player (播客影音中心) -->
+  <section class="podcast-section" id="podcast">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" id="podcastTitle">播客影音與學習典藏</h2>
+        <p class="section-subtitle" id="podcastSubtitle">傾聽都蘭共學小組的深度對談，在對話中開啟思維啟發</p>
+      </div>
+
+      <div class="podcast-layout glass-card">
+        <!-- Playlist Side -->
+        <div class="podcast-playlist">
+          <h3 class="playlist-header">🎙️ 節目播放清單</h3>
+          <div class="playlist-items" id="playlistItems">
+            <div class="playlist-item active" data-index="0" data-src="simulated_audio_1" data-duration="12:04">
+              <span class="play-indicator">▶</span>
+              <div class="item-meta">
+                <h4>1. 當老師的價值只剩下「陪伴」</h4>
+                <p>都蘭 AI 補課記與學習的終極轉型</p>
+              </div>
+              <span class="item-duration">12:04</span>
+            </div>
+            <div class="playlist-item" data-index="1" data-src="simulated_audio_2" data-duration="15:30">
+              <span class="play-indicator">▶</span>
+              <div class="item-meta">
+                <h4>2. 用 Gemini 救回鎖死的三星手機</h4>
+                <p>都蘭共學堂的長輩數位賦能實戰</p>
+              </div>
+              <span class="item-duration">15:30</span>
+            </div>
+            <div class="playlist-item" data-index="2" data-src="simulated_audio_3" data-duration="09:45">
+              <span class="play-indicator">▶</span>
+              <div class="item-meta">
+                <h4>3. 學 AI 先開除老師</h4>
+                <p>從廚房隱喻看 AI 時代終身學習</p>
+              </div>
+              <span class="item-duration">09:45</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Player Detail Side -->
+        <div class="podcast-player-container">
+          <div class="player-visual-area">
+            <div class="disc-wrapper">
+              <div class="vinyl-disc" id="vinylDisc">
+                <div class="vinyl-center">🌿</div>
+              </div>
+            </div>
+            <div class="track-details">
+              <h3 id="playerTrackTitle">當老師的價值只剩下「陪伴」</h3>
+              <p id="playerTrackSubtitle">都蘭 AI 補課筆記與學習的終極轉型</p>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="player-controls">
+            <div class="time-slider-container">
+              <span id="currentTime">00:00</span>
+              <input type="range" id="timeSlider" class="time-slider" min="0" max="100" value="0">
+              <span id="totalDuration">12:04</span>
+            </div>
+            <div class="control-buttons">
+              <button class="btn-ctrl" id="btnPrev" aria-label="上一首">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" x2="5" y1="19" y2="5"/></svg>
+              </button>
+              <button class="btn-ctrl btn-play" id="btnPlay" aria-label="播放">
+                <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                <svg class="icon-pause hidden" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="4" width="4" height="16" rx="1"/><rect x="6" y="4" width="4" height="16" rx="1"/></svg>
+              </button>
+              <button class="btn-ctrl" id="btnNext" aria-label="下一首">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" x2="19" y1="5" y2="19"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Transcript -->
+          <div class="transcript-box">
+            <div class="transcript-header">
+              <span>💬 播客即時精選逐字稿</span>
+              <button id="toggleTranscriptBtn" class="btn-text">顯示全文</button>
+            </div>
+            <div class="transcript-content" id="transcriptContent">
+              <p class="lyric-line active" data-time="0"><strong>[00:00]</strong> 想像一下這個畫面：你今天準備去報名一堂最尖端的人工智慧科技課程...</p>
+              <p class="lyric-line" data-time="8"><strong>[00:08]</strong> 但你手上拿去繳學費的不是信用卡，也不是一疊千元鈔票，而是...</p>
+              <p class="lyric-line" data-time="15"><strong>[00:15]</strong> 一袋你自己辛苦種出來的有機稻米，或者是早上剛出爐的手作麵包對吧？</p>
+              <p class="lyric-line" data-time="22"><strong>[00:22]</strong> 沒錯，這聽起來就像科幻小說裡才會出現的烏托邦情節。</p>
+              <p class="lyric-line" data-time="30"><strong>[00:30]</strong> 但這卻是此時此刻正在台灣台東都蘭真實發生的事。</p>
+              <p class="lyric-line" data-time="35"><strong>[00:35]</strong> 歡迎來到都蘭共學堂！在這裡，我們不講複雜的代碼，我們學 AI、也學生活。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <section class="register-section" id="register">
+    <div class="container">
+      <div class="register-layout glass-card">
+        <div class="register-info-panel">
+          <span class="panel-badge">即刻預約</span>
+          <h2>開啟您的<br>山海與 AI 共學生活</h2>
+          <p>不管是想成為學員、提案以物易物，或是來都蘭進行渡假加購，我們都誠摯歡迎您！</p>
+          <ul class="benefit-list">
+            <li>✨ <strong>在地實體陪伴：</strong> 阿鐘與品碩教練手把手輔導</li>
+            <li>🤝 <strong>支持以物易物：</strong> 減輕金錢負擔，共享勞動與農產</li>
+            <li>🌴 <strong>莊園加購住宿：</strong> 深度融入都蘭，給自己充實的慢活假期</li>
+          </ul>
+        </div>
+        
+        <div class="register-form-panel">
+          <form id="enrollmentForm" action="#" method="POST">
+            <div class="form-group">
+              <label for="studentName">姓名 / 稱呼 <span class="required">*</span></label>
+              <input type="text" id="studentName" name="name" required placeholder="例如：林阿芬">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="studentPhone">聯絡電話 <span class="required">*</span></label>
+                <input type="tel" id="studentPhone" name="phone" required placeholder="例如：0912345678">
+              </div>
+              <div class="form-group">
+                <label for="studentLine">LINE ID</label>
+                <input type="text" id="studentLine" name="line" placeholder="方便助教加入聯絡">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>身分類別 <span class="required">*</span></label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="student_type" value="local" checked id="radioLocal">
+                  <span class="custom-radio"></span>
+                  <div class="radio-text">
+                    <strong>在地居民 / 小農 / 民宿主</strong>
+                    <p>居住於台東，可提案以物易物學費折抵</p>
+                  </div>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="student_type" value="visitor" id="radioVisitor">
+                  <span class="custom-radio"></span>
+                  <div class="radio-text">
+                    <strong>外縣市學員 / 創作者</strong>
+                    <p>希望來都蘭深度渡假，有加購莊園住宿意願</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group" id="paymentOptionsContainer">
+              <label>學費方案與支付方式 <span class="required">*</span></label>
+              <div class="payment-selector">
+                <label class="payment-box active" id="payCashLabel">
+                  <input type="radio" name="payment_method" value="cash" checked id="payCash">
+                  <span>💵 現金支持 $3,000</span>
+                </label>
+                <label class="payment-box" id="payBarterLabel">
+                  <input type="radio" name="payment_method" value="barter" id="payBarter">
+                  <span>🤝 提案以物易物</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group barter-details-panel hidden" id="barterPanel">
+              <label for="barterProposal">您的「以物易物」提案內容 <span class="required">*</span></label>
+              <textarea id="barterProposal" name="barter_proposal" placeholder="例如：自產有機咖啡豆 3 磅、手工烘焙歐式麵包 10 份、或者協助莊園鋤草 10 小時..."></textarea>
+            </div>
+
+            <div class="form-group lodging-panel hidden" id="lodgingPanel">
+              <label>🏡 「四季八里莊園」加購住宿意願</label>
+              <div class="checkbox-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="needLodging" name="need_lodging">
+                  <span class="custom-checkbox"></span>
+                  <span>我想索取「共學＋渡假加購住宿」的房型與房價資訊</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="expectations">您最希望透過 AI 解決什麼日常問題 / 工作痛點？</label>
+              <textarea id="expectations" name="expectations" rows="3" placeholder="例如：想整理自己的故事但不知道怎麼下筆、手機能不能自動記帳、想為自家的農產品寫文案..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="btnSubmit">送出預約申請</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" id="contactTitle">實體基地與聯絡窗口</h2>
+      </div>
+      <div class="grid grid-2" id="contactGrid">
+        <div class="contact-card glass-card">
+          <div class="contact-badge">📍 都蘭基地</div>
+          <h3>四季八里自然莊園</h3>
+          <hr class="card-divider">
+          <ul class="contact-details-list">
+            <li><strong>🏠 地址：</strong>台東縣東河鄉都蘭村舊部 14 之 2 號</li>
+            <li><strong>🎸 主要活動：</strong>吉他、身心靈探索、古調、AI 共創營都蘭教室</li>
+            <li><strong>👤 聯絡窗口：</strong>陳豊鍾（阿鐘）</li>
+            <li><strong>📞 電話 / LINE：</strong>0908853322</li>
+          </ul>
+        </div>
+        <div class="contact-card glass-card">
+          <div class="contact-badge">📍 台東市據點</div>
+          <h3>生活管家就醬點</h3>
+          <hr class="card-divider">
+          <ul class="contact-details-list">
+            <li><strong>🏠 地址：</strong>台東市正氣北路 166 巷 90 號</li>
+            <li><strong>💻 主要活動：</strong>週三 AI 補課輔導、AI 共創營台東市教室</li>
+            <li><strong>👤 聯絡窗口：</strong>陳品碩</li>
+            <li><strong>📞 電話 / LINE：</strong>0972928864</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-area">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo-emoji">🌿</span>
+          <h4>四季八里都蘭共學堂 ╳ 四季八里自然莊園</h4>
+        </div>
+        <p class="footer-moto">「一手拿滑鼠，一手摸泥土。用 AI 慢活，用愛共創。」</p>
+      </div>
+      <div class="footer-bottom">
+        <p class="copyright">&copy; 2026 四季八里都蘭共學堂. All rights reserved.</p>
+        <p class="location-stamp">服務處：台東縣東河鄉都蘭村舊部 14 之 2 號 ｜ 聯絡電話：0908853322</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal-overlay hidden" id="successModal">
+    <div class="modal-content glass-card">
+      <span class="modal-success-icon">🎉</span>
+      <h3 id="modalTitle">報名申請成功！</h3>
+      <p id="modalDesc">我們已收到您的共學預約與以物易物提案。</p>
+      <div class="modal-summary glass-card" id="modalSummary"></div>
+      <p class="modal-next-steps">助教將於 24 小時內透過電話或 LINE 與您聯繫確認！</p>
+      <button class="btn btn-primary" id="closeModalBtn">好，我知道了</button>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. 導覽列滾動與手機版選單
+      const navbar = document.getElementById('navbar');
+      const mobileToggle = document.getElementById('mobileToggle');
+      const navMenu = document.getElementById('navMenu');
+      const navLinks = document.querySelectorAll('.nav-link, .nav-btn');
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
+      });
+
+      mobileToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        const isOpen = navMenu.classList.contains('open');
+        mobileToggle.innerHTML = isOpen 
+          ? `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>`
+          : `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>`;
+      });
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (navMenu.classList.contains('open')) {
+            navMenu.classList.remove('open');
+            mobileToggle.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>`;
+          }
+        });
+      });
+
+      // 2. 深淺色切換
+      const themeToggle = document.getElementById('themeToggle');
+      const htmlEl = document.documentElement;
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      htmlEl.className = savedTheme;
+
+      themeToggle.addEventListener('click', () => {
+        if (htmlEl.classList.contains('dark')) {
+          htmlEl.className = 'light';
+          localStorage.setItem('theme', 'light');
+        } else {
+          htmlEl.className = 'dark';
+          localStorage.setItem('theme', 'dark');
+        }
+      });
+
+      // 3. 故事輪播
+      const slides = document.querySelectorAll('.story-slide');
+      const dots = document.querySelectorAll('.dot');
+      let currentSlideIndex = 0;
+      let carouselInterval;
+
+      function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        currentSlideIndex = index;
+      }
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          showSlide(index);
+          resetAutoPlay();
+        });
+      });
+
+      function startAutoPlay() {
+        carouselInterval = setInterval(() => {
+          let nextIndex = (currentSlideIndex + 1) % slides.length;
+          showSlide(nextIndex);
+        }, 8000);
+      }
+
+      function resetAutoPlay() {
+        clearInterval(carouselInterval);
+        startAutoPlay();
+      }
+      startAutoPlay();
+
+      // 4. 播放器真實音訊控制 (Audio Player)
+      const tracks = [
+        {
+          title: "當老師的價值只剩下「陪伴」",
+          subtitle: "都蘭 AI 補課筆記與學習的終極轉型",
+          file: "assets/teacher_companionship.m4a",
+          lyrics: [
+            { time: 0, text: "想像一下這個畫面：你今天準備去報名一堂最尖端的人工智慧科技課程..." },
+            { time: 8, text: "但你手上拿去繳學費的不是信用卡，也不是一疊千元鈔票，而是..." },
+            { time: 15, text: "一袋你自己辛苦種出來的有機稻米，或者是早上剛出爐的手作麵包對吧？" },
+            { time: 22, text: "沒錯，這聽起來就像科幻小說裡才會出現的烏托邦情節。" },
+            { time: 30, text: "但這卻是此時此刻正在台灣台東都蘭真實發生的事。" },
+            { time: 35, text: "歡迎來到都蘭共學堂！在這裡，我們不講複雜的代碼，我們學 AI、也學生活。" }
+          ]
+        },
+        {
+          title: "用 Gemini 救回鎖死的三星手機",
+          subtitle: "都蘭共學堂的長輩數位賦能實戰",
+          file: "assets/rescue_phone.m4a",
+          lyrics: [
+            { time: 0, text: "你玩過密室逃脫嗎？就是那種不小心觸發陷阱，然後聽到大門上鎖的那種窒息感..." },
+            { time: 8, text: "今天的故事主角不是探險家，而是一位溫暖的貴美阿嬤。" },
+            { time: 14, text: "阿嬤在共學營第二堂課時，意外為自己的三星手機設定了密碼，下一秒卻忘光了。" }
+          ]
+        },
+        {
+          title: "學 AI 先開除老師",
+          subtitle: "從廚房隱喻看 AI 時代終身學習",
+          file: "assets/fire_teacher.m4a",
+          lyrics: [
+            { time: 0, text: "今天我們要來探討一個非常顛覆的觀點：『學 AI，要先學會開除老師？』" },
+            { time: 7, text: "這並不是說老師不重要，而是傳統『傳授硬資訊』的老師功能正被 AI 徹底取代。" }
+          ]
+        }
+      ];
+
+      let currentTrackIndex = 0;
+      let isPlaying = false;
+      let isDraggingSlider = false;
+
+      // 建立 HTML5 Audio 物件
+      const audio = new Audio();
+
+      const vinylDisc = document.getElementById('vinylDisc');
+      const playerTrackTitle = document.getElementById('playerTrackTitle');
+      const playerTrackSubtitle = document.getElementById('playerTrackSubtitle');
+      const currentTimeText = document.getElementById('currentTime');
+      const totalDurationText = document.getElementById('totalDuration');
+      const timeSlider = document.getElementById('timeSlider');
+      const btnPlay = document.getElementById('btnPlay');
+      const iconPlay = btnPlay.querySelector('.icon-play');
+      const iconPause = btnPlay.querySelector('.icon-pause');
+      const playlistItems = document.querySelectorAll('.playlist-item');
+      const transcriptContent = document.getElementById('transcriptContent');
+      const toggleTranscriptBtn = document.getElementById('toggleTranscriptBtn');
+
+      function formatTime(seconds) {
+        if (isNaN(seconds)) return "00:00";
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+      }
+
+      function updatePlayStateUI() {
+        if (isPlaying) {
+          vinylDisc.style.animationPlayState = 'running';
+          iconPlay.classList.add('hidden');
+          iconPause.classList.remove('hidden');
+        } else {
+          vinylDisc.style.animationPlayState = 'paused';
+          iconPlay.classList.remove('hidden');
+          iconPause.classList.add('hidden');
+        }
+      }
+
+      function loadTrack(index) {
+        const track = tracks[index];
+        currentTrackIndex = index;
+        playerTrackTitle.textContent = track.title;
+        playerTrackSubtitle.textContent = track.subtitle;
+        
+        audio.src = track.file;
+        audio.load();
+        
+        timeSlider.value = 0;
+        currentTimeText.textContent = "00:00";
+        totalDurationText.textContent = "--:--";
+        
+        playlistItems.forEach(item => item.classList.remove('active'));
+        playlistItems[index].classList.add('active');
+        renderTranscript(track.lyrics);
+        
+        if (isPlaying) {
+          audio.play().catch(e => console.log("Play failed: ", e));
+        }
+        updatePlayStateUI();
+      }
+
+      function renderTranscript(lyrics) {
+        transcriptContent.innerHTML = lyrics.map((line) => `
+          <p class="lyric-line" data-time="${line.time}">
+            <strong>[${formatTime(line.time)}]</strong> ${line.text}
+          </p>
+        `).join('');
+        transcriptContent.scrollTop = 0;
+      }
+
+      function updateLyricHighlight(seconds) {
+        const lines = transcriptContent.querySelectorAll('.lyric-line');
+        let activeLine = null;
+        lines.forEach(line => {
+          const lineTime = parseInt(line.getAttribute('data-time'), 10);
+          if (seconds >= lineTime) activeLine = line;
+        });
+        if (activeLine) {
+          lines.forEach(line => line.classList.remove('active'));
+          activeLine.classList.add('active');
+          const containerHeight = transcriptContent.clientHeight;
+          const lineOffsetTop = activeLine.offsetTop;
+          const lineHeight = activeLine.clientHeight;
+          transcriptContent.scrollTo({
+            top: lineOffsetTop - (containerHeight / 2) + (lineHeight / 2),
+            behavior: 'smooth'
+          });
+        }
+      }
+
+      audio.addEventListener('loadedmetadata', () => {
+        totalDurationText.textContent = formatTime(audio.duration);
+      });
+
+      audio.addEventListener('timeupdate', () => {
+        if (!isDraggingSlider) {
+          const current = audio.currentTime;
+          const duration = audio.duration || 1;
+          timeSlider.value = (current / duration) * 100;
+          currentTimeText.textContent = formatTime(current);
+          updateLyricHighlight(current);
+        }
+      });
+
+      audio.addEventListener('ended', () => {
+        let nextIdx = (currentTrackIndex + 1) % tracks.length;
+        isPlaying = true;
+        loadTrack(nextIdx);
+      });
+
+      audio.addEventListener('play', () => {
+        isPlaying = true;
+        updatePlayStateUI();
+      });
+
+      audio.addEventListener('pause', () => {
+        isPlaying = false;
+        updatePlayStateUI();
+      });
+
+      btnPlay.addEventListener('click', () => {
+        if (audio.paused) {
+          audio.play().then(() => {
+            isPlaying = true;
+            updatePlayStateUI();
+          }).catch(err => console.log(err));
+        } else {
+          audio.pause();
+          isPlaying = false;
+          updatePlayStateUI();
+        }
+      });
+
+      document.getElementById('btnPrev').addEventListener('click', () => {
+        let prevIdx = currentTrackIndex - 1;
+        if (prevIdx < 0) prevIdx = tracks.length - 1;
+        loadTrack(prevIdx);
+      });
+
+      document.getElementById('btnNext').addEventListener('click', () => {
+        let nextIdx = (currentTrackIndex + 1) % tracks.length;
+        loadTrack(nextIdx);
+      });
+
+      playlistItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const index = parseInt(item.getAttribute('data-index'), 10);
+          isPlaying = true;
+          loadTrack(index);
+        });
+      });
+
+      timeSlider.addEventListener('mousedown', () => { isDraggingSlider = true; });
+      timeSlider.addEventListener('touchstart', () => { isDraggingSlider = true; });
+
+      timeSlider.addEventListener('input', () => {
+        const duration = audio.duration || 1;
+        const progressPercent = parseFloat(timeSlider.value);
+        const targetSeconds = (progressPercent / 100) * duration;
+        currentTimeText.textContent = formatTime(targetSeconds);
+      });
+
+      timeSlider.addEventListener('change', () => {
+        const duration = audio.duration || 1;
+        const progressPercent = parseFloat(timeSlider.value);
+        audio.currentTime = (progressPercent / 100) * duration;
+        isDraggingSlider = false;
+      });
+
+      toggleTranscriptBtn.addEventListener('click', () => {
+        const isExpanded = transcriptContent.classList.contains('expanded');
+        if (isExpanded) {
+          transcriptContent.classList.remove('expanded');
+          toggleTranscriptBtn.textContent = "顯示全文";
+        } else {
+          transcriptContent.classList.add('expanded');
+          toggleTranscriptBtn.textContent = "收合內容";
+        }
+      });
+
+      loadTrack(0);
+
+      // 5. 表單動態連動
+      const radioLocal = document.getElementById('radioLocal');
+      const radioVisitor = document.getElementById('radioVisitor');
+      const payCashLabel = document.getElementById('payCashLabel');
+      const payBarterLabel = document.getElementById('payBarterLabel');
+      const payCash = document.getElementById('payCash');
+      const payBarter = document.getElementById('payBarter');
+      const barterPanel = document.getElementById('barterPanel');
+      const barterProposal = document.getElementById('barterProposal');
+      const lodgingPanel = document.getElementById('lodgingPanel');
+      const needLodging = document.getElementById('needLodging');
+
+      function handleIdentityChange() {
+        if (radioLocal.checked) {
+          payBarterLabel.style.display = "flex";
+          lodgingPanel.classList.add('hidden');
+          needLodging.checked = false;
+        } else {
+          payBarterLabel.style.display = "none";
+          payCash.checked = true;
+          payCashLabel.classList.add('active');
+          payBarterLabel.classList.remove('active');
+          barterPanel.classList.add('hidden');
+          barterProposal.required = false;
+          lodgingPanel.classList.remove('hidden');
+        }
+      }
+
+      radioLocal.addEventListener('change', handleIdentityChange);
+      radioVisitor.addEventListener('change', handleIdentityChange);
+
+      payCash.addEventListener('change', () => {
+        payCashLabel.classList.add('active');
+        payBarterLabel.classList.remove('active');
+        barterPanel.classList.add('hidden');
+        barterProposal.required = false;
+      });
+
+      payBarter.addEventListener('change', () => {
+        payBarterLabel.classList.add('active');
+        payCashLabel.classList.remove('active');
+        barterPanel.classList.remove('hidden');
+        barterProposal.required = true;
+      });
+
+      // 6. 表單提交
+      const enrollmentForm = document.getElementById('enrollmentForm');
+      const successModal = document.getElementById('successModal');
+      const modalSummary = document.getElementById('modalSummary');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+
+      enrollmentForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('studentName').value.trim();
+        const phone = document.getElementById('studentPhone').value.trim();
+        const line = document.getElementById('studentLine').value.trim() || "未提供";
+        const identity = radioLocal.checked ? "在地居民 / 小農" : "外縣市學員";
+        const payment = payCash.checked ? "現金支持 ($3,000)" : "以物易物提案";
+        const barterContent = barterProposal.value.trim();
+        const lodgingText = needLodging.checked ? "需要" : "不需要";
+        const expectation = document.getElementById('expectations').value.trim() || "無";
+
+        let summaryHtml = `
+          <p><strong>學員姓名：</strong>${name}</p>
+          <p><strong>聯絡電話：</strong>${phone} ｜ <strong>LINE ID：</strong>${line}</p>
+          <p><strong>身分類別：</strong>${identity}</p>
+          <p><strong>學費方案：</strong>${payment}</p>
+        `;
+        if (payBarter.checked && radioLocal.checked) {
+          summaryHtml += `<p><strong>以物易物內容：</strong>${barterContent}</p>`;
+        }
+        if (radioVisitor.checked) {
+          summaryHtml += `<p><strong>莊園住宿意願：</strong>${lodgingText}</p>`;
+        }
+        summaryHtml += `<p><strong>AI 學習期待：</strong>${expectation}</p>`;
+
+        modalSummary.innerHTML = summaryHtml;
+        successModal.classList.remove('hidden');
+        if (isPlaying) { isPlaying = false; stopPlaybackSimulation(); }
+      });
+
+      closeModalBtn.addEventListener('click', () => {
+        successModal.classList.add('hidden');
+        enrollmentForm.reset();
+        handleIdentityChange();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
