@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>順美農場 Shunmei Farm | 徐桂美老師食農教育與自然體驗</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f4f7f2',
+                            100: '#e3ebd8',
+                            200: '#c7d8b4',
+                            500: '#52796f',
+                            600: '#354f52',
+                            700: '#2f3e46',
+                            800: '#1f2d24',
+                        },
+                        amber: {
+                            Warm: '#d4a373',
+                            light: '#faedcd',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans TC', 'sans-serif'],
+                        serif: ['Noto Serif TC', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(rgba(47, 62, 70, 0.45), rgba(47, 62, 70, 0.60)), 
+                              url('20641.jpg'), 
+                              url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1920&q=80');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-[#fdfbf7] antialiased">
+
+    <!-- 頁頭導航欄 Header Navigation -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <!-- 返回共學堂首頁連結 -->
+                <a href="../index.html" class="hidden sm:inline-flex items-center gap-1.5 text-xs text-brand-600 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-full border border-brand-200 transition">
+                    <i class="fa-solid fa-arrow-left"></i> 返回共學堂
+                </a>
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full bg-brand-500 flex items-center justify-center text-white text-xl font-bold shadow-md group-hover:bg-brand-600 transition">
+                        <i class="fa-solid font-serif text-lg">順</i>
+                    </div>
+                    <div>
+                        <span class="font-serif text-xl sm:text-2xl font-bold text-brand-700 tracking-wide block leading-none">順美農場</span>
+                        <span class="text-xs text-brand-500 font-sans tracking-widest block mt-1">共學堂 ‧ 食農實踐基地</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 桌上型電腦選單 Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-gray-600">
+                <a href="#about-teacher" class="hover:text-brand-500 transition">關於徐老師</a>
+                <a href="#about-farm" class="hover:text-brand-500 transition">農場理念</a>
+                <a href="#courses" class="hover:text-brand-500 transition">特色課程與活動</a>
+                <a href="#contact" class="px-5 py-2.5 rounded-full bg-brand-500 text-white hover:bg-brand-600 shadow-md hover:shadow-lg transition">預約導覽體驗</a>
+            </nav>
+
+            <!-- 行動裝置選單開關 Mobile Menu Toggle -->
+            <button id="menuBtn" class="md:hidden text-gray-700 text-2xl focus:outline-none p-2">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- 行動裝置選單 Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-3">
+            <a href="../index.html" class="block text-brand-600 font-medium py-1">
+                <i class="fa-solid fa-arrow-left mr-1"></i> 返回共學堂首頁
+            </a>
+            <hr class="border-gray-100">
+            <a href="#about-teacher" class="block text-gray-700 hover:text-brand-500 py-1">關於徐老師</a>
+            <a href="#about-farm" class="block text-gray-700 hover:text-brand-500 py-1">農場理念</a>
+            <a href="#courses" class="block text-gray-700 hover:text-brand-500 py-1">特色課程與活動</a>
+            <a href="#contact" class="block text-center py-3 bg-brand-500 text-white rounded-lg font-medium mt-2">預約導覽體驗</a>
+        </div>
+    </header>
+
+    <!-- 主視覺 Banner Section -->
+    <section class="hero-bg min-h-[85vh] flex items-center text-white relative px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center py-20">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-sm sm:text-base font-medium tracking-wider mb-6 border border-white/30">
+                🌱 傾聽土地的聲音 ‧ 重拾自然的真滋味
+            </span>
+            <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
+                順應天時 ‧ 美善大地<br/>跟著徐桂美老師體驗綠色生活
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-200 max-w-2xl mx-auto font-light leading-relaxed mb-10">
+                走進順美農場，在綠意盎然與四季輪轉中感受土壤的溫度。透過食農教育、植物手作與自然農法，帶您找回與大自然的深層連結。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#courses" class="px-8 py-4 rounded-full bg-brand-500 hover:bg-brand-600 text-white text-lg font-medium shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition duration-200">
+                    探索體驗課程
+                </a>
+                <a href="#about-teacher" class="px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/40 text-lg font-medium backdrop-blur-sm transition duration-200">
+                    認識徐桂美老師
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 animate-bounce">
+            <a href="#about-teacher"><i class="fa-solid fa-chevron-down text-2xl"></i></a>
+        </div>
+    </section>
+
+    <!-- 關於徐桂美老師 Section: About Teacher Xu Guimei -->
+    <section id="about-teacher" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- 老師照片 Profile Photo -->
+            <div class="lg:col-span-5 relative">
+                <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-8 border-white bg-white">
+                    <img src="20640.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=800&q=80';" alt="徐桂美老師植物手作與食農教學" class="w-full h-[460px] object-cover object-center">
+                </div>
+                <!-- 裝飾背景元素 Decorative elements -->
+                <div class="absolute -bottom-6 -right-6 w-full h-full bg-amber-light rounded-2xl -z-0"></div>
+                <div class="absolute -top-6 -left-6 w-32 h-32 bg-brand-100 rounded-full -z-0 opacity-70"></div>
+                
+                <div class="absolute bottom-4 left-4 z-20 bg-white/95 backdrop-blur p-4 rounded-xl shadow-lg border border-gray-100">
+                    <p class="text-xs text-brand-500 font-bold tracking-wider">靈魂人物</p>
+                    <p class="text-xl font-serif font-bold text-gray-800">徐桂美 老師</p>
+                    <p class="text-xs text-gray-500">順美農場創辦人 / 食農教育推廣者</p>
+                </div>
+            </div>
+
+            <!-- 老師簡介 Profile Info -->
+            <div class="lg:col-span-7 space-y-6">
+                <div class="inline-flex items-center gap-2 text-brand-500 font-semibold tracking-wider text-sm">
+                    <i class="fa-solid fa-seedling"></i> 創辦人故事
+                </div>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 leading-snug">
+                    用愛護大地的心，種出最純正的幸福感
+                </h2>
+                <div class="w-20 h-1 bg-brand-500 rounded"></div>
+                
+                <p class="text-gray-600 text-lg leading-relaxed">
+                    徐桂美老師投入自然農法與食農教育推廣多年，秉持著「友善土地、尊重生命」的理念，將順美農場打造成一處兼具生態平衡與身心療癒的綠色樂園。
+                </p>
+                <p class="text-gray-600 text-lg leading-relaxed">
+                    對徐老師而言，農夫不只是糧食的提供者，更是土地與人之間的橋樑。透過細心觀察植物生長、無農藥與零化肥的自然耕作，她帶領每一位造訪的學員，用五感體驗自然的奇妙，學習感恩每一粒穀物與每一片葉子的饋贈。
+                </p>
+
+                <!-- 專業領域圖卡 Expertise Cards -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">
+                    <div class="p-4 rounded-xl bg-white border border-gray-100 shadow-sm text-center">
+                        <i class="fa-solid fa-leaf text-2xl text-brand-500 mb-2"></i>
+                        <h4 class="font-bold text-gray-800 text-sm">自然農法實作</h4>
+                        <p class="text-xs text-gray-500 mt-1">零農藥零化肥耕作</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-white border border-gray-100 shadow-sm text-center">
+                        <i class="fa-solid fa-utensils text-2xl text-brand-500 mb-2"></i>
+                        <h4 class="font-bold text-gray-800 text-sm">食農教育推廣</h4>
+                        <p class="text-xs text-gray-500 mt-1">農田到餐桌體驗</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-white border border-gray-100 shadow-sm text-center col-span-2 sm:col-span-1">
+                        <i class="fa-solid fa-mortar-pestle text-2xl text-brand-500 mb-2"></i>
+                        <h4 class="font-bold text-gray-800 text-sm">植物與香草應用</h4>
+                        <p class="text-xs text-gray-500 mt-1">植物蒸餾與手作DIY</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 農場理念 Section: Farm Philosophy -->
+    <section id="about-farm" class="py-20 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-500 font-semibold tracking-wider text-sm">FARM PHILOSOPHY & ATMOSPHERE</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 mt-2">順美農場的三大核心理念</h2>
+                <p class="text-gray-600 mt-4">我們相信，好的食物源自健康的土壤，幸福的生活來自與大自然共生。</p>
+            </div>
+
+            <!-- 農場照片條幅 Farm Photo Banner -->
+            <div class="mb-16 rounded-2xl overflow-hidden shadow-xl border-4 border-white relative group">
+                <img src="20641.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80';" alt="順美農場自然生態風貌" class="w-full h-80 sm:h-96 object-cover object-center group-hover:scale-105 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6 sm:p-8">
+                    <p class="text-white text-lg sm:text-xl font-serif font-medium drop-shadow">
+                        🌿 順美農場一隅：蔚藍天空、綠樹成蔭與自在的生活步伐
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 理念 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition group">
+                    <div class="w-14 h-14 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 text-2xl mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-800 mb-3">順應天時 ‧ 順應自然</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        不使用人為化學物質強求產量，依照二十四節氣栽種當季作物，讓每種植物都能在最適宜的季節展現風味。
+                    </p>
+                </div>
+
+                <!-- 理念 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition group">
+                    <div class="w-14 h-14 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 text-2xl mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-earth-asia"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-800 mb-3">美善大地 ‧ 生態永續</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        養土優先，透過綠肥與堆肥滋養土壤微生態。保留農場生物多樣性，讓昆蟲、動物與作物共榮共存。
+                    </p>
+                </div>
+
+                <!-- 理念 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition group">
+                    <div class="w-14 h-14 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 text-2xl mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-800 mb-3">五感體驗 ‧ 身心療癒</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        提供真實體驗課，讓大人放下焦慮、孩子踏上泥土。用眼睛看綠意、用耳朵聽鳥鳴、動手採摘並細細品嚐。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 課程與活動 Section: Courses and Activities -->
+    <section id="courses" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-brand-500 font-semibold tracking-wider text-sm">COURSES & ACTIVITIES</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 mt-2">徐桂美老師特色課程與體驗活動</h2>
+            <p class="text-gray-600 mt-4">專為親子家庭、學校團體、綠色生活愛好者設計的豐富農業與植物手作體驗。</p>
+        </div>
+
+        <!-- 課程分類篩選按鈕 Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button onclick="filterCourses('all')" class="filter-btn active px-5 py-2 rounded-full text-sm font-medium transition bg-brand-500 text-white shadow-sm" data-category="all">全部分類</button>
+            <button onclick="filterCourses('farm')" class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition bg-gray-100 text-gray-600 hover:bg-gray-200" data-category="farm">食農採摘體驗</button>
+            <button onclick="filterCourses('diy')" class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition bg-gray-100 text-gray-600 hover:bg-gray-200" data-category="diy">植物與香草 DIY</button>
+            <button onclick="filterCourses('lecture')" class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition bg-gray-100 text-gray-600 hover:bg-gray-200" data-category="lecture">自然農法講座</button>
+        </div>
+
+        <!-- 課程卡片列表 Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- 活動 1 -->
+            <div class="course-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition duration-300 flex flex-col" data-category="diy">
+                <div class="relative h-52 overflow-hidden">
+                    <img src="20640.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80';" alt="植物編織與DIY手作" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    <span class="absolute top-4 right-4 bg-amber-Warm text-white text-xs font-semibold px-3 py-1 rounded-full">植物 DIY</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                            <span><i class="fa-regular fa-clock"></i> 2 小時</span>
+                            <span>•</span>
+                            <span><i class="fa-solid fa-hands"></i> 手作體驗</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">【綠意手作】植物編織與純天然香草蒸餾體驗</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            由徐桂美老師親自示範，運用農場採集的天然綠色植物與香草，進行植物編織創作與精油純露蒸餾學習。
+                        </p>
+                    </div>
+                    <button onclick="openModal('【綠意手作】植物編織與純天然香草蒸餾體驗', '2 小時', '不限年齡，適合手作愛好者與親子', '植物導覽與嗅覺感知、植物編織藝術手作教學、蒸餾純露原理說明、可帶回個人植物手作文創作品與純露小瓶。')" class="w-full py-2.5 rounded-lg border border-brand-500 text-brand-600 font-medium hover:bg-brand-500 hover:text-white transition">
+                        查看活動詳情
+                    </button>
+                </div>
+            </div>
+
+            <!-- 活動 2 -->
+            <div class="course-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition duration-300 flex flex-col" data-category="farm">
+                <div class="relative h-52 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1592417817098-8f3d6ef23a8c?auto=format&fit=crop&w=800&q=80" alt="田間採摘" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    <span class="absolute top-4 right-4 bg-brand-500 text-white text-xs font-semibold px-3 py-1 rounded-full">食農採摘</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                            <span><i class="fa-regular fa-clock"></i> 2.5 小時</span>
+                            <span>•</span>
+                            <span><i class="fa-solid fa-user-group"></i> 親子/團體皆宜</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">【從田間到餐桌】當季野菜採摘與原型風味料理</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            跟著徐桂美老師親自走進農田，認識常見與稀有野菜，學習正確採摘方式，並動手製作鮮活的農園風味料理。
+                        </p>
+                    </div>
+                    <button onclick="openModal('【從田間到餐桌】當季野菜採摘與原型風味料理', '2.5 小時', '4人以上成行', '下田親手摘採無毒野菜、認識當季蔬果生態、親手烹煮季節野菜風味餐、獲得新鮮菜籃一組。')" class="w-full py-2.5 rounded-lg border border-brand-500 text-brand-600 font-medium hover:bg-brand-500 hover:text-white transition">
+                        查看活動詳情
+                    </button>
+                </div>
+            </div>
+
+            <!-- 活動 3 -->
+            <div class="course-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition duration-300 flex flex-col" data-category="lecture">
+                <div class="relative h-52 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=800&q=80" alt="自然農法" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    <span class="absolute top-4 right-4 bg-brand-600 text-white text-xs font-semibold px-3 py-1 rounded-full">農法講座</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                            <span><i class="fa-regular fa-clock"></i> 3 小時</span>
+                            <span>•</span>
+                            <span><i class="fa-solid fa-graduation-cap"></i> 深度學習</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">【大地呼吸】土壤生態與零化肥耕作實務課</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            由徐桂美老師親自傳授多年自然農法心法。了解土壤微生物健康、液肥與堆肥製作，適合小農與家居種植愛好者。
+                        </p>
+                    </div>
+                    <button onclick="openModal('【大地呼吸】土壤生態與零化肥耕作實務課', '3 小時', '家庭園藝者、小農、社區養土推廣者', '土壤酸鹼值與質地觀察實作、環保廚餘堆肥與液肥發酵步驟解密、學員可帶回自製發酵菌種小罐。')" class="w-full py-2.5 rounded-lg border border-brand-500 text-brand-600 font-medium hover:bg-brand-500 hover:text-white transition">
+                        查看活動詳情
+                    </button>
+                </div>
+            </div>
+
+            <!-- 活動 4 -->
+            <div class="course-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition duration-300 flex flex-col" data-category="farm">
+                <div class="relative h-52 overflow-hidden">
+                    <img src="20641.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80';" alt="四季農遊與生態巡禮" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    <span class="absolute top-4 right-4 bg-brand-500 text-white text-xs font-semibold px-3 py-1 rounded-full">食農採摘</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                            <span><i class="fa-regular fa-clock"></i> 2 小時</span>
+                            <span>•</span>
+                            <span><i class="fa-solid fa-child"></i> 親子熱門</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">【四季節氣】順美農場生態巡禮與植物拓印</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            帶領孩子走入順美農場綠意樹林間，觀察益蟲與害蟲的生態平衡，透過採集葉片與花朵創作植物拓印作品。
+                        </p>
+                    </div>
+                    <button onclick="openModal('【四季節氣】順美農場生態巡禮與植物拓印', '2 小時', '幼兒至國小學生家庭', '生態導覽與昆蟲尋寶圖卡遊戲、植物色素與葉脈觀察、客製化植物拓印帆布袋 1 個。')" class="w-full py-2.5 rounded-lg border border-brand-500 text-brand-600 font-medium hover:bg-brand-500 hover:text-white transition">
+                        查看活動詳情
+                    </button>
+                </div>
+            </div>
+
+            <!-- 活動 5 -->
+            <div class="course-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition duration-300 flex flex-col" data-category="diy">
+                <div class="relative h-52 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80" alt="草本花茶" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    <span class="absolute top-4 right-4 bg-amber-Warm text-white text-xs font-semibold px-3 py-1 rounded-full">植物 DIY</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                            <span><i class="fa-regular fa-clock"></i> 1.5 小時</span>
+                            <span>•</span>
+                            <span><i class="fa-solid fa-mug-hot"></i> 身心放鬆</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">【草本療癒】農園鮮採香草茶與芳香調配課</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            調動視覺與味覺，認識薄荷、芳香萬壽菊等香草特性，調配個人化的安神放鬆特調茶包。
+                        </p>
+                    </div>
+                    <button onclick="openModal('【草本療癒】農園鮮採香草茶與芳香調配課', '1.5 小時', '成人、企業團體紓壓體驗', '新鮮香草品評與沖泡技法、不同體質香草配方說明、包含手作綜合香草茶包 5 入裝與季節茶點體驗。')" class="w-full py-2.5 rounded-lg border border-brand-500 text-brand-600 font-medium hover:bg-brand-500 hover:text-white transition">
+                        查看活動詳情
+                    </button>
+                </div>
+            </div>
+
+            <!-- 活動 6 -->
+            <div class="course-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition duration-300 flex flex-col" data-category="lecture">
+                <div class="relative h-52 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=800&q=80" alt="客製化導覽" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    <span class="absolute top-4 right-4 bg-brand-600 text-white text-xs font-semibold px-3 py-1 rounded-full">專業導覽</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                            <span><i class="fa-regular fa-clock"></i> 半天/全天</span>
+                            <span>•</span>
+                            <span><i class="fa-solid fa-bus"></i> 團體訂製</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-gray-800 mb-2">【客製化】學校與企業團體食農參訪專案</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            為學校單位、社區發展協會或企業團體設計專屬參訪行程，結合農場導覽、食農主題演講與農園野餐。
+                        </p>
+                    </div>
+                    <button onclick="openModal('【客製化】學校與企業團體食農參訪專案', '彈性安排（2-6小時）', '20人以上機關團體', '專人全場導覽解說、依季節客製 DIY 體驗、提供在地特色餐盒或農園野餐預約。')" class="w-full py-2.5 rounded-lg border border-brand-500 text-brand-600 font-medium hover:bg-brand-500 hover:text-white transition">
+                        查看活動詳情
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 學員評價 Testimonial Section -->
+    <section class="py-16 bg-brand-100/50 text-gray-700">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <i class="fa-solid fa-quote-left text-4xl text-brand-500/40 mb-4"></i>
+            <p class="font-serif text-xl sm:text-2xl text-brand-800 leading-relaxed italic font-medium">
+                「在徐桂美老師的帶領下，我不僅第一次親手踩在溫暖的泥土裡，更學會了如何從植物與香草中感受到大自然的滋養。這是一趟讓人洗滌心靈的綠色旅程！」
+            </p>
+            <p class="mt-6 font-bold text-gray-800">— 參訪學員 陳小姐 / 國小食農體驗家長</p>
+        </div>
+    </section>
+
+    <!-- 聯絡與預約表單 Section: Contact & Booking Form -->
+    <section id="contact" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 grid grid-cols-1 lg:grid-cols-12">
+            
+            <!-- 左側聯絡資訊 Panel -->
+            <div class="lg:col-span-5 bg-brand-700 text-white p-8 sm:p-12 flex flex-col justify-between">
+                <div>
+                    <span class="text-brand-200 text-xs font-bold tracking-widest block mb-2">VISIT US</span>
+                    <h2 class="font-serif text-3xl font-bold mb-6">歡迎預約造訪順美農場</h2>
+                    <p class="text-brand-100 text-sm leading-relaxed mb-8">
+                        農場為維護導覽品質與生態環境，體驗課程全面採用<b>預約制</b>。歡迎透過以下專線或填寫線上表單向徐桂美老師諮詢與報名！
+                    </p>
+
+                    <div class="space-y-6 text-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-200 shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">預約專線（徐桂美老師）</h4>
+                                <p class="text-brand-100 text-base font-bold">
+                                    <a href="tel:0919103903" class="hover:text-amber-light transition">0919-103-903</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-200 shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">農場地址</h4>
+                                <p class="text-brand-100">順美農場（預約成功後索取詳細導航位置）</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-200 shrink-0">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">開放時間</h4>
+                                <p class="text-brand-100">週二至週日 09:00 - 17:00（採預約制入場）</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10 pt-6 border-t border-white/10 text-xs text-brand-200 flex gap-4">
+                    <span><i class="fa-solid fa-leaf"></i> 預約制入場</span>
+                    <span><i class="fa-solid fa-square-parking"></i> 備有停車空間</span>
+                </div>
+            </div>
+
+            <!-- 右側報名表單 Panel -->
+            <div class="lg:col-span-7 p-8 sm:p-12">
+                <h3 class="font-serif text-2xl font-bold text-gray-800 mb-2">預約體驗或活動諮詢</h3>
+                <p class="text-gray-500 text-sm mb-6">請填寫下方資訊，我們將在 1-2 個工作天內主動與您聯繫確認。</p>
+
+                <form id="bookingForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-medium text-gray-700 mb-1">聯絡人姓名 *</label>
+                            <input type="text" required placeholder="例如：張小明" class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-gray-700 mb-1">聯絡電話 *</label>
+                            <input type="tel" required placeholder="0919-103-903" class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-medium text-gray-700 mb-1">預計參加人數</label>
+                            <input type="number" min="1" placeholder="例如：4" class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-gray-700 mb-1">意向活動課程</label>
+                            <select class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition text-sm text-gray-700">
+                                <option>【DIY】植物編織與純天然香草蒸餾體驗</option>
+                                <option>【食農】野菜採摘與原型風味料理</option>
+                                <option>【講座】土壤生態與自然農法實務</option>
+                                <option>【體驗】順美農場生態巡禮與植物拓印</option>
+                                <option>【DIY】鮮採香草茶與芳香調配</option>
+                                <option>【團體】客製化參訪專案</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-gray-700 mb-1">希望造訪日期 / 備註需求</label>
+                        <textarea rows="3" placeholder="請寫下預計造訪日期或想詢問徐桂美老師的問題..." class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition text-sm"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-3.5 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-medium shadow-md hover:shadow-lg transition">
+                        送出預約諮詢
+                    </button>
+                </form>
+
+                <div id="formSuccessMessage" class="hidden mt-4 p-4 rounded-lg bg-green-50 border border-green-200 text-green-800 text-sm">
+                    🎉 感謝您的預約表單送出！徐桂美老師與順美農場團隊將盡快與您電話聯繫確認細節。
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 頁尾 Footer -->
+    <footer class="bg-brand-800 text-white py-12 border-t border-brand-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-brand-500 flex items-center justify-center text-white font-bold font-serif text-sm">順</div>
+                <span class="font-serif text-lg font-bold">順美農場 Shunmei Farm</span>
+            </div>
+            <p class="text-xs text-brand-200 text-center sm:text-right">
+                預約專線：<a href="tel:0919103903" class="underline hover:text-white">0919-103-903</a> ‧ 共學堂實踐基地 ‧ 版權所有 © <span id="year"></span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- 活動詳情彈窗 Detail Modal -->
+    <div id="courseModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl animate-fade-in">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <span class="text-xs font-bold text-brand-500 tracking-wider block mb-1">COURSE DETAILS</span>
+            <h3 id="modalTitle" class="font-serif text-2xl font-bold text-gray-800 mb-4">課程名稱</h3>
+            
+            <div class="space-y-3 text-sm text-gray-600 mb-6">
+                <p class="flex items-center gap-2"><i class="fa-regular fa-clock text-brand-500 w-5"></i> <strong>活動時間：</strong> <span id="modalDuration"></span></p>
+                <p class="flex items-center gap-2"><i class="fa-solid fa-users text-brand-500 w-5"></i> <strong>適合對象：</strong> <span id="modalTarget"></span></p>
+                <div class="pt-2 border-t border-gray-100">
+                    <strong class="text-gray-800 block mb-1">💡 活動亮點與包含項目：</strong>
+                    <p id="modalHighlights" class="text-gray-600 leading-relaxed"></p>
+                </div>
+            </div>
+
+            <a href="#contact" onclick="closeModal()" class="block text-center w-full py-3 rounded-lg bg-brand-500 text-white font-medium hover:bg-brand-600 transition">
+                前往預約此活動
+            </a>
+        </div>
+    </div>
+
+    <!-- JavaScript 互動功能 -->
+    <script>
+        // 設定頁尾年份
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 行動裝置選單開關
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 課程分類篩選功能
+        function filterCourses(category) {
+            const cards = document.querySelectorAll('.course-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-category') === category) {
+                    btn.classList.add('bg-brand-500', 'text-white', 'shadow-sm');
+                    btn.classList.remove('bg-gray-100', 'text-gray-600');
+                } else {
+                    btn.classList.remove('bg-brand-500', 'text-white', 'shadow-sm');
+                    btn.classList.add('bg-gray-100', 'text-gray-600');
+                }
+            });
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // 彈窗控制
+        const modal = document.getElementById('courseModal');
+        
+        function openModal(title, duration, target, highlights) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalDuration').textContent = duration;
+            document.getElementById('modalTarget').textContent = target;
+            document.getElementById('modalHighlights').textContent = highlights;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // 報名表單送出
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const successMsg = document.getElementById('formSuccessMessage');
+            successMsg.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => {
+                successMsg.classList.add('hidden');
+            }, 6000);
+        }
+    </script>
+</body>
+</html>
+```eof
