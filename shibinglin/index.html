@@ -1,0 +1,914 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>走進綠光食物森林 — 一場人與自然的永續共生之旅</title>
+    <meta name="description" content="2026年8月2日，都蘭共學堂在台東都蘭山的綠光食物森林展開一場深度生態探索，從七層立體植物群落到菌絲網路，重新理解人與自然共生的哲學。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest-dark: #0d1a0f;
+            --forest-deep: #122016;
+            --forest-mid: #1a2e1d;
+            --forest-accent: #2d5233;
+            --canopy-green: #3a7a40;
+            --leaf-light: #6bb86e;
+            --moss: #8fbc5e;
+            --sun-gold: #d4a843;
+            --sun-warm: #e8c76a;
+            --bark-brown: #8b6340;
+            --earth-tan: #c4a068;
+            --text-primary: #f0ede6;
+            --text-secondary: #c8c0b0;
+            --text-muted: #8a8278;
+            --card-bg: rgba(26, 46, 29, 0.6);
+            --card-border: rgba(107, 184, 110, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--forest-dark);
+            color: var(--text-primary);
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 300;
+            line-height: 1.9;
+            overflow-x: hidden;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            background-image:
+                linear-gradient(to bottom, rgba(13,26,15,0.25) 0%, rgba(13,26,15,0.6) 60%, rgba(13,26,15,0.95) 100%),
+                url('img1.jpeg');
+            background-size: cover;
+            background-position: center 30%;
+            background-attachment: fixed;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            border: 1px solid rgba(107,184,110,0.5);
+            color: var(--leaf-light);
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            padding: 0.4em 1.4em;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(8px);
+            background: rgba(13,26,15,0.4);
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 6vw, 4.2rem);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            line-height: 1.3;
+            margin-bottom: 0.8rem;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.7);
+        }
+
+        .hero h1 span { color: var(--moss); }
+
+        .hero-subtitle {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+            color: var(--text-secondary);
+            font-weight: 300;
+            letter-spacing: 0.08em;
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 2.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-meta-item {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+        }
+
+        .hero-meta-item strong {
+            display: block;
+            color: var(--sun-warm);
+            font-size: 1.05rem;
+            font-weight: 400;
+            letter-spacing: 0;
+            margin-bottom: 0.2em;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            animation: fadeDown 2s ease-in-out infinite;
+        }
+
+        .hero-scroll::after {
+            content: '';
+            width: 1px;
+            height: 50px;
+            background: linear-gradient(to bottom, var(--leaf-light), transparent);
+        }
+
+        @keyframes fadeDown {
+            0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+            50% { opacity: 1; transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ===== NAV ===== */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            background: rgba(13,26,15,0.85);
+            border-bottom: 1px solid rgba(107,184,110,0.15);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover { color: var(--leaf-light); }
+
+        /* ===== CONTENT ===== */
+        .container { max-width: 780px; margin: 0 auto; padding: 0 1.5rem; }
+        section { padding: 5rem 0; }
+
+        .section-label {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            color: var(--leaf-light);
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 2rem;
+            height: 1px;
+            background: var(--leaf-light);
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            line-height: 1.35;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--sun-warm);
+            margin-bottom: 1rem;
+            margin-top: 2.5rem;
+            letter-spacing: 0.06em;
+        }
+
+        p { margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 1.02rem; }
+
+        /* ===== PHOTO GRID ===== */
+        .photo-grid { display: grid; gap: 0.8rem; margin: 3rem 0; }
+        .photo-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+        .photo-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+        .photo-grid.feature { grid-template-columns: 2fr 1fr; }
+        .photo-grid.feature-left { grid-template-columns: 1fr 2fr; }
+
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+            cursor: zoom-in;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+            min-height: 200px;
+        }
+
+        .photo-item:hover img { transform: scale(1.04); }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(13,26,15,0.9), transparent);
+            color: var(--text-secondary);
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.72rem;
+            padding: 1.5rem 0.8rem 0.7rem;
+            letter-spacing: 0.06em;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .photo-item:hover .photo-caption { opacity: 1; }
+
+        .photo-full { width: 100%; border-radius: 8px; overflow: hidden; margin: 3rem 0; }
+        .photo-full img {
+            width: 100%; max-height: 520px; object-fit: cover; display: block;
+            transition: transform 0.6s ease;
+        }
+        .photo-full:hover img { transform: scale(1.02); }
+
+        .photo-full-caption {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.06em;
+            text-align: center;
+            padding: 0.6rem 1rem;
+            background: rgba(26,46,29,0.4);
+            border-radius: 0 0 8px 8px;
+        }
+
+        /* ===== QUOTE ===== */
+        .blockquote {
+            border-left: 3px solid var(--moss);
+            margin: 2.5rem 0;
+            padding: 1.2rem 0 1.2rem 1.8rem;
+        }
+
+        .blockquote p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .blockquote cite {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-style: normal;
+            letter-spacing: 0.1em;
+        }
+
+        /* ===== LAYERS DIAGRAM ===== */
+        .layers-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            backdrop-filter: blur(8px);
+        }
+
+        .layers-title {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.75rem;
+            color: var(--leaf-light);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .layer-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.9rem 0;
+            border-bottom: 1px solid rgba(107,184,110,0.1);
+        }
+
+        .layer-item:last-child { border-bottom: none; }
+
+        .layer-num {
+            flex-shrink: 0;
+            width: 2rem; height: 2rem;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.75rem; font-weight: 500;
+        }
+
+        .layer-info h4 {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.9rem; font-weight: 500;
+            color: var(--text-primary); margin-bottom: 0.2rem;
+        }
+
+        .layer-info p {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.8rem; color: var(--text-muted);
+            margin: 0; line-height: 1.5;
+        }
+
+        /* ===== DIVIDER ===== */
+        .divider {
+            width: 60px; height: 1px;
+            background: linear-gradient(to right, transparent, var(--moss), transparent);
+            margin: 4rem auto;
+        }
+
+        /* ===== INSIGHT CARD ===== */
+        .insight-card {
+            background: linear-gradient(135deg, rgba(45,82,51,0.3), rgba(26,46,29,0.5));
+            border: 1px solid rgba(107,184,110,0.25);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin: 2.5rem 0;
+        }
+
+        .insight-card .icon { font-size: 1.6rem; margin-bottom: 0.8rem; }
+
+        .insight-card h4 {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.85rem; color: var(--leaf-light);
+            letter-spacing: 0.12em; margin-bottom: 0.8rem;
+        }
+
+        .insight-card p { font-size: 0.95rem; margin: 0; color: var(--text-secondary); }
+
+        /* ===== VIDEO ===== */
+        .video-container { border-radius: 10px; overflow: hidden; margin: 3rem 0; background: #000; }
+        .video-container video { width: 100%; display: block; max-height: 480px; }
+        .video-caption {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.75rem; color: var(--text-muted);
+            letter-spacing: 0.06em; text-align: center;
+            padding: 0.6rem 1rem; background: rgba(0,0,0,0.5);
+        }
+
+        /* ===== CLOSING ===== */
+        .closing-section { text-align: center; padding: 6rem 0; position: relative; }
+
+        .closing-section::before {
+            content: '';
+            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 1px; height: 60px;
+            background: linear-gradient(to bottom, transparent, var(--moss));
+        }
+
+        .closing-quote {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 400; font-style: italic;
+            color: var(--text-primary); line-height: 1.6;
+            max-width: 600px; margin: 0 auto 1.5rem;
+        }
+
+        .closing-attr {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.15em;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            border-top: 1px solid rgba(107,184,110,0.1);
+            padding: 3rem 2rem; text-align: center;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.75rem; color: var(--text-muted);
+            letter-spacing: 0.1em; line-height: 2;
+        }
+
+        /* ===== LIGHTBOX ===== */
+        .lightbox {
+            position: fixed; inset: 0; z-index: 999;
+            background: rgba(0,0,0,0.92);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s; cursor: zoom-out;
+        }
+
+        .lightbox.active { opacity: 1; pointer-events: all; }
+
+        .lightbox img {
+            max-width: 92vw; max-height: 90vh;
+            object-fit: contain; border-radius: 4px;
+            box-shadow: 0 20px 80px rgba(0,0,0,0.7);
+        }
+
+        .lightbox-close {
+            position: absolute; top: 1.5rem; right: 1.5rem;
+            color: rgba(255,255,255,0.6); font-size: 2rem;
+            cursor: pointer; line-height: 1; transition: color 0.2s;
+        }
+
+        .lightbox-close:hover { color: #fff; }
+
+        /* ===== MAP ===== */
+        .map-container {
+            border-radius: 10px; overflow: hidden; margin: 2.5rem 0;
+            border: 1px solid rgba(107,184,110,0.2);
+        }
+
+        .map-container img { width: 100%; display: block; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            .photo-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+            .photo-grid.feature, .photo-grid.feature-left { grid-template-columns: 1fr; }
+            .hero { background-attachment: scroll; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&#10005;</span>
+    <img id="lightbox-img" src="" alt="">
+</div>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-badge">都蘭共學堂 &middot; 生態踏查紀錄</div>
+    <h1>走進<span>綠光食物森林</span></h1>
+    <p class="hero-subtitle">一場人與自然永續共生之旅 &mdash; 在台東都蘭山的七層綠意之間，學習傾聽土地的語言</p>
+    <div class="hero-meta">
+        <div class="hero-meta-item">
+            <strong>2026 年 8 月 2 日</strong>
+            日期
+        </div>
+        <div class="hero-meta-item">
+            <strong>台東縣東河鄉 &middot; 都蘭山</strong>
+            地點
+        </div>
+        <div class="hero-meta-item">
+            <strong>施炳霖老師</strong>
+            導覽講師
+        </div>
+    </div>
+    <div class="hero-scroll">SCROLL</div>
+</header>
+
+<!-- NAV -->
+<nav class="nav">
+    <a href="https://jimchenlichung.github.io/LearnDulanWay/" style="color: var(--sun-warm); border: 1px solid rgba(212,168,67,0.3); padding: 0.2rem 0.8rem; border-radius: 20px; font-weight: 500; font-size: 0.75rem; display: inline-flex; align-items: center; gap: 4px;">← 返回首頁</a>
+    <a href="#prologue">序章</a>
+    <a href="#arrival">抵達</a>
+    <a href="#seven-layers">七層森林</a>
+    <a href="#medicine">藥用植物</a>
+    <a href="#mycelium">菌絲網路</a>
+    <a href="#insects">昆蟲生態</a>
+    <a href="#philosophy">生態哲學</a>
+    <a href="#epilogue">後記</a>
+</nav>
+
+<!-- ===== PROLOGUE ===== -->
+<section id="prologue">
+    <div class="container">
+        <div class="section-label">序章 &middot; Prologue</div>
+        <h2>自然不是要被征服的，<br>而是要去理解的</h2>
+
+        <p>八月初的台東，空氣裡帶著熱帶季節的濕潤與生機。清晨，都蘭共學堂的成員們陸續聚集，準備走入施炳霖老師在都蘭山上精心培育十數年的「綠光食物森林」。</p>
+
+        <p>行前，有人問：食物森林與一般農地有什麼不同？施老師笑著說，「農地是人對土地說：你聽我的。食物森林，是人去問土地：你需要什麼？」這句話，成了這天所有觀察的注腳。</p>
+
+        <div class="blockquote">
+            <p>「我在這裡做的，不是種田，是把生態系裝回來。把時間還給土地，土地自然會知道怎麼回應你。」</p>
+            <cite>&mdash; 施炳霖</cite>
+        </div>
+
+        <div class="photo-full">
+            <img src="img1.jpeg" alt="都蘭山綠光食物森林全景" onclick="openLightbox(this)">
+            <div class="photo-full-caption">都蘭山綠光食物森林——多層次的立體植物群落，是模仿熱帶雨林結構的永續農業實踐</div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== ARRIVAL ===== -->
+<section id="arrival">
+    <div class="container">
+        <div class="section-label">抵達 &middot; Arrival</div>
+        <h2>踏入森林的第一步，<br>感官就開始接管一切</h2>
+
+        <p>從公路轉入產業小道，樹冠逐漸合攏，光線從白熱的直射變成斑駁篩落的柔光。空氣驟然降溫，皮膚感受到一種說不清的清涼，像是進入了另一個時區。</p>
+
+        <p>腳下的土不是一般農地的板結土，而是鬆軟、帶著腐葉氣息的「活土」。踩下去有輕微的彈性，那是腐植質和無數微生物共同構成的海綿結構。施老師說，這種土，用機器翻一次就廢了。</p>
+
+        <div class="photo-grid cols-2">
+            <div class="photo-item">
+                <img src="img3.jpeg" alt="森林入口樹冠層" onclick="openLightbox(this)">
+                <div class="photo-caption">層疊的樹冠在陽光中形成天然遮蔽</div>
+            </div>
+            <div class="photo-item">
+                <img src="img4.jpeg" alt="林下植物多樣性" onclick="openLightbox(this)">
+                <div class="photo-caption">林下蕨類與草本植物爭奪散射光</div>
+            </div>
+        </div>
+
+        <p>站在森林邊緣向內看，第一眼會覺得雜亂——藤蔓橫跨、落葉鋪地、大小樹木混雜。但施老師說，這正是設計的一部分：「你感覺到的無序，就是生態的有序。」</p>
+
+        <div class="map-container">
+            <img src="img5.jpeg" alt="都蘭山步道立體導覽地圖" onclick="openLightbox(this)">
+        </div>
+        <p style="text-align:center; font-size: 0.78rem; color: var(--text-muted); margin-top: -1rem; margin-bottom: 2rem; font-family: 'Noto Sans TC', sans-serif; letter-spacing: 0.06em;">都蘭山步道立體導覽地圖，標示出食物森林所在的生態區域</p>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== SEVEN LAYERS ===== -->
+<section id="seven-layers">
+    <div class="container">
+        <div class="section-label">七層立體結構 &middot; Seven Layers</div>
+        <h2>一座森林，七個世界，<br>每一層都有自己的生命邏輯</h2>
+
+        <p>食物森林最核心的設計理念，來自對熱帶雨林的模仿：植物不是平面種植，而是按照高度、耐陰性與生態位，分成七個垂直層次，讓每一束光都能被充分利用，讓每一寸土壤都有根系覆蓋。</p>
+
+        <div class="layers-container">
+            <div class="layers-title">🌿 食物森林七層立體結構</div>
+            <div class="layer-item">
+                <div class="layer-num" style="background:rgba(107,184,110,0.15);color:#6bb86e;">1</div>
+                <div class="layer-info">
+                    <h4>喬木層（冠層）· Canopy</h4>
+                    <p>高大的先驅樹種，如構樹、血桐、白匏子。遮蔭固氮，快速建立生態骨架，也是整座森林的「屋頂」。</p>
+                </div>
+            </div>
+            <div class="layer-item">
+                <div class="layer-num" style="background:rgba(107,184,110,0.12);color:#8fbc5e;">2</div>
+                <div class="layer-info">
+                    <h4>亞喬木層 · Sub-Canopy</h4>
+                    <p>果樹與中型木本植物，包括香蕉、木瓜、芭樂等，在冠層庇蔭下穩定生長，是食物產出的主力。</p>
+                </div>
+            </div>
+            <div class="layer-item">
+                <div class="layer-num" style="background:rgba(212,168,67,0.12);color:#d4a843;">3</div>
+                <div class="layer-info">
+                    <h4>灌木層 · Shrub</h4>
+                    <p>藥用植物與香草聚集的高度，包括月桃、九層塔、各種薑科植物。這一層是整座森林的「藥房」。</p>
+                </div>
+            </div>
+            <div class="layer-item">
+                <div class="layer-num" style="background:rgba(143,188,94,0.1);color:#8fbc5e;">4</div>
+                <div class="layer-info">
+                    <h4>草本層 · Herbaceous</h4>
+                    <p>一年生與多年生草本植物，提供地被覆蓋，防止水分蒸發，同時是小型昆蟲與微生物的主要棲地。</p>
+                </div>
+            </div>
+            <div class="layer-item">
+                <div class="layer-num" style="background:rgba(139,99,64,0.15);color:#c4a068;">5</div>
+                <div class="layer-info">
+                    <h4>地被層 · Ground Cover</h4>
+                    <p>苔蘚、蕨類、匍匐性植物。保濕固土，是土壤微生物與菌根菌的生長基底。</p>
+                </div>
+            </div>
+            <div class="layer-item">
+                <div class="layer-num" style="background:rgba(107,184,110,0.08);color:#6bb86e;">6</div>
+                <div class="layer-info">
+                    <h4>攀藤層 · Vine</h4>
+                    <p>山藥、菜豆、各種藤蔓。利用喬木攀爬，連接不同高度的生態位，形成三維的生物通道。</p>
+                </div>
+            </div>
+            <div class="layer-item">
+                <div class="layer-num" style="background:rgba(139,99,64,0.2);color:#8b6340;">7</div>
+                <div class="layer-info">
+                    <h4>根莖層 · Root</h4>
+                    <p>薑黃、芋頭、葛根等地下植物。在不打擾土壤結構的前提下，開發地下空間的生產潛力。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-grid cols-3">
+            <div class="photo-item">
+                <img src="img6.jpeg" alt="亞喬木層植物" onclick="openLightbox(this)">
+                <div class="photo-caption">亞喬木層</div>
+            </div>
+            <div class="photo-item">
+                <img src="img7.jpeg" alt="灌木層藥用植物" onclick="openLightbox(this)">
+                <div class="photo-caption">灌木藥用層</div>
+            </div>
+            <div class="photo-item">
+                <img src="img8.jpeg" alt="林下地被層" onclick="openLightbox(this)">
+                <div class="photo-caption">地被覆蓋層</div>
+            </div>
+        </div>
+
+        <p>施老師帶著我們慢慢走，不時停下來指著某株植物說：「你看，這棵構樹長這麼快，是因為它知道自己是過客。它固好氮、累積好枯葉，就會讓位給後來的果樹。」先驅樹種的「犧牲」，是整座森林演替的關鍵。</p>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== MEDICINE PLANTS ===== -->
+<section id="medicine">
+    <div class="container">
+        <div class="section-label">藥用植物 &middot; Medicinal Plants</div>
+        <h2>整座森林，同時也是<br>一間開放的藥局</h2>
+
+        <p>在食物森林的灌木層，施老師開始逐一介紹那些「被遺忘的植物智慧」。月桃的葉可以包粽防腐抑菌、根莖可以提煉芳香精油；薑黃的根莖含有薑黃素，不只是廚房香料，更是抗發炎的天然藥方。</p>
+
+        <div class="photo-grid feature">
+            <div class="photo-item" style="min-height:320px;">
+                <img src="img9.jpeg" alt="月桃果實串" onclick="openLightbox(this)" style="min-height:320px;">
+                <div class="photo-caption">月桃（Alpinia zerumbet）結實累累的果穗，掛在寬大的葉片間</div>
+            </div>
+            <div class="photo-item" style="min-height:320px;">
+                <img src="img10.jpeg" alt="心葉植物" onclick="openLightbox(this)" style="min-height:320px;">
+                <div class="photo-caption">山藥（薯蕷）——攀藤層的代表，心形葉片在林間搖曳</div>
+            </div>
+        </div>
+
+        <p>他特別提到阿美族傳統知識對植物的理解：「原住民知道哪棵樹的葉子可以退燒、哪棵草的根能止痛，這些知識不是迷信，是幾千年的臨床經驗。」食物森林的設計，有意識地保留並種植這些具有民族植物學意義的物種。</p>
+
+        <div class="blockquote">
+            <p>「植物不需要人教它怎麼長。人需要植物教，怎麼活。」</p>
+            <cite>&mdash; 施炳霖</cite>
+        </div>
+
+        <div class="photo-grid cols-2">
+            <div class="photo-item">
+                <img src="img11.jpeg" alt="苔蘚地被" onclick="openLightbox(this)">
+                <div class="photo-caption">林底苔蘚地被，保持土壤濕潤</div>
+            </div>
+            <div class="photo-item">
+                <img src="img12.jpeg" alt="林間藤蔓" onclick="openLightbox(this)">
+                <div class="photo-caption">蕨類與地衣共生於木幹上</div>
+            </div>
+        </div>
+
+        <div class="insight-card">
+            <div class="icon">🌿</div>
+            <h4>民族植物學視角</h4>
+            <p>都蘭一帶阿美族（Pangcah）的傳統生態知識，已在這片食物森林中得到有意識的保存與傳承。施老師特別強調：在引進任何外來物種前，先問這片土地的原住民——他們的知識，往往比現代農學更深遠。</p>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== MYCELIUM ===== -->
+<section id="mycelium">
+    <div class="container">
+        <div class="section-label">菌絲網路 &middot; Mycelial Network</div>
+        <h2>肉眼看不見的地下工程師，<br>才是這座森林真正的主人</h2>
+
+        <p>蹲下來，在腐木旁邊，一朵潔白如紙的小傘菇悄悄撐開——這不只是一朵菇，是一整個龐大地下帝國露出地面的訊號。</p>
+
+        <div class="photo-grid feature-left">
+            <div class="photo-item" style="min-height:300px;">
+                <img src="img13.jpeg" alt="白色傘菌" onclick="openLightbox(this)" style="min-height:300px;">
+                <div class="photo-caption">腐木旁的白色傘菌——菌絲網路的地上部分，地下蔓延可達數十公尺</div>
+            </div>
+            <div class="photo-item" style="min-height:300px;">
+                <img src="img14.jpeg" alt="林下生態" onclick="openLightbox(this)" style="min-height:300px;">
+                <div class="photo-caption">林下豐富的有機質層，是真菌分解的原料庫</div>
+            </div>
+        </div>
+
+        <p>施老師解釋，這片食物森林從不使用農藥、不翻土，是為了保護土壤中的菌根菌網路。菌根菌和植物根系形成共生關係：植物提供光合成的醣分給菌菌，菌絲則大幅擴展植物吸收水分與礦物質的能力，還能在植物之間傳遞養分訊息。</p>
+
+        <div class="blockquote">
+            <p>「你以為樹木是孤立地活著，其實它們在地下手牽著手。一棵老樹生病了，旁邊的樹會透過菌絲送養分過去。這是森林的互助會。」</p>
+            <cite>&mdash; 施炳霖</cite>
+        </div>
+
+        <p>這讓人想起生態學家 Suzanne Simard 關於「木材廣域網路」（Wood Wide Web）的研究：菌絲網路就是森林的神經系統，傳遞訊號、共享資源，讓整個生態群落作為一個有機整體運作。</p>
+
+        <div class="insight-card">
+            <div class="icon">🍄</div>
+            <h4>不翻土的革命</h4>
+            <p>傳統農業的深耕翻土，會切斷菌絲網路、破壞土壤團粒結構。食物森林採用「不翻土」原則，讓枯枝落葉自然腐化，維持土壤生物多樣性。施老師說：「最懶的農夫，有時候才是最好的農夫——因為他讓土地自己工作。」</p>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== INSECTS ===== -->
+<section id="insects">
+    <div class="container">
+        <div class="section-label">昆蟲生態 &middot; Insect Life</div>
+        <h2>每一隻蟲，都有自己<br>在系統中的位置</h2>
+
+        <p>走在林間，不時有蜂蝶擦肩而過。在一片葉子上，一隻紅頭黑身的甲蟲停在那裡——烏黑的翅鞘配上鮮紅的頭部，像是大自然刻意設計的警告色。</p>
+
+        <div class="photo-grid cols-2">
+            <div class="photo-item">
+                <img src="img15.jpeg" alt="紅頭黑身甲蟲" onclick="openLightbox(this)">
+                <div class="photo-caption">紅頭黑身甲蟲——鮮豔的警戒色，提醒捕食者避開</div>
+            </div>
+            <div class="photo-item">
+                <img src="img16.jpeg" alt="林間昆蟲生態" onclick="openLightbox(this)">
+                <div class="photo-caption">多樣化的植物層次，提供昆蟲完整的棲息與繁殖空間</div>
+            </div>
+        </div>
+
+        <p>施老師說，一般農地因為使用農藥，昆蟲多樣性極低。但在食物森林裡，昆蟲不是害蟲，而是系統的參與者：有的分解有機質，有的為植物傳粉，有的控制葉食性昆蟲的族群。「你噴一次農藥，不只殺蚜蟲，把吃蚜蟲的瓢蟲也殺了。明年蚜蟲更多。」</p>
+
+        <div class="insight-card">
+            <div class="icon">🪲</div>
+            <h4>昆蟲多樣性作為生態健康指標</h4>
+            <p>食物森林以昆蟲種類與數量的豐富程度，評估生態系統的健康狀態。甲蟲、蜂、蝴蝶、蜻蜓的出現，代表食物鏈完整，棲地品質優良。施老師說：「哪天你在這裡看不到蟲，那才是要擔心的事。」</p>
+        </div>
+
+        <div class="video-container">
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                <iframe src="https://www.youtube.com/embed/1hvodHYUaok" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="video-caption">現場錄影：施炳霖老師帶領共學堂成員在林間實地解說，講述食物森林的生態邏輯</div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== PHILOSOPHY ===== -->
+<section id="philosophy">
+    <div class="container">
+        <div class="section-label">生態哲學 &middot; Ecological Philosophy</div>
+        <h2>當農業回歸自然，<br>人也重新找到了位置</h2>
+
+        <p>下午的討論從技術轉向哲學。坐在樹蔭下，施老師說起他走上這條路的起點——不是農學院的課堂，而是一場觀察：他注意到路邊沒有人種的野地，植物長得比精心管理的農田更繁茂、更健康。</p>
+
+        <div class="photo-full">
+            <img src="img17.jpeg" alt="林下光影" onclick="openLightbox(this)">
+            <div class="photo-full-caption">午後的林間光影——陽光透過多層樹冠，以最柔和的角度落在林底植物上</div>
+        </div>
+
+        <h3>三個核心觀念的轉變</h3>
+
+        <div class="insight-card">
+            <div class="icon">🔄</div>
+            <h4>從「征服」到「模仿」</h4>
+            <p>傳統農業試圖簡化自然（單一作物、清除雜草、消滅害蟲），食物森林則模仿自然生態系的複雜性與韌性。不是用人的邏輯改造土地，而是用土地的邏輯設計人的介入。</p>
+        </div>
+
+        <div class="insight-card">
+            <div class="icon">⏳</div>
+            <h4>從「產出」到「演替」</h4>
+            <p>傳統農業以年為單位計算收益；食物森林以十年、五十年為尺度規劃生態演替。前三年幾乎沒有經濟產出，但第七年之後，系統自我運作，食物源源不絕，管理成本趨近於零。</p>
+        </div>
+
+        <div class="insight-card">
+            <div class="icon">🤝</div>
+            <h4>從「個體」到「群落」</h4>
+            <p>在食物森林裡，沒有一棵植物是孤立生長的。先驅樹種為果樹遮蔭、豆科植物為鄰居固氮、菌根菌連接所有根系——每個物種都在為整體服務。這不只是農業，更是一種社會哲學。</p>
+        </div>
+
+        <div class="photo-grid cols-2">
+            <div class="photo-item">
+                <img src="img18.jpeg" alt="林間討論" onclick="openLightbox(this)">
+                <div class="photo-caption">共學堂成員在林下進行生態討論</div>
+            </div>
+            <div class="photo-item">
+                <img src="img19.jpeg" alt="植物近觀" onclick="openLightbox(this)">
+                <div class="photo-caption">仔細觀察每一株植物，都是一段與自然對話的開始</div>
+            </div>
+        </div>
+
+        <p>施老師說，很多人問他：種這個，賺得到錢嗎？他的回答是：「先問你自己，你想要什麼樣的生活？如果你只想賺錢，請去做別的。這裡做的事情，是在問：我們怎麼和這片土地一起好好活著？」</p>
+
+        <div class="blockquote">
+            <p>「永續不是一個技術問題，是一個態度問題。你願不願意慢下來，讓土地決定節奏。」</p>
+            <cite>&mdash; 施炳霖</cite>
+        </div>
+
+        <div class="photo-full">
+            <img src="img20.jpeg" alt="食物森林深處" onclick="openLightbox(this)">
+            <div class="photo-full-caption">走入食物森林深處，多層次的植物群落形成一個完整而自給的微型生態宇宙</div>
+        </div>
+
+        <div class="photo-grid cols-2">
+            <div class="photo-item">
+                <img src="img21.jpeg" alt="林間植物細節" onclick="openLightbox(this)">
+                <div class="photo-caption">植物在競爭與協作中共同演化</div>
+            </div>
+            <div class="photo-item">
+                <img src="img22.jpeg" alt="豐盛的果實" onclick="openLightbox(this)">
+                <div class="photo-caption">不同季節，不同層次的植物輪番提供食物</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== EPILOGUE ===== -->
+<section id="epilogue">
+    <div class="container">
+        <div class="section-label">後記 &middot; Epilogue</div>
+        <h2>離開時，我們帶走了<br>一些不同的重量</h2>
+
+        <p>傍晚，光線斜入林間，整座食物森林染上金色。我們沿原路走出，腳踩在同一條路，但感受已全然不同。同樣的葉子、同樣的土，但現在知道它們背後的名字、關係、時間的厚度。</p>
+
+        <div class="photo-full">
+            <img src="img11.jpeg" alt="傍晚林間光影" onclick="openLightbox(this)">
+            <div class="photo-full-caption">傍晚光線為整座食物森林披上一層溫暖的金色</div>
+        </div>
+
+        <p>有人問施老師：如果有一天，你不在了，這座森林怎麼辦？他停頓了一下，笑了：「那就是這座森林長好了。它不需要我了。」</p>
+
+        <p>這大概是農人所能聽到的，最好的答案。</p>
+
+        <p>都蘭共學堂的這一天，不只是一堂農業課，更是一堂關於謙遜的課——謙遜地承認，我們對自然的理解，還遠遠不夠；謙遜地接受，有些事情，需要交給時間。</p>
+
+        <div class="photo-grid cols-3">
+            <div class="photo-item">
+                <img src="img13.jpeg" alt="白色傘菌" onclick="openLightbox(this)">
+                <div class="photo-caption">菌絲帝國的訊號</div>
+            </div>
+            <div class="photo-item">
+                <img src="img15.jpeg" alt="紅頭甲蟲" onclick="openLightbox(this)">
+                <div class="photo-caption">生態系統的守護者</div>
+            </div>
+            <div class="photo-item">
+                <img src="img9.jpeg" alt="月桃果穗" onclick="openLightbox(this)">
+                <div class="photo-caption">自然的豐饒</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CLOSING -->
+<div class="closing-section">
+    <div class="container">
+        <p class="closing-quote">「自然不需要人來拯救，<br>人，需要自然來教導。」</p>
+        <p class="closing-attr">&mdash; 都蘭共學堂，2026.08.02</p>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>都蘭共學堂學習筆記 &middot; 食物森林與綠色計畫</p>
+    <p>導覽：施炳霖老師 &middot; 地點：台東縣東河鄉都蘭山 &middot; 日期：2026年8月2日</p>
+    <p style="margin-top:1rem; font-size:0.68rem; opacity:0.5;">本報告由都蘭共學堂整理，僅供學習與交流使用</p>
+</footer>
+
+<script>
+    function openLightbox(img) {
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lightbox-img');
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        lb.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+        if (e.target === this) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeLightbox();
+    });
+</script>
+
+
+                    
+                    <!-- End Mobile Video Loader Script -->
+                    
+</body>
+</html>
