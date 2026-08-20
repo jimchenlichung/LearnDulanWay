@@ -4,3 +4,4 @@
 
 - **都蘭共學堂首頁**: [https://jimchenlichung.github.io/LearnDulanway/](https://jimchenlichung.github.io/LearnDulanWay/)
 - **順美（小美）農場網頁**: [https://jimchenlichung.github.io/LearnDulanway/shanmei-farm/index.html](https://jimchenlichung.github.io/LearnDulanWay/shanmei-farm/index.html)
+爰言舞蹈https://jimchenlichung.github.io/LearnDulanWay/yuanyan/index.html
