@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 四季八里都蘭共學堂 - 官方網站互動控制腳本 (app.js)
  */
 
@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // 監聽滾動以添加陰影
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
+      if (navbar) navbar.classList.add('scrolled');
     } else {
-      navbar.classList.remove('scrolled');
+      if (navbar) navbar.classList.remove('scrolled');
     }
   });
 
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       title: "當老師的價值只剩下「陪伴」",
       subtitle: "都蘭 AI 補課筆記與學習的終極轉型",
-      file: "assets/teacher_companionship.m4a",
+      file: "assets/teacher_companionship.mp3",
       lyrics: [
         { time: 0, text: "想像一下這個畫面：你今天準備去報名一堂最尖端的人工智慧科技課程..." },
         { time: 8, text: "但你手上拿去繳學費的不是信用卡，也不是一疊千元鈔票，而是..." },
@@ -123,13 +123,13 @@ document.addEventListener('DOMContentLoaded', () => {
         { time: 42, text: "在一個大雨滂沱的午後，學員阿芬無法親自來到莊園上課..." },
         { time: 49, text: "我們開啟了線上補課。阿芬問：『 NotebookLM 是什麼？』" },
         { time: 55, text: "我們把它比喻為五星級廚房：文獻是食材，提示詞是點餐，AI 是主廚！" },
-        { time: 65, text: "這堂課沒有傳統的考題，只有『精通的壓縮』與溫暖的陪伴。" }
+        { time: 65, text: "這堂課沒有傳統的考題，只有『精通的壓縮』與溫慢的陪伴。" }
       ]
     },
     {
       title: "用 Gemini 救回鎖死的三星手機",
       subtitle: "都蘭共學堂的長輩數位賦能實戰",
-      file: "assets/rescue_phone.m4a",
+      file: "assets/rescue_phone.mp3",
       lyrics: [
         { time: 0, text: "你玩過密室逃脫嗎？就是那種不小心觸發陷阱，然後聽到大門卡拉一聲鎖死的那種窒息感..." },
         { time: 8, text: "今天的故事主角不是探險家，而是一位溫暖的貴美阿嬤。" },
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       title: "學 AI 先開除老師",
       subtitle: "從廚房隱喻看 AI 時代終身學習",
-      file: "assets/fire_teacher.m4a",
+      file: "assets/fire_teacher.mp3",
       lyrics: [
         { time: 0, text: "今天我們要來探討一個非常顛覆的觀點：『學 AI，要先學會開除老師？』" },
         { time: 7, text: "這並不是說老師不重要了，而是傳統『傳授硬資訊』的老師功能正被 AI 徹底取代。" },
@@ -305,6 +305,18 @@ document.addEventListener('DOMContentLoaded', () => {
     updatePlayStateUI();
   });
 
+  audio.addEventListener('error', () => {
+    console.error("Audio error: ", audio.error);
+    const code = audio.error ? audio.error.code : 0;
+    let msg = "音訊讀取失敗！";
+    if (code === 4) {
+      msg += "\n\n[錯誤 404] 找不到檔案。\n請確認您已上傳以下檔案到 github 專案的 assets/ 目錄：\n" + tracks[currentTrackIndex].file;
+    } else {
+      msg += "\n\n錯誤碼：" + code + "\n請檢查網路連線。";
+    }
+    alert(msg);
+  });
+
   // 監聽播放/暫停按鈕點擊
   btnPlay.addEventListener('click', () => {
     if (audio.paused) {
@@ -338,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
   playlistItems.forEach(item => {
     item.addEventListener('click', () => {
       const index = parseInt(item.getAttribute('data-index'), 10);
-      isPlaying = true; // 點選清單時自動開始播放
+      isPlaying = true;
       loadTrack(index);
     });
   });
@@ -376,6 +388,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // 初始化載入第一首歌
   loadTrack(0);
 
+  // ==========================================
+  // 4.5. 共生商店 Tabs 切換邏輯
+  // ==========================================
+  const storeTabBtns = document.querySelectorAll('.store-tab-btn');
+  const storePanels = document.querySelectorAll('.store-panel');
+
+  storeTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabTarget = btn.getAttribute('data-tab');
+
+      // 切換按鈕的 active 狀態
+      storeTabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // 切換對應面板的 active 狀態
+      storePanels.forEach(panel => {
+        panel.classList.remove('active');
+        if (panel.id === `store-panel-${tabTarget}`) {
+          panel.classList.add('active');
+        }
+      });
+    });
+  });
 
   // ==========================================
   // 5. 報名表單動態顯示與以物易物控制
@@ -452,6 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const payment = payCash.checked ? "現金支持 ($3,000)" : "以物易物提案";
     const barterContent = barterProposal.value.trim();
     const lodgingText = needLodging.checked ? "需要（請寄送莊園住宿優惠資訊）" : "不需要（僅參加共學）";
+    const courseSelect = document.getElementById('courseSelect').value;
     const expectation = document.getElementById('expectations').value.trim() || "無特別描述";
 
     // 建立成功的摘要 HTML
@@ -459,6 +495,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <p><strong>學員姓名：</strong>${name}</p>
       <p><strong>聯絡電話：</strong>${phone} ｜ <strong>LINE ID：</strong>${line}</p>
       <p><strong>身分類別：</strong>${identity}</p>
+      <p><strong>預約課程：</strong><span style="color: var(--primary-color); font-weight:600;">${courseSelect}</span></p>
       <p><strong>學費方案：</strong>${payment}</p>
     `;
 
@@ -470,7 +507,7 @@ document.addEventListener('DOMContentLoaded', () => {
       summaryHtml += `<p><strong>莊園住宿意願：</strong>${lodgingText}</p>`;
     }
 
-    summaryHtml += `<p><strong>AI 學習期待與痛點：</strong>${expectation}</p>`;
+    summaryHtml += `<p><strong>共學期待與痛點：</strong>${expectation}</p>`;
 
     // 塞入彈出視窗並顯示
     modalSummary.innerHTML = summaryHtml;
@@ -479,7 +516,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 暫時停止 Podcast 播放以防打擾
     if (isPlaying) {
       isPlaying = false;
-      stopPlaybackSimulation();
+      audio.pause();
+      updatePlayStateUI();
     }
   });
 

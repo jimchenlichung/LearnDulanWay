@@ -4,478 +4,2034 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🌿 四季八里都蘭共學堂 ╳ 四季八里自然莊園 | 一手拿滑鼠，一手摸泥土</title>
-  <meta name="description" content="四季八里都蘭共學堂提供結合在地自然、生活慢活與 AI 科技賦能的共學體驗。">
+  <meta name="description" content="四季八里都蘭共學堂提供結合在地自然、生活慢活與 AI 科技賦能的共學體驗。倡導「學 AI 先開除老師」、以物易物折抵學費、渡假式陪伴共創，以山海為教室，開啟第二人生的自由。">
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
   
+  <!-- Stylesheet -->
   <style>
-    /* ==========================================
-       四季八里都蘭共學堂 - 內嵌樣式表 (CSS)
-       ========================================== */
-    :root {
-      --bg-base: #090d16;
-      --bg-surface: rgba(15, 23, 42, 0.65);
-      --bg-surface-opaque: #0f172a;
-      --bg-card: rgba(30, 41, 59, 0.45);
-      --border-color: rgba(255, 255, 255, 0.08);
-      --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
-      --text-muted: #64748b;
-      --primary-color: #3b82f6;
-      --secondary-color: #10b981;
-      --accent-color: #f59e0b;
-      --accent-glow: rgba(245, 158, 11, 0.15);
-      --gradient-hero: linear-gradient(135deg, #1e3a8a, #064e3b);
-      --gradient-highlight: linear-gradient(135deg, #60a5fa, #34d399);
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-      --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.4);
-      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
-      --glass-glow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-      --font-title: 'Outfit', 'Noto Sans TC', sans-serif;
-      --font-body: 'Noto Sans TC', sans-serif;
-    }
+/* ==========================================================================
+   四季八里都蘭共學堂 - 全域設計系統 & 樣式表 (style.css)
+   ========================================================================== */
 
-    html.light {
-      --bg-base: #f8fafc;
-      --bg-surface: rgba(255, 255, 255, 0.7);
-      --bg-surface-opaque: #ffffff;
-      --bg-card: rgba(241, 245, 249, 0.8);
-      --border-color: rgba(15, 23, 42, 0.08);
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-muted: #94a3b8;
-      --primary-color: #1d4ed8;
-      --secondary-color: #047857;
-      --accent-color: #d97706;
-      --accent-glow: rgba(217, 119, 6, 0.1);
-      --gradient-hero: linear-gradient(135deg, #eff6ff, #ecfdf5);
-      --gradient-highlight: linear-gradient(135deg, #1d4ed8, #059669);
-      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
-      --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
-      --shadow-lg: 0 16px 32px rgba(15, 23, 42, 0.12);
-      --glass-glow: 0 8px 32px 0 rgba(15, 23, 42, 0.05);
-    }
+/* --- 變數定義 --- */
+:root {
+  /* HSL 色彩主題 (Ocean Tech & Warm Soil) */
+  --primary-hue: 222;
+  --secondary-hue: 160;
+  --accent-hue: 38;
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body {
-      background-color: var(--bg-base);
-      color: var(--text-primary);
-      font-family: var(--font-body);
-      line-height: 1.625;
-      overflow-x: hidden;
-      position: relative;
-      transition: background-color 0.4s ease, color 0.4s ease;
-    }
-    .glow-bg {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      filter: blur(150px);
-      z-index: -1;
-      pointer-events: none;
-      opacity: 0.25;
-    }
-    .glow-1 { background: radial-gradient(circle, var(--primary-color), transparent 70%); top: 10%; right: -10%; }
-    .glow-2 { background: radial-gradient(circle, var(--secondary-color), transparent 70%); bottom: 10%; left: -10%; }
-    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-    .glass-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--border-color);
-      border-radius: 1rem;
-      box-shadow: var(--glass-glow);
-      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-    .navbar-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(var(--bg-base), 0.7);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-color);
-      transition: all 0.3s ease;
-    }
-    .navbar-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.1rem 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      text-decoration: none;
-      color: var(--text-primary);
-      font-family: var(--font-title);
-      font-weight: 800;
-      font-size: 1.25rem;
-    }
-    .nav-menu { display: flex; align-items: center; gap: 1.8rem; }
-    .nav-link {
-      text-decoration: none;
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: color 0.2s ease;
-      position: relative;
-    }
-    .nav-link:hover { color: var(--text-primary); }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gradient-highlight);
-      transition: width 0.2s ease;
-    }
-    .nav-link:hover::after { width: 100%; }
-    .nav-actions { display: flex; align-items: center; gap: 1rem; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.75rem 1.5rem;
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      font-weight: 600;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      border: none;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      color: #ffffff;
-      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(59, 130, 246, 0.35); }
-    .btn-secondary {
-      background: var(--bg-card);
-      color: var(--text-primary);
-      border: 1px solid var(--border-color);
-    }
-    .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); color: var(--text-primary); }
-    .btn-outline {
-      background: transparent;
-      color: var(--text-primary);
-      border: 1px solid var(--border-color);
-    }
-    .btn-outline:hover { background: var(--text-primary); color: var(--bg-base); }
-    .btn-block { display: block; width: 100%; }
-    .nav-btn {
-      composes: btn;
-      background: var(--gradient-highlight);
-      color: #ffffff;
-      text-decoration: none;
-      padding: 0.5rem 1.1rem;
-      border-radius: 0.4rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
-    }
-    .theme-toggle, .mobile-toggle {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 2.2rem;
-      height: 2.2rem;
-      border-radius: 50%;
-      border: 1px solid var(--border-color);
-    }
-    .sun-icon { display: block; }
-    .moon-icon { display: none; }
-    html.light .sun-icon { display: none; }
-    html.light .moon-icon { display: block; }
-    .mobile-toggle { display: none; }
+  /* 深色模式變數 (預設) */
+  --bg-base: #090d16;
+  --bg-surface: rgba(15, 23, 42, 0.65);
+  --bg-surface-opaque: #0f172a;
+  --bg-card: rgba(30, 41, 59, 0.45);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  --primary-color: #3b82f6; /* 太平洋藍 */
+  --secondary-color: #10b981; /* 都蘭山林綠 */
+  --accent-color: #f59e0b; /* 溫暖稻穗金 */
+  --accent-glow: rgba(245, 158, 11, 0.15);
+  
+  --gradient-hero: linear-gradient(135deg, #1e3a8a, #064e3b);
+  --gradient-highlight: linear-gradient(135deg, #60a5fa, #34d399);
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --glass-glow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 
-    .hero-section { padding-top: 9rem; padding-bottom: 5rem; }
-    .hero-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      align-items: center;
-      gap: 3.5rem;
-    }
-    .badge {
-      display: inline-block;
-      padding: 0.35rem 0.9rem;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--secondary-color);
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      border-radius: 2rem;
-      margin-bottom: 1.5rem;
-    }
-    .badge-amber {
-      color: var(--accent-color);
-      background: rgba(245, 158, 11, 0.12);
-      border: 1px solid rgba(245, 158, 11, 0.25);
-    }
-    .hero-title {
-      font-family: var(--font-title);
-      font-size: 3.5rem;
-      font-weight: 900;
-      line-height: 1.15;
-      margin-bottom: 1.5rem;
-    }
-    .highlight-gradient {
-      background: var(--gradient-highlight);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-subtitle { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 2.2rem; }
-    .hero-actions { display: flex; gap: 1rem; }
-    .image-wrapper { padding: 0.6rem; border-radius: 1.2rem; overflow: hidden; }
-    .image-wrapper img { width: 100%; height: auto; border-radius: 0.8rem; display: block; }
+  --font-title: 'Outfit', 'Noto Sans TC', sans-serif;
+  --font-body: 'Noto Sans TC', sans-serif;
+}
 
-    section { padding: 6rem 0; }
-    .section-header { text-align: center; max-width: 35rem; margin: 0 auto 4rem auto; }
-    .section-title { font-family: var(--font-title); font-size: 2.25rem; font-weight: 800; margin-bottom: 1rem; }
-    .section-subtitle { font-size: 1rem; color: var(--text-secondary); }
+/* 淺色模式變數 */
+html.light {
+  --bg-base: #f8fafc;
+  --bg-surface: rgba(255, 255, 255, 0.7);
+  --bg-surface-opaque: #ffffff;
+  --bg-card: rgba(241, 245, 249, 0.8);
+  --border-color: rgba(15, 23, 42, 0.08);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  
+  --primary-color: #1d4ed8;
+  --secondary-color: #047857;
+  --accent-color: #d97706;
+  --accent-glow: rgba(217, 119, 6, 0.1);
+  
+  --gradient-hero: linear-gradient(135deg, #eff6ff, #ecfdf5);
+  --gradient-highlight: linear-gradient(135deg, #1d4ed8, #059669);
+  
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 16px 32px rgba(15, 23, 42, 0.12);
+  --glass-glow: 0 8px 32px 0 rgba(15, 23, 42, 0.05);
+}
 
-    .grid { display: grid; gap: 2rem; }
-    .grid-2 { grid-template-columns: repeat(2, 1fr); }
-    .grid-3 { grid-template-columns: repeat(3, 1fr); }
-    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+/* --- 全域重置與基礎樣式 --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    .claim-card { padding: 2.2rem 1.8rem; display: flex; flex-direction: column; align-items: flex-start; }
-    .claim-card:hover { transform: translateY(-5px); }
-    .card-icon-wrap { width: 3.5rem; height: 3.5rem; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: #ffffff; }
-    .bg-blue-glow { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
-    .bg-green-glow { background: linear-gradient(135deg, #10b981, #047857); }
-    .bg-amber-glow { background: linear-gradient(135deg, #f59e0b, #b45309); }
-    .bg-purple-glow { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
-    .card-title { font-family: var(--font-title); font-size: 1.25rem; font-weight: 700; margin-bottom: 0.8rem; }
-    .card-desc { font-size: 0.92rem; color: var(--text-secondary); }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
 
-    .daily-notice { display: flex; align-items: center; gap: 1.2rem; padding: 1.2rem 1.8rem; margin-bottom: 2rem; border-left: 4px solid var(--primary-color); }
-    .notice-icon { font-size: 1.8rem; }
-    .notice-text { font-size: 0.95rem; }
-    .table-responsive { overflow-x: auto; border-radius: 1rem; }
-    .schedule-table { width: 100%; border-collapse: collapse; text-align: left; min-width: 750px; }
-    .schedule-table th { background: rgba(255, 255, 255, 0.02); padding: 1.2rem 1.5rem; font-size: 0.9rem; border-bottom: 2px solid var(--border-color); }
-    .schedule-table td { padding: 1.2rem 1.5rem; font-size: 0.92rem; border-bottom: 1px solid var(--border-color); }
-    .time-col { font-family: var(--font-title); font-weight: 600; color: var(--primary-color); }
-    .tag { display: inline-block; padding: 0.2rem 0.6rem; font-size: 0.75rem; font-weight: 600; border-radius: 0.3rem; }
-    .tag-weekly { background: rgba(59, 130, 246, 0.1); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.2); }
-    .tag-tutor { background: rgba(16, 185, 129, 0.1); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.2); }
-    .tag-core { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.2); }
-    .tag-monthly { background: rgba(245, 158, 11, 0.1); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.2); }
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.625;
+  overflow-x: hidden;
+  position: relative;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
 
-    .camp-desc { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; }
-    .mentor-row { display: flex; gap: 1.5rem; padding: 1.5rem; margin-bottom: 2rem; }
-    .mentor-avatar { width: 3.5rem; height: 3.5rem; background: var(--gradient-hero); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; }
-    .mentor-info h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
-    .mentor-info p { font-size: 0.9rem; color: var(--text-secondary); }
-    .pricing-card { padding: 2rem; border-left: 4px solid var(--accent-color); }
-    .price-header { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 1rem; }
-    .price-amount { font-family: var(--font-title); font-size: 2.2rem; font-weight: 800; color: var(--accent-color); }
-    .price-period { font-size: 0.9rem; color: var(--text-secondary); }
-    .barter-notice p { font-size: 0.88rem; color: var(--text-secondary); margin-top: 0.6rem; }
-    .tag-barter { background: var(--accent-glow); color: var(--accent-color); border: 1px solid rgba(245, 158, 11, 0.3); }
+/* 背景裝飾光點 */
+.glow-bg {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(150px);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.25;
+  transition: opacity 0.4s ease;
+}
 
-    .camp-themes { display: flex; flex-direction: column; gap: 1.5rem; }
-    .themes-title { font-family: var(--font-title); font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .theme-card { display: flex; gap: 1.5rem; padding: 1.8rem; }
-    .theme-emoji { font-size: 2rem; }
-    .theme-body h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .theme-body p { font-size: 0.9rem; color: var(--text-secondary); }
+.glow-1 {
+  background: radial-gradient(circle, var(--primary-color), transparent 70%);
+  top: 10%;
+  right: -10%;
+}
 
-    .carousel-container { position: relative; overflow: hidden; margin-bottom: 2rem; border-radius: 1rem; }
-    .story-slide { display: none; opacity: 0; transition: opacity 0.5s ease; }
-    .story-slide.active { display: block; opacity: 1; }
-    .story-card { display: grid; grid-template-columns: 1.1fr 1.3fr; overflow: hidden; }
-    .story-img-wrap { position: relative; height: 100%; min-height: 320px; }
-    .story-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .story-badge { position: absolute; top: 1rem; left: 1rem; padding: 0.4rem 0.8rem; font-size: 0.75rem; font-weight: 700; border-radius: 0.3rem; color: #ffffff; }
-    .story-content { padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
-    .story-content h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem; }
-    .story-meta { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
-    .story-text { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 2rem; }
-    .story-footer { border-top: 1px solid var(--border-color); padding-top: 1.2rem; }
-    .story-highlight { font-size: 0.88rem; font-weight: 600; color: var(--accent-color); }
-    .carousel-dots { display: flex; justify-content: center; gap: 0.8rem; margin-top: 1.5rem; }
-    .dot { width: 0.7rem; height: 0.7rem; border-radius: 50%; background: var(--border-color); border: none; cursor: pointer; }
-    .dot.active { background: var(--primary-color); transform: scale(1.3); }
+.glow-2 {
+  background: radial-gradient(circle, var(--secondary-color), transparent 70%);
+  bottom: 10%;
+  left: -10%;
+}
 
-    .podcast-layout { display: grid; grid-template-columns: 1fr 1.3fr; overflow: hidden; }
-    .podcast-playlist { border-right: 1px solid var(--border-color); background: rgba(255, 255, 255, 0.01); }
-    .playlist-header { padding: 1.5rem 1.8rem; font-size: 1.15rem; font-weight: 700; border-bottom: 1px solid var(--border-color); }
-    .playlist-item { display: flex; align-items: center; gap: 1rem; padding: 1.4rem 1.8rem; border-bottom: 1px solid var(--border-color); cursor: pointer; }
-    .playlist-item.active { background: rgba(59, 130, 246, 0.06); border-left: 4px solid var(--primary-color); }
-    .play-indicator { font-size: 0.8rem; color: var(--text-muted); }
-    .playlist-item.active .play-indicator { color: var(--primary-color); }
-    .item-meta h4 { font-size: 0.95rem; margin-bottom: 0.2rem; }
-    .playlist-item.active .item-meta h4 { color: var(--primary-color); }
-    .item-meta p { font-size: 0.8rem; color: var(--text-muted); }
-    .item-duration { font-size: 0.8rem; color: var(--text-muted); margin-left: auto; }
-    .podcast-player-container { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; }
-    .player-visual-area { display: flex; align-items: center; gap: 2.2rem; }
-    .disc-wrapper { perspective: 1000px; }
-    .vinyl-disc {
-      width: 6.5rem; height: 6.5rem; border-radius: 50%;
-      background: radial-gradient(circle, #2d2d2d 30%, #0d0d0d 60%, #1a1a1a 70%);
-      border: 4px solid #000; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-      display: flex; align-items: center; justify-content: center;
-      animation: rotateDisc 10s linear infinite; animation-play-state: paused;
-    }
-    @keyframes rotateDisc { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    .vinyl-center { width: 2.2rem; height: 2.2rem; background: var(--bg-card); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
-    .track-details h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.4rem; }
-    .track-details p { font-size: 0.88rem; color: var(--text-secondary); }
-    .time-slider-container { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
-    .time-slider-container span { font-size: 0.78rem; color: var(--text-muted); width: 2.5rem; }
-    .time-slider { flex-grow: 1; -webkit-appearance: none; appearance: none; height: 5px; border-radius: 3px; background: var(--border-color); outline: none; }
-    .time-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%; background: var(--primary-color); cursor: pointer; }
-    .control-buttons { display: flex; justify-content: center; align-items: center; gap: 1.8rem; }
-    .btn-ctrl { background: transparent; border: none; cursor: pointer; color: var(--text-secondary); display: flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 50%; }
-    .btn-play { width: 3.5rem; height: 3.5rem; background: var(--primary-color); color: #ffffff; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.35); }
-    .hidden { display: none !important; }
-    .transcript-box { border-top: 1px solid var(--border-color); padding-top: 1.2rem; }
-    .transcript-header { display: flex; justify-content: space-between; align-items: center; font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0.8rem; }
-    .btn-text { background: transparent; border: none; color: var(--primary-color); font-weight: 600; cursor: pointer; }
-    .transcript-content { max-height: 5.5rem; overflow-y: auto; padding-right: 0.5rem; font-size: 0.85rem; line-height: 1.8; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.6rem; scroll-behavior: smooth; }
-    .transcript-content.expanded { max-height: 15rem; }
-    .lyric-line.active { color: var(--text-primary); font-weight: 500; }
+/* 容器佈局 */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
 
-    .archive-links-wrap { display: flex; justify-content: center; gap: 1.5rem; margin-top: 3rem; flex-wrap: wrap; }
-    .archive-btn { display: inline-flex; align-items: center; padding: 0.85rem 1.6rem; border-radius: 0.5rem; text-decoration: none; font-size: 0.9rem; font-weight: 600; border: 1px solid var(--border-color); }
-    .btn-yt { background: rgba(239, 68, 68, 0.08); color: #ef4444; border-color: rgba(239, 68, 68, 0.2); }
-    .btn-md { background: var(--bg-card); color: var(--text-primary); }
+/* 毛玻璃卡片基類 */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  box-shadow: var(--glass-glow);
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              box-shadow 0.3s ease, 
+              border-color 0.3s ease;
+}
 
-    .register-layout { display: grid; grid-template-columns: 1fr 1.3fr; overflow: hidden; }
-    .register-info-panel { background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(16, 185, 129, 0.05)); padding: 4rem 3rem; border-right: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: center; }
-    .panel-badge { color: var(--primary-color); font-weight: 700; font-size: 0.85rem; margin-bottom: 1rem; }
-    .register-info-panel h2 { font-size: 2.2rem; font-weight: 800; line-height: 1.25; margin-bottom: 1.5rem; }
-    .register-info-panel p { color: var(--text-secondary); margin-bottom: 2.5rem; }
-    .benefit-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-    .benefit-list li { display: flex; gap: 0.8rem; font-size: 0.9rem; color: var(--text-secondary); }
-    .benefit-list li::before { content: "✦"; color: var(--secondary-color); font-weight: bold; }
-    .register-form-panel { padding: 4rem 3rem; }
-    .form-group { margin-bottom: 1.8rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    label { display: block; font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.6rem; }
-    input[type="text"], input[type="tel"], textarea { width: 100%; padding: 0.85rem 1rem; font-family: var(--font-body); font-size: 0.92rem; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: 0.5rem; color: var(--text-primary); outline: none; }
-    html.light input[type="text"], html.light input[type="tel"], html.light textarea { background: rgba(15, 23, 42, 0.02); }
-    input[type="text"]:focus, input[type="tel"]:focus, textarea:focus { border-color: var(--primary-color); background: rgba(255, 255, 255, 0.05); }
-    textarea { resize: vertical; min-height: 80px; }
-    .radio-group { display: flex; flex-direction: column; gap: 1rem; margin-top: 0.5rem; }
-    .radio-label { display: flex; gap: 1rem; cursor: pointer; position: relative; padding: 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; background: rgba(255, 255, 255, 0.01); }
-    .radio-label input[type="radio"] { position: absolute; opacity: 0; }
-    .custom-radio { width: 1.25rem; height: 1.25rem; border-radius: 50%; border: 2px solid var(--text-muted); display: flex; align-items: center; justify-content: center; margin-top: 0.15rem; flex-shrink: 0; }
-    .radio-label input[type="radio"]:checked ~ .custom-radio { border-color: var(--primary-color); }
-    .custom-radio::after { content: ""; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--primary-color); transform: scale(0); transition: transform 0.2s ease; }
-    .radio-label input[type="radio"]:checked ~ .custom-radio::after { transform: scale(1); }
-    .radio-text strong { display: block; font-size: 0.9rem; color: var(--text-primary); margin-bottom: 0.15rem; }
-    .radio-text p { font-size: 0.78rem; color: var(--text-secondary); }
-    .payment-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem; }
-    .payment-box { display: flex; align-items: center; justify-content: center; padding: 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; cursor: pointer; font-weight: 600; font-size: 0.9rem; background: rgba(255, 255, 255, 0.01); }
-    .payment-box input[type="radio"] { position: absolute; opacity: 0; }
-    .payment-box.active { border-color: var(--accent-color); background: var(--accent-glow); color: var(--accent-color); }
-    .barter-details-panel { background: rgba(245, 158, 11, 0.03); border: 1px dashed rgba(245, 158, 11, 0.25); padding: 1.5rem; border-radius: 0.5rem; }
-    .lodging-panel { background: rgba(59, 130, 246, 0.03); border: 1px dashed rgba(59, 130, 246, 0.2); padding: 1.2rem; border-radius: 0.5rem; }
-    .checkbox-label { display: flex; align-items: center; gap: 0.8rem; cursor: pointer; font-weight: 500; }
-    .checkbox-label input[type="checkbox"] { position: absolute; opacity: 0; }
-    .custom-checkbox { width: 1.15rem; height: 1.15rem; border: 2px solid var(--text-muted); border-radius: 0.25rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .checkbox-label input[type="checkbox"]:checked ~ .custom-checkbox { border-color: var(--primary-color); background: var(--primary-color); }
-    .custom-checkbox::after { content: "✔"; color: #ffffff; font-size: 0.75rem; font-weight: bold; transform: scale(0); }
-    .checkbox-label input[type="checkbox"]:checked ~ .custom-checkbox::after { transform: scale(1); }
+/* --- 網頁導覽列 (Navbar) --- */
+.navbar-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(var(--bg-base), 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
 
-    .contact-badge { font-family: var(--font-title); font-weight: 700; font-size: 0.8rem; color: var(--primary-color); margin-bottom: 0.8rem; }
-    .contact-card { padding: 3rem; display: flex; flex-direction: column; align-items: flex-start; }
-    .contact-card h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 1.2rem; }
-    .card-divider { width: 100%; border: none; border-top: 1px solid var(--border-color); margin-bottom: 1.5rem; }
-    .contact-details-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; width: 100%; margin-bottom: 2.2rem; }
-    .contact-details-list li { font-size: 0.92rem; color: var(--text-secondary); }
-    .contact-details-list li strong { color: var(--text-primary); }
-    .contact-card .btn { width: 100%; }
+.navbar-header.scrolled {
+  padding: 0.5rem 0;
+  box-shadow: var(--shadow-md);
+}
 
-    .footer-area { background: rgba(15, 23, 42, 0.4); border-top: 1px solid var(--border-color); padding: 4rem 0 3rem 0; }
-    .footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1.5rem; }
-    .footer-brand { display: flex; align-items: center; gap: 0.6rem; }
-    .footer-brand h4 { font-family: var(--font-title); font-size: 1.15rem; font-weight: 800; }
-    .footer-moto { font-size: 0.9rem; color: var(--text-secondary); }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1.8rem; flex-wrap: wrap; gap: 1rem; }
-    .copyright { font-size: 0.8rem; color: var(--text-muted); }
-    .location-stamp { font-size: 0.8rem; color: var(--text-muted); }
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(9, 13, 22, 0.7); backdrop-filter: blur(8px); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
-    .modal-content { max-width: 480px; width: 100%; padding: 3rem 2.5rem; text-align: center; }
-    .modal-success-icon { font-size: 3.5rem; display: block; margin-bottom: 1.5rem; }
-    .modal-content h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.6rem; }
-    .modal-content p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
-    .modal-summary { padding: 1.2rem 1.5rem; margin-bottom: 1.5rem; text-align: left; background: rgba(255, 255, 255, 0.02); }
-    .modal-summary p { margin-bottom: 0.5rem; font-size: 0.85rem; }
-    .modal-next-steps { font-size: 0.85rem !important; color: var(--accent-color) !important; font-weight: 600; margin-bottom: 2rem !important; }
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
 
-    @media (max-width: 992px) {
-      .hero-container { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
-      .hero-subtitle { margin-left: auto; margin-right: auto; }
-      .hero-actions { justify-content: center; }
-      .grid-4 { grid-template-columns: repeat(2, 1fr); }
-      .camp-section .grid-2 { grid-template-columns: 1fr; gap: 3rem; }
-      .story-card { grid-template-columns: 1fr; }
-      .story-img-wrap { height: 250px; min-height: auto; }
-      .story-content { padding: 2.2rem; }
-      .podcast-layout { grid-template-columns: 1fr; }
-      .podcast-playlist { border-right: none; border-bottom: 1px solid var(--border-color); }
-      .register-layout { grid-template-columns: 1fr; }
-      .register-info-panel { border-right: none; border-bottom: 1px solid var(--border-color); padding: 3rem 2rem; }
-      .register-form-panel { padding: 3rem 2rem; }
-      .grid-2 { grid-template-columns: 1fr; }
-    }
+.logo-emoji {
+  font-size: 1.5rem;
+}
 
-    @media (max-width: 768px) {
-      section { padding: 4rem 0; }
-      .hero-title { font-size: 2.6rem; }
-      .section-title { font-size: 1.8rem; }
-      .mobile-toggle { display: flex; }
-      .nav-menu {
-        position: fixed; top: 4.8rem; left: 0; width: 100%; height: 0;
-        background: var(--bg-surface-opaque); flex-direction: column;
-        gap: 1.5rem; padding: 0; overflow: hidden; transition: all 0.3s ease;
-        box-shadow: var(--shadow-lg); border-bottom: 1px solid var(--border-color);
-      }
-      .nav-menu.open { height: auto; padding: 2rem 1.5rem; }
-      .nav-link { font-size: 1.1rem; width: 100%; text-align: center; padding: 0.5rem 0; }
-      .nav-btn { width: 100%; text-align: center; padding: 0.75rem 0; }
-      .grid-4 { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; gap: 0; }
-      .payment-selector { grid-template-columns: 1fr; }
-      .footer-top, .footer-bottom { flex-direction: column; text-align: center; gap: 1rem; }
-    }
-  </style>
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-highlight);
+  transition: width 0.2s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* 按鈕基類 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.35);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-outline:hover {
+  background: var(--text-primary);
+  color: var(--bg-base);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.nav-btn {
+  composes: btn;
+  background: var(--gradient-highlight);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.5rem 1.1rem;
+  border-radius: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.35);
+}
+
+/* 深淺色主題切換 */
+.theme-toggle, .mobile-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover, .mobile-toggle:hover {
+  color: var(--text-primary);
+  background: var(--bg-card);
+}
+
+/* 切換圖示顯示 */
+.sun-icon { display: block; }
+.moon-icon { display: none; }
+
+html.light .sun-icon { display: none; }
+html.light .moon-icon { display: block; }
+
+.mobile-toggle {
+  display: none;
+}
+
+/* --- 首頁英雄區 (Hero Section) --- */
+.hero-section {
+  padding-top: 9rem;
+  padding-bottom: 5rem;
+  position: relative;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--secondary-color);
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.badge-amber {
+  color: var(--accent-color);
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.hero-title {
+  font-family: var(--font-title);
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.highlight-gradient {
+  background: var(--gradient-highlight);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  margin-bottom: 2.2rem;
+  max-width: 32rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.image-wrapper {
+  padding: 0.6rem;
+  border-radius: 1.2rem;
+  overflow: hidden;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.8rem;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.image-wrapper:hover img {
+  transform: scale(1.02);
+}
+
+/* --- Section 共用樣式 --- */
+section {
+  padding: 6rem 0;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 35rem;
+  margin: 0 auto 4rem auto;
+}
+
+.section-title {
+  font-family: var(--font-title);
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+/* Grid 基類 */
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* --- 核心主張 (Philosophy) --- */
+.claim-card {
+  padding: 2.2rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.claim-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.card-icon-wrap {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.bg-blue-glow {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+}
+
+.bg-green-glow {
+  background: linear-gradient(135deg, #10b981, #047857);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+}
+
+.bg-amber-glow {
+  background: linear-gradient(135deg, #f59e0b, #b45309);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+}
+
+.bg-purple-glow {
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.3);
+}
+
+.card-title {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.card-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* --- 山海共學週曆 (Schedule) --- */
+.daily-notice {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.2rem 1.8rem;
+  margin-bottom: 2rem;
+  border-left: 4px solid var(--primary-color);
+}
+
+.notice-icon {
+  font-size: 1.8rem;
+}
+
+.notice-text {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.table-responsive {
+  overflow-x: auto;
+  border-radius: 1rem;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 750px;
+}
+
+.schedule-table th {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 1.2rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.schedule-table td {
+  padding: 1.2rem 1.5rem;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.schedule-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.schedule-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.time-col {
+  font-family: var(--font-title);
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.event-name {
+  font-weight: 600;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 0.3rem;
+}
+
+.tag-weekly {
+  background: rgba(59, 130, 246, 0.1);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.tag-tutor {
+  background: rgba(16, 185, 129, 0.1);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.tag-core {
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.tag-monthly {
+  background: rgba(245, 158, 11, 0.1);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+/* --- 共創營介紹 (Camp) --- */
+.camp-section {
+  position: relative;
+}
+
+.camp-desc {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.mentor-row {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.mentor-avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: var(--gradient-hero);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.mentor-info h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.mentor-info p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.pricing-card {
+  padding: 2rem;
+  border-left: 4px solid var(--accent-color);
+}
+
+.price-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.price-amount {
+  font-family: var(--font-title);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--accent-color);
+}
+
+.price-period {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.barter-notice p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-top: 0.6rem;
+}
+
+.tag-barter {
+  background: var(--accent-glow);
+  color: var(--accent-color);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+/* 營期主題清單 */
+.camp-themes {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.themes-title {
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.theme-card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.8rem;
+}
+
+.theme-emoji {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.theme-body h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.theme-body p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* --- 實戰故事區 (Stories - 輪播) --- */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+}
+
+.story-slide {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.story-slide.active {
+  display: block;
+  opacity: 1;
+}
+
+.story-card {
+  display: grid;
+  grid-template-columns: 1.1fr 1.3fr;
+  overflow: hidden;
+}
+
+.story-img-wrap {
+  position: relative;
+  height: 100%;
+  min-height: 320px;
+}
+
+.story-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.story-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 0.3rem;
+  color: #ffffff;
+}
+
+.story-content {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.story-content h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.story-meta {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.story-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.story-footer {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.2rem;
+}
+
+.story-highlight {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+/* 輪播導航點 */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--border-color);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: var(--primary-color);
+  transform: scale(1.3);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+}
+
+/* --- 播客與音訊播放器 (Podcast) --- */
+.podcast-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  overflow: hidden;
+}
+
+.podcast-playlist {
+  border-right: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.playlist-header {
+  padding: 1.5rem 1.8rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.playlist-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.playlist-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.4rem 1.8rem;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.playlist-item:last-child {
+  border-bottom: none;
+}
+
+.playlist-item:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.playlist-item.active {
+  background: rgba(59, 130, 246, 0.06);
+  border-left: 4px solid var(--primary-color);
+}
+
+.play-indicator {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  width: 1rem;
+}
+
+.playlist-item.active .play-indicator {
+  color: var(--primary-color);
+}
+
+.item-meta h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  transition: color 0.2s ease;
+}
+
+.playlist-item.active .item-meta h4 {
+  color: var(--primary-color);
+}
+
+.item-meta p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.item-duration {
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+/* 播放器容器 */
+.podcast-player-container {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.player-visual-area {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+/* 黑膠唱片特效 */
+.disc-wrapper {
+  perspective: 1000px;
+}
+
+.vinyl-disc {
+  width: 6.5rem;
+  height: 6.5rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, #2d2d2d 30%, #0d0d0d 60%, #1a1a1a 70%);
+  border: 4px solid #000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: rotateDisc 10s linear infinite;
+  animation-play-state: paused;
+  transition: transform 0.5s ease;
+}
+
+@keyframes rotateDisc {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.vinyl-center {
+  width: 2.2rem;
+  height: 2.2rem;
+  background: var(--bg-card);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.track-details h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 0.4rem;
+}
+
+.track-details p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+/* 進度條與時間 */
+.time-slider-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.time-slider-container span {
+  font-family: var(--font-title);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  width: 2.5rem;
+}
+
+.time-slider {
+  flex-grow: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--border-color);
+  outline: none;
+  cursor: pointer;
+}
+
+.time-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.time-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.3);
+}
+
+/* 播放控制按鈕 */
+.control-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.btn-ctrl {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.btn-ctrl:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-play {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: var(--primary-color);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.35);
+}
+
+.btn-play:hover {
+  transform: scale(1.05);
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* 逐字稿顯示框 */
+.transcript-box {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.2rem;
+}
+
+.transcript-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.8rem;
+}
+
+.btn-text {
+  background: transparent;
+  border: none;
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.transcript-content {
+  max-height: 5.5rem;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  scroll-behavior: smooth;
+  transition: max-height 0.3s ease;
+}
+
+.transcript-content.expanded {
+  max-height: 15rem;
+}
+
+.lyric-line {
+  transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.lyric-line.active {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* 存檔連結列 */
+.archive-links-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.archive-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85rem 1.6rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+  border: 1px solid var(--border-color);
+}
+
+.archive-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-yt {
+  background: rgba(239, 68, 68, 0.08);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.btn-yt:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.btn-md {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
+.btn-md:hover {
+  background: var(--text-primary);
+  color: var(--bg-base);
+}
+
+/* --- 預約報名表單 (Register) --- */
+.register-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  overflow: hidden;
+}
+
+.register-info-panel {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(16, 185, 129, 0.05));
+  padding: 4rem 3rem;
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.panel-badge {
+  font-family: var(--font-title);
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.register-info-panel h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+}
+
+.register-info-panel p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+}
+
+.benefit-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.benefit-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.benefit-list li::before {
+  content: "✦";
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+/* 表單填寫面 */
+.register-form-panel {
+  padding: 4rem 3rem;
+}
+
+.form-group {
+  margin-bottom: 1.8rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.6rem;
+}
+
+.required {
+  color: #ef4444;
+  margin-left: 0.15rem;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+html.light input[type="text"],
+html.light input[type="tel"],
+html.light input[type="email"],
+html.light textarea {
+  background: rgba(15, 23, 42, 0.02);
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: var(--primary-color);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.15);
+}
+
+html.light input[type="text"]:focus,
+html.light input[type="tel"]:focus,
+html.light input[type="email"]:focus,
+html.light textarea:focus {
+  background: rgba(255, 255, 255, 1);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Radio Group 樣式 */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.radio-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  cursor: pointer;
+  position: relative;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.01);
+  transition: all 0.2s ease;
+}
+
+.radio-label:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.radio-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.custom-radio {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  border: 2px solid var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.radio-label input[type="radio"]:checked ~ .custom-radio {
+  border-color: var(--primary-color);
+}
+
+.custom-radio::after {
+  content: "";
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--primary-color);
+  transform: scale(0);
+  transition: transform 0.2s ease;
+}
+
+.radio-label input[type="radio"]:checked ~ .custom-radio::after {
+  transform: scale(1);
+}
+
+.radio-text strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin-bottom: 0.15rem;
+}
+
+.radio-text p {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+/* 支付/以物易物選擇盒 */
+.payment-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.payment-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.01);
+  transition: all 0.2s ease;
+}
+
+.payment-box input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.payment-box:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.payment-box.active {
+  border-color: var(--accent-color);
+  background: var(--accent-glow);
+  color: var(--accent-color);
+}
+
+/* 動態面板 */
+.barter-details-panel {
+  background: rgba(245, 158, 11, 0.03);
+  border: 1px dashed rgba(245, 158, 11, 0.25);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.lodging-panel {
+  background: rgba(59, 130, 246, 0.03);
+  border: 1px dashed rgba(59, 130, 246, 0.2);
+  padding: 1.2rem;
+  border-radius: 0.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.checkbox-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.custom-checkbox {
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 2px solid var(--text-muted);
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked ~ .custom-checkbox {
+  border-color: var(--primary-color);
+  background: var(--primary-color);
+}
+
+.custom-checkbox::after {
+  content: "✔";
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  transform: scale(0);
+  transition: transform 0.15s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked ~ .custom-checkbox::after {
+  transform: scale(1);
+}
+
+.help-text {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-top: 0.4rem;
+}
+
+/* --- 實體據點 (Contact) --- */
+.contact-badge {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--primary-color);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.contact-card {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contact-card h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+}
+
+.card-divider {
+  width: 100%;
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+}
+
+.contact-details-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+  margin-bottom: 2.2rem;
+}
+
+.contact-details-list li {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.contact-details-list li strong {
+  color: var(--text-primary);
+}
+
+.contact-card .btn {
+  width: 100%;
+}
+
+/* --- 頁尾 (Footer) --- */
+.footer-area {
+  background: rgba(15, 23, 42, 0.4);
+  border-top: 1px solid var(--border-color);
+  padding: 4rem 0 3rem 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.footer-brand h4 {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.footer-moto {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.8rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.copyright {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.location-stamp {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* --- 彈出成功視窗 (Success Modal) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(9, 13, 22, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal-content {
+  max-width: 480px;
+  width: 100%;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalIn {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.modal-success-icon {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.modal-content h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+}
+
+.modal-content p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.modal-summary {
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.modal-summary p {
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.modal-summary p:last-child {
+  margin-bottom: 0;
+}
+
+.modal-next-steps {
+  font-size: 0.85rem !important;
+  color: var(--accent-color) !important;
+  font-weight: 600;
+  margin-bottom: 2rem !important;
+}
+
+/* --- 共學課程 (Courses Section) --- */
+.courses-section {
+  position: relative;
+}
+
+.courses-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.course-category-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.category-title {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  border-left: 4px solid var(--secondary-color);
+  padding-left: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.course-card {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.6rem;
+  gap: 0.5rem;
+}
+
+.course-header h4 {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.course-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+}
+
+.badge-blue {
+  background: rgba(59, 130, 246, 0.1);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.badge-purple {
+  background: rgba(139, 92, 246, 0.1);
+  color: #a78bfa;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.badge-amber {
+  background: rgba(245, 158, 11, 0.1);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.course-teacher {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 0.8rem;
+}
+
+.course-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* --- 共生商店 (Stores Section) --- */
+.stores-section {
+  position: relative;
+}
+
+.store-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.store-tab-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.75rem 1.8rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.store-tab-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.store-tab-btn.active {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+}
+
+.store-panels {
+  position: relative;
+}
+
+.store-panel {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.store-panel.active {
+  display: block;
+  opacity: 1;
+}
+
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.store-card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem;
+  align-items: flex-start;
+}
+
+.store-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.store-card-visual {
+  font-size: 2.2rem;
+  line-height: 1;
+  background: rgba(255, 255, 255, 0.03);
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.store-card-body {
+  flex-grow: 1;
+}
+
+.store-card-body h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: var(--text-primary);
+}
+
+.store-card-price {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 0.8rem;
+}
+
+.price-unit {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.store-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* 出租單車微調與單車標章 */
+.store-panel#store-panel-rental .store-card-visual {
+  border-color: rgba(245, 158, 11, 0.25);
+}
+
+/* --- RWD 響應式佈局調整 (Media Queries) --- */
+
+/* 平板寬度 (992px 以下) */
+@media (max-width: 992px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3rem;
+  }
+  
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .hero-actions {
+    justify-content: center;
+  }
+  
+
+  .grid-4, .category-grid, .store-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .camp-section .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .story-card {
+    grid-template-columns: 1fr;
+  }
+  
+  .story-img-wrap {
+    height: 250px;
+    min-height: auto;
+  }
+  
+  .story-content {
+    padding: 2.2rem;
+  }
+  
+  .podcast-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .podcast-playlist {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .register-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .register-info-panel {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding: 3rem 2rem;
+  }
+  
+  .register-form-panel {
+    padding: 3rem 2rem;
+  }
+  
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 手機版 (768px 以下) */
+@media (max-width: 768px) {
+  section {
+    padding: 4rem 0;
+  }
+  
+  .hero-title {
+    font-size: 2.6rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  /* 手機導航選單切換 */
+  .mobile-toggle {
+    display: flex;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    top: 4.8rem;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: var(--bg-surface-opaque);
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: var(--shadow-lg);
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .nav-menu.open {
+    height: auto;
+    padding: 2rem 1.5rem;
+  }
+  
+  .nav-link {
+    font-size: 1.1rem;
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+  
+  .nav-btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 0;
+  }
+  
+
+  .grid-4, .category-grid, .store-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .store-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  
+  .payment-selector {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-top, .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
+
+</style>
 </head>
 <body>
 
-  <!-- Background Glows -->
-  <div class="glow-bg glow-1"></div>
-  <div class="glow-bg glow-2"></div>
-
-  <!-- Header / Navbar -->
-  <header class="navbar-header" id="navbar">
+  <!-- Navigation Bar -->
+  <header class="navbar-area">
     <div class="navbar-container">
       <a href="#" class="nav-logo" id="navLogo">
         <span class="logo-emoji">🌿</span>
@@ -484,21 +2040,24 @@
       
       <!-- Desktop Navigation Menu -->
       <nav class="nav-menu" id="navMenu">
-        <a href="#philosophy" class="nav-link" id="link-philosophy">理念核心</a>
+        <a href="#philosophy" class="nav-link" id="link-philosophy">理念精神</a>
         <a href="#schedule" class="nav-link" id="link-schedule">山海週曆</a>
-        <a href="#camp" class="nav-link" id="link-camp">哈爸共創營</a>
+        <a href="#courses" class="nav-link" id="link-courses">共學課程</a>
+        <a href="#stores" class="nav-link" id="link-stores">共生商店</a>
         <a href="#stories" class="nav-link" id="link-stories">實戰故事</a>
         <a href="#podcast" class="nav-link" id="link-podcast">播客影音</a>
-        <a href="#contact" class="nav-link" id="link-contact">據點聯絡</a>
         <a href="#register" class="nav-btn" id="link-register">預約報名</a>
       </nav>
 
-      <!-- Actions -->
+      <!-- Right Actions: Theme Toggle & Mobile Toggle -->
       <div class="nav-actions">
         <button class="theme-toggle" id="themeToggle" aria-label="切換深淺模式">
+          <!-- Sun Icon (Dark Mode active) -->
           <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <!-- Moon Icon (Light Mode active) -->
           <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
         </button>
+        
         <button class="mobile-toggle" id="mobileToggle" aria-label="打開選單">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
         </button>
@@ -510,66 +2069,65 @@
   <section class="hero-section" id="hero">
     <div class="hero-container">
       <div class="hero-content">
-        <div class="badge" id="heroBadge">🌿 在地共創 ╳ AI 賦能</div>
-        <h1 class="hero-title" id="heroTitle">一手拿滑鼠，<br><span class="highlight-gradient">一手摸泥土</span></h1>
-        <p class="hero-subtitle" id="heroSubtitle">以山海為教室，在都蘭的太平洋風光與山林節律中，開啟第二人生的自由、科技賦能與共生聚落。</p>
+        <div class="badge" id="heroBadge">🌿 都蘭共學堂 ╳ LearnDulanWay</div>
+        <h1 class="hero-title" id="heroTitle">如何翻轉人生，<br>從共學出發，<span class="highlight-gradient">邁向共生</span></h1>
+        <p class="hero-subtitle" id="heroSubtitle">以都蘭山海為教室，用 AI 與小習慣為工具，開啟身心靈的探索，接受生命豐盛。</p>
         <div class="hero-actions">
-          <a href="#register" class="btn btn-primary" id="heroBtnRegister">線上報名共創營</a>
-          <a href="#schedule" class="btn btn-secondary" id="heroBtnSchedule">檢視活動週曆</a>
+          <a href="#courses" class="btn btn-primary" id="heroBtnCourses">探索共學課程</a>
+          <a href="#stores" class="btn btn-secondary" id="heroBtnStores">租借與逛商店</a>
         </div>
       </div>
       <div class="hero-visual">
         <div class="image-wrapper glass-card">
-          <!-- ⚠️ 注意：此處需更換為您上傳至 Google Drive 的公開圖片網址，或在此保留相對路徑（若與 assets 放在同目錄） -->
           <img src="assets/hero_bg.jpg" alt="都蘭山海與 AI 科技的融合" id="heroImg">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Core Claims (四大核心主張) -->
+  <!-- Philosophy Section (理念精神) -->
   <section class="philosophy-section" id="philosophy">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title" id="philosophyTitle">四大核心主張</h2>
-        <p class="section-subtitle" id="philosophySubtitle">結合在地自然農法、藝術美學、山海運動與數位第二大腦</p>
+        <h2 class="section-title" id="philosophyTitle">共學與共生精神</h2>
+        <p class="section-subtitle" id="philosophySubtitle">結合山海自然環境、人工智慧科技、身心靈療癒與共享經濟</p>
       </div>
       <div class="grid grid-4" id="philosophyGrid">
         
         <!-- Card 1 -->
         <div class="claim-card glass-card">
           <div class="card-icon-wrap bg-blue-glow">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.5 0 2.5 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.5 0 2.5 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.5 0 2.5 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 5-5-3-5 3"/><path d="m17 19-5 3-5-3"/><path d="M2 12h20"/><path d="m5 7 3 5-3 5"/><path d="m19 7-3 5 3 5"/></svg>
           </div>
-          <h3 class="card-title">🌊 山海教室</h3>
-          <p class="card-desc">告別硬邦邦的傳統教室，以都蘭山為呼吸、太平洋為節奏，寓教於樂、自然融入生活與學習。</p>
+          <h3 class="card-title">🔄 翻轉與共生</h3>
+          <p class="card-desc">從個人自我學習翻轉出發，最終融入社區，與居民共學、同頻，共同邁向自然與和諧的共生關係。</p>
         </div>
 
         <!-- Card 2 -->
         <div class="claim-card glass-card">
           <div class="card-icon-wrap bg-green-glow">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="M15 3v18"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
           </div>
-          <h3 class="card-title">🤖 科技賦能</h3>
-          <p class="card-desc">運用 Gemini 與 NotebookLM 等 AI 工具，不需寫代碼，用說話與拍照輕鬆打造數位第二大腦。</p>
+          <h3 class="card-title">🛠️ 雙核心工具</h3>
+          <p class="card-desc">以最先進的 AI 科技（如 Gemini、NotebookLM）搭配每日生活微小習慣的養成，實現大腦認知的升級與個人效能躍升。</p>
         </div>
 
         <!-- Card 3 -->
         <div class="claim-card glass-card">
           <div class="card-icon-wrap bg-amber-glow">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 5-5-3-5 3"/><path d="m17 19-5 3-5-3"/><path d="M2 12h20"/><path d="m5 7 3 5-3 5"/><path d="m19 7-3 5 3 5"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.5 0 2.5 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.5 0 2.5 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.5 0 2.5 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>
           </div>
-          <h3 class="card-title">🌅 第二人生</h3>
-          <p class="card-desc">跨世代經驗傳承與對話，每個人都能整合人生閱歷、站上舞台，做自己的主人。</p>
+          <h3 class="card-title">🏔️ 山海大教室</h3>
+          <p class="card-desc">擺脫冷冰冰的四壁教室。都蘭山脈、水往上流生態及太平洋海浪即是我們學習自然、汲取生命能量的廣闊教室。</p>
         </div>
 
         <!-- Card 4 -->
         <div class="claim-card glass-card">
           <div class="card-icon-wrap bg-purple-glow">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/><path d="M12 7v10"/><path d="M8 12h8"/></svg>
           </div>
-          <h3 class="card-title">🤝 共生創生</h3>
-          <p class="card-desc">以「關懷愛心互助合作社」模式運作，支持以自產農產或勞務支援進行「以物易物」學費折抵。</p>
+          <h3 class="card-title">🧘 身心靈探索</h3>
+          <p class="card-desc">藉由靜心內觀、靈魂治療與工藝創作等多元面向探索身心靈，學會愛與關懷，接受宇宙生命豐盛的贈與。</p>
         </div>
 
       </div>
@@ -605,7 +2163,7 @@
           <tbody>
             <tr>
               <td class="time-col">每週二 09:00</td>
-              <td class="event-name">🎸 彈吉他學音樂</td>
+              <td class="event-name">🎸 古典吉他與民謠</td>
               <td>古典吉他指法練習、樂理與彈撥交流</td>
               <td>都蘭 四季八里莊園</td>
               <td><span class="tag tag-weekly">每週常態</span></td>
@@ -633,7 +2191,7 @@
             </tr>
             <tr>
               <td class="time-col">每月第一週 08:00</td>
-              <td class="event-name">🎶 恆春古調傳唱與採集</td>
+              <td class="event-name">🎶 用月琴吟恆春古調</td>
               <td>傳統民謠演唱、聲音採集與文化交流</td>
               <td>都蘭 四季八里莊園</td>
               <td><span class="tag tag-monthly">每月主題</span></td>
@@ -651,59 +2209,146 @@
     </div>
   </section>
 
-  <!-- Camp Details (哈爸 AI 慢活共創營) -->
-  <section class="camp-section" id="camp">
+  <!-- Courses Section (共學課程) -->
+  <section class="courses-section" id="courses">
     <div class="container">
-      <div class="grid grid-2">
-        <div class="camp-intro">
-          <div class="badge badge-amber">重點課程</div>
-          <h2 class="section-title" style="text-align: left; margin-top: 1rem;" id="campTitle">哈爸 AI 慢活共創營</h2>
-          <p class="camp-desc" id="campDesc">
-            專為在地居民、小農、民宿主與樂齡創作者量身打造的雙師陪伴共學。
-          </p>
-          <div class="mentor-row glass-card">
-            <div class="mentor-avatar">👨‍💻</div>
-            <div class="mentor-info">
-              <h4>雙師授課 ╳ 在地陪伴</h4>
-              <p>由國家主權 AI (TAIDE) 第一代 PM <strong>哈爸 (許武龍)</strong> 線上授課，在地教練 <strong>阿鐘 (陳豊鍾)</strong> 與 <strong>陳品碩</strong> 現場實體手把手操作。</p>
+      <div class="section-header">
+        <h2 class="section-title">共學堂精選課程</h2>
+        <p class="section-subtitle">從硬科技到軟實力，從大地工藝到內在靈性，與大師同頻學習</p>
+      </div>
+
+      <div class="courses-grid">
+        <!-- Category: AI & Tech -->
+        <div class="course-category-group">
+          <h3 class="category-title">💻 AI 與慢活科技</h3>
+          <div class="category-grid">
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <span class="course-badge badge-blue">重點課程</span>
+                <h4>用 AI 翻轉人生</h4>
+              </div>
+              <p class="course-teacher">講師：阿中 (陳豊鍾)</p>
+              <p class="course-desc">將大腦與 AI 深度連結。不談程式代碼，手把手引導學員運用 AI 工具提煉健康紅利、創作紅利與時間紅利，實現第二人生認知升級。</p>
             </div>
-          </div>
-          <div class="pricing-card glass-card">
-            <div class="price-header">
-              <span class="price-amount">NT$ 3,000</span>
-              <span class="price-period">/ 全期 6 次 (共 12 週)</span>
-            </div>
-            <div class="barter-notice">
-              <span class="tag tag-barter">🤝 支持以物易物</span>
-              <p>支持以自產農特產品（如咖啡豆、蜂蜜、稻米等）或勞務支援進行學費折抵。</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="camp-themes">
-          <h3 class="themes-title">三大實戰應用主題</h3>
-          <div class="theme-card glass-card">
-            <span class="theme-emoji">✍️</span>
-            <div class="theme-body">
-              <h4>主題一：生命寫書與創作</h4>
-              <p>透過語音口述錄音，由 AI 自動梳理生命故事、撰寫品牌文案與書籍目錄架構。</p>
-            </div>
-          </div>
-          <div class="theme-card glass-card">
-            <span class="theme-emoji">💰</span>
-            <div class="theme-body">
-              <h4>主題二：進銷存與生活管理</h4>
-              <p>運用 Google 試算表與 AI 進行日常記帳、小農客戶名冊管理與營運流程簡化。</p>
-            </div>
-          </div>
-          <div class="theme-card glass-card">
-            <span class="theme-emoji">🌿</span>
-            <div class="theme-body">
-              <h4>主題三：在地民宿與社群行銷</h4>
-              <p>利用手機拍照辨識地方生態或農作物，自動生成 Facebook 與 LINE 社群分享圖文與短影音。</p>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <span class="course-badge badge-blue">重點課程</span>
+                <h4>哈爸 AI 慢活共創營</h4>
+              </div>
+              <p class="course-teacher">講師：哈爸 (許武龍) ╳ 在地助教群</p>
+              <p class="course-desc">由國家級 AI (TAIDE) 第一代 PM 哈爸授課，配合在地陪伴。聚焦於寫書創作、小農進銷存與民宿社群行銷的實戰落地。</p>
             </div>
           </div>
         </div>
+
+        <!-- Category: Art & Culture -->
+        <div class="course-category-group">
+          <h3 class="category-title">🔨 工藝、寫作與藝術</h3>
+          <div class="category-grid">
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <h4>人生寫作課</h4>
+              </div>
+              <p class="course-teacher">講師：江冠明</p>
+              <p class="course-desc">結合語音錄音與 AI 整理，帶領學員挖掘並撰寫自己的生命故事，將大半輩子累積的人生歷練凝結成精采書籍。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <h4>古典吉他與民謠</h4>
+              </div>
+              <p class="course-teacher">講師：陽光道</p>
+              <p class="course-desc">學習古典吉他基礎彈撥與樂理。用雙手撥動琴弦，在都蘭的微風中唱出內在最純粹的旋律與感動。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <span class="course-badge badge-purple">每月常態</span>
+                <h4>用月琴吟恆春古調</h4>
+              </div>
+              <p class="course-teacher">在地傳唱採集 (每月第一週週二上午 8:00)</p>
+              <p class="course-desc">在莊園晨光中，抱起傳統月琴，吟唱悠揚的恆春民謠與古調，進行聲音採集與土地靈魂的文化對話。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <h4>陶藝創作</h4>
+              </div>
+              <p class="course-teacher">講師：洋洋</p>
+              <p class="course-desc">雙手觸摸黏土的芬芳，在捏塑與拉坯中體驗土的延展，並透過高溫燒製將個人的心境定格為實體陶藝。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <h4>木工與書法教室</h4>
+              </div>
+              <p class="course-teacher">講師：阿中</p>
+              <p class="course-desc">靜時揮毫寫字鍛鍊心智定力，動時手持工具進行木工修繕、鋸木實作，修復器物也修復內心。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category: Ecology & Sea -->
+        <div class="course-category-group">
+          <h3 class="category-title">🌱 生態與山海實作</h3>
+          <div class="category-grid">
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <h4>綠光食物森林學校</h4>
+              </div>
+              <p class="course-teacher">講師：施炳霖</p>
+              <p class="course-desc">基於永續農法（Permaculture），在自然林下建構豐富的可食用生態圈，學習如何與自然合作獲取豐盛食物。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <span class="course-badge badge-purple">每月常態</span>
+                <h4>都蘭山定點觀察</h4>
+              </div>
+              <p class="course-teacher">講師：施炳霖</p>
+              <p class="course-desc">深入都蘭山步道進行每月定點踏查，記錄鳥類（烏頭翁、大冠鷲）、地方植物與四季生態的細微變遷。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <span class="course-badge badge-amber">每日海灘</span>
+                <h4>衝浪與海洋漂浮</h4>
+              </div>
+              <p class="course-teacher">引導：阿中 (每日下午 16:00 鉛橋海灘)</p>
+              <p class="course-desc">與太平洋大浪親密接觸，練習隨浪漂浮與滑行，學習在水流中放空自我，重拾心靈的流動與自由。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category: Body & Mind -->
+        <div class="course-category-group">
+          <h3 class="category-title">🧘 身心靈探索與成長</h3>
+          <div class="category-grid">
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <h4>身心靈探索</h4>
+              </div>
+              <p class="course-teacher">講師：gunja</p>
+              <p class="course-desc">透過呼吸調息、內觀冥想與自我覺察練習，釋放身體經年的緊繃，重整心靈節律以接受生命能量。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <h4>靈魂治療</h4>
+              </div>
+              <p class="course-teacher">講師：Rebaca</p>
+              <p class="course-desc">聚焦於內在創傷修復、能量平衡引導，協助學員與潛意識對話，化解靈魂深處的糾結與負擔。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <h4>療癒角落 (木沐沐)</h4>
+              </div>
+              <p class="course-teacher">講師：蕙君 (木沐沐)</p>
+              <p class="course-desc">在一個溫馨且不被打擾的角落，透過對談、精油療癒與溫暖傾聽，為疲憊的旅人與心靈提供庇護與釋放。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <h4>職涯發展規劃</h4>
+              </div>
+              <p class="course-teacher">講師：林玉鳳</p>
+              <p class="course-desc">針對人生下半場的轉折或職場生涯轉換，引導您釐清內在真實渴望，重新繪製具備熱情與方向的職涯藍圖。</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -730,10 +2375,10 @@
               <h3>📱 救回貴美阿嬤鎖死的三星手機</h3>
               <p class="story-meta">💡 都蘭共學堂第二堂課的真實數位救援冒險</p>
               <div class="story-text">
-                貴美阿嬤在課堂上意外設定了開機密碼並忘記，手機瞬間鎖死變「磚頭」。由於是美版二手機無購買證明，官方維修站直接拒收。阿中教練沒有查死板的手冊，而是把 Google Gemini 當成「數位雪巴嚮導」進行實時互動排障，Gemini 精確指引「必須先接上傳輸線連接電腦，再長按特定按鍵組合 7 秒」才能順利進入 Android 工程模式，最終成功強制重置手機，保住了阿嬤的手機與笑臉！
+                貴美阿嬤在課堂上意外設定了開機密碼並忘記，手機瞬間鎖死變「磚頭」。由於是美版二手機無購買證明，官方維修站直接拒收。阿中教練沒有查死板的手冊，而是把 Google Gemini 當成「數位雪巴嚮導」進行實時排障重置的溫暖場景。Gemini 精確指引「必須先接上傳輸線連接電腦，再長按特定按鍵組合 7 秒」才能順利進入 Android 工程模式，最終成功強制重置手機，保住了阿嬤的手機與笑臉！
               </div>
               <div class="story-footer">
-                <span class="story-highlight">啟示：AI 提供的是「互動決策」而非死板的百科全書。</span>
+                <span class="story-highlight">啟示：AI 提供的是「互動決策」而非死板的百科全書，也是長輩學習的最暖安全網。</span>
               </div>
             </div>
           </div>
@@ -790,6 +2435,108 @@
     </div>
   </section>
 
+  <!-- Stores Section (共生商店) -->
+  <section class="stores-section" id="stores">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">都蘭共生商店</h2>
+        <p class="section-subtitle">共享社區的實體物產、數位智慧與生活工具資源</p>
+      </div>
+
+      <!-- Store Tabs Navigation -->
+      <div class="store-tabs">
+        <button class="store-tab-btn active" data-tab="physical">🏪 實體商店</button>
+        <button class="store-tab-btn" data-tab="digital">💾 數位商店</button>
+        <button class="store-tab-btn" data-tab="rental">🚲 出租商店</button>
+      </div>
+
+      <!-- Store Panels Content -->
+      <div class="store-panels">
+        <!-- Panel 1: Physical Store -->
+        <div class="store-panel active" id="store-panel-physical">
+          <div class="store-grid">
+            <div class="store-card glass-card">
+              <div class="store-card-visual">☕</div>
+              <div class="store-card-body">
+                <h4>都蘭莊園有機咖啡豆</h4>
+                <p class="store-card-price">NT$ 450 <span class="price-unit">/ 半磅</span></p>
+                <p class="store-card-desc">都蘭山林陰地栽植，純手工採收與中度烘焙，帶有溫和的柑橘果酸與巧克力餘韻。支持以物易物交換！</p>
+              </div>
+            </div>
+            <div class="store-card glass-card">
+              <div class="store-card-visual">🍯</div>
+              <div class="store-card-body">
+                <h4>都蘭野生百花純蜂蜜</h4>
+                <p class="store-card-price">NT$ 600 <span class="price-unit">/ 瓶</span></p>
+                <p class="store-card-desc">採自都蘭山野生百花蜜源，無人工添加與濃縮，保留了天然活性酵素與豐富的天然花香。</p>
+              </div>
+            </div>
+            <div class="store-card glass-card">
+              <div class="store-card-visual">🌾</div>
+              <div class="store-card-body">
+                <h4>都蘭手作黑糖與有機米</h4>
+                <p class="store-card-price">NT$ 180 <span class="price-unit">/ 包</span></p>
+                <p class="store-card-desc">在地小農以自然農法耕作的優質白米與傳統木柴燒製的黑糖，提供滿滿的大地滋養與古法香氣。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Digital Store -->
+        <div class="store-panel" id="store-panel-digital">
+          <div class="store-grid">
+            <div class="store-card glass-card">
+              <div class="store-card-visual">📖</div>
+              <div class="store-card-body">
+                <h4>AI 學習筆記精選總集</h4>
+                <p class="store-card-price">NT$ 199 <span class="price-unit">/ 電子書 (PDF & DOCX)</span></p>
+                <p class="store-card-desc">收錄都蘭共學堂全系列的 AI 工具精華筆記、提示詞工程（Prompt）及長輩數位排障手冊，一次打包隨身閱讀。</p>
+              </div>
+            </div>
+            <div class="store-card glass-card">
+              <div class="store-card-visual">📊</div>
+              <div class="store-card-body">
+                <h4>NotebookLM 個人化範本包</h4>
+                <p class="store-card-price">NT$ 250 <span class="price-unit">/ 範本授權</span></p>
+                <p class="store-card-desc">包含「生命寫書範本」、「小農進銷存試算表範本」及「地方民宿社群行銷提示詞包」，一鍵匯入即可高效產出。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: Rental Store -->
+        <div class="store-panel" id="store-panel-rental">
+          <div class="store-grid">
+            <div class="store-card glass-card">
+              <div class="store-card-visual">🏄</div>
+              <div class="store-card-body">
+                <h4>水上運動設備租借</h4>
+                <p class="store-card-price">免費 / 勞務折抵 <span class="price-unit">(學員專享)</span></p>
+                <p class="store-card-desc">提供不同尺寸衝浪板、趴板、防寒衣及安全救生衣。每天下午 16:00 鉛橋海灘共學漂浮時段可預約租借。</p>
+              </div>
+            </div>
+            <div class="store-card glass-card">
+              <div class="store-card-visual">🪓</div>
+              <div class="store-card-body">
+                <h4>木工與農務工具互助共享</h4>
+                <p class="store-card-price">點數折抵 <span class="price-unit">(社區共享)</span></p>
+                <p class="store-card-desc">包含高性能電鋸、手持電鑽、除草機、農務工具與整地工具。支持以勞務協助（如協助打草）進行租借折抵。</p>
+              </div>
+            </div>
+            <div class="store-card glass-card">
+              <div class="store-card-visual">🚲</div>
+              <div class="store-card-body">
+                <h4>「緩騎專用」慢速單車</h4>
+                <p class="store-card-price">NT$ 100 <span class="price-unit">/ 日 (學員半價)</span></p>
+                <p class="store-card-desc">特別選用的舒適慢速單車，鼓勵學員以時速 10 公里的速度慢遊都蘭小鎮，感受山風與海風的溫柔撫摸。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Podcast & Audio Player (播客影音中心) -->
   <section class="podcast-section" id="podcast">
     <div class="container">
@@ -803,6 +2550,7 @@
         <div class="podcast-playlist">
           <h3 class="playlist-header">🎙️ 節目播放清單</h3>
           <div class="playlist-items" id="playlistItems">
+            
             <div class="playlist-item active" data-index="0" data-src="simulated_audio_1" data-duration="12:04">
               <span class="play-indicator">▶</span>
               <div class="item-meta">
@@ -811,6 +2559,7 @@
               </div>
               <span class="item-duration">12:04</span>
             </div>
+
             <div class="playlist-item" data-index="1" data-src="simulated_audio_2" data-duration="15:30">
               <span class="play-indicator">▶</span>
               <div class="item-meta">
@@ -819,6 +2568,7 @@
               </div>
               <span class="item-duration">15:30</span>
             </div>
+
             <div class="playlist-item" data-index="2" data-src="simulated_audio_3" data-duration="09:45">
               <span class="play-indicator">▶</span>
               <div class="item-meta">
@@ -827,6 +2577,7 @@
               </div>
               <span class="item-duration">09:45</span>
             </div>
+
           </div>
         </div>
 
@@ -846,11 +2597,13 @@
 
           <!-- Controls -->
           <div class="player-controls">
+            <!-- Time tracker -->
             <div class="time-slider-container">
               <span id="currentTime">00:00</span>
               <input type="range" id="timeSlider" class="time-slider" min="0" max="100" value="0">
               <span id="totalDuration">12:04</span>
             </div>
+            <!-- Action buttons -->
             <div class="control-buttons">
               <button class="btn-ctrl" id="btnPrev" aria-label="上一首">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" x2="5" y1="19" y2="5"/></svg>
@@ -865,7 +2618,7 @@
             </div>
           </div>
 
-          <!-- Transcript -->
+          <!-- Transcript/Lyrics Toggle -->
           <div class="transcript-box">
             <div class="transcript-header">
               <span>💬 播客即時精選逐字稿</span>
@@ -880,12 +2633,24 @@
               <p class="lyric-line" data-time="35"><strong>[00:35]</strong> 歡迎來到都蘭共學堂！在這裡，我們不講複雜的代碼，我們學 AI、也學生活。</p>
             </div>
           </div>
+
         </div>
+      </div>
+      <div class="archive-links-wrap" id="archiveLinks">
+        <a href="https://www.youtube.com/@LearnDulanWay" target="_blank" class="archive-btn btn-yt" id="btnYoutube">
+          <span>📺 前往 YouTube 官方頻道 @LearnDulanWay</span>
+        </a>
+        <a href="AI學習筆記_精選總集.md" target="_blank" class="archive-btn btn-md" id="btnNotes">
+          <span>📖 閱讀共學筆記《精選總集》(.md)</span>
+        </a>
+        <a href="AI學習筆記_精選總集.docx" download class="archive-btn btn-md" id="btnNotesDocx">
+          <span>📥 下載 Word 格式總集 (.docx)</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Form -->
+  <!-- Interactive Registration Form (預約報名系統) -->
   <section class="register-section" id="register">
     <div class="container">
       <div class="register-layout glass-card">
@@ -902,6 +2667,7 @@
         
         <div class="register-form-panel">
           <form id="enrollmentForm" action="#" method="POST">
+            
             <div class="form-group">
               <label for="studentName">姓名 / 稱呼 <span class="required">*</span></label>
               <input type="text" id="studentName" name="name" required placeholder="例如：林阿芬">
@@ -940,6 +2706,7 @@
               </div>
             </div>
 
+            <!-- Dynamic Barter/Payment Options -->
             <div class="form-group" id="paymentOptionsContainer">
               <label>學費方案與支付方式 <span class="required">*</span></label>
               <div class="payment-selector">
@@ -954,11 +2721,14 @@
               </div>
             </div>
 
+            <!-- Barter Details (Dynamic display) -->
             <div class="form-group barter-details-panel hidden" id="barterPanel">
               <label for="barterProposal">您的「以物易物」提案內容 <span class="required">*</span></label>
-              <textarea id="barterProposal" name="barter_proposal" placeholder="例如：自產有機咖啡豆 3 磅、手工烘焙歐式麵包 10 份、或者協助莊園鋤草 10 小時..."></textarea>
+              <textarea id="barterProposal" name="barter_proposal" placeholder="例如：自產有機咖啡豆 3 磅、手工烘焙歐式麵包 10 份、或者協助莊園鋤草/修剪樹木 10 小時..."></textarea>
+              <p class="help-text">💡 助教收到提案後會與您聯繫，共同討論並確認折抵細節。</p>
             </div>
 
+            <!-- Lodging Interest (Dynamic display for visitors) -->
             <div class="form-group lodging-panel hidden" id="lodgingPanel">
               <label>🏡 「四季八里莊園」加購住宿意願</label>
               <div class="checkbox-group">
@@ -970,47 +2740,75 @@
               </div>
             </div>
 
+            <!-- Course Selection -->
             <div class="form-group">
-              <label for="expectations">您最希望透過 AI 解決什麼日常問題 / 工作痛點？</label>
+              <label for="courseSelect">欲選讀的課程或體驗項目 <span class="required">*</span></label>
+              <select id="courseSelect" name="course_select" class="form-select" required style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(15, 23, 42, 0.6); color: var(--text-color); margin-top: 0.5rem; outline: none; font-size: 0.95rem;">
+                <option value="" disabled selected>請選擇您想預約的課程...</option>
+                <optgroup label="💻 AI 與慢活科技">
+                  <option value="用 AI 翻轉人生">用 AI 翻轉人生 (阿中)</option>
+                  <option value="哈爸 AI 慢活共創營">哈爸 AI 慢活共創營 (哈爸)</option>
+                </optgroup>
+                <optgroup label="🌱 生態與山海實作">
+                  <option value="綠光食物森林學校">綠光食物森林學校 (施炳霖)</option>
+                  <option value="都蘭山定點觀察">都蘭山定點觀察 (施炳霖)</option>
+                  <option value="衝浪與海洋漂浮">衝浪與海洋漂浮 (阿中)</option>
+                </optgroup>
+                <optgroup label="🔨 工藝、寫作與藝術">
+                  <option value="人生寫作課">人生寫作課 (江冠明)</option>
+                  <option value="古典吉他與民謠">古典吉他與民謠 (陽光道)</option>
+                  <option value="用月琴吟恆春古調">用月琴吟恆春古調 (在地)</option>
+                  <option value="陶藝創作">陶藝創作 (洋洋)</option>
+                  <option value="木工與書法教室">木工與書法教室 (阿中)</option>
+                </optgroup>
+                <optgroup label="🧘 身心靈探索與成長">
+                  <option value="身心靈探索">身心靈探索 (gunja)</option>
+                  <option value="靈魂治療">靈魂治療 (Rebaca)</option>
+                  <option value="療癒角落 (木沐沐)">療癒角落 -- 木沐沐 (蕙君)</option>
+                  <option value="職涯發展規劃">職涯發展規劃 (林玉鳳)</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="expectations">您最希望透過共學解決什麼日常問題 / 自我期待？</label>
               <textarea id="expectations" name="expectations" rows="3" placeholder="例如：想整理自己的故事但不知道怎麼下筆、手機能不能自動記帳、想為自家的農產品寫文案..."></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block" id="btnSubmit">送出預約申請</button>
+
           </form>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- Base & Contact (基地與據點) -->
   <section class="contact-section" id="contact">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title" id="contactTitle">實體基地與聯絡窗口</h2>
+        <p class="section-subtitle" id="contactSubtitle">歡迎預約參訪、報名共學或洽詢以物易物提案</p>
       </div>
+
       <div class="grid grid-2" id="contactGrid">
+        
+        <!-- Base 1 -->
         <div class="contact-card glass-card">
-          <div class="contact-badge">📍 都蘭基地</div>
+          <div class="contact-icon">🏡</div>
           <h3>四季八里自然莊園</h3>
-          <hr class="card-divider">
-          <ul class="contact-details-list">
-            <li><strong>🏠 地址：</strong>台東縣東河鄉都蘭村舊部 14 之 2 號</li>
-            <li><strong>🎸 主要活動：</strong>吉他、身心靈探索、古調、AI 共創營都蘭教室</li>
-            <li><strong>👤 聯絡窗口：</strong>陳豊鍾（阿鐘）</li>
-            <li><strong>📞 電話 / LINE：</strong>0908853322</li>
-          </ul>
+          <p>共學堂主要的實體基地，坐落於都蘭山麓，坐擁無敵海景。身心靈課程、木工書法與恆春古調在此舉辦。</p>
+          <p class="contact-detail">📍 台東縣東河鄉都蘭村舊部 14 之 2 號</p>
         </div>
+
+        <!-- Base 2 -->
         <div class="contact-card glass-card">
-          <div class="contact-badge">📍 台東市據點</div>
-          <h3>生活管家就醬點</h3>
-          <hr class="card-divider">
-          <ul class="contact-details-list">
-            <li><strong>🏠 地址：</strong>台東市正氣北路 166 巷 90 號</li>
-            <li><strong>💻 主要活動：</strong>週三 AI 補課輔導、AI 共創營台東市教室</li>
-            <li><strong>👤 聯絡窗口：</strong>陳品碩</li>
-            <li><strong>📞 電話 / LINE：</strong>0972928864</li>
-          </ul>
+          <div class="contact-icon">☕</div>
+          <h3>台東市區輔導教室</h3>
+          <p>位於市區的「生活管家就醬點」，每週三下午在此舉辦 AI 補課、數位問題排障與諮詢。</p>
+          <p class="contact-detail">📍 台東市新生路 379 號 (生活管家就醬點)</p>
         </div>
+
       </div>
     </div>
   </section>
@@ -1032,406 +2830,19 @@
     </div>
   </footer>
 
-  <!-- Modal -->
+  <!-- Submission Success Modal -->
   <div class="modal-overlay hidden" id="successModal">
     <div class="modal-content glass-card">
       <span class="modal-success-icon">🎉</span>
       <h3 id="modalTitle">報名申請成功！</h3>
       <p id="modalDesc">我們已收到您的共學預約與以物易物提案。</p>
-      <div class="modal-summary glass-card" id="modalSummary"></div>
-      <p class="modal-next-steps">助教將於 24 小時內透過電話或 LINE 與您聯繫確認！</p>
-      <button class="btn btn-primary" id="closeModalBtn">好，我知道了</button>
+      <div class="modal-summary glass-card" id="modalSummary">
+        <!-- Will be filled by JS -->
+      </div>
+      <button class="btn btn-primary" id="closeModalBtn">我知道了</button>
     </div>
   </div>
 
-  <!-- JavaScript -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // 1. 導覽列滾動與手機版選單
-      const navbar = document.getElementById('navbar');
-      const mobileToggle = document.getElementById('mobileToggle');
-      const navMenu = document.getElementById('navMenu');
-      const navLinks = document.querySelectorAll('.nav-link, .nav-btn');
-
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) navbar.classList.add('scrolled');
-        else navbar.classList.remove('scrolled');
-      });
-
-      mobileToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('open');
-        const isOpen = navMenu.classList.contains('open');
-        mobileToggle.innerHTML = isOpen 
-          ? `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>`
-          : `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>`;
-      });
-
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          if (navMenu.classList.contains('open')) {
-            navMenu.classList.remove('open');
-            mobileToggle.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>`;
-          }
-        });
-      });
-
-      // 2. 深淺色切換
-      const themeToggle = document.getElementById('themeToggle');
-      const htmlEl = document.documentElement;
-      const savedTheme = localStorage.getItem('theme') || 'dark';
-      htmlEl.className = savedTheme;
-
-      themeToggle.addEventListener('click', () => {
-        if (htmlEl.classList.contains('dark')) {
-          htmlEl.className = 'light';
-          localStorage.setItem('theme', 'light');
-        } else {
-          htmlEl.className = 'dark';
-          localStorage.setItem('theme', 'dark');
-        }
-      });
-
-      // 3. 故事輪播
-      const slides = document.querySelectorAll('.story-slide');
-      const dots = document.querySelectorAll('.dot');
-      let currentSlideIndex = 0;
-      let carouselInterval;
-
-      function showSlide(index) {
-        slides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-        slides[index].classList.add('active');
-        dots[index].classList.add('active');
-        currentSlideIndex = index;
-      }
-
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-          showSlide(index);
-          resetAutoPlay();
-        });
-      });
-
-      function startAutoPlay() {
-        carouselInterval = setInterval(() => {
-          let nextIndex = (currentSlideIndex + 1) % slides.length;
-          showSlide(nextIndex);
-        }, 8000);
-      }
-
-      function resetAutoPlay() {
-        clearInterval(carouselInterval);
-        startAutoPlay();
-      }
-      startAutoPlay();
-
-      // 4. 播放器真實音訊控制 (Audio Player)
-      const tracks = [
-        {
-          title: "當老師的價值只剩下「陪伴」",
-          subtitle: "都蘭 AI 補課筆記與學習的終極轉型",
-          file: "assets/teacher_companionship.m4a",
-          lyrics: [
-            { time: 0, text: "想像一下這個畫面：你今天準備去報名一堂最尖端的人工智慧科技課程..." },
-            { time: 8, text: "但你手上拿去繳學費的不是信用卡，也不是一疊千元鈔票，而是..." },
-            { time: 15, text: "一袋你自己辛苦種出來的有機稻米，或者是早上剛出爐的手作麵包對吧？" },
-            { time: 22, text: "沒錯，這聽起來就像科幻小說裡才會出現的烏托邦情節。" },
-            { time: 30, text: "但這卻是此時此刻正在台灣台東都蘭真實發生的事。" },
-            { time: 35, text: "歡迎來到都蘭共學堂！在這裡，我們不講複雜的代碼，我們學 AI、也學生活。" }
-          ]
-        },
-        {
-          title: "用 Gemini 救回鎖死的三星手機",
-          subtitle: "都蘭共學堂的長輩數位賦能實戰",
-          file: "assets/rescue_phone.m4a",
-          lyrics: [
-            { time: 0, text: "你玩過密室逃脫嗎？就是那種不小心觸發陷阱，然後聽到大門上鎖的那種窒息感..." },
-            { time: 8, text: "今天的故事主角不是探險家，而是一位溫暖的貴美阿嬤。" },
-            { time: 14, text: "阿嬤在共學營第二堂課時，意外為自己的三星手機設定了密碼，下一秒卻忘光了。" }
-          ]
-        },
-        {
-          title: "學 AI 先開除老師",
-          subtitle: "從廚房隱喻看 AI 時代終身學習",
-          file: "assets/fire_teacher.m4a",
-          lyrics: [
-            { time: 0, text: "今天我們要來探討一個非常顛覆的觀點：『學 AI，要先學會開除老師？』" },
-            { time: 7, text: "這並不是說老師不重要，而是傳統『傳授硬資訊』的老師功能正被 AI 徹底取代。" }
-          ]
-        }
-      ];
-
-      let currentTrackIndex = 0;
-      let isPlaying = false;
-      let isDraggingSlider = false;
-
-      // 建立 HTML5 Audio 物件
-      const audio = new Audio();
-
-      const vinylDisc = document.getElementById('vinylDisc');
-      const playerTrackTitle = document.getElementById('playerTrackTitle');
-      const playerTrackSubtitle = document.getElementById('playerTrackSubtitle');
-      const currentTimeText = document.getElementById('currentTime');
-      const totalDurationText = document.getElementById('totalDuration');
-      const timeSlider = document.getElementById('timeSlider');
-      const btnPlay = document.getElementById('btnPlay');
-      const iconPlay = btnPlay.querySelector('.icon-play');
-      const iconPause = btnPlay.querySelector('.icon-pause');
-      const playlistItems = document.querySelectorAll('.playlist-item');
-      const transcriptContent = document.getElementById('transcriptContent');
-      const toggleTranscriptBtn = document.getElementById('toggleTranscriptBtn');
-
-      function formatTime(seconds) {
-        if (isNaN(seconds)) return "00:00";
-        const mins = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-      }
-
-      function updatePlayStateUI() {
-        if (isPlaying) {
-          vinylDisc.style.animationPlayState = 'running';
-          iconPlay.classList.add('hidden');
-          iconPause.classList.remove('hidden');
-        } else {
-          vinylDisc.style.animationPlayState = 'paused';
-          iconPlay.classList.remove('hidden');
-          iconPause.classList.add('hidden');
-        }
-      }
-
-      function loadTrack(index) {
-        const track = tracks[index];
-        currentTrackIndex = index;
-        playerTrackTitle.textContent = track.title;
-        playerTrackSubtitle.textContent = track.subtitle;
-        
-        audio.src = track.file;
-        audio.load();
-        
-        timeSlider.value = 0;
-        currentTimeText.textContent = "00:00";
-        totalDurationText.textContent = "--:--";
-        
-        playlistItems.forEach(item => item.classList.remove('active'));
-        playlistItems[index].classList.add('active');
-        renderTranscript(track.lyrics);
-        
-        if (isPlaying) {
-          audio.play().catch(e => console.log("Play failed: ", e));
-        }
-        updatePlayStateUI();
-      }
-
-      function renderTranscript(lyrics) {
-        transcriptContent.innerHTML = lyrics.map((line) => `
-          <p class="lyric-line" data-time="${line.time}">
-            <strong>[${formatTime(line.time)}]</strong> ${line.text}
-          </p>
-        `).join('');
-        transcriptContent.scrollTop = 0;
-      }
-
-      function updateLyricHighlight(seconds) {
-        const lines = transcriptContent.querySelectorAll('.lyric-line');
-        let activeLine = null;
-        lines.forEach(line => {
-          const lineTime = parseInt(line.getAttribute('data-time'), 10);
-          if (seconds >= lineTime) activeLine = line;
-        });
-        if (activeLine) {
-          lines.forEach(line => line.classList.remove('active'));
-          activeLine.classList.add('active');
-          const containerHeight = transcriptContent.clientHeight;
-          const lineOffsetTop = activeLine.offsetTop;
-          const lineHeight = activeLine.clientHeight;
-          transcriptContent.scrollTo({
-            top: lineOffsetTop - (containerHeight / 2) + (lineHeight / 2),
-            behavior: 'smooth'
-          });
-        }
-      }
-
-      audio.addEventListener('loadedmetadata', () => {
-        totalDurationText.textContent = formatTime(audio.duration);
-      });
-
-      audio.addEventListener('timeupdate', () => {
-        if (!isDraggingSlider) {
-          const current = audio.currentTime;
-          const duration = audio.duration || 1;
-          timeSlider.value = (current / duration) * 100;
-          currentTimeText.textContent = formatTime(current);
-          updateLyricHighlight(current);
-        }
-      });
-
-      audio.addEventListener('ended', () => {
-        let nextIdx = (currentTrackIndex + 1) % tracks.length;
-        isPlaying = true;
-        loadTrack(nextIdx);
-      });
-
-      audio.addEventListener('play', () => {
-        isPlaying = true;
-        updatePlayStateUI();
-      });
-
-      audio.addEventListener('pause', () => {
-        isPlaying = false;
-        updatePlayStateUI();
-      });
-
-      btnPlay.addEventListener('click', () => {
-        if (audio.paused) {
-          audio.play().then(() => {
-            isPlaying = true;
-            updatePlayStateUI();
-          }).catch(err => console.log(err));
-        } else {
-          audio.pause();
-          isPlaying = false;
-          updatePlayStateUI();
-        }
-      });
-
-      document.getElementById('btnPrev').addEventListener('click', () => {
-        let prevIdx = currentTrackIndex - 1;
-        if (prevIdx < 0) prevIdx = tracks.length - 1;
-        loadTrack(prevIdx);
-      });
-
-      document.getElementById('btnNext').addEventListener('click', () => {
-        let nextIdx = (currentTrackIndex + 1) % tracks.length;
-        loadTrack(nextIdx);
-      });
-
-      playlistItems.forEach(item => {
-        item.addEventListener('click', () => {
-          const index = parseInt(item.getAttribute('data-index'), 10);
-          isPlaying = true;
-          loadTrack(index);
-        });
-      });
-
-      timeSlider.addEventListener('mousedown', () => { isDraggingSlider = true; });
-      timeSlider.addEventListener('touchstart', () => { isDraggingSlider = true; });
-
-      timeSlider.addEventListener('input', () => {
-        const duration = audio.duration || 1;
-        const progressPercent = parseFloat(timeSlider.value);
-        const targetSeconds = (progressPercent / 100) * duration;
-        currentTimeText.textContent = formatTime(targetSeconds);
-      });
-
-      timeSlider.addEventListener('change', () => {
-        const duration = audio.duration || 1;
-        const progressPercent = parseFloat(timeSlider.value);
-        audio.currentTime = (progressPercent / 100) * duration;
-        isDraggingSlider = false;
-      });
-
-      toggleTranscriptBtn.addEventListener('click', () => {
-        const isExpanded = transcriptContent.classList.contains('expanded');
-        if (isExpanded) {
-          transcriptContent.classList.remove('expanded');
-          toggleTranscriptBtn.textContent = "顯示全文";
-        } else {
-          transcriptContent.classList.add('expanded');
-          toggleTranscriptBtn.textContent = "收合內容";
-        }
-      });
-
-      loadTrack(0);
-
-      // 5. 表單動態連動
-      const radioLocal = document.getElementById('radioLocal');
-      const radioVisitor = document.getElementById('radioVisitor');
-      const payCashLabel = document.getElementById('payCashLabel');
-      const payBarterLabel = document.getElementById('payBarterLabel');
-      const payCash = document.getElementById('payCash');
-      const payBarter = document.getElementById('payBarter');
-      const barterPanel = document.getElementById('barterPanel');
-      const barterProposal = document.getElementById('barterProposal');
-      const lodgingPanel = document.getElementById('lodgingPanel');
-      const needLodging = document.getElementById('needLodging');
-
-      function handleIdentityChange() {
-        if (radioLocal.checked) {
-          payBarterLabel.style.display = "flex";
-          lodgingPanel.classList.add('hidden');
-          needLodging.checked = false;
-        } else {
-          payBarterLabel.style.display = "none";
-          payCash.checked = true;
-          payCashLabel.classList.add('active');
-          payBarterLabel.classList.remove('active');
-          barterPanel.classList.add('hidden');
-          barterProposal.required = false;
-          lodgingPanel.classList.remove('hidden');
-        }
-      }
-
-      radioLocal.addEventListener('change', handleIdentityChange);
-      radioVisitor.addEventListener('change', handleIdentityChange);
-
-      payCash.addEventListener('change', () => {
-        payCashLabel.classList.add('active');
-        payBarterLabel.classList.remove('active');
-        barterPanel.classList.add('hidden');
-        barterProposal.required = false;
-      });
-
-      payBarter.addEventListener('change', () => {
-        payBarterLabel.classList.add('active');
-        payCashLabel.classList.remove('active');
-        barterPanel.classList.remove('hidden');
-        barterProposal.required = true;
-      });
-
-      // 6. 表單提交
-      const enrollmentForm = document.getElementById('enrollmentForm');
-      const successModal = document.getElementById('successModal');
-      const modalSummary = document.getElementById('modalSummary');
-      const closeModalBtn = document.getElementById('closeModalBtn');
-
-      enrollmentForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('studentName').value.trim();
-        const phone = document.getElementById('studentPhone').value.trim();
-        const line = document.getElementById('studentLine').value.trim() || "未提供";
-        const identity = radioLocal.checked ? "在地居民 / 小農" : "外縣市學員";
-        const payment = payCash.checked ? "現金支持 ($3,000)" : "以物易物提案";
-        const barterContent = barterProposal.value.trim();
-        const lodgingText = needLodging.checked ? "需要" : "不需要";
-        const expectation = document.getElementById('expectations').value.trim() || "無";
-
-        let summaryHtml = `
-          <p><strong>學員姓名：</strong>${name}</p>
-          <p><strong>聯絡電話：</strong>${phone} ｜ <strong>LINE ID：</strong>${line}</p>
-          <p><strong>身分類別：</strong>${identity}</p>
-          <p><strong>學費方案：</strong>${payment}</p>
-        `;
-        if (payBarter.checked && radioLocal.checked) {
-          summaryHtml += `<p><strong>以物易物內容：</strong>${barterContent}</p>`;
-        }
-        if (radioVisitor.checked) {
-          summaryHtml += `<p><strong>莊園住宿意願：</strong>${lodgingText}</p>`;
-        }
-        summaryHtml += `<p><strong>AI 學習期待：</strong>${expectation}</p>`;
-
-        modalSummary.innerHTML = summaryHtml;
-        successModal.classList.remove('hidden');
-        if (isPlaying) { isPlaying = false; stopPlaybackSimulation(); }
-      });
-
-      closeModalBtn.addEventListener('click', () => {
-        successModal.classList.add('hidden');
-        enrollmentForm.reset();
-        handleIdentityChange();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    });
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>

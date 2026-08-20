@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    四季八里都蘭共學堂 - 全域設計系統 & 樣式表 (style.css)
    ========================================================================== */
 
@@ -1635,6 +1635,231 @@ textarea {
   margin-bottom: 2rem !important;
 }
 
+/* --- 共學課程 (Courses Section) --- */
+.courses-section {
+  position: relative;
+}
+
+.courses-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.course-category-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.category-title {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  border-left: 4px solid var(--secondary-color);
+  padding-left: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.course-card {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.6rem;
+  gap: 0.5rem;
+}
+
+.course-header h4 {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.course-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+}
+
+.badge-blue {
+  background: rgba(59, 130, 246, 0.1);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.badge-purple {
+  background: rgba(139, 92, 246, 0.1);
+  color: #a78bfa;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.badge-amber {
+  background: rgba(245, 158, 11, 0.1);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.course-teacher {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 0.8rem;
+}
+
+.course-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* --- 共生商店 (Stores Section) --- */
+.stores-section {
+  position: relative;
+}
+
+.store-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.store-tab-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.75rem 1.8rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.store-tab-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.store-tab-btn.active {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+}
+
+.store-panels {
+  position: relative;
+}
+
+.store-panel {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.store-panel.active {
+  display: block;
+  opacity: 1;
+}
+
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.store-card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem;
+  align-items: flex-start;
+}
+
+.store-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.store-card-visual {
+  font-size: 2.2rem;
+  line-height: 1;
+  background: rgba(255, 255, 255, 0.03);
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.store-card-body {
+  flex-grow: 1;
+}
+
+.store-card-body h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: var(--text-primary);
+}
+
+.store-card-price {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 0.8rem;
+}
+
+.price-unit {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.store-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* 出租單車微調與單車標章 */
+.store-panel#store-panel-rental .store-card-visual {
+  border-color: rgba(245, 158, 11, 0.25);
+}
+
 /* --- RWD 響應式佈局調整 (Media Queries) --- */
 
 /* 平板寬度 (992px 以下) */
@@ -1654,10 +1879,11 @@ textarea {
     justify-content: center;
   }
   
-  .grid-4 {
+
+  .grid-4, .category-grid, .store-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .camp-section .grid-2 {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -1757,8 +1983,16 @@ textarea {
     padding: 0.75rem 0;
   }
   
-  .grid-4 {
+
+  .grid-4, .category-grid, .store-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .store-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
   }
   
   .form-row {

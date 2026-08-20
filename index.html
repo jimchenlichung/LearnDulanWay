@@ -1,817 +1,849 @@
 <!DOCTYPE html>
-<html lang="zh-TW" class="scroll-smooth">
+<html lang="zh-TW" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>都蘭共學堂 LearnDulanWay｜用 AI 與微習慣，翻轉第二人生</title>
-  <meta name="description" content="都蘭共學堂：如何翻轉人生？從共學出發，邁向共生。結合 AI 智慧與微習慣，以都蘭山海為教室，陪伴 50-70 歲熟齡朋友梳理生命故事，開啟身心靈豐盛。">
+  <title>🌿 四季八里都蘭共學堂 ╳ 四季八里自然莊園 | 一手拿滑鼠，一手摸泥土</title>
+  <meta name="description" content="四季八里都蘭共學堂提供結合在地自然、生活慢活與 AI 科技賦能的共學體驗。倡導「學 AI 先開除老師」、以物易物折抵學費、渡假式陪伴共創，以山海為教室，開啟第二人生的自由。">
   
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            dulan: {
-              forest: '#1E3F33',   // 深山海綠
-              dark: '#122820',     // 墨綠底色
-              sand: '#F9F6F0',     // 暖陽沙米色
-              sandDark: '#EFEAE1',
-              clay: '#C86D51',     // 陶土暖橘
-              clayHover: '#B25A3F',
-              wood: '#8C6849',     // 漂流木棕
-              leaf: '#4A7C59'      // 森林綠
-            }
-          },
-          fontFamily: {
-            serif: ['"Noto Serif TC"', 'serif'],
-            sans: ['"Noto Sans TC"', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    body {
-      background-color: #F9F6F0;
-      color: #2D3748;
-      font-family: 'Noto Sans TC', sans-serif;
-      transition: font-size 0.2s ease;
-    }
-    .font-serif-tc {
-      font-family: 'Noto Serif TC', serif;
-    }
-    /* 熟齡大字體模式類別 */
-    body.text-xl-mode {
-      font-size: 20px;
-    }
-    body.text-xl-mode h1 { font-size: 3.5rem; }
-    body.text-xl-mode h2 { font-size: 2.75rem; }
-    body.text-xl-mode p { font-size: 1.35rem; }
-    
-    /* 自訂平滑滾動與陰影 */
-    .soft-shadow {
-      box-shadow: 0 10px 30px -5px rgba(30, 63, 51, 0.08);
-    }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
-<body id="body-root" class="antialiased text-gray-800 selection:bg-dulan-clay selection:text-white">
+<body>
 
-  <!-- 頂部導航列 (Navbar) -->
-  <header class="sticky top-0 z-40 bg-dulan-forest text-white shadow-lg border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
-      <!-- 品牌 Logo -->
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-11 h-11 rounded-full bg-dulan-clay flex items-center justify-center font-serif-tc font-bold text-2xl text-white shadow-md group-hover:scale-105 transition">
-          蘭
-        </div>
-        <div>
-          <span class="text-xl sm:text-2xl font-bold font-serif-tc tracking-wider block">都蘭共學堂</span>
-          <span class="text-[11px] text-amber-200/80 tracking-widest block uppercase font-mono">LearnDulanWay</span>
-        </div>
+  <!-- Navigation Bar -->
+  <header class="navbar-area">
+    <div class="navbar-container">
+      <a href="#" class="nav-logo" id="navLogo">
+        <span class="logo-emoji">🌿</span>
+        <span class="logo-text">四季八里都蘭共學堂</span>
       </a>
-
-      <!-- 桌面版選單 -->
-      <nav class="hidden lg:flex items-center gap-7 text-base font-medium">
-        <a href="#about" class="hover:text-amber-200 transition">精神與理念</a>
-        <a href="#ai-writing" class="hover:text-amber-200 transition flex items-center gap-1">
-          <span class="text-xs bg-dulan-clay px-1.5 py-0.5 rounded text-white">旗艦</span> 智慧寫作
-        </a>
-        <a href="#courses" class="hover:text-amber-200 transition">山海共學矩陣</a>
-        <a href="#habits-demo" class="hover:text-amber-200 transition">小習慣體驗器</a>
-        <a href="#shop" class="hover:text-amber-200 transition">共生生活館</a>
-        <a href="#contact" class="hover:text-amber-200 transition">教室地點</a>
+      
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="#philosophy" class="nav-link" id="link-philosophy">理念精神</a>
+        <a href="#schedule" class="nav-link" id="link-schedule">山海週曆</a>
+        <a href="#courses" class="nav-link" id="link-courses">共學課程</a>
+        <a href="#stores" class="nav-link" id="link-stores">共生商店</a>
+        <a href="#stories" class="nav-link" id="link-stories">實戰故事</a>
+        <a href="#podcast" class="nav-link" id="link-podcast">播客影音</a>
+        <a href="#register" class="nav-btn" id="link-register">預約報名</a>
       </nav>
 
-      <!-- 熟齡友善無障礙控制列 -->
-      <div class="flex items-center gap-2 sm:gap-3">
-        <!-- 字體放大按鈕 -->
-        <button onclick="toggleFontSize()" id="fontBtn" class="bg-dulan-dark hover:bg-black/30 text-stone-200 px-3 py-1.5 rounded-full text-xs sm:text-sm border border-stone-600 transition flex items-center gap-1" title="放大/縮小字體">
-          <span class="text-base">🔍</span>
-          <span id="fontBtnText">大字體</span>
+      <!-- Right Actions: Theme Toggle & Mobile Toggle -->
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="切換深淺模式">
+          <!-- Sun Icon (Dark Mode active) -->
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <!-- Moon Icon (Light Mode active) -->
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
         </button>
-
-        <!-- 一鍵朗讀按鈕 -->
-        <button onclick="readPageText()" id="ttsBtn" class="bg-amber-200/20 hover:bg-amber-200/30 text-amber-200 px-3 py-1.5 rounded-full text-xs sm:text-sm border border-amber-200/40 transition flex items-center gap-1">
-          <span class="text-base">🔊</span>
-          <span id="ttsBtnText" class="hidden sm:inline">語音導覽</span>
-        </button>
-
-        <!-- 行動版選單開關 -->
-        <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-white hover:text-amber-200 focus:outline-none">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
+        
+        <button class="mobile-toggle" id="mobileToggle" aria-label="打開選單">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
         </button>
       </div>
-    </div>
-
-    <!-- 行動裝置下拉選單 -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-dulan-dark border-t border-white/10 px-6 py-4 space-y-3 font-medium text-lg">
-      <a href="#about" onclick="toggleMobileMenu()" class="block py-1 hover:text-amber-200">精神與理念</a>
-      <a href="#ai-writing" onclick="toggleMobileMenu()" class="block py-1 text-amber-200">✨ 智慧寫作與生命紀錄</a>
-      <a href="#courses" onclick="toggleMobileMenu()" class="block py-1 hover:text-amber-200">山海共學課程（14門）</a>
-      <a href="#habits-demo" onclick="toggleMobileMenu()" class="block py-1 hover:text-amber-200">AI + 微習慣體驗器</a>
-      <a href="#shop" onclick="toggleMobileMenu()" class="block py-1 hover:text-amber-200">共生生活館 & 租賃</a>
-      <a href="#contact" onclick="toggleMobileMenu()" class="block py-1 hover:text-amber-200">聯絡與教室位置</a>
     </div>
   </header>
 
-  <!-- 1. Hero 主視覺區塊 -->
-  <section class="relative bg-dulan-forest text-white py-16 md:py-24 px-4 sm:px-6 overflow-hidden">
-    <!-- 背景紋理裝飾 -->
-    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"></div>
-    <div class="absolute -top-24 -right-24 w-96 h-96 bg-dulan-clay/20 rounded-full blur-3xl pointer-events-none"></div>
-
-    <div class="max-w-5xl mx-auto text-center relative z-10">
-      <div class="inline-flex items-center gap-2 bg-dulan-dark/80 text-amber-200 px-4 py-1.5 rounded-full text-sm sm:text-base font-medium mb-6 border border-amber-200/20 shadow-sm">
-        <span>🌿</span> 人生 70 才開始 ‧ 從共學出發，邁向共生
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="badge" id="heroBadge">🌿 都蘭共學堂 ╳ LearnDulanWay</div>
+        <h1 class="hero-title" id="heroTitle">如何翻轉人生，<br>從共學出發，<span class="highlight-gradient">邁向共生</span></h1>
+        <p class="hero-subtitle" id="heroSubtitle">以都蘭山海為教室，用 AI 與小習慣為工具，開啟身心靈的探索，接受生命豐盛。</p>
+        <div class="hero-actions">
+          <a href="#courses" class="btn btn-primary" id="heroBtnCourses">探索共學課程</a>
+          <a href="#stores" class="btn btn-secondary" id="heroBtnStores">租借與逛商店</a>
+        </div>
       </div>
-      
-      <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold font-serif-tc leading-tight mb-6 tracking-wide">
-        用 AI 成為你的專屬筆桿<br>
-        <span class="text-amber-100">在都蘭山海間，重新寫下第二人生</span>
-      </h1>
-      
-      <p class="text-lg sm:text-2xl text-stone-200 leading-relaxed mb-10 max-w-3xl mx-auto font-light">
-        工具：<strong class="text-amber-200 font-semibold">AI + 小習慣</strong> ｜ 教室：<strong class="text-amber-200 font-semibold">都蘭山海大地</strong><br>
-        不必學繁雜電腦，每天語音對話 5 分鐘，大半生智慧變成書。
-      </p>
+      <div class="hero-visual">
+        <div class="image-wrapper glass-card">
+          <img src="assets/hero_bg.jpg" alt="都蘭山海與 AI 科技的融合" id="heroImg">
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a href="#ai-writing" class="w-full sm:w-auto bg-dulan-clay hover:bg-dulan-clayHover text-white text-lg sm:text-xl font-bold px-8 py-4 rounded-full shadow-xl transition transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2">
-          <span>✨</span> 開啟我的第一篇生命故事
+  <!-- Philosophy Section (理念精神) -->
+  <section class="philosophy-section" id="philosophy">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" id="philosophyTitle">共學與共生精神</h2>
+        <p class="section-subtitle" id="philosophySubtitle">結合山海自然環境、人工智慧科技、身心靈療癒與共享經濟</p>
+      </div>
+      <div class="grid grid-4" id="philosophyGrid">
+        
+        <!-- Card 1 -->
+        <div class="claim-card glass-card">
+          <div class="card-icon-wrap bg-blue-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 5-5-3-5 3"/><path d="m17 19-5 3-5-3"/><path d="M2 12h20"/><path d="m5 7 3 5-3 5"/><path d="m19 7-3 5 3 5"/></svg>
+          </div>
+          <h3 class="card-title">🔄 翻轉與共生</h3>
+          <p class="card-desc">從個人自我學習翻轉出發，最終融入社區，與居民共學、同頻，共同邁向自然與和諧的共生關係。</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="claim-card glass-card">
+          <div class="card-icon-wrap bg-green-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="M15 3v18"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
+          </div>
+          <h3 class="card-title">🛠️ 雙核心工具</h3>
+          <p class="card-desc">以最先進的 AI 科技（如 Gemini、NotebookLM）搭配每日生活微小習慣的養成，實現大腦認知的升級與個人效能躍升。</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="claim-card glass-card">
+          <div class="card-icon-wrap bg-amber-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.5 0 2.5 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.5 0 2.5 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.5 0 2.5 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>
+          </div>
+          <h3 class="card-title">🏔️ 山海大教室</h3>
+          <p class="card-desc">擺脫冷冰冰的四壁教室。都蘭山脈、水往上流生態及太平洋海浪即是我們學習自然、汲取生命能量的廣闊教室。</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="claim-card glass-card">
+          <div class="card-icon-wrap bg-purple-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/><path d="M12 7v10"/><path d="M8 12h8"/></svg>
+          </div>
+          <h3 class="card-title">🧘 身心靈探索</h3>
+          <p class="card-desc">藉由靜心內觀、靈魂治療與工藝創作等多元面向探索身心靈，學會愛與關懷，接受宇宙生命豐盛的贈與。</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Weekly Calendar (山海共學生態週曆) -->
+  <section class="schedule-section" id="schedule">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" id="scheduleTitle">山海共學生態週曆</h2>
+        <p class="section-subtitle" id="scheduleSubtitle">規律的生活節奏，在山海與音符中汲取平靜與活力</p>
+      </div>
+
+      <div class="daily-notice glass-card" id="dailyNotice">
+        <span class="notice-icon">🌊</span>
+        <div class="notice-text">
+          <strong>每日山海節律：</strong> 每天下午 16:00 ｜ 鉛橋海灘衝浪與海洋漂浮（視天候海象狀況進行）
+        </div>
+      </div>
+
+      <div class="table-responsive glass-card">
+        <table class="schedule-table" id="scheduleTable">
+          <thead>
+            <tr>
+              <th>頻率 / 時段</th>
+              <th>活動名稱</th>
+              <th>內容重點</th>
+              <th>上課地點</th>
+              <th>類別標籤</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time-col">每週二 09:00</td>
+              <td class="event-name">🎸 古典吉他與民謠</td>
+              <td>古典吉他指法練習、樂理與彈撥交流</td>
+              <td>都蘭 四季八里莊園</td>
+              <td><span class="tag tag-weekly">每週常態</span></td>
+            </tr>
+            <tr>
+              <td class="time-col">每週二 10:30</td>
+              <td class="event-name">🧘 身心靈探索</td>
+              <td>內觀靜心、身心整合與心靈探索</td>
+              <td>都蘭 四季八里莊園</td>
+              <td><span class="tag tag-weekly">每週常態</span></td>
+            </tr>
+            <tr>
+              <td class="time-col">每週三 14:00</td>
+              <td class="event-name">💻 哈爸 AI 補課與操作輔導</td>
+              <td>課堂重點複習、手機與 AI 工具一對一排障</td>
+              <td>台東市 生活管家就醬點</td>
+              <td><span class="tag tag-tutor">每週輔導</span></td>
+            </tr>
+            <tr>
+              <td class="time-col">隔週五 19:30</td>
+              <td class="event-name">🤖 哈爸 AI 慢活共創營</td>
+              <td>雙師線上授課 ＋ 實體課後一小時陪伴實作</td>
+              <td>都蘭莊園 / 市區雙教室 / 線上</td>
+              <td><span class="tag tag-core">重點課程</span></td>
+            </tr>
+            <tr>
+              <td class="time-col">每月第一週 08:00</td>
+              <td class="event-name">🎶 用月琴吟恆春古調</td>
+              <td>傳統民謠演唱、聲音採集與文化交流</td>
+              <td>都蘭 四季八里莊園</td>
+              <td><span class="tag tag-monthly">每月主題</span></td>
+            </tr>
+            <tr>
+              <td class="time-col">每月首週週日</td>
+              <td class="event-name">🦅 都蘭山定點生態觀察</td>
+              <td>鳥類（烏頭翁、大冠鷲）與植物記錄踏查</td>
+              <td>都蘭山步道</td>
+              <td><span class="tag tag-monthly">每月主題</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section (共學課程) -->
+  <section class="courses-section" id="courses">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">共學堂精選課程</h2>
+        <p class="section-subtitle">從硬科技到軟實力，從大地工藝到內在靈性，與大師同頻學習</p>
+      </div>
+
+      <div class="courses-grid">
+        <!-- Category: AI & Tech -->
+        <div class="course-category-group">
+          <h3 class="category-title">💻 AI 與慢活科技</h3>
+          <div class="category-grid">
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <span class="course-badge badge-blue">重點課程</span>
+                <h4>用 AI 翻轉人生</h4>
+              </div>
+              <p class="course-teacher">講師：阿中 (陳豊鍾)</p>
+              <p class="course-desc">將大腦與 AI 深度連結。不談程式代碼，手把手引導學員運用 AI 工具提煉健康紅利、創作紅利與時間紅利，實現第二人生認知升級。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <span class="course-badge badge-blue">重點課程</span>
+                <h4>哈爸 AI 慢活共創營</h4>
+              </div>
+              <p class="course-teacher">講師：哈爸 (許武龍) ╳ 在地助教群</p>
+              <p class="course-desc">由國家級 AI (TAIDE) 第一代 PM 哈爸授課，配合在地陪伴。聚焦於寫書創作、小農進銷存與民宿社群行銷的實戰落地。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category: Art & Culture -->
+        <div class="course-category-group">
+          <h3 class="category-title">🔨 工藝、寫作與藝術</h3>
+          <div class="category-grid">
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <h4>人生寫作課</h4>
+              </div>
+              <p class="course-teacher">講師：江冠明</p>
+              <p class="course-desc">結合語音錄音與 AI 整理，帶領學員挖掘並撰寫自己的生命故事，將大半輩子累積的人生歷練凝結成精采書籍。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <h4>古典吉他與民謠</h4>
+              </div>
+              <p class="course-teacher">講師：陽光道</p>
+              <p class="course-desc">學習古典吉他基礎彈撥與樂理。用雙手撥動琴弦，在都蘭的微風中唱出內在最純粹的旋律與感動。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <span class="course-badge badge-purple">每月常態</span>
+                <h4>用月琴吟恆春古調</h4>
+              </div>
+              <p class="course-teacher">在地傳唱採集 (每月第一週週二上午 8:00)</p>
+              <p class="course-desc">在莊園晨光中，抱起傳統月琴，吟唱悠揚的恆春民謠與古調，進行聲音採集與土地靈魂的文化對話。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <h4>陶藝創作</h4>
+              </div>
+              <p class="course-teacher">講師：洋洋</p>
+              <p class="course-desc">雙手觸摸黏土的芬芳，在捏塑與拉坯中體驗土的延展，並透過高溫燒製將個人的心境定格為實體陶藝。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <h4>木工與書法教室</h4>
+              </div>
+              <p class="course-teacher">講師：阿中</p>
+              <p class="course-desc">靜時揮毫寫字鍛鍊心智定力，動時手持工具進行木工修繕、鋸木實作，修復器物也修復內心。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category: Ecology & Sea -->
+        <div class="course-category-group">
+          <h3 class="category-title">🌱 生態與山海實作</h3>
+          <div class="category-grid">
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <h4>綠光食物森林學校</h4>
+              </div>
+              <p class="course-teacher">講師：施炳霖</p>
+              <p class="course-desc">基於永續農法（Permaculture），在自然林下建構豐富的可食用生態圈，學習如何與自然合作獲取豐盛食物。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <span class="course-badge badge-purple">每月常態</span>
+                <h4>都蘭山定點觀察</h4>
+              </div>
+              <p class="course-teacher">講師：施炳霖</p>
+              <p class="course-desc">深入都蘭山步道進行每月定點踏查，記錄鳥類（烏頭翁、大冠鷲）、地方植物與四季生態的細微變遷。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <span class="course-badge badge-amber">每日海灘</span>
+                <h4>衝浪與海洋漂浮</h4>
+              </div>
+              <p class="course-teacher">引導：阿中 (每日下午 16:00 鉛橋海灘)</p>
+              <p class="course-desc">與太平洋大浪親密接觸，練習隨浪漂浮與滑行，學習在水流中放空自我，重拾心靈的流動與自由。</p>
+            </div>
+            <div class="course-card glass-card">
+              <a href="shunmei-farm/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                <div>
+                  <div class="course-header">
+                    <span class="course-badge badge-purple">熱門體驗</span>
+                    <h4>山美農場精油DIY體驗活動</h4>
+                  </div>
+                  <p class="course-teacher">講師：徐桂美</p>
+                  <p class="course-desc">體驗自然農法與食農教育，親手採摘香草植物，學習蒸餾高純度純露精油與植物編織 DIY 手作，感受土地最真實的芬芳療癒。</p>
+                </div>
+                <div class="card-action" style="margin-top: 15px; font-weight: bold; color: var(--accent-color, #C86D51); font-size: 14px;">
+                  開啟專屬網頁 ➡️
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category: Body & Mind -->
+        <div class="course-category-group">
+          <h3 class="category-title">🧘 身心靈探索與成長</h3>
+          <div class="category-grid">
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <h4>身心靈探索</h4>
+              </div>
+              <p class="course-teacher">講師：gunja</p>
+              <p class="course-desc">透過呼吸調息、內觀冥想與自我覺察練習，釋放身體經年的緊繃，重整心靈節律以接受生命能量。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <h4>靈魂治療</h4>
+              </div>
+              <p class="course-teacher">講師：Rebaca</p>
+              <p class="course-desc">聚焦於內在創傷修復、能量平衡引導，協助學員與潛意識對話，化解靈魂深處的糾結與負擔。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <h4>療癒角落 (木沐沐)</h4>
+              </div>
+              <p class="course-teacher">講師：蕙君 (木沐沐)</p>
+              <p class="course-desc">在一個溫馨且不被打擾的角落，透過對談、精油療癒與溫暖傾聽，為疲憊的旅人與心靈提供庇護與釋放。</p>
+            </div>
+            <div class="course-card glass-card">
+              <div class="course-header">
+                <h4>職涯發展規劃</h4>
+              </div>
+              <p class="course-teacher">講師：林玉鳳</p>
+              <p class="course-desc">針對人生下半場的轉折或職場生涯轉換，引導您釐清內在真實渴望，重新繪製具備熱情與方向的職涯藍圖。</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies / Real Stories (都蘭實戰故事) -->
+  <section class="stories-section" id="stories">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" id="storiesTitle">都蘭共學實戰故事</h2>
+        <p class="section-subtitle" id="storiesSubtitle">AI 在都蘭不是冰冷的科技，而是連接人與人、人與土地的溫度</p>
+      </div>
+
+      <!-- Carousel Container -->
+      <div class="carousel-container">
+        
+        <!-- Story 1 -->
+        <div class="story-slide active" id="story-1">
+          <div class="story-card glass-card">
+            <div class="story-img-wrap">
+              <img src="assets/rescue_phone.jpg" alt="用 Gemini 救回鎖死的手機">
+              <span class="story-badge bg-blue-glow">數位雪巴排障</span>
+            </div>
+            <div class="story-content">
+              <h3>📱 救回貴美阿嬤鎖死的三星手機</h3>
+              <p class="story-meta">💡 都蘭共學堂第二堂課的真實數位救援冒險</p>
+              <div class="story-text">
+                貴美阿嬤在課堂上意外設定了開機密碼並忘記，手機瞬間鎖死變「磚頭」。由於是美版二手機無購買證明，官方維修站直接拒收。阿中教練沒有查死板的手冊，而是把 Google Gemini 當成「數位雪巴嚮導」進行實時排障重置的溫暖場景。Gemini 精確指引「必須先接上傳輸線連接電腦，再長按特定按鍵組合 7 秒」才能順利進入 Android 工程模式，最終成功強制重置手機，保住了阿嬤的手機與笑臉！
+              </div>
+              <div class="story-footer">
+                <span class="story-highlight">啟示：AI 提供的是「互動決策」而非死板的百科全書，也是長輩學習的最暖安全網。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 2 -->
+        <div class="story-slide" id="story-2">
+          <div class="story-card glass-card">
+            <div class="story-img-wrap">
+              <img src="assets/barter_system.jpg" alt="當老師的價值只剩下陪伴">
+              <span class="story-badge bg-green-glow">以物易物與陪伴</span>
+            </div>
+            <div class="story-content">
+              <h3>🌾 用米換一堂 AI 課：當老師只剩陪伴</h3>
+              <p class="story-meta">💡 阿芬的雨中補課記，與「精通壓縮」的奇蹟</p>
+              <div class="story-text">
+                在一個大雨滂沱的都蘭下午，學員阿芬無法出門。阿中教練利用線上補課，手把手引導她使用 Gemini 與 NotebookLM。阿芬學會了將 NotebookLM 比喻為「五星級廚房」，放入文本文獻作為食材，下指令點餐，最後自動產出所需的企劃案。在不到一小時內，她跨越了傳統需要學習三年半的知識鴻溝，甚至直接利用 AI 來規劃在農地上興建資材室的法律與設計，真正打破了專業門檻！
+              </div>
+              <div class="story-footer">
+                <span class="story-highlight">啟示：當 AI 隨時在線且回覆更完美時，老師的角色退居為給予情感支持的「生命陪伴者」。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 3 -->
+        <div class="story-slide" id="story-3">
+          <div class="story-card glass-card">
+            <div class="story-img-wrap">
+              <img src="assets/companionship.jpg" alt="個人 AI 的四桶金">
+              <span class="story-badge bg-amber-glow">人生四桶金</span>
+            </div>
+            <div class="story-content">
+              <h3>🌅 個人 AI 四桶金：從中央廚房到黃金提煉機</h3>
+              <p class="story-meta">💡 整理自阿中教練的個人 AI 實踐與心理反思</p>
+              <div class="story-text">
+                阿中教練利用 NotebookLM 作為個人「黃金提煉機」，成功把人生閱歷轉化為四桶金：第一桶「健康紅利」，用 AI 精準分析個人健檢並監控健康；第二桶「財經冷靜劑」，篩選紛雜的財經新聞以做出理智投資；第三桶「創作自我實現」，把語音紀錄、靈感寫成多本書籍與播客；第四桶「時間紅利」，讓 AI 託管繁重行政，省下數天時間去海邊衝浪與生活。
+              </div>
+              <div class="story-footer">
+                <span class="story-highlight">啟示：學習是「私有化」的自我成長，有了 AI 廚房，人人都可自主掌控人生的主廚。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Carousel Navigation Dots -->
+      <div class="carousel-dots" id="carouselDots">
+        <button class="dot active" data-target="story-1" aria-label="故事一"></button>
+        <button class="dot" data-target="story-2" aria-label="故事二"></button>
+        <button class="dot" data-target="story-3" aria-label="故事三"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stores Section (共生商店) -->
+  <section class="stores-section" id="stores">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">都蘭共生商店</h2>
+        <p class="section-subtitle">共享社區的實體物產、數位智慧與生活工具資源</p>
+      </div>
+
+      <!-- Store Tabs Navigation -->
+      <div class="store-tabs">
+        <button class="store-tab-btn active" data-tab="physical">🏪 實體商店</button>
+        <button class="store-tab-btn" data-tab="digital">💾 數位商店</button>
+        <button class="store-tab-btn" data-tab="rental">🚲 出租商店</button>
+      </div>
+
+      <!-- Store Panels Content -->
+      <div class="store-panels">
+        <!-- Panel 1: Physical Store -->
+        <div class="store-panel active" id="store-panel-physical">
+          <div class="store-grid">
+            <div class="store-card glass-card">
+              <div class="store-card-visual">☕</div>
+              <div class="store-card-body">
+                <h4>都蘭莊園有機咖啡豆</h4>
+                <p class="store-card-price">NT$ 450 <span class="price-unit">/ 半磅</span></p>
+                <p class="store-card-desc">都蘭山林陰地栽植，純手工採收與中度烘焙，帶有溫和的柑橘果酸與巧克力餘韻。支持以物易物交換！</p>
+              </div>
+            </div>
+            <div class="store-card glass-card">
+              <div class="store-card-visual">🍯</div>
+              <div class="store-card-body">
+                <h4>都蘭野生百花純蜂蜜</h4>
+                <p class="store-card-price">NT$ 600 <span class="price-unit">/ 瓶</span></p>
+                <p class="store-card-desc">採自都蘭山野生百花蜜源，無人工添加與濃縮，保留了天然活性酵素與豐富的天然花香。</p>
+              </div>
+            </div>
+            <div class="store-card glass-card">
+              <div class="store-card-visual">🌾</div>
+              <div class="store-card-body">
+                <h4>都蘭手作黑糖與有機米</h4>
+                <p class="store-card-price">NT$ 180 <span class="price-unit">/ 包</span></p>
+                <p class="store-card-desc">在地小農以自然農法耕作的優質白米與傳統木柴燒製的黑糖，提供滿滿的大地滋養與古法香氣。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Digital Store -->
+        <div class="store-panel" id="store-panel-digital">
+          <div class="store-grid">
+            <div class="store-card glass-card">
+              <div class="store-card-visual">📖</div>
+              <div class="store-card-body">
+                <h4>AI 學習筆記精選總集</h4>
+                <p class="store-card-price">NT$ 199 <span class="price-unit">/ 電子書 (PDF & DOCX)</span></p>
+                <p class="store-card-desc">收錄都蘭共學堂全系列的 AI 工具精華筆記、提示詞工程（Prompt）及長輩數位排障手冊，一次打包隨身閱讀。</p>
+              </div>
+            </div>
+            <div class="store-card glass-card">
+              <div class="store-card-visual">📊</div>
+              <div class="store-card-body">
+                <h4>NotebookLM 個人化範本包</h4>
+                <p class="store-card-price">NT$ 250 <span class="price-unit">/ 範本授權</span></p>
+                <p class="store-card-desc">包含「生命寫書範本」、「小農進銷存試算表範本」及「地方民宿社群行銷提示詞包」，一鍵匯入即可高效產出。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: Rental Store -->
+        <div class="store-panel" id="store-panel-rental">
+          <div class="store-grid">
+            <div class="store-card glass-card">
+              <div class="store-card-visual">🏄</div>
+              <div class="store-card-body">
+                <h4>水上運動設備租借</h4>
+                <p class="store-card-price">免費 / 勞務折抵 <span class="price-unit">(學員專享)</span></p>
+                <p class="store-card-desc">提供不同尺寸衝浪板、趴板、防寒衣及安全救生衣。每天下午 16:00 鉛橋海灘共學漂浮時段可預約租借。</p>
+              </div>
+            </div>
+            <div class="store-card glass-card">
+              <div class="store-card-visual">🪓</div>
+              <div class="store-card-body">
+                <h4>木工與農務工具互助共享</h4>
+                <p class="store-card-price">點數折抵 <span class="price-unit">(社區共享)</span></p>
+                <p class="store-card-desc">包含高性能電鋸、手持電鑽、除草機、農務工具與整地工具。支持以勞務協助（如協助打草）進行租借折抵。</p>
+              </div>
+            </div>
+            <div class="store-card glass-card">
+              <div class="store-card-visual">🚲</div>
+              <div class="store-card-body">
+                <h4>「緩騎專用」慢速單車</h4>
+                <p class="store-card-price">NT$ 100 <span class="price-unit">/ 日 (學員半價)</span></p>
+                <p class="store-card-desc">特別選用的舒適慢速單車，鼓勵學員以時速 10 公里的速度慢遊都蘭小鎮，感受山風與海風的溫柔撫摸。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcast & Audio Player (播客影音中心) -->
+  <section class="podcast-section" id="podcast">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" id="podcastTitle">播客影音與學習典藏</h2>
+        <p class="section-subtitle" id="podcastSubtitle">傾聽都蘭共學小組的深度對談，在對話中開啟思維啟發</p>
+      </div>
+
+      <div class="podcast-layout glass-card">
+        <!-- Playlist Side -->
+        <div class="podcast-playlist">
+          <h3 class="playlist-header">🎙️ 節目播放清單</h3>
+          <div class="playlist-items" id="playlistItems">
+            
+            <div class="playlist-item active" data-index="0" data-src="simulated_audio_1" data-duration="12:04">
+              <span class="play-indicator">▶</span>
+              <div class="item-meta">
+                <h4>1. 當老師的價值只剩下「陪伴」</h4>
+                <p>都蘭 AI 補課記與學習的終極轉型</p>
+              </div>
+              <span class="item-duration">12:04</span>
+            </div>
+
+            <div class="playlist-item" data-index="1" data-src="simulated_audio_2" data-duration="15:30">
+              <span class="play-indicator">▶</span>
+              <div class="item-meta">
+                <h4>2. 用 Gemini 救回鎖死的三星手機</h4>
+                <p>都蘭共學堂的長輩數位賦能實戰</p>
+              </div>
+              <span class="item-duration">15:30</span>
+            </div>
+
+            <div class="playlist-item" data-index="2" data-src="simulated_audio_3" data-duration="09:45">
+              <span class="play-indicator">▶</span>
+              <div class="item-meta">
+                <h4>3. 學 AI 先開除老師</h4>
+                <p>從廚房隱喻看 AI 時代終身學習</p>
+              </div>
+              <span class="item-duration">09:45</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Player Detail Side -->
+        <div class="podcast-player-container">
+          <div class="player-visual-area">
+            <div class="disc-wrapper">
+              <div class="vinyl-disc" id="vinylDisc">
+                <div class="vinyl-center">🌿</div>
+              </div>
+            </div>
+            <div class="track-details">
+              <h3 id="playerTrackTitle">當老師的價值只剩下「陪伴」</h3>
+              <p id="playerTrackSubtitle">都蘭 AI 補課筆記與學習的終極轉型</p>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="player-controls">
+            <!-- Time tracker -->
+            <div class="time-slider-container">
+              <span id="currentTime">00:00</span>
+              <input type="range" id="timeSlider" class="time-slider" min="0" max="100" value="0">
+              <span id="totalDuration">12:04</span>
+            </div>
+            <!-- Action buttons -->
+            <div class="control-buttons">
+              <button class="btn-ctrl" id="btnPrev" aria-label="上一首">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" x2="5" y1="19" y2="5"/></svg>
+              </button>
+              <button class="btn-ctrl btn-play" id="btnPlay" aria-label="播放">
+                <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                <svg class="icon-pause hidden" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="4" width="4" height="16" rx="1"/><rect x="6" y="4" width="4" height="16" rx="1"/></svg>
+              </button>
+              <button class="btn-ctrl" id="btnNext" aria-label="下一首">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" x2="19" y1="5" y2="19"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Transcript/Lyrics Toggle -->
+          <div class="transcript-box">
+            <div class="transcript-header">
+              <span>💬 播客即時精選逐字稿</span>
+              <button id="toggleTranscriptBtn" class="btn-text">顯示全文</button>
+            </div>
+            <div class="transcript-content" id="transcriptContent">
+              <p class="lyric-line active" data-time="0"><strong>[00:00]</strong> 想像一下這個畫面：你今天準備去報名一堂最尖端的人工智慧科技課程...</p>
+              <p class="lyric-line" data-time="8"><strong>[00:08]</strong> 但你手上拿去繳學費的不是信用卡，也不是一疊千元鈔票，而是...</p>
+              <p class="lyric-line" data-time="15"><strong>[00:15]</strong> 一袋你自己辛苦種出來的有機稻米，或者是早上剛出爐的手作麵包對吧？</p>
+              <p class="lyric-line" data-time="22"><strong>[00:22]</strong> 沒錯，這聽起來就像科幻小說裡才會出現的烏托邦情節。</p>
+              <p class="lyric-line" data-time="30"><strong>[00:30]</strong> 但這卻是此時此刻正在台灣台東都蘭真實發生的事。</p>
+              <p class="lyric-line" data-time="35"><strong>[00:35]</strong> 歡迎來到都蘭共學堂！在這裡，我們不講複雜的代碼，我們學 AI、也學生活。</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="archive-links-wrap" id="archiveLinks">
+        <a href="https://www.youtube.com/@LearnDulanWay" target="_blank" class="archive-btn btn-yt" id="btnYoutube">
+          <span>📺 前往 YouTube 官方頻道 @LearnDulanWay</span>
         </a>
-        <a href="#habits-demo" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white text-lg sm:text-xl font-medium px-8 py-4 rounded-full backdrop-blur-sm border border-white/30 transition text-center">
-          💡 免費體驗「AI 說故事模擬器」
+        <a href="AI學習筆記_精選總集.md" target="_blank" class="archive-btn btn-md" id="btnNotes">
+          <span>📖 閱讀共學筆記《精選總集》(.md)</span>
+        </a>
+        <a href="AI學習筆記_精選總集.docx" download class="archive-btn btn-md" id="btnNotesDocx">
+          <span>📥 下載 Word 格式總集 (.docx)</span>
         </a>
       </div>
-
-      <!-- 核心標語貼紙 -->
-      <div class="mt-12 pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-4 text-stone-300 text-sm sm:text-base">
-        <div>無痛科技 ‧ 語音輸入</div>
-        <div>史丹佛小習慣科學</div>
-        <div>都蘭山海自然感應</div>
-        <div>接納身心靈豐盛</div>
-      </div>
     </div>
   </section>
 
-  <!-- 2. 品牌理念與發起人逆轉勝故事 (About & Proof) -->
-  <section id="about" class="py-16 md:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
-    <!-- 發起人故事卡片 -->
-    <div class="bg-white rounded-3xl p-6 sm:p-10 md:p-12 shadow-xl border border-stone-200/80 flex flex-col md:flex-row items-center gap-8 md:gap-12 relative overflow-hidden">
-      <div class="w-36 h-36 sm:w-48 sm:h-48 rounded-2xl bg-dulan-forest text-white flex-shrink-0 flex flex-col items-center justify-center shadow-lg relative border-4 border-amber-100">
-        <span class="text-5xl font-serif-tc font-bold">阿中</span>
-        <span class="text-xs text-amber-200 tracking-widest mt-1">共學堂發起人</span>
-      </div>
-
-      <div class="flex-1">
-        <div class="inline-block bg-dulan-clay/10 text-dulan-clay font-bold text-sm px-3 py-1 rounded-md mb-3">
-          【 創辦人故事 ‧ 真實逆轉勝 】
-        </div>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold font-serif-tc text-dulan-forest mb-4">
-          「從酒鬼到 AI 作家 —— 我的人生逆轉勝故事」
-        </h2>
-        <p class="text-base sm:text-lg text-stone-600 leading-relaxed mb-6">
-          我曾以為寫書是作家才能做的事。直到我接觸了史丹佛大學 Fogg 博士研究 20 年的「設計你的小習慣（Tiny Habits）」，從每天最小的運動、練習吉他、觀察植物開始，一點一滴改變了生命。後來結合 AI 工具，只需用講話方式記錄，便完成了專屬著作《從酒鬼到 AI 作家》。你這一生的風浪與智慧，比想像中更值得被傳承！
-        </p>
-        <div class="flex flex-wrap gap-3 text-xs sm:text-sm font-semibold text-stone-500">
-          <span class="bg-stone-100 px-3 py-1 rounded-full"># 戒酒翻轉人生</span>
-          <span class="bg-stone-100 px-3 py-1 rounded-full"># 史丹佛小習慣實踐者</span>
-          <span class="bg-stone-100 px-3 py-1 rounded-full"># 四季八里莊園主人</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. 核心旗艦：智慧翻轉與生命紀錄 (Proposal 1 Flagship) -->
-  <section id="ai-writing" class="py-16 md:py-24 bg-dulan-sandDark px-4 sm:px-6 border-y border-stone-300/60">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="bg-dulan-clay text-white font-bold tracking-wider text-xs sm:text-sm px-4 py-1.5 rounded-full uppercase inline-block mb-3">
-          Step 1 ‧ 核心旗艦入口
-        </span>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-serif-tc text-dulan-forest mb-4">
-          智慧翻轉與生命紀錄
-        </h2>
-        <p class="text-base sm:text-xl text-stone-600 font-light">
-          專為 50–70 歲設計：零技術門檻，讓 AI 成為聽你講故事、幫你整理回憶的專屬秘書。
-        </p>
-      </div>
-
-      <!-- 三大旗艦課程卡片 -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- 課程 1 -->
-        <div class="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition border border-stone-200/80 flex flex-col justify-between group">
-          <div>
-            <div class="w-14 h-14 rounded-2xl bg-dulan-forest/10 text-dulan-forest flex items-center justify-center text-3xl font-bold mb-6 group-hover:scale-110 transition">
-              🎙️
-            </div>
-            <h3 class="text-2xl font-bold text-dulan-forest font-serif-tc mb-2">用 AI 翻轉人生</h3>
-            <p class="text-sm font-bold text-dulan-clay mb-4">主講：阿中 導師</p>
-            <p class="text-base text-stone-600 leading-relaxed mb-6">
-              以阿中導師親身逆轉故事為引，學習如何用手機語音對話 + AI 自動編排，將人生經歷轉換為個人第一本數位自傳。
-            </p>
-          </div>
-          <button onclick="openCourseModal('用 AI 翻轉人生', '阿中', '以親身逆轉故事為引，帶領學員透過「小習慣」與 AI 語音輔助，把生命點滴寫成自傳。')" class="w-full bg-dulan-forest hover:bg-dulan-dark text-white font-bold py-3 rounded-xl transition text-center">
-            了解課程與細節
-          </button>
-        </div>
-
-        <!-- 課程 2 -->
-        <div class="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition border border-stone-200/80 flex flex-col justify-between group">
-          <div>
-            <div class="w-14 h-14 rounded-2xl bg-dulan-forest/10 text-dulan-forest flex items-center justify-center text-3xl font-bold mb-6 group-hover:scale-110 transition">
-              🌱
-            </div>
-            <h3 class="text-2xl font-bold text-dulan-forest font-serif-tc mb-2">哈爸 AI 慢活共創營</h3>
-            <p class="text-sm font-bold text-dulan-clay mb-4">主講：哈爸 導師</p>
-            <p class="text-base text-stone-600 leading-relaxed mb-6">
-              不追求速度，以慢活步調探索 AI 的溫暖應用。與一群熟齡夥伴集體共創作品，在數位時代優雅同行。
-            </p>
-          </div>
-          <button onclick="openCourseModal('哈爸 AI 慢活共創營', '哈爸', '用慢活步調體驗 AI 創作，透過群體共創與跨界交流，探索數位時代下的慢活樂趣。')" class="w-full bg-dulan-forest hover:bg-dulan-dark text-white font-bold py-3 rounded-xl transition text-center">
-            了解課程與細節
-          </button>
-        </div>
-
-        <!-- 課程 3 -->
-        <div class="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition border border-stone-200/80 flex flex-col justify-between group">
-          <div>
-            <div class="w-14 h-14 rounded-2xl bg-dulan-forest/10 text-dulan-forest flex items-center justify-center text-3xl font-bold mb-6 group-hover:scale-110 transition">
-              ✍️
-            </div>
-            <h3 class="text-2xl font-bold text-dulan-forest font-serif-tc mb-2">人生寫作課</h3>
-            <p class="text-sm font-bold text-dulan-clay mb-4">主講：江冠明 導師</p>
-            <p class="text-base text-stone-600 leading-relaxed mb-6">
-              資深人文作家引導，透過主題式寫作沉澱歲月風華。寫下對家族、青春與土地的愛，留給後代最深情的餽贈。
-            </p>
-          </div>
-          <button onclick="openCourseModal('人生寫作課', '江冠明', '人文寫作與生命史梳理，用最溫柔的文字整理記憶，與過去的自己和解，為未來定調。')" class="w-full bg-dulan-forest hover:bg-dulan-dark text-white font-bold py-3 rounded-xl transition text-center">
-            了解課程與細節
-          </button>
-        </div>
-      </div>
-
-      <!-- 固定月會特別預告 -->
-      <div class="mt-12 bg-white rounded-2xl p-6 sm:p-8 border-2 border-dulan-clay/30 shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="flex items-center gap-5">
-          <div class="w-16 h-16 rounded-full bg-amber-100 text-dulan-clay flex items-center justify-center text-3xl flex-shrink-0">
-            🪕
-          </div>
-          <div>
-            <span class="bg-amber-100 text-dulan-clay font-bold text-xs px-3 py-1 rounded-full">每月晨間聚會 ‧ 共學儀式</span>
-            <h4 class="text-2xl font-bold font-serif-tc text-dulan-forest mt-1">用月琴吟恆春古調</h4>
-            <p class="text-base text-stone-600">時間：每月第一週週二 上午 8:00 ｜ 導師：特別邀請 ｜ 都蘭晨光、月琴音韻與生命呼吸</p>
-          </div>
-        </div>
-        <button onclick="openBookingModal('每月月琴吟恆春古調晨會')" class="w-full md:w-auto bg-dulan-clay hover:bg-dulan-clayHover text-white font-bold px-8 py-3.5 rounded-full transition shadow-md whitespace-nowrap">
-          預約參加晨會
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. 微習慣體驗器 (Tiny Habits Interactive Simulator) -->
-  <section id="habits-demo" class="py-16 md:py-24 px-4 sm:px-6 max-w-5xl mx-auto">
-    <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-stone-200">
-      <div class="text-center max-w-2xl mx-auto mb-8">
-        <span class="text-dulan-clay font-bold text-sm tracking-widest uppercase">免費互動體驗</span>
-        <h2 class="text-3xl font-bold font-serif-tc text-dulan-forest mt-1">「AI + 小習慣」生命故事紀錄模擬器</h2>
-        <p class="text-base text-stone-600 mt-2">點擊下方微習慣主題，試著說（或寫）出一句回憶，感受 AI 如何為你整理文稿：</p>
-      </div>
-
-      <!-- 快速範例按鈕 -->
-      <div class="flex flex-wrap gap-2 justify-center mb-6">
-        <button onclick="setPromptSample('小時候在老家廟口玩耍的場景')" class="bg-stone-100 hover:bg-amber-100 text-stone-700 px-4 py-2 rounded-full text-sm font-medium transition">
-          💡 範例1：小時候廟口回憶
-        </button>
-        <button onclick="setPromptSample('三十年前第一次創業時的辛苦與感動')" class="bg-stone-100 hover:bg-amber-100 text-stone-700 px-4 py-2 rounded-full text-sm font-medium transition">
-          💡 範例2：年輕時創業故事
-        </button>
-        <button onclick="setPromptSample('來到都蘭山海間，心靈獲得放鬆的瞬間')" class="bg-stone-100 hover:bg-amber-100 text-stone-700 px-4 py-2 rounded-full text-sm font-medium transition">
-          💡 範例3：在都蘭看海的心情
-        </button>
-      </div>
-
-      <!-- 輸入框區塊 -->
-      <div class="space-y-4">
-        <div>
-          <label for="userHabitInput" class="block font-bold text-stone-700 mb-2 text-base">輸入您今天的一句話（或一段回憶）：</label>
-          <textarea id="userHabitInput" rows="3" class="w-full p-4 border border-stone-300 rounded-xl focus:ring-2 focus:ring-dulan-forest focus:outline-none text-lg" placeholder="例如：今天早晨看到都蘭山的雲海，想起小時候外公帶我去爬山的背影..."></textarea>
-        </div>
-
-        <button onclick="generateStoryAI()" id="generateBtn" class="w-full bg-dulan-forest hover:bg-dulan-dark text-white font-bold py-4 rounded-xl text-lg transition shadow-md flex items-center justify-center gap-2">
-          <span>🤖</span> 啟動 AI 秘書整理故事
-        </button>
-      </div>
-
-      <!-- 生成結果顯示區域 -->
-      <div id="aiResultBox" class="hidden mt-8 p-6 bg-dulan-sand rounded-2xl border border-amber-200">
-        <h4 class="font-bold font-serif-tc text-dulan-forest text-xl mb-3 flex items-center gap-2">
-          <span>📖</span> AI 秘書整理出的生命故事片段：
-        </h4>
-        <div id="aiResultText" class="text-stone-800 text-lg leading-relaxed font-serif-tc whitespace-pre-line">
-          <!-- JS 動態生成內容 -->
-        </div>
-        <div class="mt-4 pt-4 border-t border-stone-200 flex flex-wrap justify-between items-center gap-3">
-          <span class="text-xs text-stone-500">這就是「微習慣 + AI」每天累積的力量！</span>
-          <button onclick="copyStoryResult()" class="text-dulan-clay font-bold text-sm hover:underline">
-            複製故事文稿
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. 全站課程矩陣 (All 14 Courses Matrix) -->
-  <section id="courses" class="py-16 md:py-24 bg-stone-100 px-4 sm:px-6 border-t border-stone-300">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <span class="text-dulan-clay font-bold tracking-widest text-sm uppercase">Step 2 ‧ 大地與身心靈共學</span>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-serif-tc text-dulan-forest mt-1 mb-4">
-          都蘭山海全系列課程（14門）
-        </h2>
-        <p class="text-base sm:text-lg text-stone-600">
-          點擊下方分頁切換領域，挑選最適合您第二人生步調的共學體驗：
-        </p>
-      </div>
-
-      <!-- 課程分類 Tab 切換按鈕 -->
-      <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-10">
-        <button onclick="filterCourses('all')" class="course-tab active bg-dulan-forest text-white px-5 py-2.5 rounded-full font-bold text-base transition">
-          全部課程 (14)
-        </button>
-        <button onclick="filterCourses('writing')" class="course-tab bg-white text-stone-700 hover:bg-stone-200 px-5 py-2.5 rounded-full font-bold text-base transition border border-stone-300">
-          智慧寫作 (3)
-        </button>
-        <button onclick="filterCourses('nature')" class="course-tab bg-white text-stone-700 hover:bg-stone-200 px-5 py-2.5 rounded-full font-bold text-base transition border border-stone-300">
-          大地與山海 (3)
-        </button>
-        <button onclick="filterCourses('crafts')" class="course-tab bg-white text-stone-700 hover:bg-stone-200 px-5 py-2.5 rounded-full font-bold text-base transition border border-stone-300">
-          美學手作與音樂 (4)
-        </button>
-        <button onclick="filterCourses('mind')" class="course-tab bg-white text-stone-700 hover:bg-stone-200 px-5 py-2.5 rounded-full font-bold text-base transition border border-stone-300">
-          身心靈安頓 (4)
-        </button>
-      </div>
-
-      <!-- 課程網格容器 -->
-      <div id="course-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- JS 動態生成所有 14 門課程 -->
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. 共生生活館與租賃中心 (Shop & Rental Ecosystem) -->
-  <section id="shop" class="py-16 md:py-24 px-4 sm:px-6 max-w-7xl mx-auto">
-    <div class="text-center max-w-3xl mx-auto mb-14">
-      <span class="text-dulan-clay font-bold tracking-widest text-sm uppercase">Step 3 ‧ 資源共享與永續循環</span>
-      <h2 class="text-3xl sm:text-4xl font-bold font-serif-tc text-dulan-forest mt-1 mb-4">
-        都蘭共生生活館
-      </h2>
-      <p class="text-base sm:text-lg text-stone-600">
-        讓學習成果發表，讓工具與產品循環共享，實現人與大地的共生。
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- 數位商店 -->
-      <div class="bg-white rounded-3xl p-8 shadow-md border border-stone-200 flex flex-col justify-between">
-        <div>
-          <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-2xl font-bold mb-4">
-            📲
-          </div>
-          <h3 class="text-2xl font-bold font-serif-tc text-dulan-forest mb-2">數位商店</h3>
-          <p class="text-sm font-semibold text-dulan-clay mb-4">熟齡生命成果發表平台</p>
-          <ul class="space-y-3 text-stone-600 text-base mb-6">
-            <li class="flex items-start gap-2"><span>•</span> <span>學員生命自傳與故事電子書專區</span></li>
-            <li class="flex items-start gap-2"><span>•</span> <span>月琴吟唱古調與古典吉他慢活音檔</span></li>
-            <li class="flex items-start gap-2"><span>•</span> <span>AI 慢活微習慣打卡共創線上圈</span></li>
+  <!-- Interactive Registration Form (預約報名系統) -->
+  <section class="register-section" id="register">
+    <div class="container">
+      <div class="register-layout glass-card">
+        <div class="register-info-panel">
+          <span class="panel-badge">即刻預約</span>
+          <h2>開啟您的<br>山海與 AI 共學生活</h2>
+          <p>不管是想成為學員、提案以物易物，或是來都蘭進行渡假加購，我們都誠摯歡迎您！</p>
+          <ul class="benefit-list">
+            <li>✨ <strong>在地實體陪伴：</strong> 阿鐘與品碩教練手把手輔導</li>
+            <li>🤝 <strong>支持以物易物：</strong> 減輕金錢負擔，共享勞動與農產</li>
+            <li>🌴 <strong>莊園加購住宿：</strong> 深度融入都蘭，給自己充實的慢活假期</li>
           </ul>
         </div>
-        <button onclick="openShopModal('數位商店')" class="w-full bg-stone-800 hover:bg-black text-white font-bold py-3 rounded-xl transition">
-          瀏覽數位出版品
-        </button>
-      </div>
+        
+        <div class="register-form-panel">
+          <form id="enrollmentForm" action="#" method="POST">
+            
+            <div class="form-group">
+              <label for="studentName">姓名 / 稱呼 <span class="required">*</span></label>
+              <input type="text" id="studentName" name="name" required placeholder="例如：林阿芬">
+            </div>
 
-      <!-- 實體商店 -->
-      <div class="bg-white rounded-3xl p-8 shadow-md border border-stone-200 flex flex-col justify-between">
-        <div>
-          <div class="w-12 h-12 rounded-xl bg-green-100 text-green-800 flex items-center justify-center text-2xl font-bold mb-4">
-            🍵
-          </div>
-          <h3 class="text-2xl font-bold font-serif-tc text-dulan-forest mb-2">實體商店</h3>
-          <p class="text-sm font-semibold text-dulan-clay mb-4">在地手作與土地禮盒</p>
-          <ul class="space-y-3 text-stone-600 text-base mb-6">
-            <li class="flex items-start gap-2"><span>•</span> <span>陶藝創作、木工家具與書法作品展售</span></li>
-            <li class="flex items-start gap-2"><span>•</span> <span>綠光食物森林無毒農作與香草茶包</span></li>
-            <li class="flex items-start gap-2"><span>•</span> <span>都蘭共學客棧與慢活共生茶席空間</span></li>
-          </ul>
-        </div>
-        <button onclick="openShopModal('實體商店')" class="w-full bg-stone-800 hover:bg-black text-white font-bold py-3 rounded-xl transition">
-          探索在地手作品
-        </button>
-      </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="studentPhone">聯絡電話 <span class="required">*</span></label>
+                <input type="tel" id="studentPhone" name="phone" required placeholder="例如：0912345678">
+              </div>
+              <div class="form-group">
+                <label for="studentLine">LINE ID</label>
+                <input type="text" id="studentLine" name="line" placeholder="方便助教加入聯絡">
+              </div>
+            </div>
 
-      <!-- 出租商店 -->
-      <div class="bg-white rounded-3xl p-8 shadow-md border border-stone-200 flex flex-col justify-between">
-        <div>
-          <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center text-2xl font-bold mb-4">
-            🚲
-          </div>
-          <h3 class="text-2xl font-bold font-serif-tc text-dulan-forest mb-2">出租商店</h3>
-          <p class="text-sm font-semibold text-dulan-clay mb-4">輕裝慢遊山海 ‧ 免添購負擔</p>
-          <ul class="space-y-3 text-stone-600 text-base mb-6">
-            <li class="flex items-start gap-2"><span>•</span> <span>水上設備：熟齡安全漂浮衣、衝浪板</span></li>
-            <li class="flex items-start gap-2"><span>•</span> <span>木工農務：園藝剪刀、基礎木工工具組</span></li>
-            <li class="flex items-start gap-2"><span>•</span> <span>緩騎單車：低跨欄電輔車，輕鬆漫遊</span></li>
-          </ul>
+            <div class="form-group">
+              <label>身分類別 <span class="required">*</span></label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="student_type" value="local" checked id="radioLocal">
+                  <span class="custom-radio"></span>
+                  <div class="radio-text">
+                    <strong>在地居民 / 小農 / 民宿主</strong>
+                    <p>居住於台東，可提案以物易物學費折抵</p>
+                  </div>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="student_type" value="visitor" id="radioVisitor">
+                  <span class="custom-radio"></span>
+                  <div class="radio-text">
+                    <strong>外縣市學員 / 創作者</strong>
+                    <p>希望來都蘭深度渡假，有加購莊園住宿意願</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Dynamic Barter/Payment Options -->
+            <div class="form-group" id="paymentOptionsContainer">
+              <label>學費方案與支付方式 <span class="required">*</span></label>
+              <div class="payment-selector">
+                <label class="payment-box active" id="payCashLabel">
+                  <input type="radio" name="payment_method" value="cash" checked id="payCash">
+                  <span>💵 現金支持 $3,000</span>
+                </label>
+                <label class="payment-box" id="payBarterLabel">
+                  <input type="radio" name="payment_method" value="barter" id="payBarter">
+                  <span>🤝 提案以物易物</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Barter Details (Dynamic display) -->
+            <div class="form-group barter-details-panel hidden" id="barterPanel">
+              <label for="barterProposal">您的「以物易物」提案內容 <span class="required">*</span></label>
+              <textarea id="barterProposal" name="barter_proposal" placeholder="例如：自產有機咖啡豆 3 磅、手工烘焙歐式麵包 10 份、或者協助莊園鋤草/修剪樹木 10 小時..."></textarea>
+              <p class="help-text">💡 助教收到提案後會與您聯繫，共同討論並確認折抵細節。</p>
+            </div>
+
+            <!-- Lodging Interest (Dynamic display for visitors) -->
+            <div class="form-group lodging-panel hidden" id="lodgingPanel">
+              <label>🏡 「四季八里莊園」加購住宿意願</label>
+              <div class="checkbox-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="needLodging" name="need_lodging">
+                  <span class="custom-checkbox"></span>
+                  <span>我想索取「共學＋渡假加購住宿」的房型與房價資訊</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Course Selection -->
+            <div class="form-group">
+              <label for="courseSelect">欲選讀的課程或體驗項目 <span class="required">*</span></label>
+              <select id="courseSelect" name="course_select" class="form-select" required style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(15, 23, 42, 0.6); color: var(--text-color); margin-top: 0.5rem; outline: none; font-size: 0.95rem;">
+                <option value="" disabled selected>請選擇您想預約的課程...</option>
+                <optgroup label="💻 AI 與慢活科技">
+                  <option value="用 AI 翻轉人生">用 AI 翻轉人生 (阿中)</option>
+                  <option value="哈爸 AI 慢活共創營">哈爸 AI 慢活共創營 (哈爸)</option>
+                </optgroup>
+                <optgroup label="🌱 生態與山海實作">
+                  <option value="綠光食物森林學校">綠光食物森林學校 (施炳霖)</option>
+                  <option value="都蘭山定點觀察">都蘭山定點觀察 (施炳霖)</option>
+                  <option value="衝浪與海洋漂浮">衝浪與海洋漂浮 (阿中)</option>
+                </optgroup>
+                <optgroup label="🔨 工藝、寫作與藝術">
+                  <option value="人生寫作課">人生寫作課 (江冠明)</option>
+                  <option value="古典吉他與民謠">古典吉他與民謠 (陽光道)</option>
+                  <option value="用月琴吟恆春古調">用月琴吟恆春古調 (在地)</option>
+                  <option value="陶藝創作">陶藝創作 (洋洋)</option>
+                  <option value="木工與書法教室">木工與書法教室 (阿中)</option>
+                </optgroup>
+                <optgroup label="🧘 身心靈探索與成長">
+                  <option value="身心靈探索">身心靈探索 (gunja)</option>
+                  <option value="靈魂治療">靈魂治療 (Rebaca)</option>
+                  <option value="療癒角落 (木沐沐)">療癒角落 -- 木沐沐 (蕙君)</option>
+                  <option value="職涯發展規劃">職涯發展規劃 (林玉鳳)</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="expectations">您最希望透過共學解決什麼日常問題 / 自我期待？</label>
+              <textarea id="expectations" name="expectations" rows="3" placeholder="例如：想整理自己的故事但不知道怎麼下筆、手機能不能自動記帳、想為自家的農產品寫文案..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="btnSubmit">送出預約申請</button>
+
+          </form>
         </div>
-        <button onclick="openRentalModal()" class="w-full bg-dulan-clay hover:bg-dulan-clayHover text-white font-bold py-3 rounded-xl transition">
-          預約裝備與單車租賃
-        </button>
       </div>
     </div>
   </section>
 
-  <!-- 7. 地點與一鍵預約 (Location & Contact) -->
-  <footer id="contact" class="bg-dulan-forest text-white py-16 md:py-24 px-4 sm:px-6 relative">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-serif-tc mb-4">
-          準備好開啟第二人生了嗎？
-        </h2>
-        <p class="text-lg sm:text-xl text-stone-300 font-light">
-          不用擔心學不會，在都蘭的山海間，我們陪您一步一步慢慢來。
-        </p>
+  <!-- Base & Contact (基地與據點) -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" id="contactTitle">實體基地與聯絡窗口</h2>
+        <p class="section-subtitle" id="contactSubtitle">歡迎預約參訪、報名共學或洽詢以物易物提案</p>
       </div>
 
-      <!-- 聯絡卡片 -->
-      <div class="bg-dulan-dark rounded-3xl p-6 sm:p-10 border border-stone-700/80 shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
-        <div class="space-y-5 text-base sm:text-lg">
-          <div class="flex items-start gap-3">
-            <span class="text-amber-200 text-2xl">📍</span>
-            <div>
-              <strong class="text-white block">共學堂教室位置：</strong>
-              <span class="text-stone-300">台東縣東河鄉都蘭村舊廍 14-2 號</span><br>
-              <span class="text-xs text-amber-200/80">（四季八里自然莊園）</span>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-3">
-            <span class="text-amber-200 text-2xl">🌿</span>
-            <div>
-              <strong class="text-white block">核心精神：</strong>
-              <span class="text-stone-300">如何翻轉人生？從共學出發，邁向共生。</span>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-3">
-            <span class="text-amber-200 text-2xl">📞</span>
-            <div>
-              <strong class="text-white block">電話諮詢：</strong>
-              <a href="tel:089841000" class="text-amber-200 hover:underline">089-841-000</a>
-            </div>
-          </div>
+      <div class="grid grid-2" id="contactGrid">
+        
+        <!-- Base 1 -->
+        <div class="contact-card glass-card">
+          <div class="contact-icon">🏡</div>
+          <h3>四季八里自然莊園</h3>
+          <p>共學堂主要的實體基地，坐落於都蘭山麓，坐擁無敵海景。身心靈課程、木工書法與恆春古調在此舉辦。</p>
+          <p class="contact-detail">📍 台東縣東河鄉都蘭村舊部 14 之 2 號</p>
         </div>
 
-        <!-- LINE 快速報名按鈕區 -->
-        <div class="bg-white/5 p-6 rounded-2xl border border-white/10 text-center space-y-4">
-          <span class="text-amber-200 font-bold text-sm block">最受長輩歡迎的預約方式</span>
-          <h4 class="text-2xl font-bold font-serif-tc text-white">LINE 一鍵語音/文字預約</h4>
-          <p class="text-sm text-stone-300">專人導師在線為您詳細解答課程與行程。</p>
-          <button onclick="openBookingModal('全站課程與諮詢')" class="w-full bg-[#06C755] hover:bg-[#05b34c] text-white font-bold py-4 rounded-xl text-lg transition shadow-lg flex items-center justify-center gap-2">
-            <span>💬</span> 點擊加入 LINE 官方帳號諮詢
-          </button>
+        <!-- Base 2 -->
+        <div class="contact-card glass-card">
+          <div class="contact-icon">☕</div>
+          <h3>台東市區輔導教室</h3>
+          <p>位於市區的「生活管家就醬點」，每週三下午在此舉辦 AI 補課、數位問題排障與諮詢。</p>
+          <p class="contact-detail">📍 台東市新生路 379 號 (生活管家就醬點)</p>
         </div>
+
       </div>
+    </div>
+  </section>
 
-      <!-- 版權與標語 -->
-      <div class="text-center text-stone-400 text-sm space-y-2 border-t border-stone-800 pt-8">
-        <p>© 2026 都蘭共學堂 LearnDulanWay. All rights reserved.</p>
-        <p class="text-xs text-stone-500">工具：AI + 小習慣 ｜ 教室：都蘭山海 ｜ 身心靈探索接受豐盛</p>
+  <!-- Footer -->
+  <footer class="footer-area">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo-emoji">🌿</span>
+          <h4>四季八里都蘭共學堂 ╳ 四季八里自然莊園</h4>
+        </div>
+        <p class="footer-moto">「一手拿滑鼠，一手摸泥土。用 AI 慢活，用愛共創。」</p>
+      </div>
+      <div class="footer-bottom">
+        <p class="copyright">&copy; 2026 四季八里都蘭共學堂. All rights reserved.</p>
+        <p class="location-stamp">服務處：台東縣東河鄉都蘭村舊部 14 之 2 號 ｜ 聯絡電話：0908853322</p>
       </div>
     </div>
   </footer>
 
-  <!-- 右下角浮動快捷鍵 -->
-  <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
-    <button onclick="openBookingModal('快速專人預約')" class="bg-[#06C755] hover:bg-[#05b34c] text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-110" title="LINE 專人諮詢">
-      <span class="text-2xl">💬</span>
-    </button>
-  </div>
-
-  <!-- 彈出視窗：通用報名與 LINE 預約 Modal -->
-  <div id="bookingModal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl text-left">
-      <button onclick="closeModal('bookingModal')" class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 text-2xl font-bold">×</button>
-      <div class="text-center mb-6">
-        <div class="w-12 h-12 rounded-full bg-green-100 text-[#06C755] text-2xl flex items-center justify-center mx-auto mb-2">💬</div>
-        <h3 class="text-2xl font-bold font-serif-tc text-dulan-forest" id="modalTitle">課程預約與諮詢</h3>
-        <p class="text-sm text-stone-500 mt-1" id="modalSub">請填寫基本稱呼，系統將帶您前往 LINE 與導師語音通話</p>
+  <!-- Submission Success Modal -->
+  <div class="modal-overlay hidden" id="successModal">
+    <div class="modal-content glass-card">
+      <span class="modal-success-icon">🎉</span>
+      <h3 id="modalTitle">報名申請成功！</h3>
+      <p id="modalDesc">我們已收到您的共學預約與以物易物提案。</p>
+      <div class="modal-summary glass-card" id="modalSummary">
+        <!-- Will be filled by JS -->
       </div>
-
-      <form onsubmit="handleLineSubmit(event)" class="space-y-4">
-        <div>
-          <label class="block text-sm font-bold text-stone-700 mb-1">您的稱呼 / 大名：</label>
-          <input type="text" id="userName" required class="w-full p-3 border border-stone-300 rounded-xl focus:ring-2 focus:ring-dulan-forest focus:outline-none" placeholder="例如：陳大哥、林姊">
-        </div>
-        <div>
-          <label class="block text-sm font-bold text-stone-700 mb-1">想詢問的課程或服務：</label>
-          <input type="text" id="userInterest" class="w-full p-3 border border-stone-300 rounded-xl bg-stone-100" readonly>
-        </div>
-        <div>
-          <label class="block text-sm font-bold text-stone-700 mb-1">簡短留言或問題（可不填）：</label>
-          <textarea id="userNote" rows="2" class="w-full p-3 border border-stone-300 rounded-xl focus:ring-2 focus:ring-dulan-forest focus:outline-none" placeholder="例如：想了解時間安排..."></textarea>
-        </div>
-        <button type="submit" class="w-full bg-[#06C755] hover:bg-[#05b34c] text-white font-bold py-3.5 rounded-xl text-lg transition">
-          前往 LINE 與導師對話 ➔
-        </button>
-      </form>
+      <button class="btn btn-primary" id="closeModalBtn">我知道了</button>
     </div>
   </div>
 
-  <!-- 彈出視窗：課程詳細 Modal -->
-  <div id="courseModal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl">
-      <button onclick="closeModal('courseModal')" class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 text-2xl font-bold">×</button>
-      <span id="detailCategory" class="bg-dulan-clay/10 text-dulan-clay font-bold text-xs px-3 py-1 rounded-full inline-block mb-2">共學課程</span>
-      <h3 id="detailTitle" class="text-2xl font-bold font-serif-tc text-dulan-forest mb-1">課程名稱</h3>
-      <p id="detailTeacher" class="text-sm font-bold text-dulan-clay mb-4">主講導師：阿中</p>
-      
-      <div id="detailContent" class="text-stone-600 text-base leading-relaxed space-y-3 mb-6">
-        <!-- 動態細節 -->
-      </div>
-
-      <div class="bg-dulan-sand p-4 rounded-xl mb-6">
-        <h5 class="font-bold text-dulan-forest text-sm mb-1">💡 熟齡小習慣切入點：</h5>
-        <p id="detailHabit" class="text-xs text-stone-600">每天練習 3 分鐘，完全沒有學習壓力。</p>
-      </div>
-
-      <button id="modalSignupBtn" class="w-full bg-dulan-forest hover:bg-dulan-dark text-white font-bold py-3.5 rounded-xl text-base transition">
-        預約此課程諮詢
-      </button>
-    </div>
-  </div>
-
-  <!-- 彈出視窗：裝備租賃算數 Modal -->
-  <div id="rentalModal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl">
-      <button onclick="closeModal('rentalModal')" class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 text-2xl font-bold">×</button>
-      <h3 class="text-2xl font-bold font-serif-tc text-dulan-forest mb-2">出租商店 ‧ 裝備預約</h3>
-      <p class="text-sm text-stone-500 mb-4">選擇您在都蘭慢活所需的工具與設備：</p>
-
-      <div class="space-y-3 mb-6 text-left">
-        <label class="flex items-center gap-3 p-3 bg-stone-50 rounded-xl border border-stone-200 cursor-pointer">
-          <input type="checkbox" value="緩騎專用低跨欄電輔單車" class="w-5 h-5 accent-dulan-clay">
-          <div>
-            <div class="font-bold text-stone-800">緩騎專用低跨欄電輔單車</div>
-            <div class="text-xs text-stone-500">適合長輩輕鬆騎行都蘭小徑</div>
-          </div>
-        </label>
-        <label class="flex items-center gap-3 p-3 bg-stone-50 rounded-xl border border-stone-200 cursor-pointer">
-          <input type="checkbox" value="熟齡安全水上漂浮衣/救生圈" class="w-5 h-5 accent-dulan-clay">
-          <div>
-            <div class="font-bold text-stone-800">熟齡安全水上漂浮衣 / 救生圈</div>
-            <div class="text-xs text-stone-500">親海無壓力、超高浮力</div>
-          </div>
-        </label>
-        <label class="flex items-center gap-3 p-3 bg-stone-50 rounded-xl border border-stone-200 cursor-pointer">
-          <input type="checkbox" value="基礎木工與園藝農務工具組" class="w-5 h-5 accent-dulan-clay">
-          <div>
-            <div class="font-bold text-stone-800">基礎木工與園藝農務工具組</div>
-            <div class="text-xs text-stone-500">體驗手作農務免添購裝備</div>
-          </div>
-        </label>
-      </div>
-
-      <button onclick="submitRentalRequest()" class="w-full bg-dulan-clay hover:bg-dulan-clayHover text-white font-bold py-3.5 rounded-xl transition">
-        確認項目並送出 LINE 預約
-      </button>
-    </div>
-  </div>
-
-  <!-- JavaScript 邏輯控制區塊 -->
-  <script>
-    // 所有 14 門課程資料庫
-    const allCoursesData = [
-      { id: 1, cat: 'writing', title: '用 AI 翻轉人生', teacher: '阿中', icon: '🎙️', desc: '結合史丹佛小習慣與 AI 語音輔助，把大半生的生命故事輕鬆整理成專屬自傳。', habit: '每天口述 1 分鐘故事' },
-      { id: 2, cat: 'writing', title: '哈爸 AI 慢活共創營', teacher: '哈爸', icon: '🌱', desc: '以慢活步調體驗 AI 創作樂趣，與熟齡夥伴群體共創與跨界交流。', habit: '每週探索一個數位小作品' },
-      { id: 3, cat: 'writing', title: '人生寫作課', teacher: '江冠明', icon: '✍️', desc: '人文寫作與生命史梳理，用最溫柔的文字整理記憶，與過去的自己和解。', habit: '每週寫下一段青春記憶' },
-      
-      { id: 4, cat: 'nature', title: '綠光食物森林學校', teacher: '施炳霖', icon: '🥬', desc: '走入森林自然農耕，學習與土地和諧共生，採摘無毒蔬果與香草。', habit: '每天觀察一種植物生長' },
-      { id: 5, cat: 'nature', title: '都蘭山定點觀察', teacher: '施炳霖', icon: '⛰️', desc: '山野定點生態觀察，感受都蘭山林四季變化，喚醒與自然對話的感官。', habit: '定點靜心呼吸 5 分鐘' },
-      { id: 6, cat: 'nature', title: '衝浪與漂浮', teacher: '阿中', icon: '🏄‍♂️', desc: '專為熟齡設計的安全親水體驗，在都蘭浪花中感受放鬆與身體律動。', habit: '赤腳踏浪感覺大海能量' },
-      
-      { id: 7, cat: 'crafts', title: '木工、書法教室', teacher: '阿中', icon: '🪵', desc: '雙手觸摸木頭紋理，揮毫書法沉澱心靈，在創作中達到專注的忘我境界。', habit: '每日靜心臨摹一個字' },
-      { id: 8, cat: 'crafts', title: '陶藝創作', teacher: '洋洋', icon: '🏺', desc: '用手掌與陶土對話，將捏陶過程化為正念靜心，製作專屬的生活器皿。', habit: '感受陶土塑形的觸覺' },
-      { id: 9, cat: 'crafts', title: '古典吉他慢活彈唱', teacher: '陽光道', icon: '🎸', desc: '指尖上的音樂小習慣，從最簡單的弦音開始，讓悠揚琴聲滋養熟齡生活。', habit: '每天撥弦練習 5 分鐘' },
-      { id: 10, cat: 'crafts', title: '月琴吟恆春古調', teacher: '特別邀請', icon: '🪕', desc: '每月第一週週二上午8點晨會，用傳統月琴音韻唱出內心最深沉的故事。', habit: '晨間跟隨古調韻律呼吸' },
-
-      { id: 11, cat: 'mind', title: '身心靈探索', teacher: 'gunja', icon: '🪷', desc: '透過身心靈感知練習，打開心胸接納宇宙的豐盛與平靜。', habit: '每天早晨感恩三件事' },
-      { id: 12, cat: 'mind', title: '靈魂治療', teacher: 'Rebaca', icon: '✨', desc: '深層靈魂療癒與和解，釋放積累多年的壓力，開啟生命能量。', habit: '睡前深呼吸與自己和解' },
-      { id: 13, cat: 'mind', title: '療癒角落（木沐沐）', teacher: '蕙君', icon: '☕', desc: '溫馨安靜的心靈角落，給予最溫柔的傾聽與陪伴，安頓受傷的心。', habit: '靜靜享用一杯香草茶' },
-      { id: 14, cat: 'mind', title: '第三人生職涯發展規劃', teacher: '林玉鳳', icon: '🧭', desc: '退休後的角色轉銜，探索如何在都蘭社區找到微型貢獻與共生價值。', habit: '整理自己的專長清單' }
-    ];
-
-    // 初始化渲染課程網格
-    function renderCourses(courses) {
-      const grid = document.getElementById('course-grid');
-      grid.innerHTML = '';
-      courses.forEach(c => {
-        const card = document.createElement('div');
-        card.className = "bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition border border-stone-200 flex flex-col justify-between";
-        card.innerHTML = `
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-3xl">${c.icon}</span>
-              <span class="text-xs bg-stone-100 font-bold text-stone-600 px-2.5 py-1 rounded-full">導師：${c.teacher}</span>
-            </div>
-            <h4 class="text-xl font-bold font-serif-tc text-dulan-forest mb-2">${c.title}</h4>
-            <p class="text-sm text-stone-600 leading-relaxed mb-4">${c.desc}</p>
-          </div>
-          <button onclick="openCourseModal('${c.title}', '${c.teacher}', '${c.desc}', '${c.habit}')" class="w-full bg-stone-100 hover:bg-dulan-forest hover:text-white text-dulan-forest font-bold py-2.5 rounded-xl transition text-sm">
-            看課程細節
-          </button>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    // 課程分類過濾
-    function filterCourses(category) {
-      // 切換 Tab 樣式
-      document.querySelectorAll('.course-tab').forEach(btn => {
-        btn.classList.remove('bg-dulan-forest', 'text-white');
-        btn.classList.add('bg-white', 'text-stone-700');
-      });
-      event.target.classList.remove('bg-white', 'text-stone-700');
-      event.target.classList.add('bg-dulan-forest', 'text-white');
-
-      if (category === 'all') {
-        renderCourses(allCoursesData);
-      } else {
-        const filtered = allCoursesData.filter(c => c.cat === category);
-        renderCourses(filtered);
-      }
-    }
-
-    // 微習慣 AI 故事生成模擬器
-    function setPromptSample(text) {
-      document.getElementById('userHabitInput').value = text;
-    }
-
-    function generateStoryAI() {
-      const input = document.getElementById('userHabitInput').value.trim();
-      if (!input) {
-        alert('請先輸入或點擊範例寫下一句話喔！');
-        return;
-      }
-
-      const btn = document.getElementById('generateBtn');
-      btn.innerText = '🤖 AI 秘書正在為您整理故事中...';
-      btn.disabled = true;
-
-      setTimeout(() => {
-        const box = document.getElementById('aiResultBox');
-        const textElem = document.getElementById('aiResultText');
-        
-        textElem.innerHTML = `「<sup>1970 年代的記憶</sup> ${input} ... 歲月流轉，如今坐在都蘭山海之間，我才明白當年的那些風雨，都是生命中最寶貴的養分。每天練習記錄一段話，我正在為自己寫下一本屬於第二人生的自傳。」`;
-        
-        box.classList.remove('hidden');
-        btn.innerText = '🤖 啟動 AI 秘書整理故事';
-        btn.disabled = false;
-      }, 1000);
-    }
-
-    function copyStoryResult() {
-      const text = document.getElementById('aiResultText').innerText;
-      navigator.clipboard.writeText(text);
-      alert('已複製文稿！可以貼到 LINE 或記事本中喔。');
-    }
-
-    // Modal 控制
-    function openBookingModal(serviceName) {
-      document.getElementById('userInterest').value = serviceName;
-      document.getElementById('bookingModal').classList.remove('hidden');
-    }
-
-    function openCourseModal(title, teacher, desc, habit = '每天練習 3 分鐘微習慣') {
-      document.getElementById('detailTitle').innerText = title;
-      document.getElementById('detailTeacher').innerText = `主講導師：${teacher}`;
-      document.getElementById('detailContent').innerText = desc;
-      document.getElementById('detailHabit').innerText = habit;
-      
-      const signupBtn = document.getElementById('modalSignupBtn');
-      signupBtn.onclick = () => {
-        closeModal('courseModal');
-        openBookingModal(`課程報名：${title}`);
-      };
-
-      document.getElementById('courseModal').classList.remove('hidden');
-    }
-
-    function openShopModal(shopType) {
-      openBookingModal(`生活館諮詢：${shopType}`);
-    }
-
-    function openRentalModal() {
-      document.getElementById('rentalModal').classList.remove('hidden');
-    }
-
-    function closeModal(id) {
-      document.getElementById(id).classList.add('hidden');
-    }
-
-    function submitRentalRequest() {
-      const checked = Array.from(document.querySelectorAll('#rentalModal input[type="checkbox"]:checked')).map(c => c.value);
-      if (checked.length === 0) {
-        alert('請至少勾選一項想租賃的裝備或單車喔！');
-        return;
-      }
-      closeModal('rentalModal');
-      openBookingModal(`裝備租賃預約：${checked.join('、')}`);
-    }
-
-    function handleLineSubmit(e) {
-      e.preventDefault();
-      const name = document.getElementById('userName').value;
-      const interest = document.getElementById('userInterest').value;
-      const note = document.getElementById('userNote').value;
-
-      const msg = `您好！我是${name}，想諮詢【${interest}】。${note ? '留言：' + note : ''}`;
-      alert(`已為您模擬跳轉至 LINE 官方帳號！\n訊息內容：\n${msg}`);
-      closeModal('bookingModal');
-    }
-
-    // 熟齡無障礙大字體切換
-    let isBigFont = false;
-    function toggleFontSize() {
-      const body = document.getElementById('body-root');
-      const btnText = document.getElementById('fontBtnText');
-      isBigFont = !isBigFont;
-      if (isBigFont) {
-        body.classList.add('text-xl-mode');
-        btnText.innerText = '標準字體';
-      } else {
-        body.classList.remove('text-xl-mode');
-        btnText.innerText = '大字體';
-      }
-    }
-
-    // 語音導覽 (Web Speech API)
-    let isSpeaking = false;
-    function readPageText() {
-      if (!('speechSynthesis' in window)) {
-        alert('您的瀏覽器不支援語音朗讀，建議使用 Chrome 瀏覽器。');
-        return;
-      }
-      const ttsBtnText = document.getElementById('ttsBtnText');
-
-      if (isSpeaking) {
-        window.speechSynthesis.cancel();
-        isSpeaking = false;
-        if(ttsBtnText) ttsBtnText.innerText = '語音導覽';
-        return;
-      }
-
-      const speakText = "歡迎來到都蘭共學堂。我們的核心精神是：如何翻轉人生？從共學出發，邁向共生。我們用 AI 與每天 5 分鐘微習慣，陪伴您在都蘭山海間，重新寫下第二人生。課程包含阿中老師的用 AI 翻轉人生、江冠明老師的人生寫作課、哈爸慢活營，以及月琴、陶藝、衝浪與食物森林。歡迎加入我們的 LINE 與導師交流。";
-      const u = new SpeechSynthesisUtterance(speakText);
-      u.lang = 'zh-TW';
-      u.rate = 0.85; // 適合熟齡聆聽的慢速
-
-      u.onend = () => {
-        isSpeaking = false;
-        if(ttsBtnText) ttsBtnText.innerText = '語音導覽';
-      };
-
-      window.speechSynthesis.speak(u);
-      isSpeaking = true;
-      if(ttsBtnText) ttsBtnText.innerText = '停止朗讀';
-    }
-
-    function toggleMobileMenu() {
-      document.getElementById('mobile-menu').classList.toggle('hidden');
-    }
-
-    // 頁面載入完成後初始化
-    window.addEventListener('DOMContentLoaded', () => {
-      renderCourses(allCoursesData);
-    });
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
-
