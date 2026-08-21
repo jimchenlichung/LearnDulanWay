@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>哈爸 AI 慢活共創營 | 都蘭山海 ╳ AI 賦能</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                        },
+                        accent: {
+                            emerald: '#10b981',
+                            amber: '#f59e0b',
+                            teal: '#14b8a6',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.65)), url('course_image.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- Header / Navigation -->
+    <header class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <!-- 返回首頁 -->
+                <a href="https://jimchenlichung.github.io/LearnDulanWay/" class="inline-flex items-center gap-1.5 text-xs text-slate-600 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full border border-slate-200 transition">
+                    <i class="fa-solid fa-arrow-left"></i> 返回共學堂首頁
+                </a>
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="bg-gradient-to-tr from-primary-500 to-accent-teal p-2.5 rounded-xl shadow-md shadow-primary-500/20">
+                        <i class="fa-solid fa-compass-drafting text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold tracking-wider text-slate-900">哈爸 AI 共創營</span>
+                        <span class="block text-xs font-semibold text-accent-teal uppercase tracking-widest">都蘭山海 ╳ 數位賦能</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-sm font-semibold text-slate-600 hover:text-primary-600 transition-colors">核心概念</a>
+                    <a href="#tracks" class="text-sm font-semibold text-slate-600 hover:text-primary-600 transition-colors">雙軌項目</a>
+                    <a href="#curriculum" class="text-sm font-semibold text-slate-600 hover:text-primary-600 transition-colors">精選課程</a>
+                    <a href="#itinerary" class="text-sm font-semibold text-slate-600 hover:text-primary-600 transition-colors">渡假行程</a>
+                    <a href="#pricing" class="text-sm font-semibold text-slate-600 hover:text-primary-600 transition-colors">參訓方案</a>
+                    <a href="#gallery" class="text-sm font-semibold text-slate-600 hover:text-primary-600 transition-colors">活動寫照</a>
+                    <a href="#register" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-bold text-white bg-primary-600 hover:bg-primary-700 shadow-md shadow-primary-500/10 hover:shadow-lg transition-all">
+                        立即報名 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-900 focus:outline-none p-2" aria-label="切換選單">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-4 py-4 space-y-3 shadow-inner">
+            <a href="https://jimchenlichung.github.io/LearnDulanWay/" class="block py-2 text-base font-semibold text-slate-500 hover:text-primary-600 border-b border-slate-100 pb-3 mb-1">← 返回共學堂首頁</a>
+            <a href="#about" class="block py-2 text-base font-semibold text-slate-700 hover:text-primary-600">核心概念</a>
+            <a href="#tracks" class="block py-2 text-base font-semibold text-slate-700 hover:text-primary-600">雙軌項目</a>
+            <a href="#curriculum" class="block py-2 text-base font-semibold text-slate-700 hover:text-primary-600">精選課程</a>
+            <a href="#itinerary" class="block py-2 text-base font-semibold text-slate-700 hover:text-primary-600">渡假行程</a>
+            <a href="#pricing" class="block py-2 text-base font-semibold text-slate-700 hover:text-primary-600">參訓方案</a>
+            <a href="#gallery" class="block py-2 text-base font-semibold text-slate-700 hover:text-primary-600">活動寫照</a>
+            <a href="#register" class="block text-center py-3 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-xl shadow-md">立即報名</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative hero-bg pt-32 pb-24 md:pt-48 md:pb-40 text-white overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/30 to-slate-900/90 z-0"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 mb-6 text-sm font-semibold tracking-wide text-primary-200">
+                    <span class="w-2 h-2 rounded-full bg-accent-emerald animate-pulse"></span>
+                    <span>虛實整合 ╳ 雙週末慢活渡假學制</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-none mb-6">
+                    在看得到太平洋的莊園，<br class="hidden sm:inline">
+                    學會帶得走的 <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-accent-teal">AI 生產力</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-200 font-medium mb-10 max-w-2xl leading-relaxed">
+                    結合都蘭山海慢活體驗與 AI 數位實作。我們不教艱澀程式，只用最溫馨的手把手陪伴，帶您建構一人公司的 AI 生產線！
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#pricing" class="inline-flex items-center justify-center px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white font-bold text-lg rounded-full shadow-lg shadow-primary-500/25 hover:shadow-xl transition-all">
+                        選擇參訓方案 <i class="fa-solid fa-chevron-right ml-2 text-sm"></i>
+                    </a>
+                    <a href="#about" class="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-lg rounded-full border border-white/30 backdrop-blur-md transition-all">
+                        了解共創概念
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Statistics -->
+    <section class="relative z-20 -mt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-slate-100">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                <div class="flex items-start space-x-4 pb-6 md:pb-0">
+                    <div class="bg-blue-50 p-4 rounded-2xl text-primary-600">
+                        <i class="fa-solid fa-users-viewfinder text-3xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">雙師陪伴式共學</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">哈爸遠端視訊心法啟發，都蘭及台東市在地教練現場手把手輔導。</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4 py-6 md:py-0 md:pl-8">
+                    <div class="bg-emerald-50 p-4 rounded-2xl text-accent-emerald">
+                        <i class="fa-solid fa-laptop-code text-3xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">2 大真實專案淬鍊</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">社會服務書籍撰寫，及店家進銷存 POS 自動化工具實用測試。</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4 pt-6 md:pt-0 md:pl-8">
+                    <div class="bg-amber-50 p-4 rounded-2xl text-accent-amber">
+                        <i class="fa-solid fa-umbrella-beach text-3xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">山海度假 ╳ 線上混合</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">第一、五週來都蘭享受大自然，第三週在都市線上連線，免奔波通勤。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-accent-teal uppercase tracking-widest mb-3">計畫緣起</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">橫跨都蘭與台東市，打破數位鴻溝</p>
+                <p class="mt-4 text-lg text-slate-600">
+                    這不只是一堂普通的科技課。我們以開源創客精神，利用 **Antigravity** 與哈爸的系統架構指引，在地方建立起能夠「自體繁殖」的 AI 共學社群。
+                </p>
+            </div>
+
+            <!-- Visual Flow / Map Info -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 overflow-hidden">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-primary-100 rounded-full blur-3xl -z-10 opacity-70"></div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                        <i class="fa-solid fa-diagram-project text-primary-500 mr-3"></i> 雙軌並進的共生與商用項目
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-emerald-500 pl-4 py-1">
+                            <h4 class="font-extrabold text-slate-900 text-lg">都蘭教室：社會服務軌</h4>
+                            <p class="text-slate-600 text-sm mt-1">
+                                專注於 **Agent 塑造與文章著作、翻譯**。在都蘭教室（四季八里自然莊園）進行，由陳豊鍾教練帶領，著重在文字與文化輸出的「易讀 (Easy Read)」公共擴散。
+                            </p>
+                        </div>
+                        <div class="border-l-4 border-amber-500 pl-4 py-1">
+                            <h4 class="font-extrabold text-slate-900 text-lg">台東市教室：商用實務軌</h4>
+                            <p class="text-slate-600 text-sm mt-1">
+                                專注於 **進銷存、庫存管理與 POS 系統防呆防老應用**。在台東市區（生活管家就醬點）進行，由陳品碩教練帶領，幫助在地小店家低成本數位轉型與實用防呆。
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Flow Diagram -->
+                    <div class="mt-8 p-4 bg-slate-50 rounded-2xl flex justify-around items-center text-center">
+                        <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex-1 mx-2">
+                            <span class="text-xs font-bold text-primary-600 block">哈爸 (遠端)</span>
+                            <span class="text-sm font-extrabold text-slate-700">架構導航</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-right text-slate-400"></i>
+                        <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex-1 mx-2">
+                            <span class="text-xs font-bold text-accent-emerald block">兩地教練 (實體)</span>
+                            <span class="text-sm font-extrabold text-slate-700">現場手把手</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-right text-slate-400"></i>
+                        <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex-1 mx-2">
+                            <span class="text-xs font-bold text-accent-amber block">在地居民/外地學員</span>
+                            <span class="text-sm font-extrabold text-slate-700">實作圓夢</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image / Promo Cards -->
+                <div class="relative">
+                    <img src="dulan_ai_camp.png" alt="都蘭 AI 慢活營" class="rounded-3xl shadow-xl w-full object-cover h-[400px]">
+                    <div class="absolute -bottom-6 -left-6 bg-slate-900 text-white p-6 rounded-3xl max-w-xs shadow-xl border border-slate-800">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <i class="fa-solid fa-house-chimney-window text-accent-teal text-xl"></i>
+                            <span class="font-extrabold text-sm tracking-wider uppercase text-slate-300">上課教室與莊園</span>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            都蘭教室設在四季八里自然莊園（台東縣東河鄉都蘭村舊部14之2號），太平洋景觀盡收眼底。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tracks Section -->
+    <section id="tracks" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-accent-teal uppercase tracking-widest mb-3">雙軌特色教室</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">兩個教室，兩種視角，一樣精彩</p>
+                <p class="mt-4 text-lg text-slate-600">不論您是在地居民，還是想在渡假中自我提升的旅人，都能找到最適合的位置。</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Track 1 Card -->
+                <div class="bg-gradient-to-br from-slate-50 to-emerald-50/20 rounded-3xl p-8 border border-slate-100 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="inline-flex items-center bg-emerald-100 text-emerald-800 font-extrabold text-xs px-3 py-1 rounded-full mb-6">
+                            <i class="fa-solid fa-tree mr-1.5"></i> 社會服務軌
+                        </div>
+                        <h3 class="text-2xl font-black text-slate-900 mb-2">都蘭教室 - 四季八里莊園</h3>
+                        <p class="text-sm text-slate-500 mb-6"><i class="fa-solid fa-location-dot mr-1"></i> 台東縣東河鄉都蘭村舊部14之2號</p>
+                        <p class="text-slate-600 leading-relaxed mb-6">
+                            都蘭教室主攻「文字、故事與生態 AI 賦能」。教練阿鐘會帶大家操作語音轉文字、AI 文章與漫畫編修。最適合想為自己（或長輩）留下生命故事、做在地文史與動植物生態導覽的人。
+                        </p>
+                        <ul class="space-y-3 mb-8 text-sm text-slate-700">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-accent-emerald mr-2.5"></i> 語音寫作：用說的就能一鍵整理出生命故事</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-accent-emerald mr-2.5"></i> 生態導航：拍照辨識都蘭特有植物與鳥類</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-accent-emerald mr-2.5"></i> 太平洋壯麗景觀與週末結業慶功營火音樂晚會</li>
+                        </ul>
+                    </div>
+                    <div class="border-t border-slate-200/60 pt-6 flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-phone text-slate-400"></i>
+                            <div>
+                                <span class="block text-xs font-semibold text-slate-500">現場負責人：陳豊鍾 (阿鐘)</span>
+                                <span class="block text-sm font-bold text-slate-800">0908853322</span>
+                            </div>
+                        </div>
+                        <a href="https://line.me/ti/p/~0908853322" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all"><i class="fa-brands fa-line mr-1 text-sm"></i> 加 LINE 聯絡</a>
+                    </div>
+                </div>
+
+                <!-- Track 2 Card -->
+                <div class="bg-gradient-to-br from-slate-50 to-amber-50/20 rounded-3xl p-8 border border-slate-100 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="inline-flex items-center bg-amber-100 text-amber-800 font-extrabold text-xs px-3 py-1 rounded-full mb-6">
+                            <i class="fa-solid fa-store mr-1.5"></i> 商用實務軌
+                        </div>
+                        <h3 class="text-2xl font-black text-slate-900 mb-2">台東市教室 - 生活管家就醬點</h3>
+                        <p class="text-sm text-slate-500 mb-6"><i class="fa-solid fa-location-dot mr-1"></i> 台東市正氣北路166巷90號</p>
+                        <p class="text-slate-600 leading-relaxed mb-6">
+                            台東市區教室主攻「商用系統、進銷存與 POS 自動化」。教練陳品碩會帶大家實作簡單、易用且防呆防老化的商用數據工具，最適合在地民宿、農特產店家與中小企業主，低成本解決管理痛點。
+                        </p>
+                        <ul class="space-y-3 mb-8 text-sm text-slate-700">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-accent-amber mr-2.5"></i> 進銷存管理：AI 輔助庫存整理與防呆自動化</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-accent-amber mr-2.5"></i> 店面管理應用：將傳統記帳轉化為便利 AI 助理</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-accent-amber mr-2.5"></i> 店家商品特徵自動辨識與規格說明書生成</li>
+                        </ul>
+                    </div>
+                    <div class="border-t border-slate-200/60 pt-6 flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-phone text-slate-400"></i>
+                            <div>
+                                <span class="block text-xs font-semibold text-slate-500">現場負責人：陳品碩</span>
+                                <span class="block text-sm font-bold text-slate-800">0972928864</span>
+                            </div>
+                        </div>
+                        <a href="https://line.me/ti/p/~0972928864" target="_blank" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all"><i class="fa-brands fa-line mr-1 text-sm"></i> 加 LINE 聯絡</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section id="curriculum" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-accent-teal uppercase tracking-widest mb-3">核心課表</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">每期三次核心虛實整合大綱</p>
+                <p class="mt-4 text-lg text-slate-600">隔週五晚上 19:00 - 21:00 上課，每次兩小時，結合哈爸引導與雙教室手把手練習。</p>
+            </div>
+
+            <!-- Curriculum Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Course 1 -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 relative">
+                    <div class="absolute -top-5 left-8 bg-primary-600 text-white font-black text-sm px-4 py-2.5 rounded-2xl shadow-md">
+                        第一堂：7/17
+                    </div>
+                    <div class="pt-4">
+                        <span class="text-xs font-bold text-accent-teal uppercase block tracking-wider mb-2">生活與文字特派員</span>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">科技點石成金：錄下生命的智慧</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                            學習如何用說話（語音）讓 AI 自動整理成漂亮的文章，現場拍下照片，並讓 AI 生成短影音腳本。
+                        </p>
+                        <div class="bg-slate-50 p-4 rounded-2xl">
+                            <span class="text-xs font-extrabold text-slate-500 block mb-2 uppercase">兩教室實作項目</span>
+                            <div class="space-y-2 text-xs">
+                                <p class="text-slate-700"><span class="font-extrabold text-emerald-600">都蘭：</span>學員互相錄音訪談，產出個人第一篇生命故事稿。</p>
+                                <p class="text-slate-700"><span class="font-extrabold text-amber-600">台東市：</span>引導店家學員用語音錄製並整理出品牌故事。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 relative">
+                    <div class="absolute -top-5 left-8 bg-primary-600 text-white font-black text-sm px-4 py-2.5 rounded-2xl shadow-md">
+                        第二堂：7/24
+                    </div>
+                    <div class="pt-4">
+                        <span class="text-xs font-bold text-accent-teal uppercase block tracking-wider mb-2">綠色生態與文化導遊</span>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">科技慢活：建立社區生態與文化地圖</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                            學習手機拍照丟給 AI，自動辨識植物、鳥類或古蹟，規劃一條專屬的 AI 深度旅遊導覽路線。
+                        </p>
+                        <div class="bg-slate-50 p-4 rounded-2xl">
+                            <span class="text-xs font-extrabold text-slate-500 block mb-2 uppercase">兩教室實作項目</span>
+                            <div class="space-y-2 text-xs">
+                                <p class="text-slate-700"><span class="font-extrabold text-emerald-600">都蘭：</span>辨識都蘭特有植物，產出都蘭 AI 綠色地圖。</p>
+                                <p class="text-slate-700"><span class="font-extrabold text-amber-600">台東市：</span>店家實作商品照片特徵自動辨識與自動說明書生成。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 relative">
+                    <div class="absolute -top-5 left-8 bg-primary-600 text-white font-black text-sm px-4 py-2.5 rounded-2xl shadow-md">
+                        第三堂：7/25
+                    </div>
+                    <div class="pt-4">
+                        <span class="text-xs font-bold text-accent-teal uppercase block tracking-wider mb-2">在地產業與圓夢推手</span>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">翻轉在地經濟：個人與店家 AI 行銷</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                            用 AI 撰寫社群文案，輔助店家做簡單庫存收支管理，並舉辦兩地聯合成品行銷與圓夢發表會。
+                        </p>
+                        <div class="bg-slate-50 p-4 rounded-2xl">
+                            <span class="text-xs font-extrabold text-slate-500 block mb-2 uppercase">兩教室實作項目</span>
+                            <div class="space-y-2 text-xs">
+                                <p class="text-slate-700"><span class="font-extrabold text-emerald-600">都蘭：</span>學員用 AI 寫出自家農產行銷案或個人新書推廣計劃。</p>
+                                <p class="text-slate-700"><span class="font-extrabold text-amber-600">台東市：</span>店家操作商用進銷存防呆範本，體驗自動記帳。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekend Itinerary Section -->
+    <section id="itinerary" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-accent-teal uppercase tracking-widest mb-3">外地生專屬</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">三天兩夜 ╳ 雙週末度假行程安排</p>
+                <p class="mt-4 text-lg text-slate-600">針對外地學員的實體入營週末（第一、五週），我們設計了精彩的三天兩夜山海慢活之旅。</p>
+            </div>
+
+            <!-- Timeline style itinerary -->
+            <div class="max-w-4xl mx-auto">
+                <div class="relative border-l-2 border-slate-200 pl-8 space-y-12">
+                    <!-- Day 1 -->
+                    <div class="relative">
+                        <div class="absolute -left-[41px] top-0 bg-primary-600 text-white w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm">
+                            1
+                        </div>
+                        <div>
+                            <span class="text-xs font-extrabold text-primary-600 block uppercase tracking-wider">週五 | 放下喧囂，報到與破冰</span>
+                            <h3 class="text-2xl font-bold text-slate-900 mt-1 mb-4">太平洋莊園相聚與夜間上課</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+                                <div class="bg-slate-50 p-4 rounded-xl">
+                                    <span class="font-extrabold block text-slate-900 mb-1">17:00 抵達</span>
+                                    <p class="text-slate-600 text-xs">抵達都蘭四季八里自然莊園，辦理報到與辦理入住。</p>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-xl">
+                                    <span class="font-extrabold block text-slate-900 mb-1">18:00 迎賓晚宴</span>
+                                    <p class="text-slate-600 text-xs">享用在地食材，與各地學員及教練破冰交流。</p>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-xl">
+                                    <span class="font-extrabold block text-slate-900 mb-1">19:00 實體上課</span>
+                                    <p class="text-slate-600 text-xs">第一堂核心課程上課。課後進行星空營火音樂交流。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 2 -->
+                    <div class="relative">
+                        <div class="absolute -left-[41px] top-0 bg-primary-600 text-white w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm">
+                            2
+                        </div>
+                        <div>
+                            <span class="text-xs font-extrabold text-primary-600 block uppercase tracking-wider">週六 | 東海岸山海慢活體驗</span>
+                            <h3 class="text-2xl font-bold text-slate-900 mt-1 mb-4">從成功海產到都蘭海邊衝浪</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 text-sm">
+                                <div class="bg-slate-50 p-4 rounded-xl">
+                                    <span class="font-extrabold block text-slate-900 mb-1">上午 成功巡禮</span>
+                                    <p class="text-slate-600 text-xs">參訪東管處；中午於成功鎮享用新鮮「成功海產」午餐。</p>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-xl">
+                                    <span class="font-extrabold block text-slate-900 mb-1">下午 橄欖咖啡</span>
+                                    <p class="text-slate-600 text-xs">前往橄欖莊園享用在地特產特色咖啡，體驗慢活日常。</p>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-xl">
+                                    <span class="font-extrabold block text-slate-900 mb-1">傍晚 衝浪體驗</span>
+                                    <p class="text-slate-600 text-xs">前往都蘭海邊，由專業教練指導進行太平洋衝浪/SUP體驗。</p>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-xl">
+                                    <span class="font-extrabold block text-slate-900 mb-1">晚間 窯烤Pizza</span>
+                                    <p class="text-slate-600 text-xs">莊園窯烤Pizza晚宴；晚上夜巡都蘭糖廠文創藝術區。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 3 -->
+                    <div class="relative">
+                        <div class="absolute -left-[41px] top-0 bg-primary-600 text-white w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm">
+                            3
+                        </div>
+                        <div>
+                            <span class="text-xs font-extrabold text-primary-600 block uppercase tracking-wider">週日 | 史前文化與原生植物巡禮</span>
+                            <h3 class="text-2xl font-bold text-slate-900 mt-1 mb-4">卑南文化公園與養生植物汆燙鍋</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+                                <div class="bg-slate-50 p-4 rounded-xl">
+                                    <span class="font-extrabold block text-slate-900 mb-1">上午 卑南公園</span>
+                                    <p class="text-slate-600 text-xs">進行卑南文化公園台灣史前文化與生態步道巡禮。</p>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-xl">
+                                    <span class="font-extrabold block text-slate-900 mb-1">中午 原生植物園</span>
+                                    <p class="text-slate-600 text-xs">前往原生植物園享用特色「養生汆燙鍋」自助午餐。</p>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-xl">
+                                    <span class="font-extrabold block text-slate-900 mb-1">15:00 賦歸</span>
+                                    <p class="text-slate-600 text-xs">接送至台東火車站，帶著滿滿的收穫與AI旅遊報告返程。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-slate-950 text-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-primary-900/20 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent-teal/10 rounded-full blur-3xl -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-accent-teal uppercase tracking-widest mb-3">參訓方案</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">精準學習，選擇您的生活提案</p>
+                <p class="mt-4 text-lg text-slate-400">我們提供專屬「在地居民」與「外地渡假」兩大參訓通道，支持以物易物與勞務折抵。</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto items-stretch">
+                <!-- Option A -->
+                <div class="bg-slate-900/60 rounded-3xl p-8 border border-slate-800 flex flex-col justify-between backdrop-blur-md relative">
+                    <div>
+                        <span class="text-xs font-bold text-accent-teal block uppercase tracking-wider mb-2">簡章版本 A</span>
+                        <h3 class="text-3xl font-black mb-4">在地生活共創組</h3>
+                        <p class="text-slate-400 text-sm mb-6">適合設籍於都蘭、台東市區之在地居民、店家及小農。</p>
+                        <div class="flex items-baseline mb-8">
+                            <span class="text-5xl font-black text-white">$2,999</span>
+                            <span class="text-slate-400 text-sm ml-2">元 / 人</span>
+                        </div>
+                        <div class="border-t border-slate-800 pt-6 mb-8">
+                            <span class="text-xs font-bold text-slate-400 block mb-4 uppercase">方案包含項目</span>
+                            <ul class="space-y-3.5 text-sm text-slate-300">
+                                <li class="flex items-center"><i class="fa-solid fa-circle-check text-accent-teal mr-3"></i> 3 次核心晚間課程（都蘭/台東市實體參訓）</li>
+                                <li class="flex items-center"><i class="fa-solid fa-circle-check text-accent-teal mr-3"></i> 週間負責人一對一手把手 Prompt 與註冊輔導</li>
+                                <li class="flex items-center"><i class="fa-solid fa-circle-check text-accent-teal mr-3 text-emerald-400"></i> <strong>支援以物易物</strong> / 勞務折抵（農特產、除草、支援等）</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="#register" class="block w-full py-4 text-center bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-2xl transition-all">
+                        申請在地居民入營
+                    </a>
+                </div>
+
+                <!-- Option B -->
+                <div class="bg-gradient-to-br from-primary-950 to-slate-900 rounded-3xl p-8 border-2 border-primary-500/50 flex flex-col justify-between relative shadow-xl shadow-primary-500/5">
+                    <div class="absolute -top-4 right-8 bg-gradient-to-r from-accent-amber to-amber-500 text-slate-950 font-black text-xs px-4 py-1.5 rounded-full uppercase tracking-wider">
+                        暑期特惠
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-primary-300 block uppercase tracking-wider mb-2">簡章版本 B</span>
+                        <h3 class="text-3xl font-black mb-4">外地混域渡假組</h3>
+                        <p class="text-slate-400 text-sm mb-6">適合外縣市的遠端工作者、數位游牧或熱愛慢活度假者。</p>
+                        <div class="flex items-baseline mb-8">
+                            <span class="text-5xl font-black text-white">$9,999</span>
+                            <span class="text-slate-400 text-sm ml-2">元 / 人 (原價 $12,000)</span>
+                        </div>
+                        <div class="border-t border-slate-800/80 pt-6 mb-8">
+                            <span class="text-xs font-bold text-primary-300 block mb-4 uppercase">方案包含項目</span>
+                            <ul class="space-y-3.5 text-sm text-slate-300">
+                                <li class="flex items-center"><i class="fa-solid fa-circle-check text-primary-400 mr-3"></i> 完整 AI 共創實作課程及第 1、5 週現場教練教學</li>
+                                <li class="flex items-center"><i class="fa-solid fa-circle-check text-primary-400 mr-3"></i> <strong>2 次 2天1夜 (五、六) 太平洋莊園雙人房住宿</strong></li>
+                                <li class="flex items-center"><i class="fa-solid fa-circle-check text-primary-400 mr-3"></i> 行程內所有特色海產、汆燙鍋、手作 Pizza 晚宴</li>
+                                <li class="flex items-center"><i class="fa-solid fa-circle-check text-primary-400 mr-3"></i> 專業教練帶領衝浪/SUP體驗、門票及火車站接送</li>
+                                <li class="flex items-center"><i class="fa-solid fa-circle-check text-primary-400 mr-3"></i> 用 AI 產出帶得走的個人生命寫作與生態觀察報告</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="#register" class="block w-full py-4 text-center bg-primary-600 hover:bg-primary-500 text-white font-bold rounded-2xl shadow-lg shadow-primary-600/20 transition-all">
+                        立即搶購渡假營限額
+                    </a>
+                </div>
+            </div>
+
+            <!-- Barter / Support note -->
+            <div class="max-w-3xl mx-auto mt-16 p-6 bg-white/5 border border-white/10 rounded-2xl text-center text-sm text-slate-400">
+                <p>
+                    <i class="fa-solid fa-circle-info text-accent-amber mr-2"></i>
+                    <strong>關於以物易物折抵機制：</strong>我們接受自產特產咖啡豆、除草勞務服務等方式折抵學費。請於下方報名表直接填寫您的折抵提案，我們將由專人與您評估聯繫！
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery / Local Images -->
+    <section id="gallery" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-accent-teal uppercase tracking-widest mb-3">活動寫照</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">都蘭山海與課程精彩瞬間</p>
+                <p class="mt-4 text-lg text-slate-600">這是學員們在太平洋莊園、都蘭大自然與實體課堂中，親身學習與生活的紀錄。</p>
+            </div>
+
+            <!-- Image Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="group relative overflow-hidden rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+                    <img src="dulan_eco_promo.png" alt="生態觀察與 AI 辨識" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4 text-white">
+                        <div>
+                            <span class="font-bold text-sm block">生態與 AI 辨識</span>
+                            <span class="text-xs text-slate-300">拍照識別自然生態並生成導覽報告</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+                    <img src="dulan_surf_ai_promo.png" alt="太平洋衝浪體驗" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4 text-white">
+                        <div>
+                            <span class="font-bold text-sm block">太平洋衝浪體驗</span>
+                            <span class="text-xs text-slate-300">由專業教練指導的三天兩夜玩水行程</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+                    <img src="dulan_guitar_promo.png" alt="營火音樂慶功晚宴" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4 text-white">
+                        <div>
+                            <span class="font-bold text-sm block">營火音樂晚會</span>
+                            <span class="text-xs text-slate-300">莊園窯烤 Pizza 與吉他演奏慶功</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+                    <img src="dulan_bulbul_promo.png" alt="烏頭翁生態觀察" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4 text-white">
+                        <div>
+                            <span class="font-bold text-sm block">在地文史與生態</span>
+                            <span class="text-xs text-slate-300">寫下都蘭烏頭翁的故事</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section / CTA -->
+    <section id="register" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-primary-50 to-blue-50 rounded-[40px] p-8 md:p-16 border border-primary-100/50 shadow-sm relative overflow-hidden">
+                <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary-100 rounded-full blur-3xl -z-10"></div>
+                <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-accent-teal/10 rounded-full blur-3xl -z-10"></div>
+
+                <div class="text-center max-w-2xl mx-auto">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-6">
+                        加入哈爸 AI 慢活共創營，<br class="hidden sm:inline">
+                        開啟你的數位旅程！
+                    </h2>
+                    <p class="text-slate-600 mb-10 text-base leading-relaxed">
+                        您已閱讀完我們的課程與度假方案了嗎？點擊下方按鈕即可跳轉填寫整合報名 Google 表單。我們會在收到您的表單後 3 個工作天內，由阿鐘或陳品碩老師與您聯繫！
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="https://forms.gle/CJVCxF1vET9LA99K7" target="_blank" class="inline-flex items-center justify-center px-10 py-4 bg-primary-600 hover:bg-primary-700 text-white font-black text-lg rounded-full shadow-lg shadow-primary-600/25 hover:shadow-xl transition-all">
+                            <i class="fa-solid fa-pen-to-square mr-2"></i> 立即填寫線上報名表
+                        </a>
+                        <a href="https://line.me/ti/p/~0908853322" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-lg rounded-full shadow-lg shadow-emerald-500/20 transition-all">
+                            <i class="fa-brands fa-line mr-2 text-xl"></i> LINE 諮詢阿鐘教練
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-primary-600 p-2 rounded-xl text-white">
+                        <i class="fa-solid fa-compass-drafting"></i>
+                    </div>
+                    <div>
+                        <span class="text-white font-extrabold block text-base tracking-wide">哈爸 AI 慢活共創營</span>
+                        <span class="text-xs text-slate-500">都蘭共學堂 ╳ 四季八里自然莊園 ╳ 生活管家就醬點</span>
+                    </div>
+                </div>
+                <div class="flex space-x-6 text-sm">
+                    <a href="#about" class="hover:text-white transition-colors">核心概念</a>
+                    <a href="#tracks" class="hover:text-white transition-colors">分組教室</a>
+                    <a href="#curriculum" class="hover:text-white transition-colors">大綱課表</a>
+                    <a href="#pricing" class="hover:text-white transition-colors">參訓費用</a>
+                </div>
+            </div>
+            <div class="border-t border-slate-800/80 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+                <p>&copy; 2026 都蘭共學堂學習社群. All rights reserved. 底層架構由 Antigravity 陪伴設計支援。</p>
+                <p class="mt-2 md:mt-0 flex items-center"><i class="fa-solid fa-shield-heart text-red-500 mr-1.5"></i> 開源創客社群陪伴偏鄉地方數位賦能</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close menu when clicking nav items
+        const navLinks = menu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
