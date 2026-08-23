@@ -1,0 +1,56 @@
+# 都蘭共學堂子網頁建立指南 (html.skill)
+
+本指南提供在「都蘭共學堂」專案中新增特色活動或講師子網頁的標準化開發流程。
+
+## 1. 資料夾與檔案結構 (Directory Structure)
+為每個新子網頁建立一個獨立且為**英文小寫命名**的子資料夾（如 `yuanyan`、`shunmei-farm`），內部結構如下：
+```text
+<subpage_name>/
+├── index.html        # 子網頁主 HTML 檔案
+├── profile.txt       # (選用) 講師簡介或活動說明文字檔
+└── *.mp4             # (選用) 相關活動影片片段（必須經過壓縮，單檔 < 10MB）
+```
+
+## 2. 網頁設計規範 (Web Design Standard)
+子網頁應採用與共學堂一致的自然美學風格。
+
+- **框架與樣式**：使用 Tailwind CSS 進行響應式設計（RWD），並以 Noto Sans TC / Noto Serif TC 作為字型。
+- **導航列（Header）**：每個子網頁頂端必須設有「返回共學堂首頁」按鈕。
+  - **重要限制**：連結必須指向正確大小寫的絕對網址：`https://jimchenlichung.github.io/LearnDulanWay/`（`Way` 的 `W` 必須大寫）。
+- **色彩計畫**：
+  - 森林綠：`#1E3F33` (主色，代表山海與共學)
+  - 陶土橘：`#C86D51` (強調色，代表熱情與手作)
+  - 溫暖沙色：`#F9F6F0` (背景色)
+
+## 3. 影音多媒體規範 (Media & Video Rules)
+為了在 GitHub Pages 上能極速載入且不卡頓，本地影片檔必須嚴格控制大小：
+
+- **影片大小限制**：
+  - 單個 `.mp4` 影片檔容量必須**低於 10MB**。
+  - 所有新加入的影片總容量必須**低於 20MB**。
+- **壓縮指令**：使用 `ffmpeg` 將大影片剪輯為精簡預覽版（如 40 秒）並進行 H.264 + AAC 壓縮：
+  ```bash
+  ffmpeg -y -i input.mp4 -t 40 -b:v 1500k -c:v libx264 -c:a aac -b:a 128k output.mp4
+  ```
+- **完整版收看**：在網頁上嵌入 YouTube 播放器（Iframe）以提供無損的完整版影音。
+- **Git 忽略規則**：將原始大影片備份為 `*_full.mp4.bak`，並在專案根目錄的 `.gitignore` 中加入 `*.bak` 規則，防止大檔案被推播至 GitHub。
+
+## 4. 首頁連結配置 (Homepage Integration)
+子網頁建立完成後，需在根目錄的 `index.html`（共學堂首頁）對應版位中加入課程卡片：
+```html
+<div class="course-card glass-card">
+  <a href="<subpage_name>/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+    <div>
+      <div class="course-header">
+        <span class="course-badge badge-purple">新增課程</span>
+        <h4>課程標題</h4>
+      </div>
+      <p class="course-teacher">講師：姓名</p>
+      <p class="course-desc">精簡的課程活動介紹...</p>
+    </div>
+    <div class="card-action" style="margin-top: 15px; font-weight: bold; color: var(--accent-color, #C86D51); font-size: 14px;">
+      開啟專屬網頁 ➡️
+    </div>
+  </a>
+</div>
+```

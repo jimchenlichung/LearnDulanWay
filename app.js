@@ -413,130 +413,102 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // 5. 報名表單動態顯示與以物易物控制
-  // ==========================================
-  const radioLocal = document.getElementById('radioLocal');
-  const radioVisitor = document.getElementById('radioVisitor');
-  const payCashLabel = document.getElementById('payCashLabel');
-  const payBarterLabel = document.getElementById('payBarterLabel');
-  const payCash = document.getElementById('payCash');
-  const payBarter = document.getElementById('payBarter');
-  
-  const barterPanel = document.getElementById('barterPanel');
-  const barterProposal = document.getElementById('barterProposal');
-  const lodgingPanel = document.getElementById('lodgingPanel');
-  const needLodging = document.getElementById('needLodging');
-
-  // 切換身分：在地 vs 外地
-  function handleIdentityChange() {
-    if (radioLocal.checked) {
-      // 在地：顯示以物易物選項
-      payBarterLabel.style.display = "flex";
-      lodgingPanel.classList.add('hidden');
-      needLodging.checked = false;
-    } else {
-      // 外地：隱藏以物易物，強制使用現金；顯示住宿加購面板
-      payBarterLabel.style.display = "none";
-      payCash.checked = true;
-      payCashLabel.classList.add('active');
-      payBarterLabel.classList.remove('active');
-      barterPanel.classList.add('hidden');
-      barterProposal.required = false;
-      
-      lodgingPanel.classList.remove('hidden');
-    }
-  }
-
-  radioLocal.addEventListener('change', handleIdentityChange);
-  radioVisitor.addEventListener('change', handleIdentityChange);
-
-  // 切換支付方式：現金 vs 以物易物
-  payCash.addEventListener('change', () => {
-    payCashLabel.classList.add('active');
-    payBarterLabel.classList.remove('active');
-    barterPanel.classList.add('hidden');
-    barterProposal.required = false;
-  });
-
-  payBarter.addEventListener('change', () => {
-    payBarterLabel.classList.add('active');
-    payCashLabel.classList.remove('active');
-    barterPanel.classList.remove('hidden');
-    barterProposal.required = true;
-    // 聚焦到提案輸入框
-    setTimeout(() => barterProposal.focus(), 150);
-  });
-
-
-  // ==========================================
-  // 6. 互動表單提交與成功彈窗 (Success Modal)
+  // 5. 互動表單提交與成功彈窗 (Success Modal)
   // ==========================================
   const enrollmentForm = document.getElementById('enrollmentForm');
   const successModal = document.getElementById('successModal');
   const modalSummary = document.getElementById('modalSummary');
   const closeModalBtn = document.getElementById('closeModalBtn');
+  const btnExportCSV = document.getElementById('btnExportCSV');
 
-  enrollmentForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+  if (enrollmentForm) {
+    enrollmentForm.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-    // 取得表單數值
-    const name = document.getElementById('studentName').value.trim();
-    const phone = document.getElementById('studentPhone').value.trim();
-    const line = document.getElementById('studentLine').value.trim() || "未提供";
-    const identity = radioLocal.checked ? "在地居民 / 小農" : "外縣市學員";
-    const payment = payCash.checked ? "現金支持 ($3,000)" : "以物易物提案";
-    const barterContent = barterProposal.value.trim();
-    const lodgingText = needLodging.checked ? "需要（請寄送莊園住宿優惠資訊）" : "不需要（僅參加共學）";
-    const courseSelect = document.getElementById('courseSelect').value;
-    const expectation = document.getElementById('expectations').value.trim() || "無特別描述";
+      // 取得表單數值
+      const name = document.getElementById('studentName').value.trim();
+      const phone = document.getElementById('studentPhone').value.trim();
+      const line = document.getElementById('studentLine').value.trim() || "未提供";
+      const courseSelect = document.getElementById('courseSelect').value || "哈爸 AI 慢活共創營";
+      const expectation = document.getElementById('expectations').value.trim() || "無特別描述";
+      const timestamp = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+      const sn = 'DL-HP-' + String(Math.floor(1000 + Math.random() * 9000));
 
-    // 建立成功的摘要 HTML
-    let summaryHtml = `
-      <p><strong>學員姓名：</strong>${name}</p>
-      <p><strong>聯絡電話：</strong>${phone} ｜ <strong>LINE ID：</strong>${line}</p>
-      <p><strong>身分類別：</strong>${identity}</p>
-      <p><strong>預約課程：</strong><span style="color: var(--primary-color); font-weight:600;">${courseSelect}</span></p>
-      <p><strong>學費方案：</strong>${payment}</p>
-    `;
+      // 儲存於本地 localStorage（方便隨時匯出試算表）
+      const newRecord = { sn, time: timestamp, name, phone, line, course: courseSelect, expectation };
+      const existing = JSON.parse(localStorage.getItem('dulan_homepage_registrations') || '[]');
+      existing.push(newRecord);
+      localStorage.setItem('dulan_homepage_registrations', JSON.stringify(existing));
 
-    if (payBarter.checked && radioLocal.checked) {
-      summaryHtml += `<p><strong>以物易物內容：</strong><span style="color: var(--accent-color); font-weight:600;">${barterContent}</span></p>`;
-    }
+      // 建立成功的摘要 HTML
+      let summaryHtml = `
+        <div style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 0.5rem;">
+          <p style="margin: 0.25rem 0;"><strong>報名序號：</strong><span style="color: #6EE7B7; font-family: monospace; font-weight: bold;">${sn}</span></p>
+          <p style="margin: 0.25rem 0;"><strong>學員姓名：</strong>${name}</p>
+          <p style="margin: 0.25rem 0;"><strong>聯絡電話：</strong>${phone} ｜ <strong>LINE ID：</strong>${line}</p>
+          <p style="margin: 0.25rem 0;"><strong>預約課程：</strong><span style="color: #FCD34D; font-weight: 600;">${courseSelect}</span></p>
+          <p style="margin: 0.25rem 0;"><strong>學習期待：</strong>${expectation}</p>
+        </div>
+        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.7); margin: 0.25rem 0 0;">
+          💡 系統已為您登記預約。您可點擊下方按鈕前往 Google 試算表/官方表單查看，或直接下載備份名單！
+        </p>
+      `;
 
-    if (radioVisitor.checked) {
-      summaryHtml += `<p><strong>莊園住宿意願：</strong>${lodgingText}</p>`;
-    }
+      // 塞入彈出視窗並顯示
+      modalSummary.innerHTML = summaryHtml;
+      successModal.classList.remove('hidden');
+      
+      // 暫時停止 Podcast 播放以防打擾
+      if (typeof isPlaying !== 'undefined' && isPlaying) {
+        isPlaying = false;
+        audio.pause();
+        updatePlayStateUI();
+      }
+    });
+  }
 
-    summaryHtml += `<p><strong>共學期待與痛點：</strong>${expectation}</p>`;
+  // 匯出報名試算表 CSV
+  if (btnExportCSV) {
+    btnExportCSV.addEventListener('click', () => {
+      const records = JSON.parse(localStorage.getItem('dulan_homepage_registrations') || '[]');
+      if (records.length === 0) {
+        alert('目前尚未有已登記的報名紀錄。\n您也可以直接點擊「前往 Google 試算表」查看雲端表單！');
+        return;
+      }
 
-    // 塞入彈出視窗並顯示
-    modalSummary.innerHTML = summaryHtml;
-    successModal.classList.remove('hidden');
-    
-    // 暫時停止 Podcast 播放以防打擾
-    if (isPlaying) {
-      isPlaying = false;
-      audio.pause();
-      updatePlayStateUI();
-    }
-  });
+      let csv = "\uFEFF報名序號,登記時間,姓名,電話,LINE ID,預約課程,學習期待\n";
+      records.forEach(r => {
+        csv += `"${r.sn}","${r.time}","${r.name}","${r.phone}","${r.line}","${r.course}","${r.expectation}"\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `都蘭共學堂_預約報名名單_${new Date().toISOString().slice(0,10)}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  }
 
   // 關閉彈出視窗並重置表單
-  closeModalBtn.addEventListener('click', () => {
-    successModal.classList.add('hidden');
-    enrollmentForm.reset();
-    handleIdentityChange(); // 恢復初始動態欄位
-    // 滾動回頂端
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', () => {
+      successModal.classList.add('hidden');
+      if (enrollmentForm) enrollmentForm.reset();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
   // 點擊 Modal 背景也可關閉
-  successModal.addEventListener('click', (e) => {
-    if (e.target === successModal) {
-      successModal.classList.add('hidden');
-      enrollmentForm.reset();
-      handleIdentityChange();
-    }
-  });
+  if (successModal) {
+    successModal.addEventListener('click', (e) => {
+      if (e.target === successModal) {
+        successModal.classList.add('hidden');
+        if (enrollmentForm) enrollmentForm.reset();
+      }
+    });
+  }
 
 });

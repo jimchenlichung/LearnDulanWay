@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW" class="dark">
 <head>
   <meta charset="UTF-8">
@@ -2684,62 +2684,6 @@ textarea {
               </div>
             </div>
 
-            <div class="form-group">
-              <label>身分類別 <span class="required">*</span></label>
-              <div class="radio-group">
-                <label class="radio-label">
-                  <input type="radio" name="student_type" value="local" checked id="radioLocal">
-                  <span class="custom-radio"></span>
-                  <div class="radio-text">
-                    <strong>在地居民 / 小農 / 民宿主</strong>
-                    <p>居住於台東，可提案以物易物學費折抵</p>
-                  </div>
-                </label>
-                <label class="radio-label">
-                  <input type="radio" name="student_type" value="visitor" id="radioVisitor">
-                  <span class="custom-radio"></span>
-                  <div class="radio-text">
-                    <strong>外縣市學員 / 創作者</strong>
-                    <p>希望來都蘭深度渡假，有加購莊園住宿意願</p>
-                  </div>
-                </label>
-              </div>
-            </div>
-
-            <!-- Dynamic Barter/Payment Options -->
-            <div class="form-group" id="paymentOptionsContainer">
-              <label>學費方案與支付方式 <span class="required">*</span></label>
-              <div class="payment-selector">
-                <label class="payment-box active" id="payCashLabel">
-                  <input type="radio" name="payment_method" value="cash" checked id="payCash">
-                  <span>💵 現金支持 $3,000</span>
-                </label>
-                <label class="payment-box" id="payBarterLabel">
-                  <input type="radio" name="payment_method" value="barter" id="payBarter">
-                  <span>🤝 提案以物易物</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Barter Details (Dynamic display) -->
-            <div class="form-group barter-details-panel hidden" id="barterPanel">
-              <label for="barterProposal">您的「以物易物」提案內容 <span class="required">*</span></label>
-              <textarea id="barterProposal" name="barter_proposal" placeholder="例如：自產有機咖啡豆 3 磅、手工烘焙歐式麵包 10 份、或者協助莊園鋤草/修剪樹木 10 小時..."></textarea>
-              <p class="help-text">💡 助教收到提案後會與您聯繫，共同討論並確認折抵細節。</p>
-            </div>
-
-            <!-- Lodging Interest (Dynamic display for visitors) -->
-            <div class="form-group lodging-panel hidden" id="lodgingPanel">
-              <label>🏡 「四季八里莊園」加購住宿意願</label>
-              <div class="checkbox-group">
-                <label class="checkbox-label">
-                  <input type="checkbox" id="needLodging" name="need_lodging">
-                  <span class="custom-checkbox"></span>
-                  <span>我想索取「共學＋渡假加購住宿」的房型與房價資訊</span>
-                </label>
-              </div>
-            </div>
-
             <!-- Course Selection -->
             <div class="form-group">
               <label for="courseSelect">欲選讀的課程或體驗項目 <span class="required">*</span></label>
@@ -2832,14 +2776,19 @@ textarea {
 
   <!-- Submission Success Modal -->
   <div class="modal-overlay hidden" id="successModal">
-    <div class="modal-content glass-card">
+    <div class="modal-content glass-card" style="max-width: 520px; text-align: center;">
       <span class="modal-success-icon">🎉</span>
-      <h3 id="modalTitle">報名申請成功！</h3>
-      <p id="modalDesc">我們已收到您的共學預約與以物易物提案。</p>
-      <div class="modal-summary glass-card" id="modalSummary">
+      <h3 id="modalTitle">報名預約成功！</h3>
+      <p id="modalDesc">我們已收到您的共學預約資訊，資料已同步連動紀錄。</p>
+      <div class="modal-summary glass-card" id="modalSummary" style="text-align: left; margin: 1.25rem 0; font-size: 0.9rem; line-height: 1.6;">
         <!-- Will be filled by JS -->
       </div>
-      <button class="btn btn-primary" id="closeModalBtn">我知道了</button>
+      <div style="display: flex; flex-direction: column; gap: 0.65rem; margin-top: 1rem;">
+        <button type="button" class="btn btn-primary" id="btnExportCSV" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;">
+          📥 匯出並下載報名試算表 (CSV)
+        </button>
+        <button class="btn btn-secondary" id="closeModalBtn" style="opacity: 0.9; margin-top: 0.25rem;">關閉視窗</button>
+      </div>
     </div>
   </div>
 
