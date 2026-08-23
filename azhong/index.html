@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌱 阿中翻轉人生 | 從微習慣出發，親身見證逆轉勝 - 都蘭共學堂</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dulan: {
+                            forest: '#1E3F33',
+                            dark:   '#122820',
+                            sand:   '#F9F6F0',
+                            clay:   '#C86D51',
+                            wood:   '#8C6849',
+                            leaf:   '#4A7C59',
+                            teal:   '#0D7377',
+                            ocean:  '#1B4F72'
+                        }
+                    },
+                    fontFamily: {
+                        sans:  ['Noto Sans TC', 'sans-serif'],
+                        serif: ['Noto Serif TC', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(135deg, rgba(13,60,50,0.75) 0%, rgba(27,79,114,0.80) 100%),
+                              url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1400&auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .wave-divider {
+            clip-path: ellipse(75% 100% at 50% 100%);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-[#F9F6F0] antialiased">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <a href="https://jimchenlichung.github.io/LearnDulanWay/" class="inline-flex items-center gap-1.5 text-xs text-dulan-forest bg-dulan-sand hover:bg-gray-100 px-3 py-1.5 rounded-full border border-dulan-forest/10 transition">
+                    <i class="fa-solid fa-arrow-left"></i> 返回共學堂首頁
+                </a>
+            </div>
+            <div class="text-right">
+                <span class="font-serif text-lg font-bold text-dulan-forest block leading-none">都蘭共學堂</span>
+                <span class="text-[9px] text-dulan-clay tracking-widest uppercase block mt-1">LearnDulanWay</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg py-24 sm:py-36 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-dulan-teal/80 text-white text-sm font-semibold tracking-wider border border-white/20">
+                🌱 生命實踐 × 習慣與身心重塑
+            </span>
+            <h1 class="font-serif text-3xl sm:text-5xl font-bold leading-tight">
+                人生何時開始<br>都<span class="text-emerald-300">不晚</span>！
+            </h1>
+            <p class="text-base sm:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
+                從最小的微習慣開始，走出低谷，重新找回生命的主控權與內在平靜。阿中教練以真實走過逆境的見證，帶你親身體驗人生逆轉勝的真實力量。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+                <a href="#register" class="inline-flex items-center justify-center gap-2 bg-dulan-teal hover:bg-dulan-ocean text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition">
+                    開始我的翻轉旅程 <i class="fa-solid fa-chevron-right text-sm"></i>
+                </a>
+                <a href="#about" class="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 text-white font-bold px-8 py-3.5 rounded-full border border-white/30 backdrop-blur-md transition">
+                    認識阿中教練
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Stats -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 -mt-8 relative z-10">
+        <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 sm:p-10 grid grid-cols-1 sm:grid-cols-3 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-gray-100">
+            <div class="flex items-start gap-4 pb-6 sm:pb-0">
+                <div class="bg-dulan-teal/10 p-4 rounded-2xl text-dulan-teal shrink-0">
+                    <i class="fa-solid fa-person-walking-arrow-right text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-dulan-forest mb-1">真實逆境見證者</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">阿中教練親身走過人生最低谷，以親身實踐的力量感召每一位學員。</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4 py-6 sm:py-0 sm:pl-8">
+                <div class="bg-dulan-leaf/10 p-4 rounded-2xl text-dulan-leaf shrink-0">
+                    <i class="fa-solid fa-seedling text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-dulan-forest mb-1">微習慣科學方法</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">不靠意志力，從每天 2 分鐘的微小行動開始，累積改變的複利能量。</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4 pt-6 sm:pt-0 sm:pl-8">
+                <div class="bg-dulan-clay/10 p-4 rounded-2xl text-dulan-clay shrink-0">
+                    <i class="fa-solid fa-waves text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-dulan-forest mb-1">山海為師的療癒</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">每日衝浪、晨走都蘭山，以自然節律重整身心，找回內在平靜。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Coach Section -->
+    <section id="about" class="py-20 max-w-4xl mx-auto px-4 sm:px-6 space-y-12">
+        <div class="text-center space-y-3">
+            <span class="text-xs font-bold text-dulan-teal uppercase tracking-widest">教練介紹</span>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-dulan-forest">阿中（陳豊鍾）— 從逆境淬鍊出的人生翻轉力</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                都蘭共學堂創辦人，以親身走過人生最低谷的真實故事，成為無數人的生命翻轉引路人。他相信：每一個低谷，都是一次重生的起點。
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 space-y-4">
+                <div class="flex items-center gap-3">
+                    <span class="w-3 h-3 rounded-full bg-dulan-teal inline-block"></span>
+                    <span class="text-xs font-bold text-dulan-teal uppercase tracking-wider">教練背景</span>
+                </div>
+                <h3 class="font-serif text-lg font-bold text-dulan-forest">逆境見證者，也是陪伴者</h3>
+                <ul class="space-y-2 text-sm text-gray-700">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-dulan-leaf text-xs mt-1"></i>都蘭共學堂創辦人暨首席教練</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-dulan-leaf text-xs mt-1"></i>親身實踐微習慣養成、戒除不良習慣，成功走出人生低谷</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-dulan-leaf text-xs mt-1"></i>以 AI 工具提煉個人健康、財經、創作「四桶金」</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-dulan-leaf text-xs mt-1"></i>每日帶領學員衝浪、晨走，以都蘭山海為身心重塑的教室</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-dulan-leaf text-xs mt-1"></i>聯絡：0908-853-322</li>
+                </ul>
+            </div>
+            <div class="bg-gradient-to-br from-dulan-teal/10 to-dulan-leaf/10 rounded-3xl p-6 shadow-sm border border-dulan-teal/10 space-y-4">
+                <div class="flex items-center gap-3">
+                    <span class="w-3 h-3 rounded-full bg-dulan-clay inline-block"></span>
+                    <span class="text-xs font-bold text-dulan-clay uppercase tracking-wider">核心信念</span>
+                </div>
+                <blockquote class="font-serif text-dulan-forest text-base leading-relaxed italic border-l-4 border-dulan-teal pl-4">
+                    「改變不需要等待一個完美的起點。最小的行動，才是最強大的力量。從今天的一件小事開始，你的人生就已經在翻轉了。」
+                </blockquote>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    課程不談大道理，只帶你做一件具體的小事。每一天的微小堅持，在三個月後你會驚訝地發現，自己已經是完全不同的人了。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Micro-Habits Framework -->
+    <section id="curriculum" class="py-16 bg-dulan-forest text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
+            <div class="text-center space-y-2">
+                <span class="text-xs font-bold text-dulan-clay uppercase tracking-widest">翻轉框架</span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold">人生四桶金 × 微習慣系統</h2>
+                <p class="text-white/70 text-sm">以 AI 工具為放大鏡，以微習慣為引擎，啟動人生的複利革命</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Gold 1 -->
+                <div class="bg-white/10 rounded-2xl p-6 space-y-3 border border-white/15 backdrop-blur-sm">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl">💪</span>
+                        <div>
+                            <span class="text-xs font-bold text-dulan-clay block">第一桶金</span>
+                            <h3 class="font-bold text-white">健康紅利</h3>
+                        </div>
+                    </div>
+                    <p class="text-sm text-white/75 leading-relaxed">用 AI 精準分析個人健檢報告，制定微運動計劃。每日衝浪與都蘭山晨走，重建身體的自信與活力。</p>
+                    <ul class="space-y-1 text-xs text-white/60">
+                        <li>· 每日 16:00 鉛橋海灘衝浪體驗</li>
+                        <li>· AI 個人化健康監控與分析</li>
+                        <li>· 微運動習慣設計與追蹤</li>
+                    </ul>
+                </div>
+                <!-- Gold 2 -->
+                <div class="bg-white/10 rounded-2xl p-6 space-y-3 border border-white/15 backdrop-blur-sm">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl">🧠</span>
+                        <div>
+                            <span class="text-xs font-bold text-dulan-clay block">第二桶金</span>
+                            <h3 class="font-bold text-white">心智重塑</h3>
+                        </div>
+                    </div>
+                    <p class="text-sm text-white/75 leading-relaxed">從辨識有毒習慣開始，以「微習慣替換法」逐步建立全新心理模式，找回內在平靜與自主掌控感。</p>
+                    <ul class="space-y-1 text-xs text-white/60">
+                        <li>· 壞習慣識別與替換工作坊</li>
+                        <li>· 每日 2 分鐘正念啟動練習</li>
+                        <li>· AI 習慣追蹤日記系統</li>
+                    </ul>
+                </div>
+                <!-- Gold 3 -->
+                <div class="bg-white/10 rounded-2xl p-6 space-y-3 border border-white/15 backdrop-blur-sm">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl">🎨</span>
+                        <div>
+                            <span class="text-xs font-bold text-dulan-clay block">第三桶金</span>
+                            <h3 class="font-bold text-white">創作自我實現</h3>
+                        </div>
+                    </div>
+                    <p class="text-sm text-white/75 leading-relaxed">把語音紀錄、靈感、人生閱歷透過 AI 轉化為播客、書籍或課程，實現人生的第二曲線創作夢。</p>
+                    <ul class="space-y-1 text-xs text-white/60">
+                        <li>· 語音 → 文章 AI 生產流程</li>
+                        <li>· 個人故事品牌化方法</li>
+                        <li>· Podcast 腳本與發行實作</li>
+                    </ul>
+                </div>
+                <!-- Gold 4 -->
+                <div class="bg-white/10 rounded-2xl p-6 space-y-3 border border-white/15 backdrop-blur-sm">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl">⏰</span>
+                        <div>
+                            <span class="text-xs font-bold text-dulan-clay block">第四桶金</span>
+                            <h3 class="font-bold text-white">時間紅利</h3>
+                        </div>
+                    </div>
+                    <p class="text-sm text-white/75 leading-relaxed">讓 AI 承接繁重的行政與資訊整理工作，釋放出大量時間，去做真正讓你充滿活力的事。</p>
+                    <ul class="space-y-1 text-xs text-white/60">
+                        <li>· AI 自動化行政流程設定</li>
+                        <li>· 財經資訊篩選冷靜劑系統</li>
+                        <li>· 個人時間主導力重建</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience -->
+    <section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
+            <div class="text-center space-y-2">
+                <span class="text-xs font-bold text-dulan-clay uppercase tracking-widest">適合對象</span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-dulan-forest">你是不是也曾這樣想過…</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="flex items-start gap-4 bg-dulan-sand rounded-2xl p-5">
+                    <span class="text-2xl shrink-0">🔄</span>
+                    <div>
+                        <h3 class="font-bold text-dulan-forest mb-1">「我想改變，但總是撐不過三天」</h3>
+                        <p class="text-sm text-gray-600">想戒除不良習慣、尋求人生突破，卻屢屢因為意志力耗盡而放棄的人。</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 bg-dulan-sand rounded-2xl p-5">
+                    <span class="text-2xl shrink-0">🌅</span>
+                    <div>
+                        <h3 class="font-bold text-dulan-forest mb-1">「退休了，然後呢？」</h3>
+                        <p class="text-sm text-gray-600">正在退休轉型、探索第二人生，不知道未來方向在哪裡的朋友。</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 bg-dulan-sand rounded-2xl p-5">
+                    <span class="text-2xl shrink-0">🌊</span>
+                    <div>
+                        <h3 class="font-bold text-dulan-forest mb-1">「我只是需要一個真實的陪伴」</h3>
+                        <p class="text-sm text-gray-600">不要道理，只要有人陪著走過低谷，在山海之間找回自己的力量。</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 bg-dulan-sand rounded-2xl p-5">
+                    <span class="text-2xl shrink-0">✅</span>
+                    <div>
+                        <h3 class="font-bold text-dulan-forest mb-1">想建立微習慣、改善身心靈者</h3>
+                        <p class="text-sm text-gray-600">渴望透過具體可落實的小步驟，在三個月內感受到真實的身心改變。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Hook Banner -->
+    <section class="py-12 bg-gradient-to-r from-dulan-teal to-dulan-forest text-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-4">
+            <p class="text-xs font-bold text-emerald-300 uppercase tracking-widest">廣告核心訴求</p>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold leading-tight">
+                「人生何時開始都不晚！<br>
+                <span class="text-emerald-300">從微習慣出發，親身見證人生逆轉勝的真實力量。」</span>
+            </h2>
+            <p class="text-white/70 text-sm max-w-xl mx-auto">
+                關鍵字方向：微習慣培養工作坊 ‧ 第二人生規劃營隊 ‧ 自我改變實踐課程 ‧ 身心逆轉學習
+            </p>
+        </div>
+    </section>
+
+    <!-- Daily Schedule Preview -->
+    <section class="py-16 bg-dulan-sand">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-8">
+            <div class="text-center space-y-2">
+                <span class="text-xs font-bold text-dulan-clay uppercase tracking-widest">在都蘭翻轉的一天</span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-dulan-forest">山海節律的生命重塑時刻</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                <div class="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100">
+                    <p class="text-2xl mb-2">🌄</p>
+                    <p class="text-xs font-bold text-dulan-clay mb-1">早晨 06:30</p>
+                    <h3 class="font-bold text-dulan-forest text-sm mb-1">都蘭山晨走</h3>
+                    <p class="text-xs text-gray-500">在薄霧中踏查步道，讓大自然喚醒沉睡已久的感知力。</p>
+                </div>
+                <div class="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100">
+                    <p class="text-2xl mb-2">💻</p>
+                    <p class="text-xs font-bold text-dulan-clay mb-1">上午 09:00</p>
+                    <h3 class="font-bold text-dulan-forest text-sm mb-1">AI 學習實作</h3>
+                    <p class="text-xs text-gray-500">手把手操作 AI 工具，把人生閱歷轉化為有用的知識產品。</p>
+                </div>
+                <div class="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100">
+                    <p class="text-2xl mb-2">🔨</p>
+                    <p class="text-xs font-bold text-dulan-clay mb-1">下午 14:00</p>
+                    <h3 class="font-bold text-dulan-forest text-sm mb-1">木工與書法</h3>
+                    <p class="text-xs text-gray-500">靜時揮毫，動時木工，修復器物也修復內心的浮躁。</p>
+                </div>
+                <div class="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100">
+                    <p class="text-2xl mb-2">🌊</p>
+                    <p class="text-xs font-bold text-dulan-clay mb-1">傍晚 16:00</p>
+                    <h3 class="font-bold text-dulan-forest text-sm mb-1">太平洋衝浪</h3>
+                    <p class="text-xs text-gray-500">與海浪對話，在漂浮中放空自我，重拾生命的流動感。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="py-16 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+            <div class="bg-dulan-forest rounded-3xl shadow-xl p-8 sm:p-12 text-center space-y-6">
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-white">
+                    你的翻轉，<br>從今天的一小步開始！
+                </h2>
+                <p class="text-white/70 text-sm leading-relaxed max-w-xl mx-auto">
+                    歡迎透過 LINE 直接聯繫阿中教練，說說你現在的狀況，我們一起找到適合你的翻轉起點。名額有限，每次只收少數真心想改變的朋友。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://forms.gle/CJVCxF1vET9LA99K7" target="_blank" class="inline-flex items-center justify-center gap-2 bg-dulan-clay hover:bg-[#b55c42] text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition">
+                        <i class="fa-solid fa-pen-to-square"></i> 填寫線上報名表
+                    </a>
+                    <a href="https://line.me/ti/p/~0908853322" target="_blank" class="inline-flex items-center justify-center gap-2 bg-dulan-leaf hover:bg-dulan-teal text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition">
+                        <i class="fa-brands fa-line text-xl"></i> LINE 直接找阿中
+                    </a>
+                </div>
+                <p class="text-white/50 text-xs">
+                    <i class="fa-solid fa-circle-info text-dulan-clay mr-1"></i>
+                    支援以物易物折抵：接受自產農產、除草勞務等方式折抵報名費
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dulan-dark text-white/80 py-8 border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-4 text-center text-xs space-y-2">
+            <p class="font-bold text-white">阿中翻轉人生</p>
+            <p class="text-white/50">都蘭共學堂 ╳ 四季八里自然莊園</p>
+            <p class="text-white/40">© 2026 都蘭共學堂學習社群. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

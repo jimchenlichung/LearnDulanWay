@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✍️ 江冠明人生寫作課 | 把你的生命故事寫成永恆 - 都蘭共學堂</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dulan: {
+                            forest: '#1E3F33',
+                            dark:   '#122820',
+                            sand:   '#F9F6F0',
+                            clay:   '#C86D51',
+                            wood:   '#8C6849',
+                            leaf:   '#4A7C59',
+                            ink:    '#3D2B1F',
+                            parch:  '#F5EED8'
+                        }
+                    },
+                    fontFamily: {
+                        sans:  ['Noto Sans TC', 'sans-serif'],
+                        serif: ['Noto Serif TC', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(rgba(30, 16, 8, 0.60), rgba(30, 16, 8, 0.85)),
+                              url('https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1400&auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .ink-texture {
+            background-color: #F5EED8;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238C6849' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-[#F9F6F0] antialiased">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <a href="https://jimchenlichung.github.io/LearnDulanWay/" class="inline-flex items-center gap-1.5 text-xs text-dulan-forest bg-dulan-sand hover:bg-gray-100 px-3 py-1.5 rounded-full border border-dulan-forest/10 transition">
+                    <i class="fa-solid fa-arrow-left"></i> 返回共學堂首頁
+                </a>
+            </div>
+            <div class="text-right">
+                <span class="font-serif text-lg font-bold text-dulan-forest block leading-none">都蘭共學堂</span>
+                <span class="text-[9px] text-dulan-clay tracking-widest uppercase block mt-1">LearnDulanWay</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg py-24 sm:py-36 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-dulan-wood/80 text-white text-sm font-semibold tracking-wider border border-white/20">
+                ✍️ 文化記憶 × 生命書寫
+            </span>
+            <h1 class="font-serif text-3xl sm:text-5xl font-bold leading-tight">
+                每個人都是<br>一本<span class="text-amber-300">厚重的書</span>
+            </h1>
+            <p class="text-base sm:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
+                跟著在地作家江冠明老師，把你走過的歲月、聽過的故事、感受過的情感，梳理成有力量的文字作品，寫成屬於你的生命永恆。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+                <a href="#register" class="inline-flex items-center justify-center gap-2 bg-dulan-wood hover:bg-dulan-ink text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition">
+                    立即報名寫作課 <i class="fa-solid fa-chevron-right text-sm"></i>
+                </a>
+                <a href="#about" class="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 text-white font-bold px-8 py-3.5 rounded-full border border-white/30 backdrop-blur-md transition">
+                    認識江冠明老師
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Stats -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 -mt-8 relative z-10">
+        <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 sm:p-10 grid grid-cols-1 sm:grid-cols-3 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-gray-100">
+            <div class="flex items-start gap-4 pb-6 sm:pb-0">
+                <div class="bg-dulan-wood/10 p-4 rounded-2xl text-dulan-wood shrink-0">
+                    <i class="fa-solid fa-feather-pointed text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-dulan-forest mb-1">在地作家親授</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">江冠明老師深耕台東文學數十年，以真實生命厚度引領文字之道。</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4 py-6 sm:py-0 sm:pl-8">
+                <div class="bg-dulan-leaf/10 p-4 rounded-2xl text-dulan-leaf shrink-0">
+                    <i class="fa-solid fa-microphone text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-dulan-forest mb-1">語音 × AI 雙工具</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">結合語音錄音與 AI 整理，讓不擅打字的學員也能輕鬆完成書寫。</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4 pt-6 sm:pt-0 sm:pl-8">
+                <div class="bg-dulan-clay/10 p-4 rounded-2xl text-dulan-clay shrink-0">
+                    <i class="fa-solid fa-book-open text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-dulan-forest mb-1">留下生命印記</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">課程結束後，每位學員都能完成屬於自己的生命故事文章或書稿章節。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Teacher Section -->
+    <section id="about" class="py-20 max-w-4xl mx-auto px-4 sm:px-6 space-y-12">
+        <div class="text-center space-y-3">
+            <span class="text-xs font-bold text-dulan-wood uppercase tracking-widest">導師介紹</span>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-dulan-forest">江冠明 — 以文字記錄台東的靈魂</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                台東在地作家、文化工作者。長年深耕台東阿美族文化、生態觀察與在地文學書寫，以溫暖而細膩的文字，為這片土地留下珍貴的記憶。
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 space-y-4">
+                <div class="flex items-center gap-3">
+                    <span class="w-3 h-3 rounded-full bg-dulan-wood inline-block"></span>
+                    <span class="text-xs font-bold text-dulan-wood uppercase tracking-wider">講師背景</span>
+                </div>
+                <h3 class="font-serif text-lg font-bold text-dulan-forest">文學與文化的雙重守護者</h3>
+                <ul class="space-y-2 text-sm text-gray-700">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-dulan-leaf text-xs mt-1"></i>深耕台東在地文學創作數十年</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-dulan-leaf text-xs mt-1"></i>長期記錄阿美族文化、口述歷史與族群故事</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-dulan-leaf text-xs mt-1"></i>帶領多次生命書寫工作坊，協助學員完成回憶錄</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-dulan-leaf text-xs mt-1"></i>台東縣文化資產與生態解說志工，山海步道踏查達人</li>
+                </ul>
+            </div>
+            <div class="bg-dulan-parch rounded-3xl p-6 shadow-sm border border-dulan-wood/10 space-y-4">
+                <div class="flex items-center gap-3">
+                    <span class="w-3 h-3 rounded-full bg-dulan-clay inline-block"></span>
+                    <span class="text-xs font-bold text-dulan-clay uppercase tracking-wider">教學理念</span>
+                </div>
+                <blockquote class="font-serif text-dulan-ink text-base leading-relaxed italic border-l-4 border-dulan-wood pl-4">
+                    「每個人心裡都藏著一部精采的電影。我的工作，就是幫你找到那個鏡頭，讓它在文字上發光。」
+                </blockquote>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    課程不強調文學技巧，而是從「說故事」開始——把你最真實的記憶、最深刻的感動，用最自然的語言說出來，再由老師引導淬鍊成文字的力量。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section id="curriculum" class="py-16 ink-texture">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
+            <div class="text-center space-y-2">
+                <span class="text-xs font-bold text-dulan-wood uppercase tracking-widest">課程架構</span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-dulan-forest">人生寫作三部曲</h2>
+                <p class="text-gray-600 text-sm">從記憶挖掘到文字落地，帶你完成屬於自己的生命故事書稿</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <!-- Stage 1 -->
+                <div class="bg-white rounded-2xl p-6 space-y-3 border border-dulan-wood/10 shadow-sm">
+                    <span class="inline-block bg-dulan-wood text-white text-xs font-bold px-3 py-1 rounded-full">第一部</span>
+                    <span class="block text-xs font-bold text-dulan-clay uppercase tracking-wider">記憶挖掘</span>
+                    <h3 class="font-serif font-bold text-dulan-forest">尋找你的故事寶藏</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">以時間軸與關鍵詞引導，挖掘藏在日常生活底層的珍貴記憶——那些你以為不重要、卻最有溫度的瞬間。</p>
+                    <ul class="space-y-1 text-xs text-gray-700 pt-2 border-t border-gray-100">
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-dulan-wood text-[6px]"></i>人生地圖繪製練習</li>
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-dulan-wood text-[6px]"></i>語音口述初稿錄製</li>
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-dulan-wood text-[6px]"></i>AI 協助整理初稿文字</li>
+                    </ul>
+                </div>
+                <!-- Stage 2 -->
+                <div class="bg-white rounded-2xl p-6 space-y-3 border border-dulan-wood/10 shadow-sm">
+                    <span class="inline-block bg-dulan-forest text-white text-xs font-bold px-3 py-1 rounded-full">第二部</span>
+                    <span class="block text-xs font-bold text-dulan-clay uppercase tracking-wider">文字淬鍊</span>
+                    <h3 class="font-serif font-bold text-dulan-forest">讓故事有了力量</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">老師帶領學員從初稿中提煉精華，學習用細節與情感讓文字站立，讓讀者感同身受，讓故事有血有肉。</p>
+                    <ul class="space-y-1 text-xs text-gray-700 pt-2 border-t border-gray-100">
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-dulan-forest text-[6px]"></i>場景描寫技巧工作坊</li>
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-dulan-forest text-[6px]"></i>情感層次深化練習</li>
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-dulan-forest text-[6px]"></i>同學互評與老師回饋</li>
+                    </ul>
+                </div>
+                <!-- Stage 3 -->
+                <div class="bg-white rounded-2xl p-6 space-y-3 border border-dulan-wood/10 shadow-sm">
+                    <span class="inline-block bg-dulan-clay text-white text-xs font-bold px-3 py-1 rounded-full">第三部</span>
+                    <span class="block text-xs font-bold text-dulan-wood uppercase tracking-wider">成果發表</span>
+                    <h3 class="font-serif font-bold text-dulan-forest">完成你的生命之書</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">整合前兩部成果，完成個人生命故事文章或書稿章節，並舉行成果發表會，讓每個生命故事被看見、被珍惜。</p>
+                    <ul class="space-y-1 text-xs text-gray-700 pt-2 border-t border-gray-100">
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-dulan-clay text-[6px]"></i>完整文章/章節定稿</li>
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-dulan-clay text-[6px]"></i>生命故事成果發表會</li>
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-dulan-clay text-[6px]"></i>AI 輔助排版電子書檔</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience -->
+    <section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
+            <div class="text-center space-y-2">
+                <span class="text-xs font-bold text-dulan-clay uppercase tracking-widest">適合對象</span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-dulan-forest">這堂課，是為你而開</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="flex items-start gap-4 bg-dulan-sand rounded-2xl p-5">
+                    <span class="text-2xl shrink-0">📖</span>
+                    <div>
+                        <h3 class="font-bold text-dulan-forest mb-1">想記錄家族或個人故事者</h3>
+                        <p class="text-sm text-gray-600">擔心父母、長輩的故事隨時間消失，或想為自己留下人生見證的人。</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 bg-dulan-sand rounded-2xl p-5">
+                    <span class="text-2xl shrink-0">✨</span>
+                    <div>
+                        <h3 class="font-bold text-dulan-forest mb-1">文字愛好者、藝文創作者</h3>
+                        <p class="text-sm text-gray-600">對寫作有熱情，但缺乏系統引導，或想突破創作瓶頸的人。</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 bg-dulan-sand rounded-2xl p-5">
+                    <span class="text-2xl shrink-0">🌿</span>
+                    <div>
+                        <h3 class="font-bold text-dulan-forest mb-1">尋找深度內在沉澱的旅人</h3>
+                        <p class="text-sm text-gray-600">在忙碌生活中渴望停下來，與自己的過去好好和解、整理的人。</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 bg-dulan-sand rounded-2xl p-5">
+                    <span class="text-2xl shrink-0">🎙️</span>
+                    <div>
+                        <h3 class="font-bold text-dulan-forest mb-1">不擅長打字也沒關係</h3>
+                        <p class="text-sm text-gray-600">課程支援語音口述 + AI 整理流程，說話就能完成初稿，讓技術門檻歸零。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Hook Banner -->
+    <section class="py-12 bg-dulan-forest text-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-4">
+            <p class="text-xs font-bold text-dulan-clay uppercase tracking-widest">廣告核心訴求</p>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold leading-tight">
+                「每個人都是一本厚重的書。<br>
+                <span class="text-amber-300">跟著在地作家，把你的生命故事寫成永恆。」</span>
+            </h2>
+            <p class="text-white/70 text-sm max-w-xl mx-auto">
+                關鍵字方向：自傳書寫工作坊 ‧ 台東寫作營 ‧ 生命故事整理課程 ‧ 回憶錄寫作指導
+            </p>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="py-16 bg-dulan-sand">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+            <div class="bg-white rounded-3xl shadow-xl border border-dulan-wood/10 p-8 sm:p-12 text-center space-y-6">
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-dulan-forest">
+                    開始書寫你的故事，<br>讓歲月留下印記！
+                </h2>
+                <p class="text-gray-600 text-sm leading-relaxed max-w-xl mx-auto">
+                    課程採小班制，每期名額有限。歡迎透過 LINE 或報名表聯繫阿中教練，我們將為你說明課程詳情與開課時間。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://forms.gle/CJVCxF1vET9LA99K7" target="_blank" class="inline-flex items-center justify-center gap-2 bg-dulan-forest hover:bg-dulan-dark text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition">
+                        <i class="fa-solid fa-pen-to-square"></i> 填寫線上報名表
+                    </a>
+                    <a href="https://line.me/ti/p/~0908853322" target="_blank" class="inline-flex items-center justify-center gap-2 bg-dulan-leaf hover:bg-dulan-forest text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition">
+                        <i class="fa-brands fa-line text-xl"></i> LINE 諮詢阿中教練
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dulan-dark text-white/80 py-8 border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-4 text-center text-xs space-y-2">
+            <p class="font-bold text-white">江冠明人生寫作課</p>
+            <p class="text-white/50">都蘭共學堂 ╳ 四季八里自然莊園</p>
+            <p class="text-white/40">© 2026 都蘭共學堂學習社群. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
