@@ -7,6 +7,6 @@
 
 爰言舞蹈https://jimchenlichung.github.io/LearnDulanWay/yuanyan/index.html
 
-江冠明https://jimchenlichung.github.io/LearnDulanWayjianggm/index.html
+江冠明https://jimchenlichung.github.io/LearnDulanWay/jianggm/index.html
 
 阿中https://jimchenlichung.github.io/LearnDulanWay/azhong/index.html
