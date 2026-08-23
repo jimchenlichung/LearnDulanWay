@@ -150,49 +150,64 @@
   <!-- Latest Event Promo Section (最新活動特報) -->
   <section class="event-promo-section" id="event-promo" style="padding: 3rem 0 1.5rem; background: var(--bg-sand, #F9F6F0);">
     <div class="container">
-      <div class="glass-card" style="position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 2.5rem; border: 2px solid var(--accent-color, #C86D51); background: linear-gradient(135deg, var(--bg-card) 0%, rgba(200, 109, 81, 0.05) 100%); overflow: hidden; border-radius: 1.5rem; box-shadow: var(--glass-glow);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
         
-        <!-- Background light effect -->
-        <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: var(--accent-color, #C86D51); opacity: 0.15; filter: blur(50px); border-radius: 50%;"></div>
-        
-        <!-- Details -->
-        <div style="flex: 1; z-index: 2; width: 100%;">
-          <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent-color, #C86D51); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.35rem 0.85rem; border-radius: 9999px; margin-bottom: 1.25rem; letter-spacing: 0.05em; text-transform: uppercase;">
-            <span>🔔</span> 最新活動特報 ‧ 即將登場
+        <!-- Promo 1: AI September 30-Day Activity -->
+        <div class="glass-card" style="position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 1.25rem; padding: 2.25rem; border: 2px solid var(--accent-color, #C86D51); background: linear-gradient(135deg, var(--bg-card) 0%, rgba(200, 109, 81, 0.08) 100%); overflow: hidden; border-radius: 1.5rem; box-shadow: var(--glass-glow);">
+          <div style="position: absolute; top: -50px; right: -50px; width: 140px; height: 140px; background: var(--accent-color, #C86D51); opacity: 0.15; filter: blur(40px); border-radius: 50%;"></div>
+          <div style="z-index: 2;">
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent-color, #C86D51); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.35rem 0.85rem; border-radius: 9999px; margin-bottom: 1rem; letter-spacing: 0.05em; text-transform: uppercase;">
+              <span>🔥</span> 9月1日正式起跑 ‧ 30天打卡
+            </div>
+            <h2 style="font-family: var(--font-serif, 'Noto Serif TC', serif); font-size: 1.6rem; font-weight: 700; color: var(--text-color, #1E3F33); margin-bottom: 0.75rem; line-height: 1.35;">
+              用 AI 翻轉人生九月活動
+            </h2>
+            <p style="font-size: 0.92rem; color: var(--text-muted, #666); line-height: 1.6; margin-bottom: 1.25rem;">
+              史丹佛 Fogg 博士小習慣科學 × AI 改變人生 × AI 寫作！YouTube 錄影、臉書文字稿、LINE 即時問答 30 天打卡，同步加開 2天1夜 (3500元) 及 3天2夜 (7000元) 山海慢活實體營。
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.88rem; color: var(--text-color, #1E3F33); margin-bottom: 1rem;">
+              <div>📅 <strong>起跑時間：</strong> 9月1日 (二) 全程 30 天</div>
+              <div>👥 <strong>社群模式：</strong> YT / FB / LINE 即時互動</div>
+            </div>
           </div>
-          <h2 style="font-family: var(--font-serif, 'Noto Serif TC', serif); font-size: 1.85rem; font-weight: 700; color: var(--text-color, #1E3F33); margin-bottom: 0.75rem; line-height: 1.35;">
-            《微瀾漫舞》舞中禪首場演出活動
-          </h2>
-          <p style="font-size: 1rem; color: var(--text-muted, #666); line-height: 1.6; margin-bottom: 1.5rem;">
-            親身感受流動美學與動態禪修的融合！由林爰言編創導師引導，將「舞」與「心」交織，帶您在自然的律動中尋回內在的平靜。本場活動為共學堂特別企劃，歡迎一同前來共襄盛舉。
-          </p>
-          
-          <!-- Event Meta Data -->
-          <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 1.5rem; font-size: 0.95rem; color: var(--text-color, #1E3F33);">
-            <div style="display: flex; align-items: center; gap: 0.5rem;">
-              <span style="font-size: 1.2rem;">📅</span> 
-              <strong>時間：</strong> 9月19日 (星期六) 上午 10:00
-            </div>
-            <div style="display: flex; align-items: center; gap: 0.5rem;">
-              <span style="font-size: 1.2rem;">📍</span> 
-              <strong>地點：</strong> 舞米山莊
-            </div>
-            <div style="display: flex; align-items: center; gap: 0.5rem;">
-              <span style="font-size: 1.2rem;">🌸</span> 
-              <strong>編創引導：</strong> 林爰言 老師
-            </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; z-index: 2;">
+            <a href="ai-september/index.html" class="btn btn-primary" style="display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; padding: 0.75rem 1.5rem; border-radius: 9999px; font-weight: 600; text-decoration: none; color: #fff; background: var(--accent-color, #C86D51); box-shadow: 0 4px 12px rgba(200,109,81,0.25);">
+              查看九月活動專屬頁面 ➡️
+            </a>
+            <a href="ai-september/index.html#register" class="btn btn-secondary" style="display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; padding: 0.75rem 1.5rem; border-radius: 9999px; font-weight: 600; text-decoration: none; border: 1.5px solid var(--accent-color, #C86D51); color: var(--accent-color, #C86D51); background: transparent;">
+              線上報名與領取回函
+            </a>
           </div>
         </div>
 
-        <!-- Call to Actions -->
-        <div style="display: flex; flex-wrap: wrap; gap: 1rem; width: 100%; z-index: 2;">
-          <a href="yuanyan/index.html" class="btn btn-primary" style="display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; padding: 0.85rem 1.75rem; border-radius: 9999px; font-weight: 600; text-decoration: none; color: #fff; background: var(--accent-color, #C86D51); box-shadow: 0 4px 12px rgba(200,109,81,0.25);">
-            查看活動與導師詳情
-          </a>
-          <a href="#register" class="btn btn-secondary" style="display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; padding: 0.85rem 1.75rem; border-radius: 9999px; font-weight: 600; text-decoration: none; border: 1.5px solid var(--accent-color, #C86D51); color: var(--accent-color, #C86D51); background: transparent; transition: background 0.3s;">
-            立即預約報名 ➡️
-          </a>
+        <!-- Promo 2: Dance Zen Performance -->
+        <div class="glass-card" style="position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 1.25rem; padding: 2.25rem; border: 2px solid rgba(13, 115, 119, 0.4); background: linear-gradient(135deg, var(--bg-card) 0%, rgba(13, 115, 119, 0.05) 100%); overflow: hidden; border-radius: 1.5rem; box-shadow: var(--glass-glow);">
+          <div style="position: absolute; top: -50px; right: -50px; width: 140px; height: 140px; background: #0D7377; opacity: 0.15; filter: blur(40px); border-radius: 50%;"></div>
+          <div style="z-index: 2;">
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: #0D7377; color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.35rem 0.85rem; border-radius: 9999px; margin-bottom: 1rem; letter-spacing: 0.05em; text-transform: uppercase;">
+              <span>🔔</span> 9月19日特別企劃 ‧ 即將登場
+            </div>
+            <h2 style="font-family: var(--font-serif, 'Noto Serif TC', serif); font-size: 1.6rem; font-weight: 700; color: var(--text-color, #1E3F33); margin-bottom: 0.75rem; line-height: 1.35;">
+              《微瀾漫舞》舞中禪首場演出活動
+            </h2>
+            <p style="font-size: 0.92rem; color: var(--text-muted, #666); line-height: 1.6; margin-bottom: 1.25rem;">
+              親身感受流動美學與動態禪修的融合！由林爰言編創導師引導，將「舞」與「心」交織，帶您在自然的律動中尋回內在的平靜。
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.88rem; color: var(--text-color, #1E3F33); margin-bottom: 1rem;">
+              <div>📅 <strong>時間：</strong> 9月19日 (六) 上午 10:00</div>
+              <div>📍 <strong>地點：</strong> 舞米山莊</div>
+            </div>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; z-index: 2;">
+            <a href="yanyan/index.html" class="btn btn-primary" style="display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; padding: 0.75rem 1.5rem; border-radius: 9999px; font-weight: 600; text-decoration: none; color: #fff; background: #0D7377; box-shadow: 0 4px 12px rgba(13,115,119,0.25);">
+              查看演出活動詳情
+            </a>
+            <a href="#register" class="btn btn-secondary" style="display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; padding: 0.75rem 1.5rem; border-radius: 9999px; font-weight: 600; text-decoration: none; border: 1.5px solid #0D7377; color: #0D7377; background: transparent;">
+              預約報名 ➡️
+            </a>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -334,6 +349,21 @@
         <div class="course-category-group">
           <h3 class="category-title">💻 AI 與慢活科技</h3>
           <div class="category-grid">
+            <div class="course-card glass-card" style="border: 2px solid var(--accent-color, #C86D51); background: linear-gradient(135deg, rgba(200, 109, 81, 0.06) 0%, rgba(13, 115, 119, 0.06) 100%);">
+              <a href="ai-september/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                <div>
+                  <div class="course-header">
+                    <span class="course-badge" style="background: var(--accent-color, #C86D51); color: #fff; font-weight: 700;">🔥 九月特選活動</span>
+                    <h4>用 AI 翻轉人生九月活動</h4>
+                  </div>
+                  <p class="course-teacher">9/1 起跑 ‧ 30 天網路打卡 ╳ 實體慢活營</p>
+                  <p class="course-desc">史丹佛 Fogg 博士小習慣科學 × AI 改變人生 × AI 寫作。線上社群（YT/FB/LINE）30 天打卡共學，加開 2天1夜 (3500元) 及 3天2夜 (7000元) 山海慢活營！</p>
+                </div>
+                <div class="card-action" style="margin-top: 15px; font-weight: bold; color: var(--accent-color, #C86D51); font-size: 14px;">
+                  進入活動與報名專頁 ➡️
+                </div>
+              </a>
+            </div>
             <div class="course-card glass-card" style="border: 1.5px solid rgba(13, 115, 119, 0.4);">
               <a href="azhong/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
                 <div>
@@ -484,7 +514,7 @@
           <h3 class="category-title">🧘 身心靈探索與成長</h3>
           <div class="category-grid">
             <div class="course-card glass-card">
-              <a href="yuanyan/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+              <a href="yanyan/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
                 <div>
                   <div class="course-header">
                     <span class="course-badge badge-purple">新增課程</span>

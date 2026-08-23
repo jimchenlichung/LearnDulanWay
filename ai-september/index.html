@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 用 AI 翻轉人生九月活動 | 30 天網路打卡 ‧ 重塑人生新可能 - 都蘭共學堂</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dulan: {
+                            forest: '#1E3F33',
+                            dark:   '#122820',
+                            sand:   '#F9F6F0',
+                            clay:   '#C86D51',
+                            wood:   '#8C6849',
+                            leaf:   '#4A7C59',
+                            teal:   '#0D7377',
+                            ocean:  '#1B4F72',
+                            gold:   '#D4AF37'
+                        }
+                    },
+                    fontFamily: {
+                        sans:  ['Noto Sans TC', 'sans-serif'],
+                        serif: ['Noto Serif TC', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(18, 40, 32, 0.88) 0%, rgba(13, 115, 119, 0.85) 50%, rgba(27, 79, 114, 0.90) 100%),
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .glow-card {
+            transition: all 0.3s ease;
+        }
+        .glow-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px -5px rgba(200, 109, 81, 0.2), 0 10px 15px -5px rgba(13, 115, 119, 0.15);
+        }
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.03); }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-[#F9F6F0] antialiased">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="https://jimchenlichung.github.io/LearnDulanWay/" class="inline-flex items-center gap-1.5 text-xs text-dulan-forest bg-dulan-sand hover:bg-gray-100 px-3.5 py-1.5 rounded-full border border-dulan-forest/15 transition font-medium">
+                    <i class="fa-solid fa-arrow-left"></i> 返回共學堂首頁
+                </a>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-dulan-forest">
+                <a href="#about" class="hover:text-dulan-clay transition">活動辦法</a>
+                <a href="#curriculum" class="hover:text-dulan-clay transition">教學內容</a>
+                <a href="#outcomes" class="hover:text-dulan-clay transition">30天成果</a>
+                <a href="#offline-camps" class="hover:text-dulan-clay transition">實體慢活營</a>
+                <a href="#community" class="hover:text-dulan-clay transition">三大社群</a>
+                <a href="#register" class="bg-dulan-clay text-white px-4 py-2 rounded-full hover:bg-[#b55c42] shadow-sm transition">立即報名</a>
+            </nav>
+
+            <div class="text-right">
+                <span class="font-serif text-lg font-bold text-dulan-forest block leading-none">都蘭共學堂</span>
+                <span class="text-[9px] text-dulan-clay tracking-widest uppercase block mt-1">LearnDulanWay</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-20 sm:py-32 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-6 relative z-10">
+            
+            <!-- Date Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-md text-amber-300 text-sm font-semibold tracking-wide animate-pulse-slow">
+                <span>🔥</span> 2026 年 9 月 1 日正式啟動 ‧ 翻轉 30 天網路打卡
+            </div>
+
+            <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+                用 <span class="text-emerald-300">AI</span> 翻轉人生<br>
+                <span class="text-amber-200">九月 30 天線上挑戰營</span>
+            </h1>
+
+            <p class="text-base sm:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+                以<strong>史丹佛小習慣科學</strong>重構日常節律，以 <strong>AI 實戰技能</strong> 跨越技術門檻。<br class="hidden sm:inline">
+                透過 YouTube 錄影精華、臉書深度文字稿與 LINE 社群即時解答，陪你在 30 天內完成驚艷蛻變！
+            </p>
+
+            <!-- 4 Value Highlights Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto pt-4 text-left">
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/15">
+                    <span class="text-xl block mb-1">🌱</span>
+                    <h2 class="text-xs font-bold text-emerald-300">建立 10 個小習慣</h2>
+                    <p class="text-[11px] text-white/70">微習慣無痛持續</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/15">
+                    <span class="text-xl block mb-1">⚡</span>
+                    <h2 class="text-xs font-bold text-amber-300">小白變身 AI 高手</h2>
+                    <p class="text-[11px] text-white/70">打造個人專用 APP</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/15">
+                    <span class="text-xl block mb-1">📚</span>
+                    <h2 class="text-xs font-bold text-sky-300">完成人生第一本書</h2>
+                    <p class="text-[11px] text-white/70">語音轉文字一鍵編排</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/15">
+                    <span class="text-xl block mb-1">🤝</span>
+                    <h2 class="text-xs font-bold text-rose-300">山海慢活實體營</h2>
+                    <p class="text-[11px] text-white/70">2天1夜 / 3天2夜</p>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <a href="#register" class="inline-flex items-center justify-center gap-2 bg-dulan-clay hover:bg-[#b55c42] text-white font-bold px-8 py-4 rounded-full shadow-lg transition transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-pen-nib"></i> 立即填表報名參加
+                </a>
+                <a href="https://line.me/ti/g2/-wQG7m__gxJrrtV59eJYXDmzrJqyyBDYjem91A?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="inline-flex items-center justify-center gap-2 bg-[#06C755] hover:bg-[#05b34c] text-white font-bold px-8 py-4 rounded-full shadow-lg transition transform hover:-translate-y-0.5">
+                    <i class="fa-brands fa-line text-xl"></i> 加入 LINE 共學社群
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Activity Method / 3-in-1 Ecosystem -->
+    <section id="about" class="py-16 sm:py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-12">
+            
+            <div class="text-center space-y-3">
+                <span class="text-xs font-bold text-dulan-clay tracking-widest uppercase">活動共學機制</span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold text-dulan-forest">
+                    三位一體 ‧ 翻轉 30 天網路打卡辦法
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+                    讓改變不再孤單！我們設計了「影音學習 + 文字共讀 + 即時解答」的立體學習圈，助你持之以恆。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- YouTube Box -->
+                <div class="glow-card bg-dulan-sand rounded-3xl p-6 sm:p-8 border border-gray-200/80 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center text-2xl shadow-sm">
+                            <i class="fa-brands fa-youtube"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <span class="text-xs font-bold text-red-600 uppercase tracking-wider">影音教學 ‧ 視覺吸收</span>
+                            <h3 class="text-xl font-bold text-dulan-forest">YouTube 錄影教學</h3>
+                        </div>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            都蘭共學堂專屬影音教學，包含微習慣科學拆解、AI 工具手把手實操影片。隨時回放、自主掌握學習進度。
+                        </p>
+                        <div class="bg-white/80 rounded-xl p-3 text-xs text-gray-500 border border-gray-100">
+                            🌟 讓更多人一起翻轉，請在頻道<strong>訂閱、按讚、留言</strong>！
+                        </div>
+                    </div>
+                    <a href="https://www.youtube.com/@LearnDulanWay" target="_blank" class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-red-600 hover:bg-red-700 text-white text-sm font-bold shadow transition">
+                        <i class="fa-solid fa-play"></i> 前往 YouTube 頻道
+                    </a>
+                </div>
+
+                <!-- Facebook Box -->
+                <div class="glow-card bg-dulan-sand rounded-3xl p-6 sm:p-8 border border-gray-200/80 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl shadow-sm">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">深度文字 ‧ 打卡交流</span>
+                            <h3 class="text-xl font-bold text-dulan-forest">臉書文字稿留言討論</h3>
+                        </div>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            每日發布精選教學講義與文字稿，學員於每篇貼文下方回報打卡心得、交流微習慣進展，激盪靈感火花。
+                        </p>
+                        <div class="bg-white/80 rounded-xl p-3 text-xs text-gray-500 border border-gray-100">
+                            💬 歡迎在 Facebook 社團留言互動，記錄你的微小勝利！
+                        </div>
+                    </div>
+                    <a href="https://www.facebook.com/share/g/1LFxXAVfQ7/" target="_blank" class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#1877F2] hover:bg-[#166fe5] text-white text-sm font-bold shadow transition">
+                        <i class="fa-solid fa-comments"></i> 進入臉書討論社團
+                    </a>
+                </div>
+
+                <!-- LINE Community Box -->
+                <div class="glow-card bg-dulan-sand rounded-3xl p-6 sm:p-8 border border-gray-200/80 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl shadow-sm">
+                            <i class="fa-brands fa-line"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">即時互動 ‧ 暖心陪伴</span>
+                            <h3 class="text-xl font-bold text-dulan-forest">LINE 群組即時問答</h3>
+                        </div>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            加入「都蘭共學堂」LINE 專屬社群！遇到 AI 操作卡關、習慣建立盲點，隨時在群內提問，講師與學長姐即時為你解答。
+                        </p>
+                        <div class="bg-white/80 rounded-xl p-3 text-xs text-gray-500 border border-gray-100">
+                            🤝 您已被邀請加入「都蘭共學堂」社群，立即點擊加入！
+                        </div>
+                    </div>
+                    <a href="https://line.me/ti/g2/-wQG7m__gxJrrtV59eJYXDmzrJqyyBDYjem91A?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#06C755] hover:bg-[#05b34c] text-white text-sm font-bold shadow transition">
+                        <i class="fa-solid fa-user-plus"></i> 一鍵加入 LINE 社群
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3 Core Curriculums -->
+    <section id="curriculum" class="py-16 sm:py-20 bg-dulan-sand border-y border-gray-200/50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-12">
+            
+            <div class="text-center space-y-3">
+                <span class="text-xs font-bold text-dulan-clay tracking-widest uppercase">三大教學主軸</span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold text-dulan-forest">
+                    科學行為 × AI 賦能 × 內容產出
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+                    由淺入深、循序漸進的實作課程，專為零基礎學習者量身打造。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Topic 1 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-gray-100 space-y-5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-dulan-clay bg-dulan-sand px-3 py-1 rounded-full">核心模組 01</span>
+                        <span class="text-2xl">🧠</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-dulan-forest leading-snug">
+                        史丹佛大學 Fogg 博士行為科學：如何設計你的小習慣
+                    </h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        告別單靠意志力的挫折感！透過 BJ Fogg 博士的 Tiny Habits 行為設計模型，將大目標拆解為「超低阻力」的微小行為，在自然而然中重塑大腦神經迴路。
+                    </p>
+                    <ul class="space-y-2 text-xs text-gray-500 pt-2 border-t border-gray-100">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-dulan-leaf mt-0.5"></i>
+                            <span>掌握動機、能力與提示 (B=MAP) 核心公式</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-dulan-leaf mt-0.5"></i>
+                            <span>設計個人專屬的錨點習慣 (Anchor Habits)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-dulan-leaf mt-0.5"></i>
+                            <span>學會即時慶祝機制，快速固化行為習慣</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Topic 2 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-gray-100 space-y-5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-dulan-teal bg-dulan-sand px-3 py-1 rounded-full">核心模組 02</span>
+                        <span class="text-2xl">💻</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-dulan-forest leading-snug">
+                        小白如何運用 AI 改變人生：設計自己專用 APP
+                    </h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        不要害怕寫程式！我們用最白話、易懂的生活案例，帶你學會與 AI 自然對話，將日常生活痛點轉化為實用的個人客製化智慧工具。
+                    </p>
+                    <ul class="space-y-2 text-xs text-gray-500 pt-2 border-t border-gray-100">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-dulan-leaf mt-0.5"></i>
+                            <span>零程式碼建構個人專用助理與微型應用</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-dulan-leaf mt-0.5"></i>
+                            <span>精準 Prompt 提問技巧與工作生活自動化</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-dulan-leaf mt-0.5"></i>
+                            <span>破除科技焦慮，讓 AI 成為最得力的數位分身</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Topic 3 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-gray-100 space-y-5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-dulan-ocean bg-dulan-sand px-3 py-1 rounded-full">核心模組 03</span>
+                        <span class="text-2xl">✍️</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-dulan-forest leading-snug">
+                        如何用 AI 寫作：把生命經歷淬鍊成第一本書
+                    </h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        每個人心中都有一本想寫的書。運用語音錄音輸入加上 AI 結構化整理，打破寫作瓶頸，將你的專業知識或生命故事有系統地編排成章節。
+                    </p>
+                    <ul class="space-y-2 text-xs text-gray-500 pt-2 border-t border-gray-100">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-dulan-leaf mt-0.5"></i>
+                            <span>「語音口述 → AI 大綱架構」寫作流暢法</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-dulan-leaf mt-0.5"></i>
+                            <span>章節潤飾、風格微調與圖文排版整合</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-dulan-leaf mt-0.5"></i>
+                            <span>30 天完成第一本具出版質感的個人專書書稿</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Expected Outcomes / 30-Day Results -->
+    <section id="outcomes" class="py-16 sm:py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-12">
+            
+            <div class="text-center space-y-3">
+                <span class="text-xs font-bold text-dulan-clay tracking-widest uppercase">預期成果與轉變</span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold text-dulan-forest">
+                    堅持 30 天後，你將收穫的 3 大實質成果
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+                    這不是紙上談兵，而是透過每一天的具體打卡與實踐，親手打造屬於自己的里程碑！
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Result 1 -->
+                <div class="relative overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl p-8 border border-emerald-200/60 shadow-sm space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-xl font-bold">
+                        1
+                    </div>
+                    <h3 class="text-xl font-bold text-dulan-forest">
+                        成功進行並固化 <br><span class="text-emerald-700">10 個生活小習慣</span>
+                    </h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        涵蓋晨間清醒、身心調頻、高效閱讀、健康飲食等面向。小習慣已經自然融入日常，不再需要痛苦堅持。
+                    </p>
+                    <div class="pt-2 text-xs font-semibold text-emerald-800 flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-check"></i> 重塑健康與專注節律
+                    </div>
+                </div>
+
+                <!-- Result 2 -->
+                <div class="relative overflow-hidden bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl p-8 border border-amber-200/60 shadow-sm space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-dulan-clay text-white flex items-center justify-center text-xl font-bold">
+                        2
+                    </div>
+                    <h3 class="text-xl font-bold text-dulan-forest">
+                        從 AI 小白變身高手 <br><span class="text-dulan-clay">設計自己專用 APP</span>
+                    </h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        具備獨立使用 AI 工具解決生活問題的能力，並成功為自己或團隊打造至少一款量身定製的實用小工具。
+                    </p>
+                    <div class="pt-2 text-xs font-semibold text-dulan-clay flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-check"></i> 數位生產力翻倍躍進
+                    </div>
+                </div>
+
+                <!-- Result 3 -->
+                <div class="relative overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 border border-blue-200/60 shadow-sm space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-dulan-ocean text-white flex items-center justify-center text-xl font-bold">
+                        3
+                    </div>
+                    <h3 class="text-xl font-bold text-dulan-forest">
+                        梳理人生精華 <br><span class="text-dulan-ocean">完成個人第一本書</span>
+                    </h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        完整產出個人專屬書籍架構與初稿，留下珍貴生命智慧或專業筆記，開啟內容創作者的第二人生。
+                    </p>
+                    <div class="pt-2 text-xs font-semibold text-dulan-ocean flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-check"></i> 實現創作與自我表達夢想
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Offline Paid Camps Section -->
+    <section id="offline-camps" class="py-16 sm:py-20 bg-gradient-to-b from-dulan-dark to-[#0B1713] text-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-12">
+            
+            <div class="text-center space-y-3">
+                <span class="inline-block px-3 py-1 rounded-full bg-dulan-clay/30 border border-dulan-clay text-amber-300 text-xs font-bold uppercase tracking-wider">
+                    🌟 實體深度進階 ‧ 付費慢活營
+                </span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold text-white">
+                    山海為師 ‧ 人生翻轉實體慢活營
+                </h2>
+                <p class="text-sm sm:text-base text-white/70 max-w-2xl mx-auto">
+                    親臨台東都蘭，在太平洋海風與都蘭山林間，進行身心靈調頻、品茗夜談與手把手 AI 實作。（每梯限額 4 人，精緻小班，額滿即止）
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Plan 1: 2D1N -->
+                <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/15 flex flex-col justify-between space-y-6 glow-card">
+                    <div class="space-y-5">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-emerald-500/20 text-emerald-300 text-xs font-bold px-3 py-1 rounded-full border border-emerald-400/30">第一梯次</span>
+                            <span class="text-xs text-amber-300 font-medium">每梯限額 4 人</span>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-2xl font-bold text-white">兩天一夜 ‧ 二日慢活營</h3>
+                            <p class="text-xs text-white/60 mt-1">身心調頻 × 自然探微 × AI 知行合一</p>
+                        </div>
+
+                        <div class="py-3 border-y border-white/10">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-3xl sm:text-4xl font-bold text-amber-300">NT$ 3,500</span>
+                                <span class="text-xs text-white/60">/ 每人（含住宿餐飲研習）</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 text-xs text-white/80">
+                            <p class="flex items-center gap-2"><i class="fa-regular fa-calendar-check text-amber-300"></i> <strong>日期：</strong>2026 年 9 月 5 日（六）～ 9 月 6 日（日）</p>
+                            <p class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-amber-300"></i> <strong>地點：</strong>四季八里自然莊園、都蘭山、沙伯迪奧橄欖莊園</p>
+                            <div class="pt-2 text-white/70 space-y-1">
+                                <p>• <strong>D1</strong>：四季八里報到、拉法鋼琴海景午茶、太平洋海岸聽濤、牧場優格晚餐、茶席夜談（聊人生翻轉）</p>
+                                <p>• <strong>D2</strong>：觀日出鳥類辨識、都蘭山定點生態觀察、沙伯迪奧橄欖莊園聚餐、AI 實務研習工作坊、圓滿賦歸</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#register" onclick="selectPlan('plan-2d1n')" class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-dulan-clay hover:bg-[#b55c42] text-white font-bold transition shadow-lg text-sm">
+                        選擇兩天一夜方案 (NT$ 3,500)
+                    </a>
+                </div>
+
+                <!-- Plan 2: 3D2N -->
+                <div class="bg-white/15 backdrop-blur-md rounded-3xl p-8 border-2 border-amber-400/40 flex flex-col justify-between space-y-6 glow-card relative">
+                    <div class="absolute -top-3 right-6 bg-amber-400 text-dulan-dark text-xs font-bold px-3 py-1 rounded-full shadow">
+                        推薦 ‧ 深度旗艦
+                    </div>
+                    <div class="space-y-5">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-amber-500/20 text-amber-300 text-xs font-bold px-3 py-1 rounded-full border border-amber-400/30">第二梯次</span>
+                            <span class="text-xs text-amber-300 font-medium">每梯限額 4 人</span>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-2xl font-bold text-white">三天兩夜 ‧ 三日慢活深度營</h3>
+                            <p class="text-xs text-white/60 mt-1">舞中禪首演 × 美學參訪 × 工具賦能全整合</p>
+                        </div>
+
+                        <div class="py-3 border-y border-white/10">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-3xl sm:text-4xl font-bold text-amber-300">NT$ 7,000</span>
+                                <span class="text-xs text-white/60">/ 每人（含單人套房、餐飲、門票、研習）</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 text-xs text-white/80">
+                            <p class="flex items-center gap-2"><i class="fa-regular fa-calendar-check text-amber-300"></i> <strong>日期：</strong>2026 年 9 月 18 日（五）～ 9 月 20 日（日）</p>
+                            <p class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-amber-300"></i> <strong>地點：</strong>四季八里自然莊園（單人套房）、舞米山莊、沙伯迪奧</p>
+                            <div class="pt-2 text-white/70 space-y-1">
+                                <p>• <strong>D1</strong>：莊園入住、海景午茶、太平洋聽濤、特鮮鬼頭刀晚餐、茶席夜談</p>
+                                <p>• <strong>D2</strong>：日出觀鳥、<strong>舞米山莊《微瀾漫舞》舞中禪首場演出</strong>、成功鎮海味午餐、藝文參訪、賦能工具箱實戰工作坊</p>
+                                <p>• <strong>D3</strong>：都蘭山生態定點觀察、沙伯迪奧莊園聚餐、AI 實務研習工作坊、圓滿賦歸</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#register" onclick="selectPlan('plan-3d2n')" class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold transition shadow-lg text-sm">
+                        選擇三天兩夜方案 (NT$ 7,000)
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Community Section -->
+    <section id="community" class="py-16 sm:py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-12">
+            
+            <div class="text-center space-y-3">
+                <span class="text-xs font-bold text-dulan-clay tracking-widest uppercase">加入共學網絡</span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold text-dulan-forest">
+                    三大社群 ‧ 一鍵直達翻轉現場
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+                    不管你身在何處，加入我們，隨時獲取最新影片、文字講義與夥伴交流！
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                
+                <!-- Line Community Card -->
+                <div class="p-6 rounded-3xl bg-[#06C755]/10 border border-[#06C755]/30 text-center space-y-4 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="w-16 h-16 rounded-full bg-[#06C755] text-white flex items-center justify-center text-3xl mx-auto shadow-md">
+                            <i class="fa-brands fa-line"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-dulan-forest">LINE 社群討論</h3>
+                        <p class="text-xs text-gray-600">您已被邀請加入「都蘭共學堂」！即時問答、經驗分享不漏接。</p>
+                    </div>
+                    <a href="https://line.me/ti/g2/-wQG7m__gxJrrtV59eJYXDmzrJqyyBDYjem91A?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#06C755] hover:bg-[#05b34c] text-white text-xs font-bold transition shadow">
+                        加入 LINE 社群 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Facebook Card -->
+                <div class="p-6 rounded-3xl bg-blue-50 border border-blue-200 text-center space-y-4 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="w-16 h-16 rounded-full bg-[#1877F2] text-white flex items-center justify-center text-3xl mx-auto shadow-md">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-dulan-forest">臉書文字稿與討論</h3>
+                        <p class="text-xs text-gray-600">讓更多人一起翻轉！每日文字稿發布與打卡留言專區。</p>
+                    </div>
+                    <a href="https://www.facebook.com/share/g/1LFxXAVfQ7/" target="_blank" class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#1877F2] hover:bg-[#166fe5] text-white text-xs font-bold transition shadow">
+                        前往 FB 社團討論 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- YouTube Card -->
+                <div class="p-6 rounded-3xl bg-red-50 border border-red-200 text-center space-y-4 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="w-16 h-16 rounded-full bg-red-600 text-white flex items-center justify-center text-3xl mx-auto shadow-md">
+                            <i class="fa-brands fa-youtube"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-dulan-forest">都蘭共學堂 YouTube</h3>
+                        <p class="text-xs text-gray-600">影片播放與精華錄影，請訂閱、按讚、留言支持！</p>
+                    </div>
+                    <a href="https://www.youtube.com/@LearnDulanWay" target="_blank" class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition shadow">
+                        訂閱 YouTube 頻道 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section & Interactive Form -->
+    <section id="register" class="py-16 sm:py-24 bg-dulan-sand border-t border-gray-200">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+            
+            <div class="bg-white rounded-3xl shadow-xl p-8 sm:p-12 border border-gray-100 space-y-8">
+                
+                <div class="text-center space-y-2">
+                    <span class="text-xs font-bold text-dulan-clay uppercase tracking-widest">九月活動線上報名</span>
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-dulan-forest">
+                        立即報名 ‧ 開啟你的翻轉旅程
+                    </h2>
+                    <p class="text-xs sm:text-sm text-gray-600">
+                        填寫下方表單，系統將自動為您保留席位並即時生成<strong>官方確認回函信</strong>。
+                    </p>
+                </div>
+
+                <!-- Registration Form -->
+                <form id="activityRegForm" onsubmit="handleRegistration(event)" class="space-y-6">
+                    
+                    <!-- Choose Plan -->
+                    <div class="space-y-3">
+                        <label class="block text-sm font-bold text-dulan-forest">
+                            1. 選擇報名活動方案 <span class="text-red-500">*</span>
+                        </label>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            
+                            <!-- Plan Online -->
+                            <label class="relative flex flex-col p-4 rounded-2xl border-2 border-gray-200 cursor-pointer hover:border-dulan-clay transition has-[:checked]:border-dulan-clay has-[:checked]:bg-amber-50/50">
+                                <input type="radio" name="plan" value="30天線上打卡挑戰營 (免費共學)" checked class="sr-only" onchange="updateQuotaStatus()">
+                                <span class="text-xs font-bold text-emerald-700 mb-1">【線上共學】</span>
+                                <span class="font-bold text-sm text-dulan-forest">30天線上打卡</span>
+                                <span class="text-xs text-gray-500 mt-1">免費參加 / 社群共學</span>
+                                <span class="text-xs font-bold text-emerald-600 mt-2">名額充裕開放中</span>
+                            </label>
+
+                            <!-- Plan 2D1N -->
+                            <label id="planCard2D" class="relative flex flex-col p-4 rounded-2xl border-2 border-gray-200 cursor-pointer hover:border-dulan-clay transition has-[:checked]:border-dulan-clay has-[:checked]:bg-amber-50/50">
+                                <input type="radio" name="plan" id="plan-2d1n" value="兩天一夜慢活營 (9/5-9/6) - NT$ 3,500" class="sr-only" onchange="updateQuotaStatus()">
+                                <span class="text-xs font-bold text-dulan-clay mb-1">【實體營隊】</span>
+                                <span class="font-bold text-sm text-dulan-forest">兩天一夜慢活營</span>
+                                <span class="text-xs text-dulan-clay font-bold mt-1">費用 NT$ 3,500</span>
+                                <span id="quota2D" class="text-xs font-medium text-amber-600 mt-2">限額 4 人 (剩餘 2 席)</span>
+                            </label>
+
+                            <!-- Plan 3D2N -->
+                            <label id="planCard3D" class="relative flex flex-col p-4 rounded-2xl border-2 border-gray-200 cursor-pointer hover:border-dulan-clay transition has-[:checked]:border-dulan-clay has-[:checked]:bg-amber-50/50">
+                                <input type="radio" name="plan" id="plan-3d2n" value="三天兩夜深度營 (9/18-9/20) - NT$ 7,000" class="sr-only" onchange="updateQuotaStatus()">
+                                <span class="text-xs font-bold text-dulan-ocean mb-1">【旗艦實體】</span>
+                                <span class="font-bold text-sm text-dulan-forest">三天兩夜深度營</span>
+                                <span class="text-xs text-dulan-clay font-bold mt-1">費用 NT$ 7,000</span>
+                                <span id="quota3D" class="text-xs font-medium text-amber-600 mt-2">限額 4 人 (剩餘 1 席)</span>
+                            </label>
+
+                        </div>
+
+                        <!-- Quota Notice Alert -->
+                        <div id="quotaAlertBox" class="hidden bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-800 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <span id="quotaAlertText">實體營隊每梯次限額 4 名，依匯款與報名先後順序為準。額滿將自動關閉報名。</span>
+                        </div>
+                    </div>
+
+                    <!-- Personal Info -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-dulan-forest mb-1.5">學員真實姓名 <span class="text-red-500">*</span></label>
+                            <input type="text" id="regName" required placeholder="例：陳大中" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-dulan-clay">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-dulan-forest mb-1.5">行動電話 <span class="text-red-500">*</span></label>
+                            <input type="tel" id="regPhone" required placeholder="例：0912-345-678" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-dulan-clay">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-dulan-forest mb-1.5">電子郵件 (接收回函) <span class="text-red-500">*</span></label>
+                            <input type="email" id="regEmail" required placeholder="例：yourname@gmail.com" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-dulan-clay">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-dulan-forest mb-1.5">LINE ID (便於社群邀請與即時聯絡)</label>
+                            <input type="text" id="regLine" placeholder="例：line_id123" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-dulan-clay">
+                        </div>
+                    </div>
+
+                    <!-- Goals & Habit Target -->
+                    <div>
+                        <label class="block text-xs font-bold text-dulan-forest mb-1.5">在 30 天中，你最想培養的微習慣或學習目標？</label>
+                        <textarea id="regGoal" rows="2" placeholder="例：每天早上用 AI 寫日記、設計一款習慣追蹤小 APP、整理過往故事完成一本書..." class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-dulan-clay"></textarea>
+                    </div>
+
+                    <!-- Payment Information Section (for Paid Camp) -->
+                    <div id="paymentSection" class="p-5 rounded-2xl bg-dulan-sand border border-gray-200 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-dulan-forest uppercase">💳 付款方式與金流說明</span>
+                            <span class="text-[11px] text-gray-500">（線上打卡方案無需繳費）</span>
+                        </div>
+
+                        <!-- Option 1: Postal Transfer -->
+                        <div class="bg-white p-4 rounded-xl border border-gray-200 space-y-2">
+                            <div class="flex items-center gap-2 text-xs font-bold text-emerald-800">
+                                <i class="fa-solid fa-building-columns"></i>
+                                <span>郵局劃撥 / ATM 銀行轉帳</span>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-600 bg-gray-50 p-2.5 rounded-lg font-mono">
+                                <div><strong>郵局代號：</strong>700</div>
+                                <div><strong>劃撥/轉帳帳號：</strong>02610740081683</div>
+                                <div><strong>戶名：</strong>都蘭共學堂</div>
+                            </div>
+                            <p class="text-[11px] text-gray-500">轉帳完成後可於 LINE 社群私訊或回函中回報帳號後五碼，以利核帳完成席位保留。</p>
+                        </div>
+
+                        <!-- Option 2: ECPay Online Payment Reserved -->
+                        <div class="bg-white p-4 rounded-xl border border-gray-200 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2 text-xs font-bold text-dulan-ocean">
+                                    <i class="fa-regular fa-credit-card"></i>
+                                    <span>綠界金控 (ECPay) 線上金流付款</span>
+                                </div>
+                                <span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded">安全金流加密</span>
+                            </div>
+                            <p class="text-xs text-gray-600">
+                                支援信用卡（一次付清/分期）、ATM 虛擬帳號、超商代碼繳費。
+                            </p>
+                            <div class="pt-1">
+                                <button type="button" onclick="triggerECPayMock()" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow-sm">
+                                    <i class="fa-solid fa-lock"></i> 預留綠界金流線上支付結帳按鈕 (ECPay Direct)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-2">
+                        <button type="submit" id="submitBtn" class="w-full py-4 px-6 rounded-2xl bg-dulan-clay hover:bg-[#b55c42] text-white font-bold text-base shadow-lg transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> 提交報名表並領取回函信
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Confirmation Modal (報名成功官方回函信) -->
+    <div id="confirmModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-10 shadow-2xl border border-gray-100 space-y-6 my-8 animate-in fade-in zoom-in duration-200">
+            
+            <!-- Modal Header -->
+            <div class="text-center space-y-2 pb-4 border-b border-gray-100">
+                <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 text-3xl flex items-center justify-center mx-auto mb-2">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <span class="text-xs font-bold text-dulan-clay uppercase tracking-widest">都蘭共學堂 ‧ 官方報名回函確認單</span>
+                <h3 class="font-serif text-2xl font-bold text-dulan-forest">🎉 恭喜您！報名已成功送出</h3>
+                <p class="text-xs text-gray-500">我們已為您登記報名資訊，請保存下方回函內容與社群加入連結：</p>
+            </div>
+
+            <!-- Receipt Content -->
+            <div class="bg-dulan-sand rounded-2xl p-5 space-y-3 text-xs text-gray-700 border border-gray-200 font-sans">
+                <div class="flex justify-between border-b border-gray-200/60 pb-2">
+                    <span class="text-gray-500">學員姓名：</span>
+                    <strong id="receiptName" class="text-dulan-forest text-sm">-</strong>
+                </div>
+                <div class="flex justify-between border-b border-gray-200/60 pb-2">
+                    <span class="text-gray-500">報名方案：</span>
+                    <strong id="receiptPlan" class="text-dulan-clay text-sm">-</strong>
+                </div>
+                <div class="flex justify-between border-b border-gray-200/60 pb-2">
+                    <span class="text-gray-500">聯絡電話 / Email：</span>
+                    <span id="receiptContact" class="font-mono text-gray-800">-</span>
+                </div>
+                <div class="flex justify-between border-b border-gray-200/60 pb-2">
+                    <span class="text-gray-500">報名流水序號：</span>
+                    <span id="receiptSN" class="font-mono font-bold text-dulan-ocean">DL-20260901-889</span>
+                </div>
+                <div class="pt-1 text-gray-600 leading-relaxed">
+                    <strong>📢 劃撥繳費備註（付費活動學員）：</strong>
+                    郵局代號 700 / 劃撥帳號 02610740081683 / 戶名：都蘭共學堂。完成後請至 LINE 社群告知姓名或回報後五碼。
+                </div>
+            </div>
+
+            <!-- Official 3 Community Buttons in Confirmation Letter -->
+            <div class="space-y-3">
+                <h4 class="text-xs font-bold text-dulan-forest text-center">👇 請立即點選以下連結，加入共學堂三大社群：</h4>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    
+                    <!-- LINE Link -->
+                    <a href="https://line.me/ti/g2/-wQG7m__gxJrrtV59eJYXDmzrJqyyBDYjem91A?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="flex items-center justify-center gap-2 p-3 rounded-xl bg-[#06C755] hover:bg-[#05b34c] text-white text-xs font-bold shadow transition text-center">
+                        <i class="fa-brands fa-line text-lg"></i>
+                        <span>加入 LINE 群組<br><span class="text-[10px] font-normal opacity-90">即時問答與通知</span></span>
+                    </a>
+
+                    <!-- FB Link -->
+                    <a href="https://www.facebook.com/share/g/1LFxXAVfQ7/" target="_blank" class="flex items-center justify-center gap-2 p-3 rounded-xl bg-[#1877F2] hover:bg-[#166fe5] text-white text-xs font-bold shadow transition text-center">
+                        <i class="fa-brands fa-facebook-f text-base"></i>
+                        <span>進入臉書社團<br><span class="text-[10px] font-normal opacity-90">文字稿與打卡</span></span>
+                    </a>
+
+                    <!-- YouTube Link -->
+                    <a href="https://www.youtube.com/@LearnDulanWay" target="_blank" class="flex items-center justify-center gap-2 p-3 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow transition text-center">
+                        <i class="fa-brands fa-youtube text-lg"></i>
+                        <span>訂閱 YouTube<br><span class="text-[10px] font-normal opacity-90">精華錄影教學</span></span>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Actions inside Modal -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                <button type="button" onclick="copyReceiptInfo()" class="flex-1 py-3 px-4 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold text-xs transition flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-copy"></i> 複製回函資訊與連結
+                </button>
+                <button type="button" onclick="closeConfirmModal()" class="flex-1 py-3 px-4 rounded-xl bg-dulan-forest hover:bg-dulan-dark text-white font-bold text-xs transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-check"></i> 我已了解，關閉視窗
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dulan-dark text-white/80 py-12 border-t border-white/5">
+        <div class="max-w-5xl mx-auto px-4 text-center text-xs space-y-4">
+            <div class="space-y-1">
+                <p class="font-serif text-lg font-bold text-white">用 AI 翻轉人生九月活動 ‧ 翻轉 30 天網路打卡</p>
+                <p class="text-white/60">都蘭共學堂 ╳ 四季八里自然莊園 ╳ 舞米山莊 ╳ 沙伯迪奧橄欖莊園</p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-6 text-xs text-white/50 pt-2">
+                <a href="https://jimchenlichung.github.io/LearnDulanWay/" class="hover:text-emerald-300 transition">共學堂首頁</a>
+                <a href="https://line.me/ti/g2/-wQG7m__gxJrrtV59eJYXDmzrJqyyBDYjem91A?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="hover:text-emerald-300 transition">LINE 社群</a>
+                <a href="https://www.facebook.com/share/g/1LFxXAVfQ7/" target="_blank" class="hover:text-emerald-300 transition">臉書文字稿</a>
+                <a href="https://www.youtube.com/@LearnDulanWay" target="_blank" class="hover:text-emerald-300 transition">YouTube 頻道</a>
+            </div>
+
+            <p class="text-white/40 pt-4">© 2026 都蘭共學堂 (LearnDulanWay). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        // Select plan helper
+        function selectPlan(planId) {
+            const radio = document.getElementById(planId);
+            if (radio) {
+                radio.checked = true;
+                updateQuotaStatus();
+            }
+        }
+
+        // Quota status update & auto close simulation
+        function updateQuotaStatus() {
+            const selectedPlan = document.querySelector('input[name="plan"]:checked')?.value || '';
+            const quotaAlert = document.getElementById('quotaAlertBox');
+            
+            if (selectedPlan.includes('NT$')) {
+                quotaAlert.classList.remove('hidden');
+            } else {
+                quotaAlert.classList.add('hidden');
+            }
+        }
+
+        // ECPay Direct Checkout Trigger
+        function triggerECPayMock() {
+            const selectedPlan = document.querySelector('input[name="plan"]:checked')?.value || '未選擇';
+            const name = document.getElementById('regName').value || '貴賓';
+            alert(`【綠界金控 ECPay 線上結帳】\n已為 ${name} 準備結帳交易！\n方案：${selectedPlan}\n\n系統已就緒，即將導向綠界安全金流收銀台 (信用卡 / ATM / 超商條碼繳費)。`);
+        }
+
+        // Handle Registration & Open Modal
+        function handleRegistration(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('regName').value;
+            const phone = document.getElementById('regPhone').value;
+            const email = document.getElementById('regEmail').value;
+            const plan = document.querySelector('input[name="plan"]:checked')?.value || '30天線上打卡挑戰營';
+            
+            // Random serial number
+            const randomSN = 'DL-202609' + String(Math.floor(1000 + Math.random() * 9000));
+
+            // Fill receipt
+            document.getElementById('receiptName').textContent = name;
+            document.getElementById('receiptPlan').textContent = plan;
+            document.getElementById('receiptContact').textContent = `${phone} / ${email}`;
+            document.getElementById('receiptSN').textContent = randomSN;
+
+            // Show Modal
+            const modal = document.getElementById('confirmModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeConfirmModal() {
+            const modal = document.getElementById('confirmModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function copyReceiptInfo() {
+            const sn = document.getElementById('receiptSN').textContent;
+            const plan = document.getElementById('receiptPlan').textContent;
+            const name = document.getElementById('receiptName').textContent;
+            
+            const textToCopy = `【都蘭共學堂 - 用 AI 翻轉人生九月活動 報名回函】\n` +
+                               `學員姓名：${name}\n` +
+                               `報名方案：${plan}\n` +
+                               `報名序號：${sn}\n` +
+                               `-----------------------------\n` +
+                               `LINE 社群：https://line.me/ti/g2/-wQG7m__gxJrrtV59eJYXDmzrJqyyBDYjem91A\n` +
+                               `臉書文字稿：https://www.facebook.com/share/g/1LFxXAVfQ7/\n` +
+                               `YouTube 頻道：https://www.youtube.com/@LearnDulanWay\n` +
+                               `郵局劃撥：代號 700 / 帳號 02610740081683 / 戶名：都蘭共學堂`;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert('已將報名回函資訊與三大社群連結複製至剪貼簿！');
+            }).catch(() => {
+                alert('複製成功：請保存此頁面！');
+            });
+        }
+    </script>
+</body>
+</html>
