@@ -226,6 +226,29 @@
                 </div>
 
             </div>
+
+            <!-- YouTube Video Showcase (符合 Skill 影音規範) -->
+            <div class="mt-12 bg-dulan-sand rounded-3xl p-6 sm:p-8 border border-gray-200/80 space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <span class="text-xs font-bold text-red-600 uppercase tracking-wider">🎥 影音先導 ‧ 都蘭共學精選</span>
+                        <h3 class="text-xl font-bold text-dulan-forest mt-1">都蘭共學堂 YouTube 線上教學導引</h3>
+                    </div>
+                    <a href="https://www.youtube.com/@LearnDulanWay" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-red-600 bg-white px-4 py-2 rounded-full border border-red-200 hover:bg-red-50 transition shrink-0">
+                        <i class="fa-brands fa-youtube text-base"></i> 訂閱頻道看更多影片
+                    </a>
+                </div>
+                
+                <!-- Video Responsive Embed -->
+                <div class="relative w-full rounded-2xl overflow-hidden shadow-lg border border-gray-200 aspect-video bg-black">
+                    <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed?listType=playlist&list=UU6EE7B7" title="都蘭共學堂 錄影教學" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                
+                <p class="text-xs text-gray-500 text-center">
+                    💡 提示：點擊上方播放器即可直接觀看教學影片，亦可前往 YouTube 官方頻道參與留言與訂閱互動！
+                </p>
+            </div>
+
         </div>
     </section>
 
@@ -662,7 +685,7 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-600 bg-gray-50 p-2.5 rounded-lg font-mono">
                                 <div><strong>郵局代號：</strong>700</div>
                                 <div><strong>劃撥/轉帳帳號：</strong>02610740081683</div>
-                                <div><strong>戶名：</strong>都蘭共學堂</div>
+                                <div><strong>戶名：</strong>陳豊鍾</div>
                             </div>
                             <p class="text-[11px] text-gray-500">轉帳完成後可於 LINE 社群私訊或回函中回報帳號後五碼，以利核帳完成席位保留。</p>
                         </div>
@@ -687,11 +710,24 @@
                         </div>
                     </div>
 
-                    <!-- Submit Button -->
-                    <div class="pt-2">
+                    <!-- Submit & External Spreadsheet Form Buttons -->
+                    <div class="space-y-3 pt-2">
                         <button type="submit" id="submitBtn" class="w-full py-4 px-6 rounded-2xl bg-dulan-clay hover:bg-[#b55c42] text-white font-bold text-base shadow-lg transition flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-paper-plane"></i> 提交報名表並領取回函信
+                            <i class="fa-solid fa-paper-plane"></i> 提交線上報名表並立即領取回函信
                         </button>
+                        
+                        <div class="text-center">
+                            <span class="text-xs text-gray-400">── 或 ──</span>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-2.5">
+                            <a href="https://forms.gle/CJVCxF1vET9LA99K7" target="_blank" class="flex-1 py-3 px-4 rounded-xl bg-white hover:bg-gray-50 border border-gray-300 text-dulan-forest text-xs font-bold transition flex items-center justify-center gap-2 shadow-sm">
+                                <i class="fa-brands fa-google text-emerald-600"></i> 開啟 Google 官方試算表報名表單
+                            </a>
+                            <button type="button" onclick="exportRegistrationsToCSV()" class="py-3 px-4 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-medium transition flex items-center justify-center gap-1.5 border border-gray-200">
+                                <i class="fa-solid fa-file-excel text-emerald-700"></i> 匯出報名試算表 (CSV)
+                            </button>
+                        </div>
                     </div>
 
                 </form>
@@ -735,7 +771,7 @@
                 </div>
                 <div class="pt-1 text-gray-600 leading-relaxed">
                     <strong>📢 劃撥繳費備註（付費活動學員）：</strong>
-                    郵局代號 700 / 劃撥帳號 02610740081683 / 戶名：都蘭共學堂。完成後請至 LINE 社群告知姓名或回報後五碼。
+                    郵局代號 700 / 劃撥帳號 02610740081683 / 戶名：陳豊鍾。完成後請至 LINE 社群告知姓名或回報後五碼。
                 </div>
             </div>
 
@@ -832,13 +868,22 @@
         function handleRegistration(e) {
             e.preventDefault();
             
-            const name = document.getElementById('regName').value;
-            const phone = document.getElementById('regPhone').value;
-            const email = document.getElementById('regEmail').value;
+            const name = document.getElementById('regName').value.trim();
+            const phone = document.getElementById('regPhone').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const line = document.getElementById('regLine').value.trim() || '未填寫';
+            const goal = document.getElementById('regGoal').value.trim() || '未填寫';
             const plan = document.querySelector('input[name="plan"]:checked')?.value || '30天線上打卡挑戰營';
             
             // Random serial number
             const randomSN = 'DL-202609' + String(Math.floor(1000 + Math.random() * 9000));
+            const timestamp = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+
+            // Store in LocalStorage for CSV export
+            const newRecord = { sn: randomSN, time: timestamp, name, phone, email, line, plan, goal };
+            const existingRecords = JSON.parse(localStorage.getItem('dulan_ai_registrations') || '[]');
+            existingRecords.push(newRecord);
+            localStorage.setItem('dulan_ai_registrations', JSON.stringify(existingRecords));
 
             // Fill receipt
             document.getElementById('receiptName').textContent = name;
@@ -871,13 +916,36 @@
                                `LINE 社群：https://line.me/ti/g2/-wQG7m__gxJrrtV59eJYXDmzrJqyyBDYjem91A\n` +
                                `臉書文字稿：https://www.facebook.com/share/g/1LFxXAVfQ7/\n` +
                                `YouTube 頻道：https://www.youtube.com/@LearnDulanWay\n` +
-                               `郵局劃撥：代號 700 / 帳號 02610740081683 / 戶名：都蘭共學堂`;
+                               `郵局劃撥：代號 700 / 帳號 02610740081683 / 戶名：陳豊鍾`;
 
             navigator.clipboard.writeText(textToCopy).then(() => {
                 alert('已將報名回函資訊與三大社群連結複製至剪貼簿！');
             }).catch(() => {
                 alert('複製成功：請保存此頁面！');
             });
+        }
+
+        // Export local registrations to CSV spreadsheet
+        function exportRegistrationsToCSV() {
+            const records = JSON.parse(localStorage.getItem('dulan_ai_registrations') || '[]');
+            if (records.length === 0) {
+                alert('目前本機瀏覽器尚未有已提交的報名紀錄。\n您也可以直接點擊「開啟 Google 官方試算表報名表單」檢視雲端試算表！');
+                return;
+            }
+            
+            let csvContent = "\uFEFF報名序號,提交時間,姓名,電話,Email,LINE ID,方案,目標\n";
+            records.forEach(r => {
+                csvContent += `"${r.sn}","${r.time}","${r.name}","${r.phone}","${r.email}","${r.line}","${r.plan}","${r.goal}"\n`;
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `都蘭共學堂_九月活動報名名單_${new Date().toISOString().slice(0,10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
     </script>
 </body>
