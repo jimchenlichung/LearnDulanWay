@@ -10,3 +10,5 @@
 江冠明https://jimchenlichung.github.io/LearnDulanWay/jianggm/index.html
 
 阿中https://jimchenlichung.github.io/LearnDulanWay/azhong/index.html
+
+九月活動https://jimchenlichung.github.io/LearnDulanWay/ai-september/index.html
