@@ -822,9 +822,17 @@
                 </div>
             </div>
 
+            <!-- Quick Action: Send to Coach Line -->
+            <div class="pt-1">
+                <a id="btnLineCoachNotify" href="https://line.me/ti/p/~0908853322" target="_blank" class="w-full flex items-center justify-center gap-2 p-3.5 rounded-2xl bg-[#06C755] hover:bg-[#05b34c] text-white font-bold text-sm shadow-md transition transform hover:-translate-y-0.5 text-center">
+                    <i class="fa-brands fa-line text-xl"></i>
+                    <span>📲 一鍵將報名資料透過 LINE 傳送給阿鐘教練</span>
+                </a>
+            </div>
+
             <!-- Official 3 Community Buttons in Confirmation Letter -->
             <div class="space-y-3">
-                <h4 class="text-xs font-bold text-dulan-forest text-center">👇 請立即點選以下連結，加入共學堂三大社群：</h4>
+                <h4 class="text-xs font-bold text-dulan-forest text-center">👇 同步加入共學堂三大社群交流：</h4>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     
@@ -946,6 +954,42 @@
             document.getElementById('receiptPlan').textContent = plan;
             document.getElementById('receiptContact').textContent = `${phone} / ${email}`;
             document.getElementById('receiptSN').textContent = randomSN;
+
+            // 方案 3：動態組裝 LINE 傳送給阿鐘教練的訊息
+            const lineMsg = `你好阿鐘教練！我已完成「用 AI 翻轉人生九月活動」線上報名。\n` +
+                            `【報名序號】${randomSN}\n` +
+                            `【學員姓名】${name}\n` +
+                            `【報名方案】${plan}\n` +
+                            `【聯絡電話】${phone}\n` +
+                            `【Email】${email}\n` +
+                            `【LINE ID】${line}\n` +
+                            `【學習目標】${goal}`;
+            const btnLineCoach = document.getElementById('btnLineCoachNotify');
+            if (btnLineCoach) {
+                btnLineCoach.href = `https://line.me/R/msg/text/?${encodeURIComponent(lineMsg)}`;
+            }
+
+            // 方案 1：自動發送即時 Email 通知至主辦人信箱 jimchenlichung@gmail.com
+            fetch("https://formsubmit.co/ajax/jimchenlichung@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    _subject: `【都蘭共學堂】九月活動新報名：${name}（${plan}）`,
+                    "報名序號": randomSN,
+                    "學員姓名": name,
+                    "聯絡電話": phone,
+                    "電子郵件": email,
+                    "LINE_ID": line,
+                    "報名方案": plan,
+                    "微習慣與學習目標": goal,
+                    "提交時間": timestamp,
+                    _template: "table",
+                    _captcha: "false"
+                })
+            }).catch(err => console.log("Email Notification sent:", err));
 
             // Show Modal
             const modal = document.getElementById('confirmModal');

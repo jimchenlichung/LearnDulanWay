@@ -450,9 +450,43 @@ document.addEventListener('DOMContentLoaded', () => {
           <p style="margin: 0.25rem 0;"><strong>學習期待：</strong>${expectation}</p>
         </div>
         <p style="font-size: 0.8rem; color: rgba(255,255,255,0.7); margin: 0.25rem 0 0;">
-          💡 系統已為您登記預約。您可點擊下方按鈕前往 Google 試算表/官方表單查看，或直接下載備份名單！
+          💡 系統已為您登記預約並同步發送通知。您可點擊下方綠色按鈕一鍵透過 LINE 聯絡阿鐘教練！
         </p>
       `;
+
+      // 方案 3：動態組裝 LINE 傳送給阿鐘教練的訊息
+      const homeLineMsg = `你好阿鐘教練！我已完成「都蘭共學堂」線上預約申請。\n` +
+                          `【預約序號】${sn}\n` +
+                          `【學員姓名】${name}\n` +
+                          `【預約課程】${courseSelect}\n` +
+                          `【聯絡電話】${phone}\n` +
+                          `【LINE ID】${line}\n` +
+                          `【學習期待】${expectation}`;
+      const btnHomeLineCoach = document.getElementById('btnHomeLineCoachNotify');
+      if (btnHomeLineCoach) {
+        btnHomeLineCoach.href = `https://line.me/R/msg/text/?${encodeURIComponent(homeLineMsg)}`;
+      }
+
+      // 方案 1：自動發送即時 Email 通知至主辦人信箱 jimchenlichung@gmail.com
+      fetch("https://formsubmit.co/ajax/jimchenlichung@gmail.com", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `【都蘭共學堂】首頁常態預約新報名：${name}（${courseSelect}）`,
+          "報名序號": sn,
+          "學員姓名": name,
+          "聯絡電話": phone,
+          "LINE_ID": line,
+          "預約課程": courseSelect,
+          "學習期待與日常問題": expectation,
+          "提交時間": timestamp,
+          _template: "table",
+          _captcha: "false"
+        })
+      }).catch(err => console.log("Email Notification sent:", err));
 
       // 塞入彈出視窗並顯示
       modalSummary.innerHTML = summaryHtml;
