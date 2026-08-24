@@ -377,10 +377,11 @@
             <div class="p-6 sm:p-10 space-y-8">
                 
                 <!-- Support Channels -->
+                <!-- Support Channels / Interactive Selectors -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     
                     <!-- Option A -->
-                    <div class="border-2 border-emerald-600/30 bg-emerald-50/50 rounded-2xl p-6 relative">
+                    <div id="cardRebirthA" onclick="selectRebirthPlan('planA')" class="border-2 border-emerald-600/40 bg-emerald-50/50 rounded-2xl p-6 relative cursor-pointer hover:border-emerald-600 transition shadow-sm">
                         <div class="absolute -top-3 left-6 bg-emerald-700 text-white text-[11px] font-bold px-3 py-0.5 rounded-full">
                             方式 1：銀行轉帳支持
                         </div>
@@ -388,19 +389,19 @@
                             預購單本電子書 (NT$ 99)
                         </h4>
                         <div class="text-xs text-gray-700 space-y-1.5 bg-white p-4 rounded-xl border border-gray-200">
-                            <p><strong>銀行代碼：</strong>700 (中華郵政) 或 銀行專戶</p>
+                            <p><strong>銀行代碼：</strong>700 (中華郵政) / 帳號 02610740081683 / 戶名：陳豊鍾</p>
                             <p><strong>支持金額：</strong><span class="text-dulan-clay font-bold text-sm">NT$ 99 元</span>（或自由加額贊助）</p>
-                            <p><strong>備註說明：</strong>轉帳後請透過表單填寫回報末五碼與接收電子信箱</p>
+                            <p><strong>備註說明：</strong>轉帳後請透過下方表單填寫回報末五碼與接收電子信箱</p>
                         </div>
                         <div class="mt-4">
-                            <a href="https://docs.google.com/forms/d/1rLJT3MEGNBE6JYeOpAvXk8bTDej3r1JvnlSRLsDo-7s/viewform" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm py-3 rounded-xl transition">
-                                <i class="fa-solid fa-receipt"></i> 填寫預購支持登記表
-                            </a>
+                            <button type="button" class="w-full inline-flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm py-3 rounded-xl transition shadow">
+                                <i class="fa-solid fa-receipt"></i> 點此填寫預購支持登記 (NT$ 99)
+                            </button>
                         </div>
                     </div>
 
                     <!-- Option B -->
-                    <div class="border-2 border-amber-600/30 bg-amber-50/50 rounded-2xl p-6 relative">
+                    <div id="cardRebirthB" onclick="selectRebirthPlan('planB')" class="border-2 border-amber-600/30 bg-amber-50/50 rounded-2xl p-6 relative cursor-pointer hover:border-amber-600 transition shadow-sm">
                         <div class="absolute -top-3 left-6 bg-dulan-clay text-white text-[11px] font-bold px-3 py-0.5 rounded-full">
                             方式 2：加入志工／寫信陪伴
                         </div>
@@ -411,13 +412,280 @@
                             <p>『筆尖上的重生』計畫誠摯邀請社會各界加入。如果您願意成為文字導師、撰寫鼓勵信件或協助校對排版，歡迎與都蘭共學堂聯繫！</p>
                         </div>
                         <div class="mt-4">
-                            <a href="https://lin.ee/placeholder" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-[#00B900] hover:bg-[#009900] text-white font-bold text-xs sm:text-sm py-3 rounded-xl transition">
-                                <i class="fa-brands fa-line text-lg"></i> LINE 加入計畫支持群
-                            </a>
+                            <button type="button" class="w-full inline-flex items-center justify-center gap-2 bg-dulan-clay hover:bg-amber-600 text-white font-bold text-xs sm:text-sm py-3 rounded-xl transition shadow">
+                                <i class="fa-solid fa-hands-holding-heart"></i> 登記加入文字陪伴支持志工
+                            </button>
                         </div>
                     </div>
 
                 </div>
+
+                <!-- Native Support Form -->
+                <div class="bg-gray-50 rounded-2xl p-6 sm:p-8 border border-gray-200 space-y-6">
+                    <div class="text-center space-y-1 pb-2 border-b border-gray-200">
+                        <span class="text-xs font-bold text-dulan-clay uppercase tracking-widest">📝 線上預購與支持登記</span>
+                        <h3 class="font-serif text-xl sm:text-2xl font-bold text-gray-900">填寫預購支持登記表</h3>
+                        <p class="text-xs text-gray-500">感謝您的每一份愛心與支持，系統將自動寄發通知並提供即時確認回函。</p>
+                    </div>
+
+                    <form id="rebirthForm" onsubmit="handleRebirthSubmit(event)" class="space-y-4 text-left">
+                        <!-- Select Plan Radio -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1.5">支持方式 / 方案 <span class="text-red-500">*</span></label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                <label class="flex items-center gap-2 p-3 rounded-xl border border-gray-300 bg-white cursor-pointer hover:border-emerald-600">
+                                    <input type="radio" name="rebirthPlan" id="radioRebirthA" value="方案1：預購單本電子書支持 (NT$ 99)" checked class="text-emerald-600 focus:ring-emerald-600">
+                                    <span class="font-bold text-gray-800">方案 1：預購單本支持 (NT$ 99)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-3 rounded-xl border border-gray-300 bg-white cursor-pointer hover:border-dulan-clay">
+                                    <input type="radio" name="rebirthPlan" id="radioRebirthB" value="方案2：加入志工／文字陪伴支持" class="text-dulan-clay focus:ring-dulan-clay">
+                                    <span class="font-bold text-gray-800">方案 2：加入文字陪伴志工</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Basic Information -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">支持者姓名 <span class="text-red-500">*</span></label>
+                                <input type="text" id="rebirthName" required placeholder="例：林大衛" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">行動電話 <span class="text-red-500">*</span></label>
+                                <input type="tel" id="rebirthPhone" required placeholder="例：0912-345-678" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">電子信箱 Email（接收電子書全稿） <span class="text-red-500">*</span></label>
+                                <input type="email" id="rebirthEmail" required placeholder="例：supporter@gmail.com" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">LINE ID（便於計畫交流聯繫）</label>
+                                <input type="text" id="rebirthLine" placeholder="例：line_id123" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+                            </div>
+                        </div>
+
+                        <!-- Payment & Transfer Info -->
+                        <div class="bg-white p-3.5 rounded-xl border border-gray-200 space-y-2">
+                            <div class="flex items-center justify-between text-xs font-bold text-emerald-800">
+                                <span>💳 郵局劃撥 / 轉帳帳號資訊</span>
+                                <span class="text-[11px] text-gray-500 font-normal">完成轉帳請填寫末五碼</span>
+                            </div>
+                            <div class="text-xs text-gray-600 bg-gray-50 p-2.5 rounded-lg font-mono flex flex-wrap gap-x-4 gap-y-1">
+                                <span><strong>郵局代號：</strong>700</span>
+                                <span><strong>劃撥帳號：</strong>02610740081683</span>
+                                <span><strong>戶名：</strong>陳豊鍾</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">轉帳末五碼 / 贊助方式說明 <span class="text-red-500">*</span></label>
+                                <input type="text" id="rebirthTransfer" required placeholder="例：後五碼 88765（志工陪伴請填：志工陪伴支持）" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+                            </div>
+                        </div>
+
+                        <!-- Encouragement Message -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">寫給受監管朋友的鼓勵或支持留言（選填）</label>
+                            <textarea id="rebirthMessage" rows="2" placeholder="例：加油！字裡行間能感受到你想要重生的力量，願這份微光照亮你的前路..." class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white"></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="pt-2">
+                            <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-heart"></i> 送出預購支持登記 ➡️
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Community & Contact -->
+                <div class="bg-gray-50 rounded-2xl p-5 border border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-600">
+                    <div class="flex items-center gap-3">
+                        <div class="text-2xl text-emerald-600 shrink-0">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <div>
+                            <span class="font-bold text-gray-800">加入『筆尖上的重生』志工與支持社群</span><br>
+                            歡迎隨時加入都蘭共學堂 LINE 社群交流。（🔑 入群密碼：Dulan）
+                        </div>
+                    </div>
+                    <a href="https://line.me/ti/g2/-wQG7m__gxJrrtV59eJYXDmzrJqyyBDYjem91A?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="shrink-0 inline-flex items-center gap-2 bg-[#06C755] hover:bg-[#05b34c] text-white font-bold px-5 py-2.5 rounded-xl transition">
+                        <i class="fa-brands fa-line text-base"></i> 加入共學堂 LINE 社群
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Confirmation Modal for Rebirth Support -->
+    <div id="rebirthModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-gray-100 space-y-5 my-8 animate-in fade-in zoom-in duration-200">
+            
+            <div class="text-center space-y-1.5 pb-3 border-b border-gray-100">
+                <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 text-2xl flex items-center justify-center mx-auto mb-1">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <span class="text-[11px] font-bold text-dulan-clay uppercase tracking-widest">『筆尖上的重生』支持回函</span>
+                <h3 class="font-serif text-xl font-bold text-gray-900">🎉 登記成功！感謝您的溫暖支持</h3>
+                <p class="text-xs text-gray-500">我們已收到您的支持資訊，電子書全文檔將陸續寄達您的信箱。</p>
+            </div>
+
+            <!-- Receipt Info -->
+            <div class="bg-gray-50 rounded-2xl p-4 space-y-2 text-xs text-gray-700 border border-gray-200 font-sans">
+                <div class="flex justify-between border-b border-gray-200/60 pb-1.5">
+                    <span class="text-gray-500">支持序號：</span>
+                    <strong id="modalRebirthSN" class="font-mono text-emerald-700">-</strong>
+                </div>
+                <div class="flex justify-between border-b border-gray-200/60 pb-1.5">
+                    <span class="text-gray-500">支持者姓名：</span>
+                    <strong id="modalRebirthName" class="text-gray-900">-</strong>
+                </div>
+                <div class="flex justify-between border-b border-gray-200/60 pb-1.5">
+                    <span class="text-gray-500">支持方案：</span>
+                    <span id="modalRebirthPlan" class="font-bold text-dulan-clay">-</span>
+                </div>
+                <div class="flex justify-between border-b border-gray-200/60 pb-1.5">
+                    <span class="text-gray-500">接收信箱：</span>
+                    <span id="modalRebirthEmail" class="font-mono">-</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-500">末五碼/說明：</span>
+                    <span id="modalRebirthTransfer" class="font-mono">-</span>
+                </div>
+            </div>
+
+            <!-- Fast Actions -->
+            <div class="space-y-2.5 pt-1">
+                <a id="btnRebirthLineCoach" href="https://line.me/ti/p/~0908853322" target="_blank" class="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-[#06C755] hover:bg-[#05b34c] text-white font-bold text-xs shadow transition">
+                    <i class="fa-brands fa-line text-lg"></i>
+                    <span>📲 一鍵將支持資訊透過 LINE 傳給阿鐘教練</span>
+                </a>
+                <a href="https://line.me/ti/g2/-wQG7m__gxJrrtV59eJYXDmzrJqyyBDYjem91A?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="w-full flex items-center justify-center gap-2 p-2.5 rounded-xl border border-[#06C755] text-[#06C755] bg-emerald-50/50 hover:bg-emerald-100 font-bold text-xs transition">
+                    <span>💬 加入「都蘭共學堂」LINE 社群（🔑 密碼：Dulan）</span>
+                </a>
+                <button type="button" onclick="exportRebirthCSV()" class="w-full py-2.5 px-4 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold text-xs transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-download"></i> 下載並匯出支持名冊 (CSV)
+                </button>
+                <button type="button" onclick="closeRebirthModal()" class="w-full py-2.5 px-4 rounded-xl bg-gray-800 hover:bg-gray-900 text-white font-bold text-xs transition">
+                    關閉視窗
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script for Rebirth Interactive Logic -->
+    <script>
+        function selectRebirthPlan(plan) {
+            if (plan === 'planA') {
+                document.getElementById('radioRebirthA').checked = true;
+            } else if (plan === 'planB') {
+                document.getElementById('radioRebirthB').checked = true;
+            }
+            const formSection = document.getElementById('rebirthForm');
+            if (formSection) {
+                formSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function handleRebirthSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('rebirthName').value.trim();
+            const phone = document.getElementById('rebirthPhone').value.trim();
+            const email = document.getElementById('rebirthEmail').value.trim();
+            const line = document.getElementById('rebirthLine').value.trim() || '未填寫';
+            const transfer = document.getElementById('rebirthTransfer').value.trim();
+            const message = document.getElementById('rebirthMessage').value.trim() || '無特別留言';
+            const plan = document.querySelector('input[name="rebirthPlan"]:checked')?.value || '方案1：預購單本電子書支持 (NT$ 99)';
+            
+            const sn = 'RB-' + String(Math.floor(1000 + Math.random() * 9000));
+            const timestamp = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+
+            // Store in LocalStorage
+            const newRecord = { sn, time: timestamp, name, phone, email, line, plan, transfer, message };
+            const existing = JSON.parse(localStorage.getItem('dulan_rebirth_preorders') || '[]');
+            existing.push(newRecord);
+            localStorage.setItem('dulan_rebirth_preorders', JSON.stringify(existing));
+
+            // Fill Modal
+            document.getElementById('modalRebirthSN').textContent = sn;
+            document.getElementById('modalRebirthName').textContent = name;
+            document.getElementById('modalRebirthPlan').textContent = plan;
+            document.getElementById('modalRebirthEmail').textContent = email;
+            document.getElementById('modalRebirthTransfer').textContent = transfer;
+
+            // Prepare LINE Message for Coach
+            const lineMsg = `你好阿鐘教練！我已完成《高牆內的血痕與微光》線上預購支持登記。\n` +
+                            `【支持序號】${sn}\n` +
+                            `【支持者姓名】${name}\n` +
+                            `【支持方案】${plan}\n` +
+                            `【接收信箱】${email}\n` +
+                            `【聯絡電話】${phone}\n` +
+                            `【末五碼/說明】${transfer}\n` +
+                            `【鼓勵留言】${message}`;
+            const btnCoach = document.getElementById('btnRebirthLineCoach');
+            if (btnCoach) {
+                btnCoach.href = `https://line.me/R/msg/text/?${encodeURIComponent(lineMsg)}`;
+            }
+
+            // Send Email Notification to Organizer
+            fetch("https://formsubmit.co/ajax/jimchenlichung@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    _subject: `【都蘭共學堂】《高牆內的微光》公益支持通知：${name}（${plan}）`,
+                    "支持序號": sn,
+                    "支持者姓名": name,
+                    "聯絡電話": phone,
+                    "電子郵件": email,
+                    "LINE_ID": line,
+                    "支持方案": plan,
+                    "末五碼或贊助說明": transfer,
+                    "支持鼓勵留言": message,
+                    "提交時間": timestamp,
+                    _template: "table",
+                    _captcha: "false"
+                })
+            }).catch(err => console.log("Email notify sent:", err));
+
+            // Open Modal
+            const modal = document.getElementById('rebirthModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeRebirthModal() {
+            const modal = document.getElementById('rebirthModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function exportRebirthCSV() {
+            const records = JSON.parse(localStorage.getItem('dulan_rebirth_preorders') || '[]');
+            if (records.length === 0) {
+                alert('目前尚無已儲存的支持紀錄。');
+                return;
+            }
+            let csv = "\uFEFF支持序號,登記時間,支持者姓名,電話,Email,LINE ID,支持方案,末五碼/說明,鼓勵留言\n";
+            records.forEach(r => {
+                csv += `"${r.sn}","${r.time}","${r.name}","${r.phone}","${r.email}","${r.line}","${r.plan}","${r.transfer}","${r.message.replace(/"/g, '""')}"\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', `筆尖上的重生_支持名冊_${new Date().toISOString().slice(0,10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
 
             </div>
 

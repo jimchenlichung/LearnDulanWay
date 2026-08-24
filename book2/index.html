@@ -413,11 +413,11 @@
 
             <div class="p-6 sm:p-10 space-y-8">
                 
-                <!-- Package Options -->
+                <!-- Package Cards (Interactive Selectors) -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     
                     <!-- Single Preorder -->
-                    <div class="border-2 border-emerald-600/30 bg-emerald-50/50 rounded-2xl p-6 relative">
+                    <div id="cardPlanA" onclick="selectBookPlan('planA')" class="border-2 border-emerald-600/40 bg-emerald-50/50 rounded-2xl p-6 relative cursor-pointer hover:border-emerald-600 transition shadow-sm">
                         <div class="absolute -top-3 left-6 bg-emerald-700 text-white text-[11px] font-bold px-3 py-0.5 rounded-full">
                             方案 A：第二本新書單書預購
                         </div>
@@ -427,17 +427,17 @@
                         <div class="text-xs text-gray-700 space-y-1.5 bg-white p-4 rounded-xl border border-gray-200">
                             <p><strong>預售特惠：</strong><span class="text-dulan-clay font-bold text-base">NT$ 99 元</span></p>
                             <p><strong>權益內容：</strong>即刻獲贈最新全文稿件（Word/PDF）＋ 正式版發行優先推送</p>
-                            <p><strong>匯款代碼：</strong>700 (中華郵政) 或 銀行專戶</p>
+                            <p><strong>匯款代碼：</strong>700 (中華郵政) / 帳號 02610740081683 / 戶名：陳豊鍾</p>
                         </div>
                         <div class="mt-4">
-                            <a href="https://docs.google.com/forms/d/1rLJT3MEGNBE6JYeOpAvXk8bTDej3r1JvnlSRLsDo-7s/viewform" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm py-3 rounded-xl transition">
-                                <i class="fa-solid fa-receipt"></i> 登記單書預購 (NT$ 99)
-                            </a>
+                            <button type="button" class="w-full inline-flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm py-3 rounded-xl transition shadow">
+                                <i class="fa-solid fa-check"></i> 點此選擇單書預購 (NT$ 99)
+                            </button>
                         </div>
                     </div>
 
                     <!-- Double Bundle -->
-                    <div class="border-2 border-amber-600/40 bg-amber-50/50 rounded-2xl p-6 relative">
+                    <div id="cardPlanB" onclick="selectBookPlan('planB')" class="border-2 border-amber-600/40 bg-amber-50/50 rounded-2xl p-6 relative cursor-pointer hover:border-amber-600 transition shadow-sm">
                         <div class="absolute -top-3 left-6 bg-dulan-clay text-white text-[11px] font-bold px-3 py-0.5 rounded-full">
                             方案 B：一二冊雙書珍藏全套
                         </div>
@@ -450,12 +450,91 @@
                             <p><strong>適合對象：</strong>想完整了解阿鐘從逆襲救贖到豐盛實踐全歷程的讀者</p>
                         </div>
                         <div class="mt-4">
-                            <a href="https://docs.google.com/forms/d/1rLJT3MEGNBE6JYeOpAvXk8bTDej3r1JvnlSRLsDo-7s/viewform" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-dulan-clay hover:bg-amber-600 text-white font-bold text-xs sm:text-sm py-3 rounded-xl transition">
-                                <i class="fa-solid fa-layer-group"></i> 預購雙書合購套裝 (NT$ 180)
-                            </a>
+                            <button type="button" class="w-full inline-flex items-center justify-center gap-2 bg-dulan-clay hover:bg-amber-600 text-white font-bold text-xs sm:text-sm py-3 rounded-xl transition shadow">
+                                <i class="fa-solid fa-layer-group"></i> 點此選擇雙書套裝 (NT$ 180)
+                            </button>
                         </div>
                     </div>
 
+                </div>
+
+                <!-- Native Pre-Order Form -->
+                <div class="bg-gray-50 rounded-2xl p-6 sm:p-8 border border-gray-200 space-y-6">
+                    <div class="text-center space-y-1 pb-2 border-b border-gray-200">
+                        <span class="text-xs font-bold text-dulan-clay uppercase tracking-widest">📝 線上直接填表預購</span>
+                        <h3 class="font-serif text-xl sm:text-2xl font-bold text-gray-900">填寫預購支持登記表</h3>
+                        <p class="text-xs text-gray-500">填寫送出後，系統將自動寄發通知並即時提供回函與聯繫窗口。</p>
+                    </div>
+
+                    <form id="bookPreorderForm" onsubmit="handleBookPreorder(event)" class="space-y-4 text-left">
+                        <!-- Select Plan Radio -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1.5">預購方案 <span class="text-red-500">*</span></label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                <label class="flex items-center gap-2 p-3 rounded-xl border border-gray-300 bg-white cursor-pointer hover:border-emerald-600">
+                                    <input type="radio" name="bookPlan" id="radioPlanA" value="方案A：《人生70才開始》單書預購 (NT$ 99)" checked class="text-emerald-600 focus:ring-emerald-600">
+                                    <span class="font-bold text-gray-800">方案 A：單書預購 (NT$ 99)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-3 rounded-xl border border-gray-300 bg-white cursor-pointer hover:border-dulan-clay">
+                                    <input type="radio" name="bookPlan" id="radioPlanB" value="方案B：一二冊雙書珍藏全套 (NT$ 180)" class="text-dulan-clay focus:ring-dulan-clay">
+                                    <span class="font-bold text-gray-800">方案 B：雙書全套 (NT$ 180)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Basic Information -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">讀者姓名 <span class="text-red-500">*</span></label>
+                                <input type="text" id="preorderName" required placeholder="例：陳大中" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">行動電話 <span class="text-red-500">*</span></label>
+                                <input type="tel" id="preorderPhone" required placeholder="例：0912-345-678" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">電子信箱 Email（接收電子書全稿） <span class="text-red-500">*</span></label>
+                                <input type="email" id="preorderEmail" required placeholder="例：reader@gmail.com" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">LINE ID（便於發送更新與解答）</label>
+                                <input type="text" id="preorderLine" placeholder="例：line_id123" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+                            </div>
+                        </div>
+
+                        <!-- Payment & Five Digits -->
+                        <div class="bg-white p-3.5 rounded-xl border border-gray-200 space-y-2">
+                            <div class="flex items-center justify-between text-xs font-bold text-emerald-800">
+                                <span>💳 郵局劃撥 / 轉帳帳號資訊</span>
+                                <span class="text-[11px] text-gray-500 font-normal">完成後請填寫末五碼</span>
+                            </div>
+                            <div class="text-xs text-gray-600 bg-gray-50 p-2.5 rounded-lg font-mono flex flex-wrap gap-x-4 gap-y-1">
+                                <span><strong>郵局代號：</strong>700</span>
+                                <span><strong>劃撥帳號：</strong>02610740081683</span>
+                                <span><strong>戶名：</strong>陳豊鍾</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">轉帳末五碼或繳費方式說明 <span class="text-red-500">*</span></label>
+                                <input type="text" id="preorderTransfer" required placeholder="例：後五碼 12345（或填寫：現場繳費 / 以物易物交流）" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+                            </div>
+                        </div>
+
+                        <!-- Feedback or Note -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">想對阿鐘教練說的話或閱讀期待（選填）</label>
+                            <textarea id="preorderNote" rows="2" placeholder="例：非常期待下半場人生實踐的篇章、想學習 AI 寫作..." class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white"></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="pt-2">
+                            <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paper-plane"></i> 送出預購支持登記 ➡️
+                            </button>
+                        </div>
+                    </form>
                 </div>
 
                 <!-- Support & LINE Contact -->
@@ -466,13 +545,185 @@
                         </div>
                         <div>
                             <span class="font-bold text-gray-800">有任何預購疑問或想以物易物交流？</span><br>
-                            歡迎隨時加入都蘭共學堂官方 LINE 或前來四季八里莊園現場交流。
+                            歡迎隨時加入都蘭共學堂官方 LINE 或前來四季八里莊園現場交流。（🔑 入群密碼：Dulan）
                         </div>
                     </div>
-                    <a href="https://lin.ee/placeholder" target="_blank" class="shrink-0 inline-flex items-center gap-2 bg-[#00B900] hover:bg-[#009900] text-white font-bold px-5 py-2.5 rounded-xl transition">
-                        <i class="fa-brands fa-line text-base"></i> LINE 客服洽詢
+                    <a href="https://line.me/ti/g2/-wQG7m__gxJrrtV59eJYXDmzrJqyyBDYjem91A?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="shrink-0 inline-flex items-center gap-2 bg-[#06C755] hover:bg-[#05b34c] text-white font-bold px-5 py-2.5 rounded-xl transition">
+                        <i class="fa-brands fa-line text-base"></i> 加入共學堂 LINE 社群
                     </a>
                 </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Confirmation Modal for Book2 Preorder -->
+    <div id="book2Modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-gray-100 space-y-5 my-8 animate-in fade-in zoom-in duration-200">
+            
+            <div class="text-center space-y-1.5 pb-3 border-b border-gray-100">
+                <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 text-2xl flex items-center justify-center mx-auto mb-1">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <span class="text-[11px] font-bold text-dulan-clay uppercase tracking-widest">《人生70才開始》新書預購回函</span>
+                <h3 class="font-serif text-xl font-bold text-gray-900">🎉 預購登記成功！</h3>
+                <p class="text-xs text-gray-500">我們已收到您的預購資訊，電子書全稿將依序寄送至您的信箱。</p>
+            </div>
+
+            <!-- Receipt Info -->
+            <div class="bg-gray-50 rounded-2xl p-4 space-y-2 text-xs text-gray-700 border border-gray-200 font-sans">
+                <div class="flex justify-between border-b border-gray-200/60 pb-1.5">
+                    <span class="text-gray-500">預購序號：</span>
+                    <strong id="modalBookSN" class="font-mono text-emerald-700">-</strong>
+                </div>
+                <div class="flex justify-between border-b border-gray-200/60 pb-1.5">
+                    <span class="text-gray-500">讀者姓名：</span>
+                    <strong id="modalBookName" class="text-gray-900">-</strong>
+                </div>
+                <div class="flex justify-between border-b border-gray-200/60 pb-1.5">
+                    <span class="text-gray-500">預購方案：</span>
+                    <span id="modalBookPlan" class="font-bold text-dulan-clay">-</span>
+                </div>
+                <div class="flex justify-between border-b border-gray-200/60 pb-1.5">
+                    <span class="text-gray-500">接收信箱：</span>
+                    <span id="modalBookEmail" class="font-mono">-</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-500">末五碼/備註：</span>
+                    <span id="modalBookTransfer" class="font-mono">-</span>
+                </div>
+            </div>
+
+            <!-- Fast Actions -->
+            <div class="space-y-2.5 pt-1">
+                <a id="btnBookLineCoach" href="https://line.me/ti/p/~0908853322" target="_blank" class="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-[#06C755] hover:bg-[#05b34c] text-white font-bold text-xs shadow transition">
+                    <i class="fa-brands fa-line text-lg"></i>
+                    <span>📲 一鍵將預購資訊透過 LINE 傳給阿鐘教練</span>
+                </a>
+                <a href="https://line.me/ti/g2/-wQG7m__gxJrrtV59eJYXDmzrJqyyBDYjem91A?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="w-full flex items-center justify-center gap-2 p-2.5 rounded-xl border border-[#06C755] text-[#06C755] bg-emerald-50/50 hover:bg-emerald-100 font-bold text-xs transition">
+                    <span>💬 加入「都蘭共學堂」LINE 社群（🔑 密碼：Dulan）</span>
+                </a>
+                <button type="button" onclick="exportBookCSV()" class="w-full py-2.5 px-4 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold text-xs transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-download"></i> 下載並匯出預購試算表 (CSV)
+                </button>
+                <button type="button" onclick="closeBook2Modal()" class="w-full py-2.5 px-4 rounded-xl bg-gray-800 hover:bg-gray-900 text-white font-bold text-xs transition">
+                    關閉視窗
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script for Book2 Interactive Logic -->
+    <script>
+        function selectBookPlan(plan) {
+            if (plan === 'planA') {
+                document.getElementById('radioPlanA').checked = true;
+            } else if (plan === 'planB') {
+                document.getElementById('radioPlanB').checked = true;
+            }
+            const formSection = document.getElementById('bookPreorderForm');
+            if (formSection) {
+                formSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function handleBookPreorder(e) {
+            e.preventDefault();
+            const name = document.getElementById('preorderName').value.trim();
+            const phone = document.getElementById('preorderPhone').value.trim();
+            const email = document.getElementById('preorderEmail').value.trim();
+            const line = document.getElementById('preorderLine').value.trim() || '未填寫';
+            const transfer = document.getElementById('preorderTransfer').value.trim();
+            const note = document.getElementById('preorderNote').value.trim() || '無特別備註';
+            const plan = document.querySelector('input[name="bookPlan"]:checked')?.value || '方案A：《人生70才開始》單書預購 (NT$ 99)';
+            
+            const sn = 'BK2-' + String(Math.floor(1000 + Math.random() * 9000));
+            const timestamp = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+
+            // Store in LocalStorage
+            const newRecord = { sn, time: timestamp, name, phone, email, line, plan, transfer, note };
+            const existing = JSON.parse(localStorage.getItem('dulan_book2_preorders') || '[]');
+            existing.push(newRecord);
+            localStorage.setItem('dulan_book2_preorders', JSON.stringify(existing));
+
+            // Fill Modal
+            document.getElementById('modalBookSN').textContent = sn;
+            document.getElementById('modalBookName').textContent = name;
+            document.getElementById('modalBookPlan').textContent = plan;
+            document.getElementById('modalBookEmail').textContent = email;
+            document.getElementById('modalBookTransfer').textContent = transfer;
+
+            // Prepare LINE Message for Coach
+            const lineMsg = `你好阿鐘教練！我已完成《人生70才開始》新書線上預購。\n` +
+                            `【預購序號】${sn}\n` +
+                            `【讀者姓名】${name}\n` +
+                            `【預購方案】${plan}\n` +
+                            `【接收信箱】${email}\n` +
+                            `【聯絡電話】${phone}\n` +
+                            `【轉帳末五碼】${transfer}\n` +
+                            `【讀者心聲】${note}`;
+            const btnCoach = document.getElementById('btnBookLineCoach');
+            if (btnCoach) {
+                btnCoach.href = `https://line.me/R/msg/text/?${encodeURIComponent(lineMsg)}`;
+            }
+
+            // Send Email Notification to Organizer
+            fetch("https://formsubmit.co/ajax/jimchenlichung@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    _subject: `【都蘭共學堂】《人生70才開始》新書預購通知：${name}（${plan}）`,
+                    "預購序號": sn,
+                    "讀者姓名": name,
+                    "聯絡電話": phone,
+                    "電子郵件": email,
+                    "LINE_ID": line,
+                    "預購方案": plan,
+                    "轉帳末五碼或繳費說明": transfer,
+                    "讀者留言與期待": note,
+                    "提交時間": timestamp,
+                    _template: "table",
+                    _captcha: "false"
+                })
+            }).catch(err => console.log("Email notify sent:", err));
+
+            // Open Modal
+            const modal = document.getElementById('book2Modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeBook2Modal() {
+            const modal = document.getElementById('book2Modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function exportBookCSV() {
+            const records = JSON.parse(localStorage.getItem('dulan_book2_preorders') || '[]');
+            if (records.length === 0) {
+                alert('目前尚無已儲存的預購紀錄。');
+                return;
+            }
+            let csv = "\uFEFF預購序號,登記時間,讀者姓名,電話,Email,LINE ID,預購方案,轉帳末五碼,讀者留言\n";
+            records.forEach(r => {
+                csv += `"${r.sn}","${r.time}","${r.name}","${r.phone}","${r.email}","${r.line}","${r.plan}","${r.transfer}","${r.note.replace(/"/g, '""')}"\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', `人生70才開始_預購名冊_${new Date().toISOString().slice(0,10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
 
             </div>
 
