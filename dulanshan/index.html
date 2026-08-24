@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌳 2026 荒野台東分會【都蘭山定點觀察】年度公告 | 都蘭共學堂</title>
+    <meta name="description" content="2026年荒野保護協會台東分會【都蘭山定點自然觀察】年度活動日程公告。每月第一個週日舉辦，免費用、免報名。郡界福安堂廣場集合併車上山，一起走進海岸山脈聖山，記錄山海四季的生命脈動。">
+    
+    <!-- Tailwind CSS & FontAwesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dulan: {
+                            forest: '#1E3F33',
+                            dark:   '#122820',
+                            deep:   '#0D1D17',
+                            sand:   '#F9F6F0',
+                            clay:   '#C86D51',
+                            gold:   '#D4AF37',
+                            leaf:   '#4A7C59',
+                            teal:   '#0D7377',
+                            moss:   '#2D5233'
+                        }
+                    },
+                    fontFamily: {
+                        sans:   ['Noto Sans TC', 'sans-serif'],
+                        serif:  ['Noto Serif TC', 'serif'],
+                        outfit: ['Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .hero-pattern {
+            background-color: #122820;
+            background-image: 
+                radial-gradient(rgba(110, 231, 183, 0.15) 1px, transparent 0),
+                linear-gradient(to bottom, rgba(18, 40, 32, 0.75), rgba(13, 29, 23, 0.95));
+            background-size: 24px 24px, 100% 100%;
+        }
+        .nature-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(30, 63, 51, 0.25);
+        }
+        .badge-pulse {
+            animation: pulse-slow 2.5s infinite;
+        }
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.03); }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-[#F9F6F0] antialiased">
+
+    <!-- Top Sticky Header -->
+    <header class="sticky top-0 z-50 bg-[#122820]/95 backdrop-blur-md border-b border-white/10 text-white transition-all duration-300 shadow-md">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="https://jimchenlichung.github.io/LearnDulanWay/" class="inline-flex items-center gap-2 text-xs sm:text-sm text-emerald-300 bg-white/10 hover:bg-white/20 px-3.5 py-1.5 rounded-full transition border border-white/10">
+                    <i class="fa-solid fa-arrow-left"></i> 返回共學堂首頁
+                </a>
+                <div class="hidden md:flex items-center gap-2 text-xs text-gray-300 pl-2 border-l border-white/10">
+                    <span>🌿 生態與山海實作</span>
+                </div>
+            </div>
+            
+            <nav class="hidden lg:flex items-center gap-6 text-xs sm:text-sm font-medium text-gray-200">
+                <a href="#schedule" class="hover:text-emerald-300 transition flex items-center gap-1.5">
+                    <i class="fa-regular fa-calendar-days text-emerald-400"></i> 年度日程
+                </a>
+                <a href="#gathering" class="hover:text-emerald-300 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-location-dot text-amber-400"></i> 集合交通
+                </a>
+                <a href="#equipment" class="hover:text-emerald-300 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-clipboard-check text-teal-400"></i> 攜帶清單
+                </a>
+                <a href="#safety" class="hover:text-emerald-300 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-shield-heart text-rose-400"></i> 注意事項
+                </a>
+            </nav>
+
+            <div class="flex items-center gap-2">
+                <a href="#schedule" class="bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm px-4 py-2 rounded-full shadow transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-seedling"></i> 2026 定觀行事曆
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section class="hero-pattern text-white py-16 sm:py-24 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                
+                <!-- Left: Headline & Key Badges -->
+                <div class="lg:col-span-8 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-900/90 border border-emerald-400/40 text-emerald-300 text-xs sm:text-sm font-semibold">
+                        <span class="badge-pulse">🌳</span>
+                        <span>荒野台東分會 ‧ 2026 年度常態生態推廣</span>
+                    </div>
+                    
+                    <h1 class="font-serif text-3xl sm:text-5xl font-black leading-tight tracking-tight text-white">
+                        都蘭山定點自然觀察
+                    </h1>
+                    <p class="font-serif text-xl sm:text-2xl text-emerald-300 font-semibold">
+                        走進海岸山脈聖山 ‧ 傾聽林間微光節奏
+                    </p>
+                    
+                    <p class="text-sm sm:text-base text-gray-300 leading-relaxed max-w-2xl">
+                        每月的第一個週日，讓我們放下都市的喧囂，跟隨荒野保護協會解說志工的腳步，走入都蘭山的亞熱帶雨林與步道。從微小的蕈類、樹梢的烏頭翁與大冠鷲，到隨四季更迭的森林百態，共同記錄大自然的生命奧秘。
+                    </p>
+
+                    <!-- Feature Pillars Box -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 max-w-xl mx-auto lg:mx-0 text-left">
+                        <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/15">
+                            <span class="text-amber-400 text-xs font-bold block mb-1">
+                                <i class="fa-regular fa-calendar-check"></i> 活動頻率
+                            </span>
+                            <span class="text-sm font-bold text-white">每月第一個週日</span>
+                            <span class="text-[11px] text-gray-300 block">2026 全年度 12 場</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/15">
+                            <span class="text-emerald-300 text-xs font-bold block mb-1">
+                                <i class="fa-solid fa-gift"></i> 參與方式
+                            </span>
+                            <span class="text-sm font-bold text-white">免費用 ‧ 免報名</span>
+                            <span class="text-[11px] text-gray-300 block">時間到了直接集合</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/15 col-span-2 sm:col-span-1">
+                            <span class="text-teal-300 text-xs font-bold block mb-1">
+                                <i class="fa-solid fa-location-dot"></i> 集合地點
+                            </span>
+                            <span class="text-sm font-bold text-white">郡界福安堂廣場</span>
+                            <span class="text-[11px] text-gray-300 block">08:20 集合 / 併車上山</span>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-3.5 pt-2 justify-center lg:justify-start">
+                        <a href="#schedule" class="inline-flex items-center justify-center gap-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-base px-8 py-3.5 rounded-xl shadow-lg shadow-emerald-950/50 transition transform hover:-translate-y-0.5">
+                            <i class="fa-regular fa-calendar-days"></i> 查閱 2026 觀察日程表
+                        </a>
+                        <a href="#gathering" class="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 text-white font-semibold text-base px-6 py-3.5 rounded-xl border border-white/20 transition">
+                            <i class="fa-solid fa-car-side text-amber-300"></i> 集合時程與併車說明
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Visual Card with Local Fallback -->
+                <div class="lg:col-span-4 flex justify-center">
+                    <div class="relative w-full max-w-[340px] bg-gradient-to-b from-white/15 to-white/5 p-4 rounded-3xl border border-white/20 backdrop-blur-md shadow-2xl">
+                        <div class="rounded-2xl overflow-hidden shadow-inner aspect-[4/3] relative bg-[#1A3329] flex items-center justify-center group">
+                            <!-- Local Image with Fallback -->
+                            <img src="hero.jpg" alt="都蘭山定點觀察" onerror="this.style.display='none'; document.getElementById('heroFallback').classList.remove('hidden');" class="w-full h-full object-cover">
+                            <!-- Fallback Banner if image not yet uploaded -->
+                            <div id="heroFallback" class="hidden w-full h-full flex flex-col items-center justify-center text-center p-6 bg-gradient-to-br from-[#1E3F33] to-[#0D1D17]">
+                                <i class="fa-solid fa-mountain-sun text-5xl text-emerald-400/80 mb-3 animate-pulse"></i>
+                                <span class="font-serif font-bold text-lg text-white">都蘭山自然定觀</span>
+                                <span class="text-xs text-emerald-300/80 mt-1">海岸山脈 ‧ 雲霧林生態</span>
+                            </div>
+                        </div>
+
+                        <!-- Highlights Box -->
+                        <div class="mt-4 p-3.5 rounded-xl bg-black/40 border border-white/10 space-y-2 text-xs text-gray-200">
+                            <div class="flex items-center justify-between font-bold text-amber-300">
+                                <span>🌳 主辦單位</span>
+                                <span>荒野保護協會台東分會</span>
+                            </div>
+                            <div class="flex items-center justify-between text-gray-300">
+                                <span>📍 觀察地點</span>
+                                <span>都蘭山國家步道周邊</span>
+                            </div>
+                            <div class="flex items-center justify-between text-gray-300">
+                                <span>👥 適合對象</span>
+                                <span>熱愛自然生態的大眾與親子</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Highlight Ribbon -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 -mt-6 relative z-20">
+        <div class="bg-amber-500/10 border-2 border-amber-500/30 backdrop-blur-lg bg-[#FAF7F2] rounded-2xl shadow-xl p-5 sm:p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center text-2xl shrink-0 shadow-md">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-900 text-base sm:text-lg">免費用、免事先報名！時間到了直接到場集合</h3>
+                    <p class="text-xs sm:text-sm text-gray-600">請穿著<strong>雨鞋或防滑鞋</strong>（防螞蝗），本活動無投保，戶外安全請自行負責。</p>
+                </div>
+            </div>
+            <a href="#equipment" class="shrink-0 bg-dulan-clay hover:bg-amber-600 text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-full transition shadow">
+                查看行前裝備清單 ➔
+            </a>
+        </div>
+    </section>
+
+    <!-- 2026 Schedule Calendar Grid Section -->
+    <section id="schedule" class="py-16 sm:py-24 max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+            <span class="text-xs font-bold tracking-widest text-emerald-800 uppercase bg-emerald-100 px-3.5 py-1 rounded-full">
+                2026 Annual Schedule
+            </span>
+            <h2 class="font-serif text-2xl sm:text-4xl font-bold text-gray-900">
+                2026 年度 12 場定觀日曆
+            </h2>
+            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                固定於<strong>每個月的第一個週日</strong>舉行。歡迎將日期加入行事曆，四季都蘭山各有不同風情！
+            </p>
+        </div>
+
+        <!-- 12 Months Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+            
+            <!-- Month 1 -->
+            <div class="nature-card bg-white p-5 rounded-2xl border border-gray-200 shadow-sm relative overflow-hidden">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg">01 月場次</span>
+                    <span class="text-[11px] text-gray-400">已圓滿</span>
+                </div>
+                <div class="text-2xl font-black font-outfit text-gray-800">2026.01.04</div>
+                <div class="text-xs text-gray-500 mt-1 flex items-center gap-1">
+                    <i class="fa-regular fa-clock text-emerald-600"></i> 08:20 集合 ｜ 週日
+                </div>
+                <div class="mt-3 pt-3 border-t border-gray-100 text-xs text-gray-600">
+                    冬日初霽，迎向新年度的初次森林巡禮。
+                </div>
+            </div>
+
+            <!-- Month 2 -->
+            <div class="nature-card bg-white p-5 rounded-2xl border border-gray-200 shadow-sm relative overflow-hidden">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg">02 月場次</span>
+                    <span class="text-[11px] text-gray-400">已圓滿</span>
+                </div>
+                <div class="text-2xl font-black font-outfit text-gray-800">2026.02.01</div>
+                <div class="text-xs text-gray-500 mt-1 flex items-center gap-1">
+                    <i class="fa-regular fa-clock text-emerald-600"></i> 08:20 集合 ｜ 週日
+                </div>
+                <div class="mt-3 pt-3 border-t border-gray-100 text-xs text-gray-600">
+                    早春萌芽，枝頭新綠與鳥鳴交織的早晨。
+                </div>
+            </div>
+
+            <!-- Month 3 -->
+            <div class="nature-card bg-white p-5 rounded-2xl border border-gray-200 shadow-sm relative overflow-hidden">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg">03 月場次</span>
+                    <span class="text-[11px] text-gray-400">已圓滿</span>
+                </div>
+                <div class="text-2xl font-black font-outfit text-gray-800">2026.03.01</div>
+                <div class="text-xs text-gray-500 mt-1 flex items-center gap-1">
+                    <i class="fa-regular fa-clock text-emerald-600"></i> 08:20 集合 ｜ 週日
+                </div>
+                <div class="mt-3 pt-3 border-t border-gray-100 text-xs text-gray-600">
+                    春雷乍響，林下蕨類與苔蘚生機盎然。
+                </div>
+            </div>
+
+            <!-- Month 4 -->
+            <div class="nature-card bg-white p-5 rounded-2xl border border-gray-200 shadow-sm relative overflow-hidden">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg">04 月場次</span>
+                    <span class="text-[11px] text-gray-400">已圓滿</span>
+                </div>
+                <div class="text-2xl font-black font-outfit text-gray-800">2026.04.05</div>
+                <div class="text-xs text-gray-500 mt-1 flex items-center gap-1">
+                    <i class="fa-regular fa-clock text-emerald-600"></i> 08:20 集合 ｜ 週日
+                </div>
+                <div class="mt-3 pt-3 border-t border-gray-100 text-xs text-gray-600">
+                    清明時節，繁花盛開與昆蟲復甦的精彩時刻。
+                </div>
+            </div>
+
+            <!-- Month 5 -->
+            <div class="nature-card bg-white p-5 rounded-2xl border border-gray-200 shadow-sm relative overflow-hidden">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg">05 月場次</span>
+                    <span class="text-[11px] text-gray-400">已圓滿</span>
+                </div>
+                <div class="text-2xl font-black font-outfit text-gray-800">2026.05.03</div>
+                <div class="text-xs text-gray-500 mt-1 flex items-center gap-1">
+                    <i class="fa-regular fa-clock text-emerald-600"></i> 08:20 集合 ｜ 週日
+                </div>
+                <div class="mt-3 pt-3 border-t border-gray-100 text-xs text-gray-600">
+                    立夏前夕，步道林冠層的熱鬧鳥音。
+                </div>
+            </div>
+
+            <!-- Month 6 -->
+            <div class="nature-card bg-white p-5 rounded-2xl border border-gray-200 shadow-sm relative overflow-hidden">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg">06 月場次</span>
+                    <span class="text-[11px] text-gray-400">已圓滿</span>
+                </div>
+                <div class="text-2xl font-black font-outfit text-gray-800">2026.06.07</div>
+                <div class="text-xs text-gray-500 mt-1 flex items-center gap-1">
+                    <i class="fa-regular fa-clock text-emerald-600"></i> 08:20 集合 ｜ 週日
+                </div>
+                <div class="mt-3 pt-3 border-t border-gray-100 text-xs text-gray-600">
+                    初夏綠蔭，走進山林享受最純粹的芬多精。
+                </div>
+            </div>
+
+            <!-- Month 7 -->
+            <div class="nature-card bg-white p-5 rounded-2xl border border-gray-200 shadow-sm relative overflow-hidden">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg">07 月場次</span>
+                    <span class="text-[11px] text-gray-400">已圓滿</span>
+                </div>
+                <div class="text-2xl font-black font-outfit text-gray-800">2026.07.05</div>
+                <div class="text-xs text-gray-500 mt-1 flex items-center gap-1">
+                    <i class="fa-regular fa-clock text-emerald-600"></i> 08:20 集合 ｜ 週日
+                </div>
+                <div class="mt-3 pt-3 border-t border-gray-100 text-xs text-gray-600">
+                    仲夏蟬鳴，山嵐霧氣下的避暑生態觀察。
+                </div>
+            </div>
+
+            <!-- Month 8 -->
+            <div class="nature-card bg-white p-5 rounded-2xl border border-gray-200 shadow-sm relative overflow-hidden">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg">08 月場次</span>
+                    <span class="text-[11px] text-gray-400">已圓滿</span>
+                </div>
+                <div class="text-2xl font-black font-outfit text-gray-800">2026.08.02</div>
+                <div class="text-xs text-gray-500 mt-1 flex items-center gap-1">
+                    <i class="fa-regular fa-clock text-emerald-600"></i> 08:20 集合 ｜ 週日
+                </div>
+                <div class="mt-3 pt-3 border-t border-gray-100 text-xs text-gray-600">
+                    八月盛夏，綠光森林與多樣性雨林生態。
+                </div>
+            </div>
+
+            <!-- Month 9 (Upcoming / Active) -->
+            <div class="nature-card bg-gradient-to-br from-emerald-50 to-white p-5 rounded-2xl border-2 border-emerald-500 shadow-md relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] font-bold px-3 py-0.5 rounded-bl-lg">
+                    ✨ 即將到來
+                </div>
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold text-emerald-900 bg-emerald-200/80 px-2.5 py-1 rounded-lg">09 月場次</span>
+                </div>
+                <div class="text-2xl font-black font-outfit text-emerald-900">2026.09.06</div>
+                <div class="text-xs text-emerald-700 mt-1 flex items-center gap-1 font-semibold">
+                    <i class="fa-regular fa-clock"></i> 08:20 集合 ｜ 週日
+                </div>
+                <div class="mt-3 pt-3 border-t border-emerald-100 text-xs text-gray-700 font-medium">
+                    初秋微涼，太平洋海風吹拂下的山徑踏查。
+                </div>
+            </div>
+
+            <!-- Month 10 -->
+            <div class="nature-card bg-white p-5 rounded-2xl border border-gray-200 shadow-sm relative overflow-hidden">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg">10 月場次</span>
+                    <span class="text-[11px] text-emerald-600 font-semibold">預定日程</span>
+                </div>
+                <div class="text-2xl font-black font-outfit text-gray-800">2026.10.04</div>
+                <div class="text-xs text-gray-500 mt-1 flex items-center gap-1">
+                    <i class="fa-regular fa-clock text-emerald-600"></i> 08:20 集合 ｜ 週日
+                </div>
+                <div class="mt-3 pt-3 border-t border-gray-100 text-xs text-gray-600">
+                    秋高氣爽，候鳥過境與成熟果實生態。
+                </div>
+            </div>
+
+            <!-- Month 11 (SPECIAL 6HR ALL-DAY EVENT) -->
+            <div class="nature-card bg-gradient-to-br from-[#122820] to-[#1E3F33] text-white p-5 rounded-2xl border-2 border-amber-400 shadow-xl relative overflow-hidden col-span-1 sm:col-span-2 lg:col-span-1">
+                <div class="absolute top-0 right-0 bg-amber-400 text-gray-900 text-[10px] font-black px-3 py-0.5 rounded-bl-lg uppercase tracking-wider">
+                    🔥 年度特別場
+                </div>
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold text-amber-300 bg-amber-950/80 border border-amber-400/30 px-2.5 py-1 rounded-lg">11 月全程定觀</span>
+                </div>
+                <div class="text-2xl font-black font-outfit text-amber-300">2026.11.01</div>
+                <div class="text-xs text-emerald-300 mt-1 flex items-center gap-1 font-bold">
+                    <i class="fa-solid fa-bell text-amber-400 animate-bounce"></i> 07:40 提早集合 (07:50 併車)
+                </div>
+                <div class="mt-3 pt-3 border-t border-white/15 text-xs text-gray-200 leading-relaxed">
+                    <strong class="text-amber-300">⚡ 全程定觀活動（約需 6 小時）</strong><br/>
+                    深入登頂或長程路線，請務必備齊午餐乾糧與充足飲水！
+                </div>
+            </div>
+
+            <!-- Month 12 -->
+            <div class="nature-card bg-white p-5 rounded-2xl border border-gray-200 shadow-sm relative overflow-hidden">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg">12 月場次</span>
+                    <span class="text-[11px] text-emerald-600 font-semibold">年度壓軸</span>
+                </div>
+                <div class="text-2xl font-black font-outfit text-gray-800">2026.12.06</div>
+                <div class="text-xs text-gray-500 mt-1 flex items-center gap-1">
+                    <i class="fa-regular fa-clock text-emerald-600"></i> 08:20 集合 ｜ 週日
+                </div>
+                <div class="mt-3 pt-3 border-t border-gray-100 text-xs text-gray-600">
+                    歲末感恩，回顧一整年都蘭山的生命變遷。
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Add to Calendar Box -->
+        <div class="mt-10 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3 text-left">
+                <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 text-sm">提醒自己參加都蘭山定觀</h4>
+                    <p class="text-xs text-gray-500">將 2026 定觀日直接加入您的行事曆，不錯過每月的森林之約。</p>
+                </div>
+            </div>
+            <button onclick="downloadICS()" class="inline-flex items-center gap-2 bg-dulan-forest hover:bg-emerald-800 text-white text-xs sm:text-sm font-bold px-5 py-2.5 rounded-full transition shadow">
+                <i class="fa-solid fa-file-arrow-down"></i> 下載 2026 定觀行事曆 (.ics)
+            </button>
+        </div>
+    </section>
+
+    <!-- Gathering & Carpooling Section -->
+    <section id="gathering" class="py-16 bg-[#F0EBE1] border-y border-gray-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                <span class="text-xs font-bold tracking-widest text-dulan-clay uppercase">Location & Logistics</span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold text-gray-900">
+                    集合地點與併車流程
+                </h2>
+                <p class="text-xs sm:text-sm text-gray-600">
+                    為保護山林環境與解決林道會車空間，一律在台11線集合後併車上山
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                
+                <!-- Time & Schedule Rules Card -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-200 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-sm">1</span>
+                            <h3 class="font-serif font-bold text-lg text-gray-900">集合時間與併車時刻表</h3>
+                        </div>
+
+                        <!-- Regular Months -->
+                        <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-200/60 space-y-1">
+                            <span class="text-xs font-bold text-emerald-800 block">🌿 一般月份（1-10月、12月）</span>
+                            <div class="text-sm font-bold text-gray-800">
+                                ⏰ 08:20 集合 ｜ 08:30 準時併車出發
+                            </div>
+                            <p class="text-xs text-gray-600">請提早於 08:20 前抵達福安堂廣場，點名並協調併車車輛。</p>
+                        </div>
+
+                        <!-- Special 11 Month -->
+                        <div class="p-4 bg-amber-50 rounded-xl border border-amber-200/80 space-y-1">
+                            <span class="text-xs font-bold text-amber-800 flex items-center gap-1">
+                                <i class="fa-solid fa-triangle-exclamation"></i> 11月特別場（11.01 全程定觀約6小時）
+                            </span>
+                            <div class="text-sm font-bold text-amber-900">
+                                ⏰ 07:40 集合 ｜ 07:50 準時併車出發
+                            </div>
+                            <p class="text-xs text-amber-800/90">因路線全程較長，集合與出發時間特別<strong>提早 40 分鐘</strong>，請大家特別留意！</p>
+                        </div>
+                    </div>
+
+                    <div class="text-xs text-gray-500 bg-gray-50 p-3.5 rounded-xl border border-gray-100">
+                        💡 <strong>併車小叮嚀：</strong>山路狹窄且停車位有限，請大家互相配合併車，並補貼駕駛少許油資或一同維護車內清潔。
+                    </div>
+                </div>
+
+                <!-- Gathering Spot: Fuantang Plaza -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-200 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-dulan-clay text-white flex items-center justify-center font-bold text-sm">2</span>
+                            <h3 class="font-serif font-bold text-lg text-gray-900">集合地點：郡界福安堂廣場</h3>
+                        </div>
+
+                        <div class="space-y-2 text-xs sm:text-sm text-gray-600">
+                            <p><strong>📍 地點名稱：</strong>郡界福安堂（土地公廟前大廣場）</p>
+                            <p><strong>📍 地理位置：</strong>台東縣東河鄉都蘭村台11線公路旁（郡界段）</p>
+                            <p><strong>📍 識別標誌：</strong>台11線公路旁醒目的福安堂紅色牌樓與寬廣廟埕停車場。</p>
+                        </div>
+
+                        <!-- Location Visual / Map Fallback -->
+                        <div class="rounded-xl overflow-hidden border border-gray-200 bg-gray-100 aspect-video relative flex items-center justify-center">
+                            <img src="map.jpg" alt="郡界福安堂集合地點" onerror="this.style.display='none'; document.getElementById('mapFallback').classList.remove('hidden');" class="w-full h-full object-cover">
+                            <div id="mapFallback" class="hidden text-center p-4">
+                                <i class="fa-solid fa-map-location-dot text-4xl text-dulan-forest mb-2"></i>
+                                <div class="font-bold text-gray-800 text-sm">郡界福安堂廣場</div>
+                                <div class="text-xs text-gray-500 mt-1">台11線 ‧ 都蘭山定觀集合出發點</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://www.google.com/maps/search/?api=1&query=郡界福安堂" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-dulan-forest hover:bg-emerald-900 text-white font-bold text-xs sm:text-sm py-3 rounded-xl transition shadow">
+                        <i class="fa-solid fa-diamond-turn-right"></i> 開啟 Google Maps 導航至福安堂
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment & Packing Checklist -->
+    <section id="equipment" class="py-16 sm:py-24 max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+            <span class="text-xs font-bold tracking-widest text-teal-800 uppercase bg-teal-100 px-3.5 py-1 rounded-full">
+                What to Bring
+            </span>
+            <h2 class="font-serif text-2xl sm:text-4xl font-bold text-gray-900">
+                行前必備物品與裝備清單
+            </h2>
+            <p class="text-xs sm:text-sm text-gray-600">
+                出發前請逐一檢查個人裝備，確保一整天安全舒適的觀察體驗
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- Category 1: Food & Water -->
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm space-y-3">
+                <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-base">個人餐茶</h3>
+                <ul class="text-xs sm:text-sm text-gray-600 space-y-2">
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                        <span><strong>充足飲用水：</strong>建議攜帶 1000cc 以上水壺或保溫瓶</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                        <span><strong>行動糧與午餐：</strong>麵包、飯糰、堅果、水果</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                        <span><strong>環保餐具：</strong>自備環保杯與餐具</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Category 2: Protection & Health -->
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm space-y-3">
+                <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-umbrella"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-base">防護與衣著</h3>
+                <ul class="text-xs sm:text-sm text-gray-600 space-y-2">
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                        <span><strong>防曬與帽子：</strong>透氣遮陽帽、長袖排汗薄外套</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                        <span><strong>輕便雨具：</strong>山區天氣多變，必備兩截式或輕便雨衣</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                        <span><strong>個人常備藥：</strong>防蚊液、止癢膏、個人慢性病藥物</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Category 3: Observation Tools -->
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm space-y-3">
+                <div class="w-12 h-12 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-base">自然觀察工具</h3>
+                <ul class="text-xs sm:text-sm text-gray-600 space-y-2">
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                        <span><strong>放大鏡 / 望遠鏡：</strong>觀察微距苔蘚與樹冠野鳥</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                        <span><strong>動植物圖鑑：</strong>台灣野花/野鳥/昆蟲入門圖鑑</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                        <span><strong>相機與記事本：</strong>記錄珍貴生態足跡與心得</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Category 4: LNT & Eco Cleaning -->
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm space-y-3">
+                <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-base">環保與無痕</h3>
+                <ul class="text-xs sm:text-sm text-gray-600 space-y-2">
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                        <span><strong>個人垃圾袋：</strong>帶走自己與看見的山林垃圾</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                        <span><strong>棉質手套：</strong>攀爬輔助與沿途撿拾垃圾手套</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                        <span><strong>垃圾夾：</strong>（選用）協助步道環境維護</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Footwear Special Alert Box -->
+        <div class="mt-8 bg-red-50 border-2 border-red-200 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-red-600 text-white flex items-center justify-center text-2xl shrink-0">
+                <i class="fa-solid fa-shoe-prints"></i>
+            </div>
+            <div class="space-y-1">
+                <h4 class="font-bold text-red-900 text-base">※ 特別叮嚀：鞋款選擇與螞蝗防護</h4>
+                <p class="text-xs sm:text-sm text-red-800 leading-relaxed">
+                    都蘭山步道終年雲霧繚繞、濕度極高，<strong>請務必穿著「雨鞋」或「防滑抓地力強的登山鞋」</strong>（切勿穿拖鞋、涼鞋或平底休閒鞋）。步道草叢中偶有<strong>吸血螞蝗</strong>，建議穿著長褲並將褲管塞入襪子中，或配戴綁腿以策安全。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety & Rules Section -->
+    <section id="safety" class="py-16 bg-[#122820] text-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase bg-emerald-950 px-3.5 py-1 rounded-full border border-emerald-400/30">
+                    Safety & Principles
+                </span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold text-white">
+                    活動守則與重要注意事項
+                </h2>
+                <p class="text-xs sm:text-sm text-gray-300">
+                    親近自然 ‧ 尊重生命 ‧ 守護彼此
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <div class="bg-white/10 p-6 rounded-2xl border border-white/15 backdrop-blur-sm space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-300 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base">安全自負與無保險</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        本活動為荒野志工與愛好者自主推廣之生態共學，<strong>主辦方未替參與者辦理保險</strong>。請務必評估個人體能狀況，戶外自身安全請自行負責（建議依個人需要自行投保旅平險）。
+                    </p>
+                </div>
+
+                <div class="bg-white/10 p-6 rounded-2xl border border-white/15 backdrop-blur-sm space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base">無痕山林 (Leave No Trace)</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        遵守無痕山林原則：不採摘任何花草、不捕捉野生動物、不遺留任何果皮垃圾。除了足跡什麼都不留下，除了攝影與回憶什麼都不帶走。
+                    </p>
+                </div>
+
+                <div class="bg-white/10 p-6 rounded-2xl border border-white/15 backdrop-blur-sm space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-cloud-rain"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base">天候與應變措施</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        如遇中央氣象署發布海上/陸上颱風警報、豪雨特報，或現場天候極端惡劣影響路況安全時，定觀活動將自動取消或調整觀察路線，安全第一。
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Dulan Mountain & SOW Section -->
+    <section class="py-16 sm:py-24 max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-6 space-y-4">
+                <span class="text-xs font-bold tracking-widest text-emerald-800 uppercase bg-emerald-100 px-3 py-1 rounded-full">
+                    About Dulan Mountain
+                </span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-gray-900">
+                    海岸山脈的神聖綠寶石：都蘭山
+                </h2>
+                <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                    都蘭山海拔 1,190 公尺，是海岸山脈南段的最高峰，也是卑南族與阿美族共同崇敬的聖山。因緊鄰太平洋，水氣豐沛，終年雲霧繚繞，孕育出極為特殊的暖溫帶與亞熱帶雲霧雨林生態。
+                </p>
+                <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                    步道林相完整，沿途能觀察到巨型著生植物（如山蘇、崖薑蕨）、珍稀蘭科植物、多樣性蕈類，以及台灣藍鵲、烏頭翁、大冠鷲等野生鳥類，是一座不可多得的活生態教室。
+                </p>
+                <div class="pt-2">
+                    <a href="https://www.sow.org.tw/" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-emerald-800 hover:text-emerald-950 underline">
+                        🌿 造訪荒野保護協會官方網站 ➔
+                    </a>
+                </div>
+            </div>
+
+            <!-- Image Showcase Grid (With graceful fallbacks) -->
+            <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+                <div class="rounded-2xl overflow-hidden shadow-md aspect-square bg-[#1E3F33] relative flex items-center justify-center">
+                    <img src="photo1.jpg" alt="都蘭山林相" onerror="this.style.display='none'; document.getElementById('fb1').classList.remove('hidden');" class="w-full h-full object-cover">
+                    <div id="fb1" class="hidden text-center p-3 text-white">
+                        <i class="fa-solid fa-tree text-3xl text-emerald-400 mb-1"></i>
+                        <span class="text-xs block font-bold">原始林冠層</span>
+                    </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-md aspect-square bg-[#122820] relative flex items-center justify-center">
+                    <img src="photo2.jpg" alt="蕨類與蕈類" onerror="this.style.display='none'; document.getElementById('fb2').classList.remove('hidden');" class="w-full h-full object-cover">
+                    <div id="fb2" class="hidden text-center p-3 text-white">
+                        <i class="fa-solid fa-feather text-3xl text-teal-400 mb-1"></i>
+                        <span class="text-xs block font-bold">雲霧蕨類景觀</span>
+                    </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-md aspect-square bg-[#122820] relative flex items-center justify-center">
+                    <img src="photo3.jpg" alt="山海瞭望" onerror="this.style.display='none'; document.getElementById('fb3').classList.remove('hidden');" class="w-full h-full object-cover">
+                    <div id="fb3" class="hidden text-center p-3 text-white">
+                        <i class="fa-solid fa-water text-3xl text-blue-400 mb-1"></i>
+                        <span class="text-xs block font-bold">眺望太平洋</span>
+                    </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-md aspect-square bg-[#1E3F33] relative flex items-center justify-center">
+                    <img src="photo4.jpg" alt="自然觀察紀錄" onerror="this.style.display='none'; document.getElementById('fb4').classList.remove('hidden');" class="w-full h-full object-cover">
+                    <div id="fb4" class="hidden text-center p-3 text-white">
+                        <i class="fa-solid fa-magnifying-glass text-3xl text-amber-400 mb-1"></i>
+                        <span class="text-xs block font-bold">定點生態紀錄</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0D1D17] text-gray-400 py-12 border-t border-white/10 text-xs">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="space-y-2 text-center sm:text-left">
+                <div class="font-serif text-sm font-bold text-white">
+                    2026 荒野台東分會 ‧ 都蘭山定點自然觀察
+                </div>
+                <p>都蘭共學堂 在地生態推廣夥伴 ｜ 郡界福安堂廣場集合</p>
+                <p class="text-[11px] text-gray-500">※ 本活動為常態義務性自然觀察導引，參與者請自負戶外安全與維護無痕山林環境。</p>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center gap-3">
+                <a href="https://jimchenlichung.github.io/LearnDulanWay/" class="bg-white/10 hover:bg-white/20 text-emerald-300 px-4 py-2 rounded-full transition border border-white/10">
+                    <i class="fa-solid fa-house mr-1"></i> 回共學堂首頁
+                </a>
+                <a href="#schedule" class="bg-emerald-800 hover:bg-emerald-700 text-white px-4 py-2 rounded-full transition">
+                    <i class="fa-solid fa-arrow-up mr-1"></i> 回到頂端
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple ICS Generator Script -->
+    <script>
+        function downloadICS() {
+            const dates = [
+                { start: '20260104T082000', end: '20260104T123000', summary: '都蘭山定點觀察 (1月場)' },
+                { start: '20260201T082000', end: '20260201T123000', summary: '都蘭山定點觀察 (2月場)' },
+                { start: '20260301T082000', end: '20260301T123000', summary: '都蘭山定點觀察 (3月場)' },
+                { start: '20260405T082000', end: '20260405T123000', summary: '都蘭山定點觀察 (4月場)' },
+                { start: '20260503T082000', end: '20260503T123000', summary: '都蘭山定點觀察 (5月場)' },
+                { start: '20260607T082000', end: '20260607T123000', summary: '都蘭山定點觀察 (6月場)' },
+                { start: '20260705T082000', end: '20260705T123000', summary: '都蘭山定點觀察 (7月場)' },
+                { start: '20260802T082000', end: '20260802T123000', summary: '都蘭山定點觀察 (8月場)' },
+                { start: '20260906T082000', end: '20260906T123000', summary: '都蘭山定點觀察 (9月場)' },
+                { start: '20261004T082000', end: '20261004T123000', summary: '都蘭山定點觀察 (10月場)' },
+                { start: '20261101T074000', end: '20261101T140000', summary: '都蘭山定點觀察 (11月年度全程定觀6hr)' },
+                { start: '20261206T082000', end: '20261206T123000', summary: '都蘭山定點觀察 (12月場)' }
+            ];
+
+            let icsContent = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Wilderness SOW Taitung//Dulan Mountain Observation//ZH\r\nCALSCALE:GREGORIAN\r\n";
+            
+            dates.forEach(d => {
+                icsContent += "BEGIN:VEVENT\r\n";
+                icsContent += `SUMMARY:${d.summary}\r\n`;
+                icsContent += `DESCRIPTION:2026 荒野台東分會【都蘭山定點觀察】。免費用、免報名。郡界福安堂廣場集合併車上山。請穿雨鞋或不會滑的鞋子。\\n詳情：https://jimchenlichung.github.io/LearnDulanWay/dulanshan/index.html\r\n`;
+                icsContent += `LOCATION:台東縣東河鄉郡界福安堂廣場\r\n`;
+                icsContent += `DTSTART;TZID=Asia/Taipei:${d.start}\r\n`;
+                icsContent += `DTEND;TZID=Asia/Taipei:${d.end}\r\n`;
+                icsContent += "END:VEVENT\r\n";
+            });
+
+            icsContent += "END:VCALENDAR";
+
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.setAttribute('download', '2026_都蘭山定點觀察行事曆.ics');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🖌️ 自由心靈書法 | 丟掉永字八法 ‧ 找回自己 ‧ 重建獨特風格 - 都蘭共學堂</title>
+    <meta name="description" content="都蘭共學堂《自由心靈書法》：丟掉永字八法，找回自己，捨棄比較美醜，重建獨特的個人風格。在都蘭的山海靈氣中，以墨修心，自由揮灑生命的真實線條。">
+    
+    <!-- Tailwind CSS & FontAwesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: {
+                            black:  '#161616',
+                            deep:   '#222222',
+                            wash:   '#3A3A3A',
+                            paper:  '#F6F2EA',
+                            card:   '#FAF7F0',
+                            seal:   '#B93A32',
+                            gold:   '#C5A059'
+                        },
+                        dulan: {
+                            forest: '#1E3F33',
+                            clay:   '#C86D51',
+                            sand:   '#F9F6F0'
+                        }
+                    },
+                    fontFamily: {
+                        sans:   ['Noto Sans TC', 'sans-serif'],
+                        serif:  ['Noto Serif TC', 'serif'],
+                        outfit: ['Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .hero-ink-pattern {
+            background-color: #141414;
+            background-image: 
+                radial-gradient(rgba(197, 160, 89, 0.12) 1px, transparent 0),
+                linear-gradient(to bottom, rgba(22, 22, 22, 0.85), rgba(14, 14, 14, 0.98));
+            background-size: 24px 24px, 100% 100%;
+        }
+        .ink-card {
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .ink-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 30px -10px rgba(0, 0, 0, 0.15);
+        }
+        .seal-stamp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #B93A32;
+            color: #B93A32;
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900;
+            border-radius: 6px;
+            padding: 2px 6px;
+            letter-spacing: 2px;
+            transform: rotate(-3deg);
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            letter-spacing: 0.3em;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-[#F6F2EA] antialiased">
+
+    <!-- Top Sticky Header -->
+    <header class="sticky top-0 z-50 bg-[#161616]/95 backdrop-blur-md border-b border-white/10 text-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="https://jimchenlichung.github.io/LearnDulanWay/" class="inline-flex items-center gap-2 text-xs sm:text-sm text-amber-200 bg-white/10 hover:bg-white/20 px-3.5 py-1.5 rounded-full transition border border-white/10">
+                    <i class="fa-solid fa-arrow-left"></i> 返回共學堂首頁
+                </a>
+                <div class="hidden md:flex items-center gap-2 text-xs text-gray-300 pl-2 border-l border-white/10">
+                    <span>🖌️ 工藝、寫作與心靈藝術</span>
+                </div>
+            </div>
+            
+            <nav class="hidden sm:flex items-center gap-6 text-xs sm:text-sm font-medium text-gray-200">
+                <a href="#philosophy" class="hover:text-amber-300 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-feather-pointed text-amber-400"></i> 四大精神
+                </a>
+                <a href="#gallery" class="hover:text-amber-300 transition flex items-center gap-1.5">
+                    <i class="fa-regular fa-image text-emerald-400"></i> 作品藝廊
+                </a>
+                <a href="#practice" class="hover:text-amber-300 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-spa text-teal-400"></i> 習字心法
+                </a>
+            </nav>
+
+            <a href="#contact" class="bg-ink-seal hover:bg-red-800 text-white font-bold text-xs sm:text-sm px-4 py-2 rounded-full shadow transition flex items-center gap-1.5">
+                <i class="fa-solid fa-brush"></i> 交流與預約
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section class="hero-ink-pattern text-white py-16 sm:py-24 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                
+                <div class="lg:col-span-8 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-900 border border-amber-500/40 text-amber-300 text-xs sm:text-sm font-semibold">
+                        <span class="seal-stamp text-[10px]">心靈揮毫</span>
+                        <span>直指本心 ‧ 墨隨心動 ‧ 無拘無束</span>
+                    </div>
+                    
+                    <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-white">
+                        丟掉永字八法<br/><span class="text-amber-300">找回真正的自己</span>
+                    </h1>
+                    <p class="font-serif text-xl sm:text-2xl text-gray-200 font-medium">
+                        捨棄比較美醜 ‧ 揮灑當下心境 ‧ 重建獨特個人風格
+                    </p>
+                    
+                    <p class="text-sm sm:text-base text-gray-300 leading-relaxed max-w-2xl font-light">
+                        我們自幼被灌輸楷書的工整與點畫規矩，卻在無止境的「像不像、美不美」中丟失了寫字的喜悅與真實的自性。在都蘭的山海微風裡，提起毛筆，讓呼吸與墨韻自由流淌——字即是心，每一筆都是無法複製的生命線條。
+                    </p>
+
+                    <!-- Core 4 Pillars Highlight -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 max-w-2xl mx-auto lg:mx-0 text-left">
+                        <div class="bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/15">
+                            <span class="text-amber-400 text-xs font-bold block mb-1">01. 破除教條</span>
+                            <span class="text-xs font-bold text-white block">丟掉永字八法</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/15">
+                            <span class="text-emerald-300 text-xs font-bold block mb-1">02. 回歸本心</span>
+                            <span class="text-xs font-bold text-white block">遇見真實自己</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/15">
+                            <span class="text-rose-300 text-xs font-bold block mb-1">03. 告別批判</span>
+                            <span class="text-xs font-bold text-white block">捨棄比較美醜</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/15">
+                            <span class="text-teal-300 text-xs font-bold block mb-1">04. 獨一無二</span>
+                            <span class="text-xs font-bold text-white block">重建個人風格</span>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-3.5 pt-2 justify-center lg:justify-start">
+                        <a href="#philosophy" class="inline-flex items-center justify-center gap-2.5 bg-ink-seal hover:bg-red-800 text-white font-bold text-base px-8 py-3.5 rounded-xl shadow-lg shadow-red-950/60 transition transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-brush"></i> 體會自由書法精神
+                        </a>
+                        <a href="#gallery" class="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 text-white font-semibold text-base px-6 py-3.5 rounded-xl border border-white/20 transition">
+                            <i class="fa-regular fa-images text-amber-300"></i> 欣賞學員與墨韻作品
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Zen Visual -->
+                <div class="lg:col-span-4 flex justify-center">
+                    <div class="relative w-full max-w-[320px] bg-gradient-to-b from-white/10 to-white/5 p-6 rounded-3xl border border-white/20 backdrop-blur-md shadow-2xl text-center space-y-4">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-ink-seal to-amber-700 mx-auto flex items-center justify-center text-white text-3xl font-serif font-black shadow-inner border border-white/20">
+                            道
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-serif text-xl font-bold text-white">字如其人 ‧ 心手合一</h3>
+                            <p class="text-xs text-amber-200">都蘭共學堂 ‧ 心靈書寫課</p>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed pt-2 border-t border-white/10 font-serif">
+                            「不求工整，但求真誠；<br/>不求悅人，但求自得。」
+                        </p>
+                        <div class="seal-stamp text-xs text-white bg-ink-seal/80 border-white/40 px-3 py-1">
+                            都蘭山 ‧ 自由書
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Four Core Philosophies Section -->
+    <section id="philosophy" class="py-16 sm:py-24 max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
+            <span class="text-xs font-bold tracking-widest text-ink-seal uppercase bg-red-100 px-3.5 py-1 rounded-full">
+                Core Philosophy
+            </span>
+            <h2 class="font-serif text-2xl sm:text-4xl font-bold text-gray-900">
+                心靈書法的四大解放與重建
+            </h2>
+            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                將書法從古代科舉與刻板規訓中解放出來，成為自我覺察與性靈成長的日常修持
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Pillar 1 -->
+            <div class="ink-card bg-white p-8 rounded-2xl border border-gray-200/80 shadow-sm relative overflow-hidden space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="w-10 h-10 rounded-xl bg-stone-900 text-amber-400 flex items-center justify-center font-serif font-black text-lg">
+                        壹
+                    </span>
+                    <span class="text-xs text-gray-400 font-serif">破除教條</span>
+                </div>
+                <h3 class="font-serif text-xl font-bold text-gray-900">丟掉永字八法</h3>
+                <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                    傳統的「側、勒、努、趯、策、掠、啄、磔」往往讓初學者未提筆便心生畏懼。在這裡，我們放下死板的筆順與起承轉折。毛筆只是心靈意念的延伸，順應呼吸與當下直覺，自由落筆，不被千百年的教條所綁架。
+                </p>
+            </div>
+
+            <!-- Pillar 2 -->
+            <div class="ink-card bg-white p-8 rounded-2xl border border-gray-200/80 shadow-sm relative overflow-hidden space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="w-10 h-10 rounded-xl bg-emerald-900 text-emerald-300 flex items-center justify-center font-serif font-black text-lg">
+                        貳
+                    </span>
+                    <span class="text-xs text-gray-400 font-serif">自我覺察</span>
+                </div>
+                <h3 class="font-serif text-xl font-bold text-gray-900">找回真正的自己</h3>
+                <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                    寫字的過程就是靜心觀照。手腕的鬆與緊、墨色的濃與淡、線條的急與緩，如實映照著此時此刻你的內心狀態。在每一次沉靜的落筆中，洗淨外在紛擾，重新連結最真實、最質樸的自性。
+                </p>
+            </div>
+
+            <!-- Pillar 3 -->
+            <div class="ink-card bg-white p-8 rounded-2xl border border-gray-200/80 shadow-sm relative overflow-hidden space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="w-10 h-10 rounded-xl bg-ink-seal text-white flex items-center justify-center font-serif font-black text-lg">
+                        參
+                    </span>
+                    <span class="text-xs text-gray-400 font-serif">告別批判</span>
+                </div>
+                <h3 class="font-serif text-xl font-bold text-gray-900">捨棄比較美醜</h3>
+                <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                    大自然中的老樹枯藤、海浪巨石，從不比較誰更完美。告別「寫得美或醜」、「像不像名家」的焦慮批判。每一個字都是生命獨一無二的痕跡，不論粗獷、拙趣、纖細或狂放，皆有其不可替代的生命力。
+                </p>
+            </div>
+
+            <!-- Pillar 4 -->
+            <div class="ink-card bg-white p-8 rounded-2xl border border-gray-200/80 shadow-sm relative overflow-hidden space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="w-10 h-10 rounded-xl bg-amber-800 text-amber-200 flex items-center justify-center font-serif font-black text-lg">
+                        肆
+                    </span>
+                    <span class="text-xs text-gray-400 font-serif">生命盛開</span>
+                </div>
+                <h3 class="font-serif text-xl font-bold text-gray-900">重建獨特的個人風格</h3>
+                <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                    從都蘭的大山大海、山風海濤中汲取筆意。將你的人生閱歷、情感體驗化為線條的筋骨與神采。不摹仿他人，只忠於自我，建立專屬於你、無可取代的獨特書寫風骨。
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4 Image Showcase Section (Reserved Slots with Graceful Fallback) -->
+    <section id="gallery" class="py-16 bg-[#EDE7DC] border-y border-stone-300/80">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                <span class="text-xs font-bold tracking-widest text-ink-wash uppercase bg-stone-200 px-3.5 py-1 rounded-full">
+                    Calligraphy Gallery
+                </span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold text-gray-900">
+                    墨韻風骨 ‧ 作品與課堂剪影
+                </h2>
+                <p class="text-xs sm:text-sm text-gray-600">
+                    靜心體會筆墨在宣紙上的自由呼吸與生命節奏
+                </p>
+            </div>
+
+            <!-- 4 Reserved Photo Slots Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Slot 1 -->
+                <div class="ink-card bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm flex flex-col">
+                    <div class="aspect-[4/3] bg-[#222222] relative flex items-center justify-center overflow-hidden group">
+                        <img src="photo1.jpg" alt="墨隨心動" onerror="this.style.display='none'; document.getElementById('shufaFb1').classList.remove('hidden');" class="w-full h-full object-cover">
+                        <!-- Fallback visual -->
+                        <div id="shufaFb1" class="hidden w-full h-full flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-[#1C1C1C] to-[#2B2B2B] text-white">
+                            <span class="font-serif text-3xl text-amber-200/90 mb-2 font-bold">隨心</span>
+                            <span class="text-xs text-gray-400">意在筆先 ‧ 墨隨心動</span>
+                        </div>
+                    </div>
+                    <div class="p-4 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="seal-stamp text-[10px] mb-1">作品剪影 壹</div>
+                            <h4 class="font-serif font-bold text-gray-900 text-sm">《墨隨心動》</h4>
+                            <p class="text-xs text-gray-500 mt-1">放下規則束縛，以最自然的呼吸引領筆鋒遊走於宣紙之上。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slot 2 -->
+                <div class="ink-card bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm flex flex-col">
+                    <div class="aspect-[4/3] bg-[#222222] relative flex items-center justify-center overflow-hidden group">
+                        <img src="photo2.jpg" alt="拙趣自然" onerror="this.style.display='none'; document.getElementById('shufaFb2').classList.remove('hidden');" class="w-full h-full object-cover">
+                        <!-- Fallback visual -->
+                        <div id="shufaFb2" class="hidden w-full h-full flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-[#1C1C1C] to-[#2B2B2B] text-white">
+                            <span class="font-serif text-3xl text-emerald-300/90 mb-2 font-bold">大拙</span>
+                            <span class="text-xs text-gray-400">捨棄美醜 ‧ 拙趣天成</span>
+                        </div>
+                    </div>
+                    <div class="p-4 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="seal-stamp text-[10px] mb-1">作品剪影 貳</div>
+                            <h4 class="font-serif font-bold text-gray-900 text-sm">《拙趣自然》</h4>
+                            <p class="text-xs text-gray-500 mt-1">不求圓熟工整，在看似粗拙的線條中展現真實飽滿的生命力。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slot 3 -->
+                <div class="ink-card bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm flex flex-col">
+                    <div class="aspect-[4/3] bg-[#222222] relative flex items-center justify-center overflow-hidden group">
+                        <img src="photo3.jpg" alt="山海筆意" onerror="this.style.display='none'; document.getElementById('shufaFb3').classList.remove('hidden');" class="w-full h-full object-cover">
+                        <!-- Fallback visual -->
+                        <div id="shufaFb3" class="hidden w-full h-full flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-[#1C1C1C] to-[#2B2B2B] text-white">
+                            <span class="font-serif text-3xl text-teal-300/90 mb-2 font-bold">山海</span>
+                            <span class="text-xs text-gray-400">浪濤風聲 ‧ 蒼勁入墨</span>
+                        </div>
+                    </div>
+                    <div class="p-4 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="seal-stamp text-[10px] mb-1">作品剪影 參</div>
+                            <h4 class="font-serif font-bold text-gray-900 text-sm">《山海筆意》</h4>
+                            <p class="text-xs text-gray-500 mt-1">都蘭浪濤的澎湃與山嵐的悠遠，化為筆下蒼茫流暢的氣韻。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slot 4 -->
+                <div class="ink-card bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm flex flex-col">
+                    <div class="aspect-[4/3] bg-[#222222] relative flex items-center justify-center overflow-hidden group">
+                        <img src="photo4.jpg" alt="自成一格" onerror="this.style.display='none'; document.getElementById('shufaFb4').classList.remove('hidden');" class="w-full h-full object-cover">
+                        <!-- Fallback visual -->
+                        <div id="shufaFb4" class="hidden w-full h-full flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-[#1C1C1C] to-[#2B2B2B] text-white">
+                            <span class="font-serif text-3xl text-rose-300/90 mb-2 font-bold">獨我</span>
+                            <span class="text-xs text-gray-400">揮灑真我 ‧ 獨樹一格</span>
+                        </div>
+                    </div>
+                    <div class="p-4 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="seal-stamp text-[10px] mb-1">作品剪影 肆</div>
+                            <h4 class="font-serif font-bold text-gray-900 text-sm">《自成一格》</h4>
+                            <p class="text-xs text-gray-500 mt-1">不盲從任何名家筆意，長養專屬於自己的精神標竿與書寫風格。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice & Atmosphere Section -->
+    <section id="practice" class="py-16 sm:py-24 max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-stone-200">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <div class="lg:col-span-7 space-y-5">
+                    <span class="text-xs font-bold tracking-widest text-ink-seal uppercase bg-red-50 px-3 py-1 rounded-md">
+                        Practice & Method
+                    </span>
+                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-gray-900">
+                        在都蘭習字：一場與自己的深情對話
+                    </h3>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                        教室不設考試、不評名次、不糾正所謂的「標準筆法」。在茶香與山海清音中，我們為每位學員營造無壓力、被全然接納的創作氛圍。
+                    </p>
+                    <ul class="text-xs sm:text-sm text-gray-700 space-y-2.5">
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-700"></i>
+                            <span><strong>靜心調息：</strong>提筆前先安頓呼吸，讓緊繃的身心徹底放鬆。</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-700"></i>
+                            <span><strong>墨香茶席：</strong>一盞清茶，一段心靈對話，以文會友。</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-700"></i>
+                            <span><strong>自由創作：</strong>從單字、短句到心境畫作，盡情揮灑無拘束。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-5 bg-[#F6F2EA] p-6 rounded-2xl border border-stone-300 text-center space-y-4">
+                    <div class="text-3xl text-ink-seal">
+                        <i class="fa-solid fa-quote-left"></i>
+                    </div>
+                    <p class="font-serif text-base text-gray-800 leading-relaxed font-bold">
+                        「當你不再試圖寫出『好字』的那一刻，真正的書法才剛開始。」
+                    </p>
+                    <div class="pt-2 text-xs text-gray-500 font-serif">
+                        —— 都蘭共學堂 ‧ 心靈書法寄語
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Join Section -->
+    <section id="contact" class="py-16 sm:py-20 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <div class="bg-gradient-to-br from-[#1A1A1A] to-[#2B2B2B] text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-white/10 space-y-6">
+            <span class="inline-block px-3.5 py-1 rounded-full bg-red-900/50 text-red-300 text-xs font-bold border border-red-500/30">
+                🌿 心靈書寫 ‧ 隨緣相聚
+            </span>
+            <h2 class="font-serif text-2xl sm:text-4xl font-bold text-white">
+                想來都蘭一起提起毛筆嗎？
+            </h2>
+            <p class="text-xs sm:text-sm text-gray-300 max-w-xl mx-auto leading-relaxed">
+                無論你是否曾拿過毛筆，只要你想找回專注與內在平靜，都歡迎與我們聯繫預約，一同在都蘭山下感受筆墨的純粹喜悅。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+                <a href="https://jimchenlichung.github.io/LearnDulanWay/" class="inline-flex items-center justify-center gap-2 bg-ink-seal hover:bg-red-800 text-white font-bold text-sm px-6 py-3 rounded-full transition shadow">
+                    <i class="fa-solid fa-house"></i> 返回共學堂首頁
+                </a>
+                <a href="https://jimchenlichung.github.io/LearnDulanWay/#contact" class="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 text-white font-bold text-sm px-6 py-3 rounded-full border border-white/20 transition">
+                    <i class="fa-solid fa-envelope"></i> 聯絡預約習字
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#111111] text-gray-400 py-12 border-t border-white/10 text-xs text-center">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-3">
+            <div class="font-serif text-sm font-bold text-white">
+                都蘭共學堂 ‧ 自由心靈書法
+            </div>
+            <p>丟掉永字八法 ‧ 找回自己 ‧ 捨棄比較美醜 ‧ 重建獨特個人風格</p>
+            <p class="text-[11px] text-gray-500">© 都蘭共學堂 Learn Dulan Way. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
