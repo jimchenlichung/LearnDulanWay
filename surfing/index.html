@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>衝浪與海洋漂浮 ‧ 藍色也是很療癒 ｜ 都蘭共學堂</title>
+    <meta name="description" content="都蘭共學堂「衝浪與海洋漂浮」：每天下午 16:00 鉛橋海灘集合。藍色也是很療癒，學習隨浪漂浮與內在放空；落實沙灘上每天一個寶特瓶回收，以微行動守護太平洋。">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="衝浪與海洋漂浮 ‧ 藍色也是很療癒 ｜ 都蘭共學堂">
+    <meta property="og:description" content="在太平洋的大浪中放空自我，重拾心靈的流動。沙灘上每天一個寶特瓶回收，隨浪漂浮，回歸平靜。">
+    <meta property="og:type" content="website">
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ocean: {
+                            50: '#F0F9FF',
+                            100: '#E0F2FE',
+                            200: '#BAE6FD',
+                            300: '#7DD3FC',
+                            400: '#38BDF8',
+                            500: '#0EA5E9',
+                            600: '#0284C7',
+                            700: '#0369A1',
+                            800: '#075985',
+                            900: '#0C4A6E',
+                            950: '#082F49',
+                        },
+                        dulan: {
+                            forest: '#1E3F33',
+                            clay: '#C86D51',
+                            sand: '#F9F6F0',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        serif: ['"Noto Serif TC"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-ocean-pattern {
+            background: linear-gradient(135deg, rgba(8, 47, 73, 0.94) 0%, rgba(12, 74, 110, 0.88) 50%, rgba(3, 105, 161, 0.82) 100%),
+                        radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.25) 0%, transparent 60%),
+                        radial-gradient(circle at 80% 70%, rgba(14, 165, 233, 0.2) 0%, transparent 50%),
+                        #082F49;
+        }
+        .wave-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .wave-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 30px -10px rgba(12, 74, 110, 0.18);
+        }
+        .img-fallback-box {
+            background: linear-gradient(135deg, #0C4A6E 0%, #0369A1 50%, #0284C7 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #E0F2FE;
+            text-align: center;
+            padding: 1.5rem;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-[#F4F9FC] antialiased">
+
+    <!-- Top Sticky Header -->
+    <header class="sticky top-0 z-50 bg-[#082F49]/95 backdrop-blur-md border-b border-white/10 text-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="https://jimchenlichung.github.io/LearnDulanWay/" class="inline-flex items-center gap-2 text-xs sm:text-sm text-cyan-300 bg-white/10 hover:bg-white/20 px-3.5 py-1.5 rounded-full transition border border-white/10">
+                    <i class="fa-solid fa-arrow-left"></i> 返回共學堂首頁
+                </a>
+                <div class="hidden md:flex items-center gap-2 text-xs text-cyan-100/70 pl-2 border-l border-white/10">
+                    <span>🌱 生態與山海實作</span>
+                </div>
+            </div>
+            
+            <nav class="hidden sm:flex items-center gap-6 text-xs sm:text-sm font-medium text-gray-200">
+                <a href="#videos" class="hover:text-cyan-300 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-play text-red-400"></i> 實作影音
+                </a>
+                <a href="#healing" class="hover:text-cyan-300 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-water text-cyan-400"></i> 藍色療癒
+                </a>
+                <a href="#cleanup" class="hover:text-cyan-300 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-recycle text-emerald-400"></i> 淨海微行動
+                </a>
+                <a href="#gallery" class="hover:text-cyan-300 transition flex items-center gap-1.5">
+                    <i class="fa-regular fa-image text-amber-400"></i> 海洋剪影
+                </a>
+                <a href="#equipment" class="hover:text-cyan-300 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-person-swimming text-sky-400"></i> 器具租借
+                </a>
+            </nav>
+
+            <div class="flex items-center gap-2">
+                <a href="https://docs.google.com/forms/d/1rLJT3MEGNBE6JYeOpAvXk8bTDej3r1JvnlSRLsDo-7s/viewform" target="_blank" class="hidden sm:inline-flex items-center gap-1.5 bg-white/15 hover:bg-white/25 text-white font-medium text-xs px-3.5 py-2 rounded-full border border-white/20 transition">
+                    <i class="fa-solid fa-clipboard-list text-cyan-300"></i> 租借表單
+                </a>
+                <a href="https://jimchenlichung.github.io/LearnDulanWay/#register" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs sm:text-sm px-4 py-2 rounded-full shadow transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-file-pen"></i> 首頁報名
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-ocean-pattern text-white py-16 sm:py-24 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                
+                <div class="lg:col-span-8 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-ocean-800/80 border border-cyan-400/40 text-cyan-200 text-xs sm:text-sm font-semibold shadow-inner">
+                        <span class="animate-pulse">🌊</span>
+                        <span>每日山海節律 ‧ 每天下午 16:00 鉛橋海灘</span>
+                    </div>
+                    
+                    <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-white">
+                        藍色也是很療癒
+                        <span class="block text-2xl sm:text-3xl lg:text-4xl text-cyan-300 font-sans font-light mt-2">
+                            衝浪與海洋漂浮 ‧ 在太平洋中放空自我
+                        </span>
+                    </h1>
+                    
+                    <p class="text-sm sm:text-base text-cyan-100 max-w-2xl font-light leading-relaxed">
+                        放下陸地上的思維負擔與焦慮，跳入太平洋的深藍懷抱。在浪花起伏間練習隨浪漂浮，讓身體學會不抵抗、順應流動；以敬畏的心親近大海，重啟內在的寧靜與能量。
+                    </p>
+                    
+                    <!-- Feature Tags -->
+                    <div class="flex flex-wrap gap-2.5 justify-center lg:justify-start pt-2">
+                        <span class="px-3.5 py-1.5 rounded-xl bg-white/10 text-cyan-200 text-xs font-medium border border-white/15 flex items-center gap-1.5">
+                            <i class="fa-solid fa-sun text-amber-400"></i> 每日 16:00 鉛橋海灘
+                        </span>
+                        <span class="px-3.5 py-1.5 rounded-xl bg-white/10 text-cyan-200 text-xs font-medium border border-white/15 flex items-center gap-1.5">
+                            <i class="fa-solid fa-bottle-water text-emerald-400"></i> 沙灘每天一瓶回收
+                        </span>
+                        <span class="px-3.5 py-1.5 rounded-xl bg-white/10 text-cyan-200 text-xs font-medium border border-white/15 flex items-center gap-1.5">
+                            <i class="fa-solid fa-shield-halved text-sky-300"></i> 浪板 ‧ 救生衣租借
+                        </span>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                        <a href="https://jimchenlichung.github.io/LearnDulanWay/#register" class="inline-flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-ocean-950 font-bold text-sm sm:text-base px-7 py-3.5 rounded-full shadow-lg shadow-cyan-950/40 transition transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-file-pen"></i> 前往首頁預約報名
+                        </a>
+                        <a href="https://docs.google.com/forms/d/1rLJT3MEGNBE6JYeOpAvXk8bTDej3r1JvnlSRLsDo-7s/viewform" target="_blank" class="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 text-white font-bold text-sm sm:text-base px-6 py-3.5 rounded-full border border-white/20 transition">
+                            <i class="fa-solid fa-clipboard-check text-cyan-300"></i> 租借水上器材表單 ➡️
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Instructor Card -->
+                <div class="lg:col-span-4">
+                    <div class="bg-white/10 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-white/20 text-center space-y-4 shadow-xl">
+                        <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-cyan-400 to-ocean-700 p-1 shadow-lg">
+                            <div class="w-full h-full rounded-full bg-ocean-900 flex items-center justify-center text-3xl text-cyan-300">
+                                🏄
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white font-serif">阿中教練 (陳豊鍾)</h3>
+                            <p class="text-xs text-cyan-300 font-medium mt-0.5">都蘭共學堂主理人 ‧ 長年海人實踐者</p>
+                        </div>
+                        <p class="text-xs text-cyan-100/90 leading-relaxed text-left">
+                            「大海是最好的心理醫生。當你浮在浩瀚無邊的太平洋上，望著藍天與都蘭山，所有的繁雜念頭都會被浪潮自然洗淨。」
+                        </p>
+                        <div class="pt-3 border-t border-white/15 flex items-center justify-center gap-4 text-xs text-cyan-200">
+                            <span><i class="fa-solid fa-location-dot text-cyan-400 mr-1"></i> 鉛橋海灘</span>
+                            <span><i class="fa-regular fa-clock text-cyan-400 mr-1"></i> 16:00 傍晚時段</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: 實作影音短片 (Video Highlights) -->
+    <section id="videos" class="py-16 sm:py-20 bg-gradient-to-b from-[#082F49] to-[#F4F9FC] text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                <span class="text-xs font-bold tracking-widest text-cyan-300 uppercase bg-white/10 border border-white/15 px-3 py-1 rounded-full">
+                    LIVE SEA VIDEOS
+                </span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold text-white">
+                    太平洋浪花 ‧ 實作影音
+                </h2>
+                <p class="text-xs sm:text-sm text-cyan-100/90 leading-relaxed font-light">
+                    直擊都蘭鉛橋海灘的日常海浪！感受隨波漂浮的平靜與在海水中放空自我的自在
+                </p>
+            </div>
+
+            <!-- 2 Videos Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                
+                <!-- Video Card 1 -->
+                <div class="bg-[#0C4A6E] rounded-3xl p-4 sm:p-5 shadow-2xl border border-cyan-400/20 space-y-4">
+                    <div class="aspect-[9/16] sm:aspect-[4/3] w-full bg-black rounded-2xl overflow-hidden shadow-inner relative flex items-center justify-center">
+                        <video class="w-full h-full object-contain sm:object-cover rounded-2xl" controls playsinline preload="metadata">
+                            <source src="surfin-5.mp4" type="video/mp4">
+                            您的瀏覽器不支援影片播放。
+                        </video>
+                    </div>
+                    <div class="px-2 space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-cyan-400/20 text-cyan-200 border border-cyan-400/30">
+                                🌊 浪花實錄
+                            </span>
+                            <span class="text-[11px] text-cyan-300/80">鉛橋海灘 16:00</span>
+                        </div>
+                        <h3 class="font-bold text-base sm:text-lg text-white">隨浪漂浮 ‧ 信任大自然的浮力</h3>
+                        <p class="text-xs text-cyan-100/80 leading-relaxed font-light">
+                            順應海浪推動，不與海水對抗。放鬆全身每一寸肌肉，讓浪花帶走所有疲憊。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Video Card 2 -->
+                <div class="bg-[#0C4A6E] rounded-3xl p-4 sm:p-5 shadow-2xl border border-cyan-400/20 space-y-4">
+                    <div class="aspect-[9/16] sm:aspect-[4/3] w-full bg-black rounded-2xl overflow-hidden shadow-inner relative flex items-center justify-center">
+                        <video class="w-full h-full object-contain sm:object-cover rounded-2xl" controls playsinline preload="metadata">
+                            <source src="surfin-6.mp4" type="video/mp4">
+                            您的瀏覽器不支援影片播放。
+                        </video>
+                    </div>
+                    <div class="px-2 space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-sky-400/20 text-sky-200 border border-sky-400/30">
+                                🏄 衝浪時光
+                            </span>
+                            <span class="text-[11px] text-cyan-300/80">都蘭海灣</span>
+                        </div>
+                        <h3 class="font-bold text-base sm:text-lg text-white">山海對望 ‧ 每日海人生活節律</h3>
+                        <p class="text-xs text-cyan-100/80 leading-relaxed font-light">
+                            在太平洋深藍中向外划水，轉身回望都蘭聖山，體驗身心靈完全交託天地的廣闊。
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 1: 藍色也是很療癒 (Blue Mind Healing) -->
+    <section id="healing" class="py-16 sm:py-20 max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+            <span class="text-xs font-bold tracking-widest text-cyan-700 uppercase bg-cyan-100 px-3 py-1 rounded-full">
+                THE POWER OF OCEAN BLUE
+            </span>
+            <h2 class="font-serif text-2xl sm:text-4xl font-bold text-ocean-950">
+                藍色也是很療癒 ‧ 為什麼我們要下海？
+            </h2>
+            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                現代神經科學研究指出，當人類置身於水邊與藍色環境時，大腦會進入深層平靜的「藍色心靈（Blue Mind）」狀態
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            
+            <div class="wave-card bg-white p-7 rounded-2xl border border-cyan-100 shadow-sm space-y-4">
+                <div class="w-12 h-12 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center text-2xl">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <h3 class="font-bold text-ocean-950 text-lg">切換藍色心靈，釋放焦慮</h3>
+                <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                    面對遼闊的太平洋深藍，海風所含的高濃度負離子與規則海浪節奏，能迅速調節自律神經，阻斷大腦反覆思慮的「預設模式網絡（DMN）」，帶來深沉的心靈重啟。
+                </p>
+            </div>
+
+            <div class="wave-card bg-white p-7 rounded-2xl border border-cyan-100 shadow-sm space-y-4">
+                <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl">
+                    <i class="fa-solid fa-water"></i>
+                </div>
+                <h3 class="font-bold text-ocean-950 text-lg">隨浪漂浮，練習不抵抗</h3>
+                <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                    在陸地上我們習慣控制一切，但在海裡「控制」只會招致嗆水與疲累。練習在浪面隨波漂浮，順應海水的承托與湧動，學會信任自然，放手獲得真正的輕鬆。
+                </p>
+            </div>
+
+            <div class="wave-card bg-white p-7 rounded-2xl border border-cyan-100 shadow-sm space-y-4">
+                <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center text-2xl">
+                    <i class="fa-solid fa-person-hiking"></i>
+                </div>
+                <h3 class="font-bold text-ocean-950 text-lg">山海對望，回歸天地尺度</h3>
+                <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                    坐在浪板上向外望是無際太平洋，轉過身是聳立雄偉的都蘭聖山。在山與海的環抱中，重新校準自我與世界的關係，感受生命的渺小與豐盛。
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 2: 沙灘上每天一個寶特瓶回收 (Daily Ocean Cleanup) -->
+    <section id="cleanup" class="py-16 sm:py-20 bg-gradient-to-br from-[#0C4A6E] to-[#082F49] text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-900/60 text-emerald-300 text-xs font-bold border border-emerald-500/40">
+                        <i class="fa-solid fa-recycle"></i> 敬海微行動 ‧ Daily Bottle Recycle
+                    </div>
+                    
+                    <h2 class="font-serif text-2xl sm:text-4xl font-bold leading-tight">
+                        沙灘上每天一個寶特瓶回收
+                        <span class="block text-cyan-300 text-lg sm:text-xl font-sans font-normal mt-2">
+                            不需浩大誓言，用隨手微行動回饋太平洋母親
+                        </span>
+                    </h2>
+                    
+                    <p class="text-xs sm:text-sm text-cyan-100 leading-relaxed">
+                        我們享受了太平洋帶來的療癒與歡樂，也要為這片海灘留下一份溫柔。在都蘭共學堂的衝浪日常中，我們發起<strong>「每天下海或上岸時，隨手在沙灘拾起至少一個廢棄寶特瓶帶回回收」</strong>。
+                    </p>
+
+                    <div class="space-y-3 text-xs sm:text-sm text-cyan-100">
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <strong class="text-white">輕量無負擔：</strong> 每天只要 1 個，舉手之勞，人人都能無壓力實踐。
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <strong class="text-white">聚沙成塔的力量：</strong> 一人一天一個，一年就是數百個塑料不再流入海洋傷害海龜與魚群。
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <strong class="text-white">心靈與環境同步淨化：</strong> 彎下腰撿拾廢棄物的過程，也是向自然謙卑致敬的修心練習。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Highlight Stat Box -->
+                <div class="lg:col-span-6">
+                    <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 space-y-6 text-center shadow-2xl">
+                        <div class="text-5xl text-emerald-400">
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-white">
+                            「取之於海，守護於心」
+                        </h3>
+                        <p class="text-xs sm:text-sm text-cyan-100 leading-relaxed max-w-md mx-auto">
+                            走過都蘭美麗的礫石與黑沙灘，讓我們留下的只有腳印，帶走的除了滿滿的心靈能量，還有那一個個被浪花推上岸的塑料瓶。
+                        </p>
+                        <div class="pt-4 border-t border-white/15 grid grid-cols-2 gap-4 text-center">
+                            <div class="p-3 bg-white/5 rounded-xl">
+                                <span class="block text-2xl font-bold text-cyan-300">365+</span>
+                                <span class="text-[11px] text-cyan-200">年度海灘減塑累積</span>
+                            </div>
+                            <div class="p-3 bg-white/5 rounded-xl">
+                                <span class="block text-2xl font-bold text-emerald-300">100%</span>
+                                <span class="text-[11px] text-emerald-200">全體共學員自主響應</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: 預留照片4張 (Photo Gallery Placeholders) -->
+    <section id="gallery" class="py-16 sm:py-20 max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+            <span class="text-xs font-bold tracking-widest text-cyan-700 uppercase bg-cyan-100 px-3 py-1 rounded-full">
+                PHOTO GALLERY
+            </span>
+            <h2 class="font-serif text-2xl sm:text-4xl font-bold text-ocean-950">
+                太平洋浪花 ‧ 光影剪影
+            </h2>
+            <p class="text-xs sm:text-sm text-gray-600">
+                記錄鉛橋海灘的落日霞光、海浪起伏與學員隨浪漂浮的珍貴時刻（照片陸續上傳中）
+            </p>
+        </div>
+
+        <!-- 4 Reserved Photo Slots Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- Photo Slot 1 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-cyan-100/80 hover:shadow-md transition">
+                <div class="aspect-[4/3] w-full relative overflow-hidden bg-ocean-900">
+                    <img src="surfing-1.jpg" alt="太平洋夕照與浪板剪影" class="w-full h-full object-cover transition duration-500 hover:scale-105" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="img-fallback-box w-full h-full absolute inset-0 hidden">
+                        <i class="fa-solid fa-water text-3xl text-cyan-300 mb-2"></i>
+                        <span class="font-bold text-sm text-white">照片 1</span>
+                        <span class="text-[11px] text-cyan-200 mt-1">太平洋夕照與浪板剪影</span>
+                        <span class="text-[9px] text-cyan-300/60 mt-2">surfing-1.jpg 預留位</span>
+                    </div>
+                </div>
+                <div class="p-4 space-y-1 text-center">
+                    <h4 class="font-bold text-sm text-ocean-950">太平洋夕照與浪板</h4>
+                    <p class="text-xs text-gray-500">傍晚 16:00 鉛橋海灘的金色霞光</p>
+                </div>
+            </div>
+
+            <!-- Photo Slot 2 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-cyan-100/80 hover:shadow-md transition">
+                <div class="aspect-[4/3] w-full relative overflow-hidden bg-ocean-900">
+                    <img src="surfing-2.jpg" alt="隨浪漂浮的寧靜片刻" class="w-full h-full object-cover transition duration-500 hover:scale-105" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="img-fallback-box w-full h-full absolute inset-0 hidden">
+                        <i class="fa-solid fa-person-swimming text-3xl text-sky-300 mb-2"></i>
+                        <span class="font-bold text-sm text-white">照片 2</span>
+                        <span class="text-[11px] text-cyan-200 mt-1">隨浪漂浮的寧靜片刻</span>
+                        <span class="text-[9px] text-cyan-300/60 mt-2">surfing-2.jpg 預留位</span>
+                    </div>
+                </div>
+                <div class="p-4 space-y-1 text-center">
+                    <h4 class="font-bold text-sm text-ocean-950">隨浪漂浮放空</h4>
+                    <p class="text-xs text-gray-500">順應海流，全然信任大自然的浮力</p>
+                </div>
+            </div>
+
+            <!-- Photo Slot 3 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-cyan-100/80 hover:shadow-md transition">
+                <div class="aspect-[4/3] w-full relative overflow-hidden bg-ocean-900">
+                    <img src="surfing-3.jpg" alt="沙灘淨化 ‧ 每天一個寶特瓶" class="w-full h-full object-cover transition duration-500 hover:scale-105" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="img-fallback-box w-full h-full absolute inset-0 hidden">
+                        <i class="fa-solid fa-recycle text-3xl text-emerald-300 mb-2"></i>
+                        <span class="font-bold text-sm text-white">照片 3</span>
+                        <span class="text-[11px] text-cyan-200 mt-1">沙灘淨化 ‧ 每天一瓶</span>
+                        <span class="text-[9px] text-cyan-300/60 mt-2">surfing-3.jpg 預留位</span>
+                    </div>
+                </div>
+                <div class="p-4 space-y-1 text-center">
+                    <h4 class="font-bold text-sm text-ocean-950">沙灘微行動</h4>
+                    <p class="text-xs text-gray-500">上岸隨手帶走一個塑料瓶，守護海灘</p>
+                </div>
+            </div>
+
+            <!-- Photo Slot 4 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-cyan-100/80 hover:shadow-md transition">
+                <div class="aspect-[4/3] w-full relative overflow-hidden bg-ocean-900">
+                    <img src="surfing-4.jpg" alt="都蘭聖山與鉛橋海灣" class="w-full h-full object-cover transition duration-500 hover:scale-105" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="img-fallback-box w-full h-full absolute inset-0 hidden">
+                        <i class="fa-solid fa-mountain-sun text-3xl text-amber-300 mb-2"></i>
+                        <span class="font-bold text-sm text-white">照片 4</span>
+                        <span class="text-[11px] text-cyan-200 mt-1">都蘭聖山與海灣全景</span>
+                        <span class="text-[9px] text-cyan-300/60 mt-2">surfing-4.jpg 預留位</span>
+                    </div>
+                </div>
+                <div class="p-4 space-y-1 text-center">
+                    <h4 class="font-bold text-sm text-ocean-950">都蘭山海視野</h4>
+                    <p class="text-xs text-gray-500">回望都蘭聖山，天地間的浩瀚對話</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 4: 水上運動設備租借 (Equipment Rental) -->
+    <section id="equipment" class="py-16 sm:py-20 bg-ocean-50 border-y border-cyan-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                <span class="text-xs font-bold tracking-widest text-cyan-800 uppercase bg-cyan-200 px-3 py-1 rounded-full">
+                    EQUIPMENT RENTAL
+                </span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold text-ocean-950">
+                    水上運動設備租借服務
+                </h2>
+                <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                    都蘭共學堂學員專享！提供完整的水上安全與漂浮用具，可線上透過 Google 表單預約登記。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                
+                <div class="bg-white p-6 rounded-2xl border border-cyan-200/80 shadow-sm text-center space-y-3">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-cyan-100 text-cyan-700 flex items-center justify-center text-2xl">
+                        🏄‍♂️
+                    </div>
+                    <h3 class="font-bold text-ocean-950 text-base">衝浪長板 / 練習板</h3>
+                    <p class="text-xs text-gray-600">
+                        高浮力發泡板與長板，穩定好划水，初學者練習隨浪漂浮與起乘首選。
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-cyan-200/80 shadow-sm text-center space-y-3">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center text-2xl">
+                        🏊
+                    </div>
+                    <h3 class="font-bold text-ocean-950 text-base">水上趴板 (Bodyboard)</h3>
+                    <p class="text-xs text-gray-600">
+                        輕便好攜帶，適合近岸浪花體驗，貼近水面享受被波浪推動的快感。
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-cyan-200/80 shadow-sm text-center space-y-3">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl">
+                        🦺
+                    </div>
+                    <h3 class="font-bold text-ocean-950 text-base">專業安全救生衣</h3>
+                    <p class="text-xs text-gray-600">
+                        提供可靠的安全浮力支撐，即使不諳水性也能放心在海面上仰躺漂浮。
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-cyan-200/80 shadow-sm text-center space-y-3">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center text-2xl">
+                        👕
+                    </div>
+                    <h3 class="font-bold text-ocean-950 text-base">防磨衣 / 防寒衣</h3>
+                    <p class="text-xs text-gray-600">
+                        防曬、防礁石刮傷與保暖，讓你在太平洋中享有全方位的舒適防護。
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Rental CTA Banner -->
+            <div class="bg-gradient-to-r from-ocean-900 via-ocean-800 to-ocean-950 text-white rounded-3xl p-8 sm:p-10 shadow-xl border border-white/10 text-center space-y-5">
+                <div class="inline-block px-3.5 py-1 rounded-full bg-cyan-400/20 text-cyan-300 text-xs font-bold border border-cyan-400/30">
+                    📋 線上預約租借流程
+                </div>
+                <h3 class="font-serif text-xl sm:text-3xl font-bold text-white">
+                    欲租借衝浪器材或救生裝備？
+                </h3>
+                <p class="text-xs sm:text-sm text-cyan-100 max-w-xl mx-auto leading-relaxed">
+                    學員專享免費／勞務折抵機制。請點擊下方按鈕填寫 Google 表單預約，我們將於 16:00 鉛橋海灘共學漂浮時段為您備妥裝備！
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+                    <a href="https://docs.google.com/forms/d/1rLJT3MEGNBE6JYeOpAvXk8bTDej3r1JvnlSRLsDo-7s/viewform" target="_blank" class="inline-flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-ocean-950 font-bold text-base px-8 py-3.5 rounded-full transition shadow-lg shadow-cyan-950/50 transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-clipboard-list"></i> 填寫設備租借預約表單 (Google 表單) ➡️
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 5: 報名共學與指引 (Join & Register Section) -->
+    <section id="join" class="py-16 sm:py-24 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <div class="bg-gradient-to-br from-[#082F49] to-[#0C4A6E] text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-white/10 space-y-6">
+            <span class="inline-block px-3.5 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-bold border border-cyan-500/30">
+                🌊 每日共學 ‧ 統一由首頁全域預約系統登記
+            </span>
+            <h2 class="font-serif text-2xl sm:text-4xl font-bold text-white">
+                報名參與衝浪與海洋漂浮
+            </h2>
+            <p class="text-xs sm:text-sm text-cyan-100 max-w-xl mx-auto leading-relaxed font-light">
+                每天下午 16:00 於都蘭鉛橋海灘進行（視海象天候調整）。如欲參加，請前往共學堂首頁線上預約登記，在課程選單中勾選<strong>【衝浪與海洋漂浮 (阿中)】</strong>！
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+                <a href="https://jimchenlichung.github.io/LearnDulanWay/#register" class="inline-flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-ocean-950 font-bold text-base px-8 py-3.5 rounded-full transition shadow-lg shadow-ocean-950/60 transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-file-pen"></i> 前往首頁線上預約報名 ➡️
+                </a>
+                <a href="https://line.me/R/ti/p/~jimchen0824" target="_blank" class="inline-flex items-center justify-center gap-2 bg-[#06C755] hover:bg-[#05b34c] text-white font-bold text-base px-6 py-3.5 rounded-full transition shadow">
+                    <i class="fa-brands fa-line text-lg"></i> 加 LINE 詢問當日海況
+                </a>
+            </div>
+
+            <!-- Fast Contact Options Grid -->
+            <div class="mt-8 pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-cyan-200 text-left">
+                <div class="p-4 bg-white/5 rounded-2xl border border-white/10 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center text-lg shrink-0">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-white block">引導教練</span>
+                        <a href="tel:0919103903" class="hover:text-cyan-300">0919-103-903（阿中教練）</a>
+                    </div>
+                </div>
+                <div class="p-4 bg-white/5 rounded-2xl border border-white/10 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-sky-500/20 text-sky-300 flex items-center justify-center text-lg shrink-0">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-white block">集合地點</span>
+                        <span>台東縣東河鄉都蘭村 鉛橋海灘</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#051B2C] text-cyan-200/60 py-12 border-t border-white/10 text-xs text-center">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-3">
+            <div class="font-serif text-sm font-bold text-white">
+                都蘭共學堂 ‧ 衝浪與海洋漂浮
+            </div>
+            <p>藍色也是很療癒 ‧ 隨浪漂浮 ‧ 沙灘上每天一個寶特瓶回收</p>
+            <p class="text-[11px] text-cyan-300/40">© 都蘭共學堂 Learn Dulan Way. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
