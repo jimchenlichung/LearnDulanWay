@@ -774,15 +774,18 @@
                         </div>
                     </div>
 
-                    <!-- Submit & Spreadsheet Export Buttons -->
+                    <!-- Submit & Cloud Sheet / Export Buttons -->
                     <div class="space-y-3 pt-2">
                         <button type="submit" id="submitBtn" class="w-full py-4 px-6 rounded-2xl bg-dulan-clay hover:bg-[#b55c42] text-white font-bold text-base shadow-lg transition flex items-center justify-center gap-2">
                             <i class="fa-solid fa-paper-plane"></i> 提交線上報名表並立即領取回函信
                         </button>
                         
-                        <div class="flex justify-center">
-                            <button type="button" onclick="exportRegistrationsToCSV()" class="py-2.5 px-6 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-medium transition flex items-center justify-center gap-2 border border-gray-200">
-                                <i class="fa-solid fa-file-excel text-emerald-700"></i> 匯出報名名冊試算表 (CSV)
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-1">
+                            <a id="btnOpenCloudSheet" href="https://docs.google.com/spreadsheets" target="_blank" class="w-full sm:w-auto py-2.5 px-5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-semibold transition flex items-center justify-center gap-2 border border-emerald-200 shadow-sm">
+                                <i class="fa-solid fa-table text-emerald-600"></i> 開啟 Google 雲端報名試算表
+                            </a>
+                            <button type="button" onclick="exportRegistrationsToCSV()" class="w-full sm:w-auto py-2.5 px-5 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-medium transition flex items-center justify-center gap-2 border border-gray-200 shadow-sm">
+                                <i class="fa-solid fa-file-csv text-gray-600"></i> 匯出本機名冊備份 (CSV)
                             </button>
                         </div>
                     </div>
@@ -944,6 +947,23 @@
             alert(`【綠界金控 ECPay 線上結帳】\n已為 ${name} 準備結帳交易！\n方案：${selectedPlan}\n\n系統已就緒，即將導向綠界安全金流收銀台 (信用卡 / ATM / 超商條碼繳費)。`);
         }
 
+        // ==========================================
+        // 📊 Google 試算表 (Google Sheets) 雲端資料連結設定
+        // ==========================================
+        // 1. Google 試算表檢視/編輯連結 (管理員可隨時點擊開啟查看所有報名)
+        const GOOGLE_SHEET_VIEW_URL = "https://docs.google.com/spreadsheets"; 
+        
+        // 2. Google Apps Script Webhook API (將報名資料即時寫入 Google 試算表)
+        const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzLYj1fS0jbLm59lI71iBntUosDrC81t1vU7hng_DuCKlcjBwVE40b4DaGdTJ0GaN_y/exec"; 
+
+        // 初始化設定雲端試算表按鈕連結
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnCloud = document.getElementById('btnOpenCloudSheet');
+            if (btnCloud && GOOGLE_SHEET_VIEW_URL) {
+                btnCloud.href = GOOGLE_SHEET_VIEW_URL;
+            }
+        });
+
         // Handle Registration & Open Modal
         function handleRegistration(e) {
             e.preventDefault();
@@ -959,19 +979,19 @@
             const randomSN = 'DL-202609' + String(Math.floor(1000 + Math.random() * 9000));
             const timestamp = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
 
-            // Store in LocalStorage for CSV export
+            // 1. 本機紀錄 LocalStorage (離線備份與名冊匯出)
             const newRecord = { sn: randomSN, time: timestamp, name, phone, email, line, plan, goal };
             const existingRecords = JSON.parse(localStorage.getItem('dulan_ai_registrations') || '[]');
             existingRecords.push(newRecord);
             localStorage.setItem('dulan_ai_registrations', JSON.stringify(existingRecords));
 
-            // Fill receipt
+            // 2. 寫入回函卡片
             document.getElementById('receiptName').textContent = name;
             document.getElementById('receiptPlan').textContent = plan;
             document.getElementById('receiptContact').textContent = `${phone} / ${email}`;
             document.getElementById('receiptSN').textContent = randomSN;
 
-            // 方案 3：動態組裝 LINE 傳送給阿鐘教練的訊息
+            // 3. 組裝 LINE 傳送給阿鐘教練的訊息
             const lineMsg = `你好阿鐘教練！我已完成「用 AI 翻轉人生九月活動」線上報名。\n` +
                             `【報名序號】${randomSN}\n` +
                             `【學員姓名】${name}\n` +
@@ -985,7 +1005,26 @@
                 btnLineCoach.href = `https://line.me/R/msg/text/?${encodeURIComponent(lineMsg)}`;
             }
 
-            // 方案 1：自動發送即時 Email 通知至主辦人信箱 jimchenlichung@gmail.com
+            // 4. 即時寫入 Google 試算表 (Google Sheets Webhook)
+            if (GOOGLE_SHEET_WEBHOOK_URL && GOOGLE_SHEET_WEBHOOK_URL.startsWith('http')) {
+                fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        sn: randomSN,
+                        timestamp: timestamp,
+                        name: name,
+                        phone: phone,
+                        email: email,
+                        line: line,
+                        plan: plan,
+                        goal: goal
+                    })
+                }).catch(err => console.log("Google Sheets Sync:", err));
+            }
+
+            // 5. 自動發送即時 Email 通知至主辦人信箱 jimchenlichung@gmail.com
             fetch("https://formsubmit.co/ajax/jimchenlichung@gmail.com", {
                 method: "POST",
                 headers: { 
