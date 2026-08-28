@@ -479,6 +479,9 @@
                     <a href="#register" onclick="selectPlan('plan-2d1n')" class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-dulan-clay hover:bg-[#b55c42] text-white font-bold transition shadow-lg text-xs sm:text-sm">
                         選擇兩天一夜 (NT$ 3,500)
                     </a>
+                    <a href="https://p.ecpay.com.tw/21C851F" target="_blank" class="text-[11px] text-center text-amber-200 hover:text-white underline block pt-1">
+                        💳 或直接點此前進綠界線上付款 (NT$ 3,500) ➡️
+                    </a>
                 </div>
 
                 <!-- Plan: 9/19 Weilan Manwu Special Event -->
@@ -553,6 +556,9 @@
 
                     <a href="#register" onclick="selectPlan('plan-3d2n')" class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold transition shadow-lg text-xs sm:text-sm">
                         選擇三天兩夜全包 (NT$ 7,000)
+                    </a>
+                    <a href="https://p.ecpay.com.tw/21C851F" target="_blank" class="text-[11px] text-center text-amber-200 hover:text-white underline block pt-1">
+                        💳 或直接點此前進綠界線上付款 (NT$ 7,000) ➡️
                     </a>
                 </div>
 
@@ -754,22 +760,22 @@
                             <p class="text-[11px] text-gray-500">轉帳完成後可於 LINE 社群私訊或回函中回報帳號後五碼，以利核帳完成席位保留。</p>
                         </div>
 
-                        <!-- Option 2: ECPay Online Payment Reserved -->
-                        <div class="bg-white p-4 rounded-xl border border-gray-200 space-y-3">
+                        <!-- Option 2: ECPay Online Payment -->
+                        <div class="bg-white p-4 rounded-xl border border-emerald-300 space-y-3 shadow-sm">
                             <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-2 text-xs font-bold text-dulan-ocean">
-                                    <i class="fa-regular fa-credit-card"></i>
-                                    <span>綠界金控 (ECPay) 線上金流付款</span>
+                                <div class="flex items-center gap-2 text-xs font-bold text-emerald-800">
+                                    <i class="fa-solid fa-shield-halved text-emerald-600"></i>
+                                    <span>綠界科技 (ECPay) 官方核准安全線上金流</span>
                                 </div>
-                                <span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded">安全金流加密</span>
+                                <span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2.5 py-0.5 rounded-full">官方安全閘道</span>
                             </div>
                             <p class="text-xs text-gray-600">
-                                支援信用卡（一次付清/分期）、ATM 虛擬帳號、超商代碼繳費。
+                                支援各家銀行信用卡（一次付清 / 分期）、ATM 虛擬轉帳帳號、超商代碼繳費。
                             </p>
                             <div class="pt-1">
-                                <button type="button" onclick="triggerECPayMock()" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow-sm">
-                                    <i class="fa-solid fa-lock"></i> 預留綠界金流線上支付結帳按鈕 (ECPay Direct)
-                                </button>
+                                <a href="https://p.ecpay.com.tw/21C851F" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-xs sm:text-sm font-bold transition shadow-md">
+                                    <i class="fa-solid fa-credit-card"></i> 前往綠界安全線上付款 ➡️
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -833,6 +839,18 @@
                     <strong>📢 劃撥繳費備註（付費活動學員）：</strong>
                     郵局代號 700 / 劃撥帳號 02610740081683 / 戶名：陳豊鍾。完成後請至 LINE 社群告知姓名或回報後五碼。
                 </div>
+            </div>
+
+            <!-- Online ECPay Button in Receipt -->
+            <div class="p-3.5 bg-emerald-50 rounded-2xl border border-emerald-200 text-xs text-emerald-900 space-y-2">
+                <div class="font-bold flex items-center justify-between">
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-emerald-600"></i> 付費營隊學員 ‧ 綠界線上付款通道：</span>
+                    <span class="text-[10px] bg-emerald-200 text-emerald-800 px-2 py-0.5 rounded font-bold">ECPay 安全金流</span>
+                </div>
+                <p class="text-[11px] text-emerald-800">如需使用信用卡/ATM/超商代碼線上繳費，可直接點擊下方按鈕前往綠界收銀台：</p>
+                <a href="https://p.ecpay.com.tw/21C851F" target="_blank" class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-[#00A650] hover:bg-[#009245] text-white font-bold text-xs shadow transition">
+                    💳 點此前往綠界安全付款 (https://p.ecpay.com.tw/21C851F) ➡️
+                </a>
             </div>
 
             <!-- Quick Action: Send to Coach Line -->
@@ -940,11 +958,12 @@
             }
         }
 
+        // 綠界金流官方收款連結
+        const ECPAY_PAYMENT_URL = "https://p.ecpay.com.tw/21C851F";
+
         // ECPay Direct Checkout Trigger
         function triggerECPayMock() {
-            const selectedPlan = document.querySelector('input[name="plan"]:checked')?.value || '未選擇';
-            const name = document.getElementById('regName').value || '貴賓';
-            alert(`【綠界金控 ECPay 線上結帳】\n已為 ${name} 準備結帳交易！\n方案：${selectedPlan}\n\n系統已就緒，即將導向綠界安全金流收銀台 (信用卡 / ATM / 超商條碼繳費)。`);
+            window.open(ECPAY_PAYMENT_URL, '_blank');
         }
 
         // ==========================================
@@ -1071,10 +1090,11 @@
                                `LINE 社群：https://line.me/ti/g2/-wQG7m__gxJrrtV59eJYXDmzrJqyyBDYjem91A （🔑 入群密碼：Dulan）\n` +
                                `臉書文字稿：https://www.facebook.com/share/g/1LFxXAVfQ7/\n` +
                                `YouTube 頻道：https://www.youtube.com/@LearnDulanWay\n` +
+                               `綠界線上付款：${ECPAY_PAYMENT_URL}\n` +
                                `郵局劃撥：代號 700 / 帳號 02610740081683 / 戶名：陳豊鍾`;
 
             navigator.clipboard.writeText(textToCopy).then(() => {
-                alert('已將報名回函資訊與三大社群連結複製至剪貼簿！');
+                alert('已將報名回函資訊、綠界付款連結與三大社群連結複製至剪貼簿！');
             }).catch(() => {
                 alert('複製成功：請保存此頁面！');
             });
