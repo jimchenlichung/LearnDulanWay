@@ -844,21 +844,9 @@
                 </div>
             </div>
 
-            <!-- Online ECPay Button in Receipt -->
-            <div class="p-3.5 bg-emerald-50 rounded-2xl border border-emerald-200 text-xs text-emerald-900 space-y-2">
-                <div class="font-bold flex items-center justify-between">
-                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-emerald-600"></i> 付費營隊學員 ‧ 綠界線上付款通道：</span>
-                    <span class="text-[10px] bg-emerald-200 text-emerald-800 px-2 py-0.5 rounded font-bold">ECPay 安全金流</span>
-                </div>
-                <p class="text-[11px] text-emerald-800">付費營隊學員可點擊對應方案前往綠界官方收銀台完成線上刷卡/ATM繳費：</p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
-                    <a id="modalEcpayBtn2D" href="https://p.ecpay.com.tw/7F42F9D" target="_blank" class="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#00A650] hover:bg-[#009245] text-white font-bold text-xs shadow transition">
-                        💳 兩天一夜付款 (NT$ 3,500) ➡️
-                    </a>
-                    <a id="modalEcpayBtn3D" href="https://p.ecpay.com.tw/9496FE2" target="_blank" class="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#D97706] hover:bg-[#B45309] text-white font-bold text-xs shadow transition">
-                        💳 三天兩夜付款 (NT$ 7,000) ➡️
-                    </a>
-                </div>
+            <!-- Online ECPay Dynamic Container in Receipt -->
+            <div id="receiptPaymentContainer" class="p-3.5 bg-emerald-50 rounded-2xl border border-emerald-200 text-xs text-emerald-900 space-y-2">
+                <!-- Will be dynamically filled based on selected plan -->
             </div>
 
             <!-- Quick Action: Send to Coach Line -->
@@ -1025,6 +1013,40 @@
             document.getElementById('receiptPlan').textContent = plan;
             document.getElementById('receiptContact').textContent = `${phone} / ${email}`;
             document.getElementById('receiptSN').textContent = randomSN;
+
+            // 2.1 動態注入回函專屬綠界付款按鈕
+            const payContainer = document.getElementById('receiptPaymentContainer');
+            if (payContainer) {
+                if (plan.includes('3,500')) {
+                    payContainer.innerHTML = `
+                        <div class="font-bold flex items-center justify-between">
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-emerald-600"></i> 您預約的方案：兩天一夜慢活營 (NT$ 3,500)</span>
+                            <span class="text-[10px] bg-emerald-200 text-emerald-800 px-2 py-0.5 rounded font-bold">綠界安全金流</span>
+                        </div>
+                        <p class="text-[11px] text-emerald-800">請點擊下方專屬按鈕前往綠界收銀台完成線上刷卡/ATM繳費：</p>
+                        <a href="${ECPAY_2D1N_URL}" target="_blank" class="inline-flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-[#00A650] hover:bg-[#009245] text-white font-bold text-xs sm:text-sm shadow transition">
+                            💳 前往綠界完成「兩天一夜 (NT$ 3,500)」付款 ➡️
+                        </a>
+                    `;
+                } else if (plan.includes('7,000')) {
+                    payContainer.innerHTML = `
+                        <div class="font-bold flex items-center justify-between">
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-amber-600"></i> 您預約的方案：三天兩夜深度營 (NT$ 7,000)</span>
+                            <span class="text-[10px] bg-amber-200 text-amber-800 px-2 py-0.5 rounded font-bold">綠界安全金流</span>
+                        </div>
+                        <p class="text-[11px] text-amber-900">請點擊下方專屬按鈕前往綠界收銀台完成線上刷卡/ATM繳費：</p>
+                        <a href="${ECPAY_3D2N_URL}" target="_blank" class="inline-flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-[#D97706] hover:bg-[#B45309] text-white font-bold text-xs sm:text-sm shadow transition">
+                            💳 前往綠界完成「三天兩夜 (NT$ 7,000)」付款 ➡️
+                        </a>
+                    `;
+                } else {
+                    payContainer.innerHTML = `
+                        <div class="text-center py-1 text-emerald-800 font-medium">
+                            <span>🌿 <strong>免費共學方案：</strong>本活動無須繳納費用，請直接加入 LINE 社群即可開始共學！</span>
+                        </div>
+                    `;
+                }
+            }
 
             // 3. 組裝 LINE 傳送給阿鐘教練的訊息
             const lineMsg = `你好阿鐘教練！我已完成「用 AI 翻轉人生九月活動」線上報名。\n` +
