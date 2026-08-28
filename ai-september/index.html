@@ -479,7 +479,7 @@
                     <a href="#register" onclick="selectPlan('plan-2d1n')" class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-dulan-clay hover:bg-[#b55c42] text-white font-bold transition shadow-lg text-xs sm:text-sm">
                         選擇兩天一夜 (NT$ 3,500)
                     </a>
-                    <a href="https://p.ecpay.com.tw/21C851F" target="_blank" class="text-[11px] text-center text-amber-200 hover:text-white underline block pt-1">
+                    <a href="https://p.ecpay.com.tw/7F42F9D" target="_blank" class="text-[11px] text-center text-amber-200 hover:text-white underline block pt-1">
                         💳 或直接點此前進綠界線上付款 (NT$ 3,500) ➡️
                     </a>
                 </div>
@@ -557,7 +557,7 @@
                     <a href="#register" onclick="selectPlan('plan-3d2n')" class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold transition shadow-lg text-xs sm:text-sm">
                         選擇三天兩夜全包 (NT$ 7,000)
                     </a>
-                    <a href="https://p.ecpay.com.tw/21C851F" target="_blank" class="text-[11px] text-center text-amber-200 hover:text-white underline block pt-1">
+                    <a href="https://p.ecpay.com.tw/9496FE2" target="_blank" class="text-[11px] text-center text-amber-200 hover:text-white underline block pt-1">
                         💳 或直接點此前進綠界線上付款 (NT$ 7,000) ➡️
                     </a>
                 </div>
@@ -770,11 +770,14 @@
                                 <span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2.5 py-0.5 rounded-full">官方安全閘道</span>
                             </div>
                             <p class="text-xs text-gray-600">
-                                支援各家銀行信用卡（一次付清 / 分期）、ATM 虛擬轉帳帳號、超商代碼繳費。
+                                支援各家銀行信用卡（一次付清 / 分期）、ATM 虛擬轉帳帳號、超商代碼繳費，請依報名方案點擊付款：
                             </p>
-                            <div class="pt-1">
-                                <a href="https://p.ecpay.com.tw/21C851F" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-xs sm:text-sm font-bold transition shadow-md">
-                                    <i class="fa-solid fa-credit-card"></i> 前往綠界安全線上付款 ➡️
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                                <a id="btnEcpay2D" href="https://p.ecpay.com.tw/7F42F9D" target="_blank" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-xs font-bold transition shadow-md">
+                                    <i class="fa-solid fa-credit-card"></i> 兩天一夜付款 (NT$ 3,500) ➡️
+                                </a>
+                                <a id="btnEcpay3D" href="https://p.ecpay.com.tw/9496FE2" target="_blank" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white text-xs font-bold transition shadow-md">
+                                    <i class="fa-solid fa-credit-card"></i> 三天兩夜付款 (NT$ 7,000) ➡️
                                 </a>
                             </div>
                         </div>
@@ -847,10 +850,15 @@
                     <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-emerald-600"></i> 付費營隊學員 ‧ 綠界線上付款通道：</span>
                     <span class="text-[10px] bg-emerald-200 text-emerald-800 px-2 py-0.5 rounded font-bold">ECPay 安全金流</span>
                 </div>
-                <p class="text-[11px] text-emerald-800">如需使用信用卡/ATM/超商代碼線上繳費，可直接點擊下方按鈕前往綠界收銀台：</p>
-                <a href="https://p.ecpay.com.tw/21C851F" target="_blank" class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-[#00A650] hover:bg-[#009245] text-white font-bold text-xs shadow transition">
-                    💳 點此前往綠界安全付款 (https://p.ecpay.com.tw/21C851F) ➡️
-                </a>
+                <p class="text-[11px] text-emerald-800">付費營隊學員可點擊對應方案前往綠界官方收銀台完成線上刷卡/ATM繳費：</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                    <a id="modalEcpayBtn2D" href="https://p.ecpay.com.tw/7F42F9D" target="_blank" class="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#00A650] hover:bg-[#009245] text-white font-bold text-xs shadow transition">
+                        💳 兩天一夜付款 (NT$ 3,500) ➡️
+                    </a>
+                    <a id="modalEcpayBtn3D" href="https://p.ecpay.com.tw/9496FE2" target="_blank" class="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#D97706] hover:bg-[#B45309] text-white font-bold text-xs shadow transition">
+                        💳 三天兩夜付款 (NT$ 7,000) ➡️
+                    </a>
+                </div>
             </div>
 
             <!-- Quick Action: Send to Coach Line -->
@@ -958,12 +966,20 @@
             }
         }
 
-        // 綠界金流官方收款連結
-        const ECPAY_PAYMENT_URL = "https://p.ecpay.com.tw/21C851F";
+        // 綠界金流專屬收款連結
+        const ECPAY_2D1N_URL = "https://p.ecpay.com.tw/7F42F9D"; // 兩天一夜 NT$ 3,500
+        const ECPAY_3D2N_URL = "https://p.ecpay.com.tw/9496FE2"; // 三天兩夜 NT$ 7,000
 
-        // ECPay Direct Checkout Trigger
+        // ECPay Direct Checkout Trigger (根據目前選擇的方案跳轉)
         function triggerECPayMock() {
-            window.open(ECPAY_PAYMENT_URL, '_blank');
+            const selectedPlan = document.querySelector('input[name="plan"]:checked')?.value || '';
+            if (selectedPlan.includes('3,500')) {
+                window.open(ECPAY_2D1N_URL, '_blank');
+            } else if (selectedPlan.includes('7,000')) {
+                window.open(ECPAY_3D2N_URL, '_blank');
+            } else {
+                window.open(ECPAY_2D1N_URL, '_blank');
+            }
         }
 
         // ==========================================
@@ -1090,11 +1106,12 @@
                                `LINE 社群：https://line.me/ti/g2/-wQG7m__gxJrrtV59eJYXDmzrJqyyBDYjem91A （🔑 入群密碼：Dulan）\n` +
                                `臉書文字稿：https://www.facebook.com/share/g/1LFxXAVfQ7/\n` +
                                `YouTube 頻道：https://www.youtube.com/@LearnDulanWay\n` +
-                               `綠界線上付款：${ECPAY_PAYMENT_URL}\n` +
+                               `💳 兩天一夜($3,500)綠界付款：${ECPAY_2D1N_URL}\n` +
+                               `💳 三天兩夜($7,000)綠界付款：${ECPAY_3D2N_URL}\n` +
                                `郵局劃撥：代號 700 / 帳號 02610740081683 / 戶名：陳豊鍾`;
 
             navigator.clipboard.writeText(textToCopy).then(() => {
-                alert('已將報名回函資訊、綠界付款連結與三大社群連結複製至剪貼簿！');
+                alert('已將報名回函資訊、兩款綠界付款專屬連結與三大社群連結複製至剪貼簿！');
             }).catch(() => {
                 alert('複製成功：請保存此頁面！');
             });
