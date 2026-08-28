@@ -763,6 +763,9 @@
                 <h4>都蘭莊園有機咖啡豆</h4>
                 <p class="store-card-price">NT$ 450 <span class="price-unit">/ 半磅</span></p>
                 <p class="store-card-desc">都蘭山林陰地栽植，純手工採收與中度烘焙，帶有溫和的柑橘果酸與巧克力餘韻。支持以物易物交換！</p>
+                <button class="btn-add-to-cart" onclick="addToCart('coffee', '都蘭莊園有機咖啡豆', 450, '半磅', '☕')">
+                  🛒 加入購物車
+                </button>
               </div>
             </div>
             <div class="store-card glass-card">
@@ -771,6 +774,9 @@
                 <h4>都蘭野生百花純蜂蜜</h4>
                 <p class="store-card-price">NT$ 600 <span class="price-unit">/ 瓶</span></p>
                 <p class="store-card-desc">採自都蘭山野生百花蜜源，無人工添加與濃縮，保留了天然活性酵素與豐富的天然花香。</p>
+                <button class="btn-add-to-cart" onclick="addToCart('honey', '都蘭野生百花純蜂蜜', 600, '瓶', '🍯')">
+                  🛒 加入購物車
+                </button>
               </div>
             </div>
             <div class="store-card glass-card">
@@ -779,6 +785,9 @@
                 <h4>都蘭手作黑糖與有機米</h4>
                 <p class="store-card-price">NT$ 180 <span class="price-unit">/ 包</span></p>
                 <p class="store-card-desc">在地小農以自然農法耕作的優質白米與傳統木柴燒製的黑糖，提供滿滿的大地滋養與古法香氣。</p>
+                <button class="btn-add-to-cart" onclick="addToCart('rice_sugar', '都蘭手作黑糖與有機米', 180, '包', '🌾')">
+                  🛒 加入購物車
+                </button>
               </div>
             </div>
           </div>
@@ -797,11 +806,14 @@
                 <h4 style="color: #6EE7B7;">《人生70才開始》新書出售</h4>
                 <p class="store-card-price" style="color: #FBBF24; font-weight: 800;">NT$ 99 <span class="price-unit" style="color: rgba(255,255,255,0.7);">/ 全書完整版 (Word/PDF/EPUB)</span></p>
                 <p class="store-card-desc" style="color: rgba(255,255,255,0.85);">阿鐘下半場人生實踐：身心靈修復、好油飲食、周冠男指數化投資、流浪犬小黑生命課與配得豐盛哲學。</p>
-                <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                  <a href="book2/index.html" class="btn btn-primary" style="flex: 1; font-size: 0.8rem; padding: 0.5rem 0.8rem; border-radius: 9999px; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.3rem; background: #C86D51;">
-                    ⚡ 搶先購買 $99 ➡️
+                <button class="btn-add-to-cart" style="background: #C86D51; color: #fff; border-color: #C86D51;" onclick="addToCart('book2', '《人生70才開始》全書完整版', 99, '本', 'assets/book2_cover.jpg')">
+                  🛒 加入購物車 (NT$ 99)
+                </button>
+                <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem;">
+                  <a href="book2/index.html" class="btn btn-secondary" style="flex: 1; font-size: 0.75rem; padding: 0.35rem 0.6rem; border-radius: 9999px; text-align: center; text-decoration: none; border-color: rgba(255,255,255,0.3); color: #fff;">
+                    📖 查看新書專頁
                   </a>
-                  <a href="book2/index.html#chapters" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.5rem 0.8rem; border-radius: 9999px; text-align: center; text-decoration: none; border-color: rgba(255,255,255,0.3); color: #fff;">
+                  <a href="book2/index.html#chapters" class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.6rem; border-radius: 9999px; text-align: center; text-decoration: none; border-color: rgba(255,255,255,0.3); color: #fff;">
                     📋 16章大綱
                   </a>
                 </div>
@@ -818,11 +830,14 @@
                 <h4>《從酒鬼到AI作家》電子書</h4>
                 <p class="store-card-price" style="color: #C86D51; font-weight: 800;">NT$ 99 <span class="price-unit">/ 全書完整版 (EPUB & PDF)</span></p>
                 <p class="store-card-desc">阿鐘70歲重生奇蹟：從酒精泥淖、福格微習慣到人機協作14天出版實踐。內含 EPUB 流動版與 PDF 精編版。</p>
-                <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                  <a href="book/index.html" class="btn btn-primary" style="flex: 1; font-size: 0.8rem; padding: 0.5rem 0.8rem; border-radius: 9999px; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.3rem;">
-                    📖 進入專頁 & 購買 ➡️
+                <button class="btn-add-to-cart" onclick="addToCart('book1', '《從酒鬼到AI作家》電子書', 99, '本', 'assets/book_cover.png')">
+                  🛒 加入購物車 (NT$ 99)
+                </button>
+                <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem;">
+                  <a href="book/index.html" class="btn btn-secondary" style="flex: 1; font-size: 0.75rem; padding: 0.35rem 0.6rem; border-radius: 9999px; text-align: center; text-decoration: none;">
+                    📖 查看專頁
                   </a>
-                  <a href="book/sample.pdf" target="_blank" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.5rem 0.8rem; border-radius: 9999px; text-align: center; text-decoration: none;">
+                  <a href="book/sample.pdf" target="_blank" class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.6rem; border-radius: 9999px; text-align: center; text-decoration: none;">
                     📄 免費試閱
                   </a>
                 </div>
@@ -839,11 +854,14 @@
                 <h4 style="color: #FCD34D;">『筆尖上的重生』阿玉著</h4>
                 <p class="store-card-price" style="color: #FBBF24; font-weight: 800;">NT$ 99 <span class="price-unit" style="color: rgba(255,255,255,0.7);">/ 公益預售支持 (全文試閱)</span></p>
                 <p class="store-card-desc" style="color: rgba(255,255,255,0.85);">高牆內的血痕與微光：阿玉的監管悔思錄。傳授科技寫作技能，協助受監管者梳理挫折、開創自立尊嚴。</p>
-                <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                  <a href="rebirth/index.html" class="btn btn-primary" style="flex: 1; font-size: 0.8rem; padding: 0.5rem 0.8rem; border-radius: 9999px; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.3rem; background: #D97706;">
-                    🕊️ 支持預購 (NT$ 99) ➡️
+                <button class="btn-add-to-cart" style="background: #D97706; color: #fff; border-color: #D97706;" onclick="addToCart('rebirth', '『筆尖上的重生』公益預售', 99, '本', 'assets/pen_rebirth_cover.jpg')">
+                  🛒 加入購物車 (NT$ 99)
+                </button>
+                <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem;">
+                  <a href="rebirth/index.html" class="btn btn-secondary" style="flex: 1; font-size: 0.75rem; padding: 0.35rem 0.6rem; border-radius: 9999px; text-align: center; text-decoration: none; border-color: rgba(255,255,255,0.3); color: #fff;">
+                    🕊️ 專案介紹
                   </a>
-                  <a href="rebirth/index.html#reading" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.5rem 0.8rem; border-radius: 9999px; text-align: center; text-decoration: none; border-color: rgba(255,255,255,0.3); color: #fff;">
+                  <a href="rebirth/index.html#reading" class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.6rem; border-radius: 9999px; text-align: center; text-decoration: none; border-color: rgba(255,255,255,0.3); color: #fff;">
                     📖 讀第一章
                   </a>
                 </div>
@@ -856,6 +874,9 @@
                 <h4>AI 學習筆記精選總集</h4>
                 <p class="store-card-price">NT$ 199 <span class="price-unit">/ 電子書 (PDF & DOCX)</span></p>
                 <p class="store-card-desc">收錄都蘭共學堂全系列的 AI 工具精華筆記、提示詞工程（Prompt）及長輩數位排障手冊，一次打包隨身閱讀。</p>
+                <button class="btn-add-to-cart" onclick="addToCart('ai_notes', 'AI 學習筆記精選總集 (PDF+DOCX)', 199, '套', '📖')">
+                  🛒 加入購物車 (NT$ 199)
+                </button>
               </div>
             </div>
             <div class="store-card glass-card">
@@ -864,6 +885,9 @@
                 <h4>NotebookLM 個人化範本包</h4>
                 <p class="store-card-price">NT$ 250 <span class="price-unit">/ 範本授權</span></p>
                 <p class="store-card-desc">包含「生命寫書範本」、「小農進銷存試算表範本」及「地方民宿社群行銷提示詞包」，一鍵匯入即可高效產出。</p>
+                <button class="btn-add-to-cart" onclick="addToCart('notebooklm_template', 'NotebookLM 個人化範本包', 250, '套', '📊')">
+                  🛒 加入購物車 (NT$ 250)
+                </button>
               </div>
             </div>
           </div>
@@ -899,9 +923,85 @@
                 <h4>「緩騎專用」慢速單車</h4>
                 <p class="store-card-price">NT$ 100 <span class="price-unit">/ 日 (學員半價)</span></p>
                 <p class="store-card-desc">特別選用的舒適慢速單車，鼓勵學員以時速 10 公里的速度慢遊都蘭小鎮，感受山風與海風的溫柔撫摸。</p>
+                <button class="btn-add-to-cart" onclick="addToCart('bike', '「緩騎專用」慢速單車租借', 100, '日', '🚲')">
+                  🛒 加入購物車 (NT$ 100)
+                </button>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           🛒 購物車明細統計與綠界安全結帳專區 (Shopping Cart Section)
+           ======================================================== -->
+      <div class="cart-section-box" id="cartSection">
+        <div class="cart-header">
+          <div class="cart-title">
+            <span>🛒</span> 都蘭共生商店 購物車結帳清單
+            <span id="cartBadgeCount" style="font-size: 0.8rem; background: var(--secondary-color); color: #fff; padding: 0.2rem 0.6rem; border-radius: 9999px; font-weight: 700; margin-left: 0.5rem;">0 項商品</span>
+          </div>
+          <button id="btnClearCart" onclick="clearCart()" style="background: none; border: 1px solid rgba(239, 68, 68, 0.4); color: #ef4444; font-size: 0.8rem; padding: 0.35rem 0.8rem; border-radius: 8px; cursor: pointer; display: none;">
+            🗑️ 清空購物車
+          </button>
+        </div>
+
+        <!-- 購物車清單容器 -->
+        <div id="cartItemsContainer">
+          <div id="cartEmptyMsg" style="text-align: center; padding: 2.5rem 1rem; color: var(--text-muted);">
+            <div style="font-size: 3rem; margin-bottom: 0.75rem; opacity: 0.6;">🛒</div>
+            <p style="font-size: 1rem; margin-bottom: 0.5rem;">您的購物車目前是空的</p>
+            <p style="font-size: 0.85rem; opacity: 0.8;">請從上方「實體商店」或「數位商店」點擊「加入購物車」挑選您喜歡的商品或書籍！</p>
+          </div>
+
+          <div id="cartTableWrap" style="display: none; overflow-x: auto;">
+            <table class="cart-items-table">
+              <thead>
+                <tr>
+                  <th style="min-width: 180px;">商品名稱</th>
+                  <th style="min-width: 90px;">單價</th>
+                  <th style="min-width: 120px; text-align: center;">購買數量</th>
+                  <th style="min-width: 90px; text-align: right;">小計</th>
+                  <th style="width: 50px; text-align: center;">操作</th>
+                </tr>
+              </thead>
+              <tbody id="cartTableBody">
+                <!-- 動態注入商品項目 -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 結帳統計面板 (有商品時顯示) -->
+        <div class="cart-summary-panel" id="cartSummaryPanel" style="display: none;">
+          <div class="cart-total-display">
+            <div style="font-size: 0.9rem; color: var(--text-muted);">
+              已選購 <strong id="cartSummaryItemsCount" style="color: var(--text-primary);">0</strong> 項商品，共 <strong id="cartSummaryTotalQty" style="color: var(--text-primary);">0</strong> 件
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 0.5rem; margin-top: 0.25rem;">
+              <span style="font-size: 1rem; font-weight: 600;">應付總金額：</span>
+              <span class="cart-total-amount" id="cartTotalDisplay">NT$ 0</span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; sm:flex-row; gap: 0.75rem; align-items: stretch;">
+            <!-- 複製訂單明細按鈕 -->
+            <button onclick="copyCartSummary()" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.75rem 1.25rem; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; cursor: pointer;">
+              📋 複製購買明細
+            </button>
+            <!-- 前往綠界付款按鈕 (直連 https://p.ecpay.com.tw/21C851F) -->
+            <a id="btnEcpayPay" href="https://p.ecpay.com.tw/21C851F" target="_blank" class="btn-ecpay-checkout" onclick="handleEcpayCheckout(event)">
+              <span>💳</span> 前往綠界安全付款 (<span id="btnPayAmount">NT$ 0</span>) ➡️
+            </a>
+          </div>
+        </div>
+
+        <!-- 綠界金流說明指引 -->
+        <div style="margin-top: 1.25rem; padding: 1rem; background: rgba(0, 166, 80, 0.08); border-radius: 12px; border: 1px dashed rgba(0, 166, 80, 0.35); font-size: 0.82rem; color: var(--text-muted); line-height: 1.6;">
+          <strong style="color: #10B981; display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+            <span>🛡️</span> 綠界科技 ECPay 官方核准安全金流：
+          </strong>
+          點擊結帳後將直接前往綠界收款網頁（<code>https://p.ecpay.com.tw/21C851F</code>），支援信用卡、ATM 虛擬帳號與超商代碼繳費。請於綠界付款頁面輸入對應之結帳總金額完成付款。如需郵寄實體商品，請於付款備註欄填寫收件地址或透過 LINE 客服告知對帳！
         </div>
       </div>
     </div>
@@ -1033,6 +1133,13 @@
             <li>🤝 <strong>支持以物易物：</strong> 在地小農與民宿主可用農產或勞務折抵學費</li>
             <li>🌴 <strong>莊園加購住宿：</strong> 深度融入都蘭四季八里，享受充實慢活假期</li>
           </ul>
+
+          <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-color);">
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">💳 線上繳納訂金 / 課程學費：</div>
+            <a href="https://p.ecpay.com.tw/21C851F" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #00A650, #059669); color: #fff; padding: 0.65rem 1.25rem; border-radius: 9999px; font-weight: 700; text-decoration: none; font-size: 0.85rem; box-shadow: 0 4px 12px rgba(0, 166, 80, 0.35);">
+              <span>🛡️</span> 綠界官方核准安全線上付款 ➡️
+            </a>
+          </div>
         </div>
         
         <div class="register-form-panel">
@@ -1175,6 +1282,18 @@
       </div>
     </div>
   </footer>
+
+  <!-- 浮動購物車按鈕 (Floating Cart Button) -->
+  <a href="#cartSection" class="floating-cart-btn" id="floatingCartBtn" title="查看購物車與結帳" style="display: none;">
+    <span>🛒</span>
+    <span class="floating-cart-badge" id="floatingCartBadge">0</span>
+  </a>
+
+  <!-- 加入購物車 Toast 提示 -->
+  <div class="cart-toast" id="cartToast">
+    <span>✅</span>
+    <span id="cartToastMsg">已加入購物車！</span>
+  </div>
 
   <!-- Submission Success Modal -->
   <div class="modal-overlay hidden" id="successModal">
