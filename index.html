@@ -857,6 +857,9 @@
                 <button class="btn-add-to-cart" style="background: #D97706; color: #fff; border-color: #D97706;" onclick="addToCart('rebirth', '『筆尖上的重生』公益預售', 99, '本', 'assets/pen_rebirth_cover.jpg')">
                   🛒 加入購物車 (NT$ 99)
                 </button>
+                <a href="https://p.ecpay.com.tw/8C6A33A" target="_blank" style="display: block; text-align: center; font-size: 0.75rem; color: #FCD34D; text-decoration: underline; margin-top: 0.4rem;">
+                  💳 或直接點此前往綠界公益預售付款 (NT$ 99) ➡️
+                </a>
                 <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem;">
                   <a href="rebirth/index.html" class="btn btn-secondary" style="flex: 1; font-size: 0.75rem; padding: 0.35rem 0.6rem; border-radius: 9999px; text-align: center; text-decoration: none; border-color: rgba(255,255,255,0.3); color: #fff;">
                     🕊️ 專案介紹
@@ -872,21 +875,10 @@
               <div class="store-card-visual">📖</div>
               <div class="store-card-body">
                 <h4>AI 學習筆記精選總集</h4>
-                <p class="store-card-price">NT$ 199 <span class="price-unit">/ 電子書 (PDF & DOCX)</span></p>
+                <p class="store-card-price">NT$ 99 <span class="price-unit">/ 電子書 (PDF & DOCX)</span></p>
                 <p class="store-card-desc">收錄都蘭共學堂全系列的 AI 工具精華筆記、提示詞工程（Prompt）及長輩數位排障手冊，一次打包隨身閱讀。</p>
-                <button class="btn-add-to-cart" onclick="addToCart('ai_notes', 'AI 學習筆記精選總集 (PDF+DOCX)', 199, '套', '📖')">
-                  🛒 加入購物車 (NT$ 199)
-                </button>
-              </div>
-            </div>
-            <div class="store-card glass-card">
-              <div class="store-card-visual">📊</div>
-              <div class="store-card-body">
-                <h4>NotebookLM 個人化範本包</h4>
-                <p class="store-card-price">NT$ 250 <span class="price-unit">/ 範本授權</span></p>
-                <p class="store-card-desc">包含「生命寫書範本」、「小農進銷存試算表範本」及「地方民宿社群行銷提示詞包」，一鍵匯入即可高效產出。</p>
-                <button class="btn-add-to-cart" onclick="addToCart('notebooklm_template', 'NotebookLM 個人化範本包', 250, '套', '📊')">
-                  🛒 加入購物車 (NT$ 250)
+                <button class="btn-add-to-cart" onclick="addToCart('ai_notes', 'AI 學習筆記精選總集 (PDF+DOCX)', 99, '套', '📖')">
+                  🛒 加入購物車 (NT$ 99)
                 </button>
               </div>
             </div>
@@ -988,6 +980,10 @@
             <!-- 複製訂單明細按鈕 -->
             <button onclick="copyCartSummary()" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.75rem 1.25rem; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; cursor: pointer;">
               📋 複製購買明細
+            </button>
+            <!-- 匯出購物訂單試算表按鈕 -->
+            <button onclick="exportShopOrdersToCSV()" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.75rem 1.25rem; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; cursor: pointer; background: rgba(16, 185, 129, 0.12); color: #059669; border-color: rgba(16, 185, 129, 0.3);">
+              📊 匯出訂單試算表 (CSV)
             </button>
             <!-- 前往綠界付款按鈕 (直連 https://p.ecpay.com.tw/21C851F) -->
             <a id="btnEcpayPay" href="https://p.ecpay.com.tw/21C851F" target="_blank" class="btn-ecpay-checkout" onclick="handleEcpayCheckout(event)">
