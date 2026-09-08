@@ -8,3 +8,4 @@
 ai september  https://jimchenlichung.github.io/LearnDulanWay/ai-september/index.html
 https://jimchenlichung.github.io/LearnDulanway/rebirth/index.html
 美蘭  https://jimchenlichung.github.io/LearnDulanway/meilan/index.html
+20260906都蘭山定點觀察記錄https://jimchenlichung.github.io/LearnDulanWay/dulanshan/20260906/index.html
