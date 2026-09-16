@@ -507,8 +507,8 @@
                         </div>
 
                         <div class="space-y-2 text-xs text-white/80">
-                            <p class="flex items-center gap-2"><i class="fa-regular fa-calendar-check text-emerald-300"></i> <strong>日期：</strong>2026 年 9 月 19 日（週六）14:00~17:00</p>
-                            <p class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-emerald-300"></i> <strong>地點：</strong>都蘭 舞米山莊 (山海環景劇場)</p>
+                            <p class="flex items-center gap-2"><i class="fa-regular fa-calendar-check text-emerald-300"></i> <strong>日期：</strong>2026 年 9 月 19 日（週六）上午 10:00~12:00</p>
+                            <p class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-emerald-300"></i> <strong>地點：</strong>都蘭興昌</p>
                             <div class="pt-1 text-white/70 space-y-1 text-[11px]">
                                 <p>• <strong>內容</strong>：《微瀾漫舞》舞中禪首演、動態禪修引導、林爰言導師互動茶席</p>
                                 <p>• <strong>特色</strong>：以舞悅心，體驗「妳不是在動，妳只是在傳遞那一陣風」的療癒力量</p>
@@ -678,8 +678,8 @@
                                     <input type="radio" name="plan" id="plan-yanyan" value="9/19 特別企劃《微瀾漫舞》舞中禪首演場 (免費參加)" class="w-4 h-4 text-emerald-600 focus:ring-emerald-600" onchange="updateQuotaStatus()">
                                 </div>
                                 <span class="font-bold text-sm text-dulan-forest">《微瀾漫舞》舞中禪首演場</span>
-                                <span class="text-xs text-emerald-700 font-bold mt-1">費用：免費參加 (含舞米山莊首演)</span>
-                                <span id="quotaYanyan" class="text-xs font-medium text-emerald-600 mt-2">舞米山莊首演 ‧ 限額席位開放中</span>
+                                <span class="text-xs text-emerald-700 font-bold mt-1">費用：免費參加 (含都蘭興昌首演)</span>
+                                <span id="quotaYanyan" class="text-xs font-medium text-emerald-600 mt-2">都蘭興昌首演 ‧ 限額席位開放中</span>
                             </label>
 
                             <!-- Plan 2D1N (Paid) -->
@@ -979,11 +979,34 @@
         // 2. Google Apps Script Webhook API (將報名資料即時寫入 Google 試算表)
         const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzLYj1fS0jbLm59lI71iBntUosDrC81t1vU7hng_DuCKlcjBwVE40b4DaGdTJ0GaN_y/exec"; 
 
-        // 初始化設定雲端試算表按鈕連結
+        // 初始化設定雲端試算表按鈕連結與網址參數自動選取方案
         document.addEventListener('DOMContentLoaded', () => {
             const btnCloud = document.getElementById('btnOpenCloudSheet');
             if (btnCloud && GOOGLE_SHEET_VIEW_URL) {
                 btnCloud.href = GOOGLE_SHEET_VIEW_URL;
+            }
+
+            // 檢查 URL 參數或錨點，自動選取對應活動方案 (例如 ?plan=yanyan 或 #register-yanyan)
+            const urlParams = new URLSearchParams(window.location.search);
+            const planParam = urlParams.get('plan') || '';
+            const hash = window.location.hash || '';
+
+            if (planParam === 'yanyan' || hash.includes('yanyan')) {
+                selectPlan('plan-yanyan');
+            } else if (planParam === '2d1n' || hash.includes('2d1n')) {
+                selectPlan('plan-2d1n');
+            } else if (planParam === '3d2n' || hash.includes('3d2n')) {
+                selectPlan('plan-3d2n');
+            }
+
+            // 若帶有 #register 相關錨點，延遲平滑滾動至報名表區塊
+            if (hash.includes('register') || planParam) {
+                setTimeout(() => {
+                    const regSection = document.getElementById('register');
+                    if (regSection) {
+                        regSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 300);
             }
         });
 
