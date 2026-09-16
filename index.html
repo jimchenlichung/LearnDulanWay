@@ -9,42 +9,243 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=Noto+Serif+TC:wght@600;700;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Stylesheet with Cache Buster -->
+  <link rel="stylesheet" href="style.css?v=20260913_line">
+  
+  <!-- LINE LIFF SDK v2 -->
+  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  
+  <style>
+    /* 核心按鈕保證樣式 (Guaranteed Button Styles) */
+    .course-card {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      height: 100% !important;
+    }
+    .course-card-content {
+      flex: 1 0 auto;
+      margin-bottom: 1.25rem;
+    }
+    .course-card-footer {
+      margin-top: auto;
+      width: 100%;
+    }
+    .btn-course {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 0.5rem !important;
+      width: 100% !important;
+      padding: 0.75rem 1.25rem !important;
+      border-radius: 9999px !important;
+      font-size: 0.92rem !important;
+      font-weight: 700 !important;
+      text-decoration: none !important;
+      cursor: pointer !important;
+      box-sizing: border-box !important;
+      transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+      border: 1.5px solid transparent !important;
+    }
+    .btn-course:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+    }
+    .btn-course-accent {
+      background: linear-gradient(135deg, #C86D51, #e07a5f) !important;
+      color: #ffffff !important;
+      border-color: #C86D51 !important;
+      box-shadow: 0 4px 16px rgba(200, 109, 81, 0.45) !important;
+    }
+    .btn-course-teal {
+      background: linear-gradient(135deg, #0D7377, #149196) !important;
+      color: #ffffff !important;
+      border-color: #0D7377 !important;
+      box-shadow: 0 4px 16px rgba(13, 115, 119, 0.45) !important;
+    }
+    .btn-course-blue {
+      background: linear-gradient(135deg, #0284C7, #0ea5e9) !important;
+      color: #ffffff !important;
+      border-color: #0284C7 !important;
+      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.45) !important;
+    }
+    .btn-course-amber {
+      background: linear-gradient(135deg, #D97706, #f59e0b) !important;
+      color: #ffffff !important;
+      border-color: #D97706 !important;
+      box-shadow: 0 4px 16px rgba(217, 119, 6, 0.45) !important;
+    }
+    .btn-course-red {
+      background: linear-gradient(135deg, #B93A32, #dc2626) !important;
+      color: #ffffff !important;
+      border-color: #B93A32 !important;
+      box-shadow: 0 4px 16px rgba(185, 58, 50, 0.45) !important;
+    }
+    .btn-course-purple {
+      background: linear-gradient(135deg, #7C3AED, #9333ea) !important;
+      color: #ffffff !important;
+      border-color: #7C3AED !important;
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.45) !important;
+    }
+    .btn-course-secondary {
+      background: rgba(255, 255, 255, 0.12) !important;
+      color: var(--text-primary) !important;
+      border: 1px solid var(--border-color) !important;
+    }
+    .btn-course-secondary:hover {
+      background: rgba(255, 255, 255, 0.22) !important;
+      color: #ffffff !important;
+    }
+    html.light .btn-course-secondary {
+      background: rgba(0, 0, 0, 0.06) !important;
+      color: #1a1a1a !important;
+      border-color: rgba(0, 0, 0, 0.15) !important;
+    }
+    html.light .btn-course-secondary:hover {
+      background: rgba(0, 0, 0, 0.12) !important;
+      color: #000000 !important;
+    }
+
+    /* LINE 會員專屬按鈕與頭像樣式 */
+    .line-member-nav {
+      display: flex;
+      align-items: center;
+    }
+    .btn-line-login {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #06C755;
+      color: #ffffff !important;
+      border: none;
+      padding: 0.45rem 0.95rem;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 3px 10px rgba(6, 199, 85, 0.35);
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+    .btn-line-login:hover {
+      background: #05b04c;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 14px rgba(6, 199, 85, 0.5);
+    }
+    .line-user-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(6, 199, 85, 0.12);
+      border: 1.5px solid #06C755;
+      padding: 0.25rem 0.65rem 0.25rem 0.35rem;
+      border-radius: 9999px;
+      cursor: pointer;
+    }
+    .line-user-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid #06C755;
+    }
+    .line-user-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      max-width: 90px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .btn-member-portal {
+      background: #06C755;
+      color: #ffffff;
+      border: none;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.18rem 0.5rem;
+      border-radius: 9999px;
+      cursor: pointer;
+    }
+    .member-modal-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #06C755;
+      box-shadow: 0 4px 14px rgba(6, 199, 85, 0.3);
+      margin: 0 auto;
+    }
+    .member-tag-badge {
+      display: inline-block;
+      background: rgba(6, 199, 85, 0.15);
+      color: #06C755;
+      border: 1px solid #06C755;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      margin-top: 0.25rem;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <header class="navbar-area">
+  <!-- Background Ambient Glows -->
+  <div class="glow-bg glow-1"></div>
+  <div class="glow-bg glow-2"></div>
+
+  <!-- Global Navigation Bar -->
+  <header class="navbar-header" id="navbar">
     <div class="navbar-container">
       <a href="#" class="nav-logo" id="navLogo">
         <span class="logo-emoji">🌿</span>
-        <span class="logo-text">四季八里都蘭共學堂</span>
+        <span class="logo-text">都蘭共學堂</span>
       </a>
       
       <!-- Desktop Navigation Menu -->
       <nav class="nav-menu" id="navMenu">
-        <a href="#flagship" class="nav-link" id="link-flagship">⭐ 旗艦三部曲</a>
         <a href="#philosophy" class="nav-link" id="link-philosophy">理念精神</a>
+        <a href="#highlights" class="nav-link" id="link-highlights">即時特報</a>
         <a href="#schedule" class="nav-link" id="link-schedule">山海週曆</a>
         <a href="#courses" class="nav-link" id="link-courses">共學課程</a>
-        <a href="#stores" class="nav-link" id="link-stores">共生商店</a>
         <a href="#stories" class="nav-link" id="link-stories">實戰故事</a>
+        <a href="#stores" class="nav-link" id="link-stores">共生商店</a>
         <a href="#podcast" class="nav-link" id="link-podcast">播客影音</a>
         <a href="#register" class="nav-btn" id="link-register">預約報名</a>
       </nav>
 
-      <!-- Right Actions: Theme Toggle & Mobile Toggle -->
+      <!-- Right Actions: LINE Member, Theme Toggle & Mobile Toggle -->
       <div class="nav-actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="切換深淺模式">
+        <!-- LINE Member Widget -->
+        <div id="lineMemberNav" class="line-member-nav">
+          <button type="button" id="btnLineLogin" class="btn-line-login" title="LINE 一鍵登入 / 加入會員">
+            <svg class="line-brand-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M12 2C6.48 2 2 5.92 2 10.75c0 3.01 1.76 5.67 4.45 7.16-.19.67-.69 2.45-.79 2.82-.12.45.16.44.34.32.14-.09 2.22-1.51 3.12-2.12.93.18 1.9.27 2.88.27 5.52 0 10-3.92 10-8.75S17.52 2 12 2z"/>
+            </svg>
+            <span>LINE 登入</span>
+          </button>
+          <div id="lineUserBadge" class="line-user-badge" style="display: none;" title="點擊開啟會員中心">
+            <img id="lineUserAvatar" class="line-user-avatar" src="assets/logo.png" alt="學員頭像" />
+            <span id="lineUserName" class="line-user-name">學員</span>
+            <button type="button" id="btnOpenMemberModal" class="btn-member-portal" title="會員中心">會員中心</button>
+          </div>
+        </div>
+
+        <!-- Theme Switcher -->
+        <button class="theme-toggle" id="themeToggle" aria-label="切換深淺模式" title="切換深淺模式">
           <!-- Sun Icon (Dark Mode active) -->
           <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
           <!-- Moon Icon (Light Mode active) -->
           <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
         </button>
         
+        <!-- Mobile Menu Toggle -->
         <button class="mobile-toggle" id="mobileToggle" aria-label="打開選單">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
         </button>
@@ -52,16 +253,21 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section (主視覺區) -->
   <section class="hero-section" id="hero">
     <div class="hero-container">
       <div class="hero-content">
-        <div class="badge" id="heroBadge">🌿 都蘭共學堂 ╳ LearnDulanWay</div>
-        <h1 class="hero-title" id="heroTitle">如何翻轉人生，<br>從共學出發，<span class="highlight-gradient">邁向共生</span></h1>
-        <p class="hero-subtitle" id="heroSubtitle">以都蘭山海為教室，用 AI 與小習慣為工具，開啟身心靈的探索，接受生命豐盛。</p>
+        <div class="badge" id="heroBadge">🌿 四季八里都蘭共學堂 ╳ 四季八里自然莊園</div>
+        <h1 class="hero-title" id="heroTitle">
+          如何翻轉人生，<br>從共學出發，<span class="highlight-gradient">邁向共生</span>
+        </h1>
+        <p class="hero-subtitle" id="heroSubtitle">
+          一手拿滑鼠，一手摸泥土。以都蘭山海為教室，用 AI 與微習慣為工具，開啟身心靈的探索，接受生命豐盛。
+        </p>
         <div class="hero-actions">
-          <a href="#flagship" class="btn btn-primary" id="heroBtnCourses">🌟 探索旗艦三部曲</a>
-          <a href="#courses" class="btn btn-secondary" id="heroBtnStores">瀏覽全部課程</a>
+          <a href="#courses" class="btn btn-primary" id="heroBtnCourses">📚 探索共學課程</a>
+          <a href="ai-september/index.html" class="btn btn-secondary" id="heroBtnSeptember">🔥 九月 30 天打卡營</a>
+          <a href="#register" class="btn btn-outline" id="heroBtnRegister">✍️ 即刻預約</a>
         </div>
       </div>
       <div class="hero-visual">
@@ -70,141 +276,121 @@
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ★ 三部曲旗艦課程橫幅 (共學堂三部曲) ★ -->
-  <section id="flagship" style="padding: 3rem 0; background: var(--bg-primary, #0f1f19);">
-    <div class="container">
-      <div style="text-align: center; margin-bottom: 2rem;">
-        <span style="display: inline-block; background: var(--accent-color, #C86D51); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 0.3rem 1rem; border-radius: 9999px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem;">⭐ Flagship Courses</span>
-        <h2 style="font-family: var(--font-serif, 'Noto Serif TC', serif); font-size: 1.75rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; line-height: 1.4;">共學堂三部曲</h2>
-        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto;">重塑心智 × 記錄歲月 × 接軌未來 — 三門主力課程，全方位個人賦能</p>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; align-items: stretch;">
-
-        <!-- 課程一：阿中翻轉人生 -->
-        <a href="azhong/index.html" style="text-decoration: none; color: inherit;">
-          <div style="background: linear-gradient(135deg, #0D4A44 0%, #1B4F72 100%); border-radius: 1.25rem; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(13,115,119,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-            <div>
-              <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌱</div>
-              <div style="display: inline-block; background: rgba(255,255,255,0.15); color: #6EE7B7; font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 9999px; letter-spacing: 0.08em; margin-bottom: 0.75rem;">重塑心智 · 勵志生命啟發型</div>
-              <h3 style="font-family: var(--font-serif, 'Noto Serif TC', serif); font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; line-height: 1.4;">阿中翻轉人生</h3>
-              <p style="font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 1.25rem;">人生何時開始都不晚！從微習慣出發，親身見證人生逆轉勝的真實力量。</p>
-              <ul style="list-style: none; padding: 0; margin: 0; space-y: 0.5rem;">
-                <li style="font-size: 0.78rem; color: rgba(255,255,255,0.6); padding: 0.2rem 0;">✓ 微習慣科學養成方法</li>
-                <li style="font-size: 0.78rem; color: rgba(255,255,255,0.6); padding: 0.2rem 0;">✓ 人生四桶金 AI 實踐系統</li>
-                <li style="font-size: 0.78rem; color: rgba(255,255,255,0.6); padding: 0.2rem 0;">✓ 每日山海衝浪身心重塑</li>
-              </ul>
-            </div>
-            <div style="margin-top: 1.5rem; display: flex; align-items: center; gap: 0.5rem; color: #6EE7B7; font-size: 0.82rem; font-weight: 700;">
-              開啟翻轉旅程 <span>➡️</span>
-            </div>
+    <!-- Feature Highlights Strip -->
+    <div class="container" style="margin-top: 3.5rem;">
+      <div class="feature-strip glass-card">
+        <div class="feature-item">
+          <span class="feature-icon">🤖</span>
+          <div class="feature-text">
+            <strong>AI 慢活賦能</strong>
+            <span>Gemini ╳ NotebookLM 實戰</span>
           </div>
-        </a>
-
-        <!-- 課程二：江冠明人生寫作 -->
-        <a href="jianggm/index.html" style="text-decoration: none; color: inherit;">
-          <div style="background: linear-gradient(135deg, #3D2B1F 0%, #5C3D2E 100%); border-radius: 1.25rem; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(140,104,73,0.5)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-            <div>
-              <div style="font-size: 2.5rem; margin-bottom: 1rem;">✍️</div>
-              <div style="display: inline-block; background: rgba(255,255,255,0.15); color: #FCD34D; font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 9999px; letter-spacing: 0.08em; margin-bottom: 0.75rem;">記錄歲月 · 人文感性型</div>
-              <h3 style="font-family: var(--font-serif, 'Noto Serif TC', serif); font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; line-height: 1.4;">江冠明人生寫作課</h3>
-              <p style="font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 1.25rem;">每個人都是一本厚重的書。跟著在地作家，把你的生命故事寫成永恆。</p>
-              <ul style="list-style: none; padding: 0; margin: 0;">
-                <li style="font-size: 0.78rem; color: rgba(255,255,255,0.6); padding: 0.2rem 0;">✓ 語音 × AI 雙工具輔助書寫</li>
-                <li style="font-size: 0.78rem; color: rgba(255,255,255,0.6); padding: 0.2rem 0;">✓ 從記憶挖掘到文字淬鍊三部曲</li>
-                <li style="font-size: 0.78rem; color: rgba(255,255,255,0.6); padding: 0.2rem 0;">✓ 完成個人生命故事書稿章節</li>
-              </ul>
-            </div>
-            <div style="margin-top: 1.5rem; display: flex; align-items: center; gap: 0.5rem; color: #FCD34D; font-size: 0.82rem; font-weight: 700;">
-              開始書寫故事 <span>➡️</span>
-            </div>
+        </div>
+        <div class="feature-divider"></div>
+        <div class="feature-item">
+          <span class="feature-icon">🌊</span>
+          <div class="feature-text">
+            <strong>山海每日律動</strong>
+            <span>16:00 鉛橋海灘衝浪漂浮</span>
           </div>
-        </a>
-
-        <!-- 課程三：哈爸 AI -->
-        <a href="Hapa/index.html" style="text-decoration: none; color: inherit;">
-          <div style="background: linear-gradient(135deg, #1E3A5F 0%, #1E3F33 100%); border-radius: 1.25rem; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(37,99,235,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-            <div>
-              <div style="font-size: 2.5rem; margin-bottom: 1rem;">🤖</div>
-              <div style="display: inline-block; background: rgba(255,255,255,0.15); color: #93C5FD; font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 9999px; letter-spacing: 0.08em; margin-bottom: 0.75rem;">接軌未來 · 實用科技型</div>
-              <h3 style="font-family: var(--font-serif, 'Noto Serif TC', serif); font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; line-height: 1.4;">哈爸 AI 慢活共創營</h3>
-              <p style="font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 1.25rem;">年齡不是距離！用最白話的方式，帶你輕鬆駕馭最新 AI 工具，馬上用在生活與創作中。</p>
-              <ul style="list-style: none; padding: 0; margin: 0;">
-                <li style="font-size: 0.78rem; color: rgba(255,255,255,0.6); padding: 0.2rem 0;">✓ 國家級 AI PM 哈爸親授</li>
-                <li style="font-size: 0.78rem; color: rgba(255,255,255,0.6); padding: 0.2rem 0;">✓ 在地教練手把手陪伴實作</li>
-                <li style="font-size: 0.78rem; color: rgba(255,255,255,0.6); padding: 0.2rem 0;">✓ 山海渡假學制 × 虛實整合</li>
-              </ul>
-            </div>
-            <div style="margin-top: 1.5rem; display: flex; align-items: center; gap: 0.5rem; color: #93C5FD; font-size: 0.82rem; font-weight: 700;">
-              進入 AI 慢活營 <span>➡️</span>
-            </div>
+        </div>
+        <div class="feature-divider"></div>
+        <div class="feature-item">
+          <span class="feature-icon">🌾</span>
+          <div class="feature-text">
+            <strong>以物易物折抵</strong>
+            <span>小農產出折抵共學學費</span>
           </div>
-        </a>
-
+        </div>
+        <div class="feature-divider"></div>
+        <div class="feature-item">
+          <span class="feature-icon">🧘</span>
+          <div class="feature-text">
+            <strong>身心靈共修</strong>
+            <span>舞中禪、音樂與大地工藝</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Latest Event Promo Section (最新活動特報) -->
-  <section class="event-promo-section" id="event-promo" style="padding: 3rem 0 1.5rem; background: var(--bg-sand, #F9F6F0);">
+  <section class="event-promo-section" id="highlights">
     <div class="container">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+      <div class="section-header">
+        <span class="badge badge-amber">🔥 最新即時特報</span>
+        <h2 class="section-title">熱門推薦與近期活動</h2>
+        <p class="section-subtitle">抓住當季的山海節奏，線上打卡 ╳ 實體慢活營，即刻展開行動</p>
+      </div>
+
+      <div class="event-promo-grid">
         
         <!-- Promo 1: AI September 30-Day Activity -->
-        <div class="glass-card" style="position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 1.25rem; padding: 2.25rem; border: 2px solid var(--accent-color, #C86D51); background: linear-gradient(135deg, var(--bg-card) 0%, rgba(200, 109, 81, 0.08) 100%); overflow: hidden; border-radius: 1.5rem; box-shadow: var(--glass-glow);">
-          <div style="position: absolute; top: -50px; right: -50px; width: 140px; height: 140px; background: var(--accent-color, #C86D51); opacity: 0.15; filter: blur(40px); border-radius: 50%;"></div>
-          <div style="z-index: 2;">
-            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent-color, #C86D51); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.35rem 0.85rem; border-radius: 9999px; margin-bottom: 1rem; letter-spacing: 0.05em; text-transform: uppercase;">
-              <span>🔥</span> 9月1日正式起跑 ‧ 30天打卡
+        <div class="promo-card glass-card promo-card-ai">
+          <div class="promo-card-glow"></div>
+          <div class="promo-card-inner">
+            <div class="promo-badge badge-red">
+              <span>🔥</span> 9月1日正式起跑 ‧ 30天打卡共學
             </div>
-            <h2 style="font-family: var(--font-serif, 'Noto Serif TC', serif); font-size: 1.6rem; font-weight: 700; color: var(--text-color, #1E3F33); margin-bottom: 0.75rem; line-height: 1.35;">
+            <h3 class="promo-title">
               用 AI 翻轉人生九月活動
-            </h2>
-            <p style="font-size: 0.92rem; color: var(--text-muted, #666); line-height: 1.6; margin-bottom: 1.25rem;">
-              史丹佛 Fogg 博士小習慣科學 × AI 改變人生 × AI 寫作！YouTube 錄影、臉書文字稿、LINE 即時問答 30 天打卡，同步加開 2天1夜 (3500元) 及 3天2夜 (7000元) 山海慢活實體營。
+            </h3>
+            <p class="promo-desc">
+              史丹佛 Fogg 博士微習慣科學 × AI 翻轉人生 × AI 寫作！YouTube 錄影、臉書文字稿、LINE 即時互動 30 天打卡，同步加開 2天1夜 (3,500元) 及 3天2夜 (7,000元) 都蘭山海慢活實體營。
             </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.88rem; color: var(--text-color, #1E3F33); margin-bottom: 1rem;">
-              <div>📅 <strong>起跑時間：</strong> 9月1日 (二) 全程 30 天</div>
-              <div>👥 <strong>社群模式：</strong> YT / FB / LINE 即時互動</div>
+            <div class="promo-meta-list">
+              <div class="promo-meta-item">
+                <span class="meta-label">📅 起跑時間：</span>
+                <span class="meta-value">9月1日 (二) 全程 30 天</span>
+              </div>
+              <div class="promo-meta-item">
+                <span class="meta-label">👥 社群社團：</span>
+                <span class="meta-value">YT / FB / LINE 即時互助</span>
+              </div>
             </div>
-          </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; z-index: 2;">
-            <a href="ai-september/index.html" class="btn btn-primary" style="display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; padding: 0.75rem 1.5rem; border-radius: 9999px; font-weight: 600; text-decoration: none; color: #fff; background: var(--accent-color, #C86D51); box-shadow: 0 4px 12px rgba(200,109,81,0.25);">
-              查看九月活動專屬頁面 ➡️
-            </a>
-            <a href="ai-september/index.html#register" class="btn btn-secondary" style="display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; padding: 0.75rem 1.5rem; border-radius: 9999px; font-weight: 600; text-decoration: none; border: 1.5px solid var(--accent-color, #C86D51); color: var(--accent-color, #C86D51); background: transparent;">
-              線上報名與領取回函
-            </a>
+            <div class="promo-actions">
+              <a href="ai-september/index.html" class="btn btn-primary">
+                查看九月活動專屬頁面 ➡️
+              </a>
+              <a href="ai-september/index.html#register" class="btn btn-secondary">
+                線上報名與領取回函
+              </a>
+            </div>
           </div>
         </div>
 
         <!-- Promo 2: Dance Zen Performance -->
-        <div class="glass-card" style="position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 1.25rem; padding: 2.25rem; border: 2px solid rgba(13, 115, 119, 0.4); background: linear-gradient(135deg, var(--bg-card) 0%, rgba(13, 115, 119, 0.05) 100%); overflow: hidden; border-radius: 1.5rem; box-shadow: var(--glass-glow);">
-          <div style="position: absolute; top: -50px; right: -50px; width: 140px; height: 140px; background: #0D7377; opacity: 0.15; filter: blur(40px); border-radius: 50%;"></div>
-          <div style="z-index: 2;">
-            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: #0D7377; color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.35rem 0.85rem; border-radius: 9999px; margin-bottom: 1rem; letter-spacing: 0.05em; text-transform: uppercase;">
+        <div class="promo-card glass-card promo-card-zen">
+          <div class="promo-card-glow zen-glow"></div>
+          <div class="promo-card-inner">
+            <div class="promo-badge badge-teal">
               <span>🔔</span> 9月19日特別企劃 ‧ 即將登場
             </div>
-            <h2 style="font-family: var(--font-serif, 'Noto Serif TC', serif); font-size: 1.6rem; font-weight: 700; color: var(--text-color, #1E3F33); margin-bottom: 0.75rem; line-height: 1.35;">
+            <h3 class="promo-title">
               《微瀾漫舞》舞中禪首場演出活動
-            </h2>
-            <p style="font-size: 0.92rem; color: var(--text-muted, #666); line-height: 1.6; margin-bottom: 1.25rem;">
-              親身感受流動美學與動態禪修的融合！由林爰言編創導師引導，將「舞」與「心」交織，帶您在自然的律動中尋回內在的平靜。
+            </h3>
+            <p class="promo-desc">
+              親身感受流動美學與動態禪修的融合！由林爰言編創導師引導，將「舞」與「心」交織，帶您在自然的律動中尋回內在的深層平靜與自我修復。
             </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.88rem; color: var(--text-color, #1E3F33); margin-bottom: 1rem;">
-              <div>📅 <strong>時間：</strong> 9月19日 (六) 上午 10:00</div>
-              <div>📍 <strong>地點：</strong> 舞米山莊</div>
+            <div class="promo-meta-list">
+              <div class="promo-meta-item">
+                <span class="meta-label">📅 演出時間：</span>
+                <span class="meta-value">9月19日 (六) 上午 10:00 ~ 12:00</span>
+              </div>
+              <div class="promo-meta-item">
+                <span class="meta-label">📍 演出地點：</span>
+                <span class="meta-value">都蘭興昌</span>
+              </div>
             </div>
-          </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; z-index: 2;">
-            <a href="yanyan/index.html" class="btn btn-primary" style="display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; padding: 0.75rem 1.5rem; border-radius: 9999px; font-weight: 600; text-decoration: none; color: #fff; background: #0D7377; box-shadow: 0 4px 12px rgba(13,115,119,0.25);">
-              查看演出活動詳情
-            </a>
-            <a href="ai-september/index.html#register" class="btn btn-secondary" style="display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; padding: 0.75rem 1.5rem; border-radius: 9999px; font-weight: 600; text-decoration: none; border: 1.5px solid #0D7377; color: #0D7377; background: transparent;">
-              預約九月營隊與演出 ➡️
-            </a>
+            <div class="promo-actions">
+              <a href="yanyan/index.html" class="btn btn-primary btn-teal">
+                查看演出活動詳情 ➡️
+              </a>
+              <a href="ai-september/index.html?plan=yanyan#register" class="btn btn-secondary">
+                立即免費報名 ➡️
+              </a>
+            </div>
           </div>
         </div>
 
@@ -216,6 +402,7 @@
   <section class="philosophy-section" id="philosophy">
     <div class="container">
       <div class="section-header">
+        <span class="badge">🌿 核心價值</span>
         <h2 class="section-title" id="philosophyTitle">共學與共生精神</h2>
         <p class="section-subtitle" id="philosophySubtitle">結合山海自然環境、人工智慧科技、身心靈療癒與共享經濟</p>
       </div>
@@ -265,18 +452,19 @@
   <section class="schedule-section" id="schedule">
     <div class="container">
       <div class="section-header">
+        <span class="badge">📅 節律與時程</span>
         <h2 class="section-title" id="scheduleTitle">山海共學生態週曆</h2>
         <p class="section-subtitle" id="scheduleSubtitle">規律的生活節奏，在山海與音符中汲取平靜與活力</p>
       </div>
 
-      <div class="daily-notice glass-card" id="dailyNotice" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
-        <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <div class="daily-notice glass-card" id="dailyNotice">
+        <div class="daily-notice-content">
           <span class="notice-icon">🌊</span>
           <div class="notice-text">
             <strong>每日山海節律：</strong> 每天下午 16:00 ｜ 鉛橋海灘衝浪與海洋漂浮（視天候海象狀況進行）
           </div>
         </div>
-        <a href="surfing/index.html" style="background: #0284C7; color: #fff; font-size: 0.82rem; font-weight: 700; padding: 0.35rem 0.9rem; border-radius: 9999px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem; box-shadow: 0 2px 8px rgba(2,132,199,0.3); white-space: nowrap;">
+        <a href="surfing/index.html" class="schedule-action-btn">
           🏄 開啟衝浪專頁 ➡️
         </a>
       </div>
@@ -345,313 +533,381 @@
   <section class="courses-section" id="courses">
     <div class="container">
       <div class="section-header">
+        <span class="badge">📚 課程與工坊地圖</span>
         <h2 class="section-title">共學堂精選課程</h2>
-        <p class="section-subtitle">從硬科技到軟實力，從大地工藝到內在靈性，與大師同頻學習</p>
+        <p class="section-subtitle">從硬科技到軟實力，從大地工藝到內在靈性，與導師同頻學習</p>
       </div>
 
       <div class="courses-grid">
-        <!-- Category: AI & Tech -->
-        <div class="course-category-group">
-          <h3 class="category-title">💻 AI 與慢活科技</h3>
-          <div class="category-grid">
-            <div class="course-card glass-card" style="border: 2px solid var(--accent-color, #C86D51); background: linear-gradient(135deg, rgba(200, 109, 81, 0.06) 0%, rgba(13, 115, 119, 0.06) 100%);">
-              <a href="ai-september/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-                <div>
-                  <div class="course-header">
-                    <span class="course-badge" style="background: var(--accent-color, #C86D51); color: #fff; font-weight: 700;">🔥 九月特選活動</span>
-                    <h4>用 AI 翻轉人生九月活動</h4>
-                  </div>
-                  <p class="course-teacher">9/1 起跑 ‧ 30 天網路打卡 ╳ 實體慢活營</p>
-                  <p class="course-desc">史丹佛 Fogg 博士小習慣科學 × AI 改變人生 × AI 寫作。線上社群（YT/FB/LINE）30 天打卡共學，加開 2天1夜 (3500元) 及 3天2夜 (7000元) 山海慢活營！</p>
-                </div>
-                <div class="card-action" style="margin-top: 15px; font-weight: bold; color: var(--accent-color, #C86D51); font-size: 14px;">
-                  進入活動與報名專頁 ➡️
-                </div>
-              </a>
-            </div>
-            <div class="course-card glass-card" style="border: 1.5px solid rgba(13, 115, 119, 0.4);">
-              <a href="azhong/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-                <div>
-                  <div class="course-header">
-                    <span class="course-badge badge-green" style="background: linear-gradient(90deg, #0D7377, #1B4F72); color: #fff;">⭐ 旗艦課程</span>
-                    <h4>用 AI 翻轉人生</h4>
-                  </div>
-                  <p class="course-teacher">講師：阿中 (陳豊鍾)</p>
-                  <p class="course-desc">將大腦與 AI 深度連結。不談程式代碼，手把手引導學員運用 AI 工具提煉健康紅利、創作紅利與時間紅利，實現第二人生認知升級。</p>
-                </div>
-                <div class="card-action" style="margin-top: 15px; font-weight: bold; color: #0D7377; font-size: 14px;">
-                  開啟專屬網頁 ➡️
-                </div>
-              </a>
-            </div>
-            <div class="course-card glass-card" style="border: 1.5px solid rgba(37, 99, 235, 0.4);">
-              <a href="Hapa/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-                <div>
-                  <div class="course-header">
-                    <span class="course-badge badge-blue" style="background: linear-gradient(90deg, #1E3A5F, #2563EB); color: #fff;">⭐ 旗艦課程</span>
-                    <h4>哈爸 AI 慢活共創營</h4>
-                  </div>
-                  <p class="course-teacher">講師：哈爸 (許武龍) ╳ 在地助教群</p>
-                  <p class="course-desc">由國家級 AI (TAIDE) 第一代 PM 哈爸授課，配合在地陪伴。聚焦於寫書創作、小農進銷存與民宿社群行銷的實戰落地。</p>
-                </div>
-                <div class="card-action" style="margin-top: 15px; font-weight: bold; color: var(--accent-color, #C86D51); font-size: 14px;">
-                  開啟專屬網頁 ➡️
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Category: Art & Culture -->
-        <div class="course-category-group">
-          <h3 class="category-title">🔨 工藝、寫作與藝術</h3>
-          <div class="category-grid">
-            <div class="course-card glass-card" style="border: 1.5px solid rgba(140, 104, 73, 0.4);">
-              <a href="jianggm/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-                <div>
-                  <div class="course-header">
-                    <span class="course-badge badge-amber" style="background: linear-gradient(90deg, #3D2B1F, #8C6849); color: #fff;">⭐ 旗艦課程</span>
-                    <h4>人生寫作課</h4>
-                  </div>
-                  <p class="course-teacher">講師：江冠明</p>
-                  <p class="course-desc">結合語音錄音與 AI 整理，帶領學員挖掘並撰寫自己的生命故事，將大半輩子累積的人生歷練凝結成精采書籍。</p>
-                </div>
-                <div class="card-action" style="margin-top: 15px; font-weight: bold; color: #8C6849; font-size: 14px;">
-                  開啟專屬網頁 ➡️
-                </div>
-              </a>
-            </div>
-            <div class="course-card glass-card">
-              <a href="yangguangdao/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-                <div>
-                  <div class="course-header">
-                    <span class="course-badge badge-purple">音樂藝術</span>
-                    <h4>古典吉他與民謠</h4>
-                  </div>
-                  <p class="course-teacher">講師：陽光道</p>
-                  <p class="course-desc">學習古典吉他基礎彈撥與樂理。採用阿美族直覺教學法，在都蘭的微風中撥動琴弦，唱出內在最純粹的生命感動。</p>
-                </div>
-                <div class="card-action" style="margin-top: 15px; font-weight: bold; color: var(--accent-color, #C86D51); font-size: 14px;">
-                  開啟專屬網頁 ➡️
-                </div>
-              </a>
-            </div>
-            <div class="course-card glass-card">
-              <a href="meilan/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-                <div>
-                  <div class="course-header">
-                    <span class="course-badge badge-purple">每月常態</span>
-                    <h4>用月琴吟恆春古調</h4>
-                  </div>
-                  <p class="course-teacher">講師：美蘭 (每月第一週週二上午 8:00)</p>
-                  <p class="course-desc">在莊園晨光中，抱起傳統月琴，吟唱悠揚的恆春民謠與古調，進行聲音採集與土地靈魂的文化對話。</p>
-                </div>
-                <div class="card-action" style="margin-top: 15px; font-weight: bold; color: var(--accent-color, #C86D51); font-size: 14px;">
-                  開啟專屬網頁 ➡️
-                </div>
-              </a>
-            </div>
-            <div class="course-card glass-card">
-              <a href="yangyang/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-                <div>
-                  <div class="course-header">
-                    <span class="course-badge badge-purple">熱門體驗</span>
-                    <h4>陶藝創作</h4>
-                  </div>
-                  <p class="course-teacher">講師：洋洋</p>
-                  <p class="course-desc">雙手觸摸黏土的芬芳，在捏塑與拉坯中體驗土的延展，並透過高溫燒製將個人的心境定格為實體陶藝。</p>
-                </div>
-                <div class="card-action" style="margin-top: 15px; font-weight: bold; color: var(--accent-color, #C86D51); font-size: 14px;">
-                  開啟專屬網頁 ➡️
-                </div>
-              </a>
-            </div>
-            <div class="course-card glass-card">
-              <a href="woodworking/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-                <div>
-                  <div class="course-header">
-                    <span class="course-badge badge-amber" style="background: #8C6849; color: #fff;">不定期召開</span>
-                    <h4>手作木工教室</h4>
-                  </div>
-                  <p class="course-teacher">講師：阿中</p>
-                  <p class="course-desc">不定期小班召開！手持工具進行木工修繕、鋸木實作、舊料與漂流木再生，修復器物也修復內心。</p>
-                </div>
-                <div class="card-action" style="margin-top: 15px; font-weight: bold; color: #8C6849; font-size: 14px;">
-                  開啟專屬網頁 ➡️
-                </div>
-              </a>
-            </div>
-            <div class="course-card glass-card">
-              <a href="calligraphy/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-                <div>
-                  <div class="course-header">
-                    <span class="course-badge badge-purple" style="background: #B93A32; color: #fff;">心靈書寫</span>
-                    <h4>自由心靈書法</h4>
-                  </div>
-                  <p class="course-teacher">引導：阿中</p>
-                  <p class="course-desc">丟掉永字八法，找回自己；捨棄比較美醜，重建獨特的個人風格。在山海間以墨修心，自由揮灑。</p>
-                </div>
-                <div class="card-action" style="margin-top: 15px; font-weight: bold; color: #B93A32; font-size: 14px;">
-                  開啟專屬網頁 ➡️
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Category: Ecology & Sea -->
-        <div class="course-category-group">
-          <h3 class="category-title">🌱 生態與山海實作</h3>
-          <div class="category-grid">
-            <div class="course-card glass-card">
-              <a href="shibinglin/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-                <div>
-                  <div class="course-header">
-                    <span class="course-badge badge-purple">深度踏查</span>
-                    <h4>綠光食物森林學校</h4>
-                  </div>
-                  <p class="course-teacher">講師：施炳霖</p>
-                  <p class="course-desc">基於永續農法（Permaculture），在自然林下建構豐富的可食用生態圈，學習如何與自然合作獲取豐盛食物。</p>
-                </div>
-                <div class="card-action" style="margin-top: 15px; font-weight: bold; color: var(--accent-color, #C86D51); font-size: 14px;">
-                  開啟專屬網頁 ➡️
-                </div>
-              </a>
-            </div>
-            <div class="course-card glass-card">
-              <a href="dulanshan/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-                <div>
-                  <div class="course-header">
-                    <span class="course-badge badge-purple">每月常態</span>
-                    <h4>都蘭山定點觀察</h4>
-                  </div>
-                  <p class="course-teacher">主辦：荒野台東分會 ‧ 施炳霖老師</p>
-                  <p class="course-desc">每月第一個週日舉辦！免費用免報名。深入都蘭山步道進行定點踏查，記錄鳥類、地方植物與四季生態變遷。</p>
-                </div>
-                <div class="card-action" style="margin-top: 15px; font-weight: bold; color: var(--accent-color, #C86D51); font-size: 14px;">
-                  開啟專屬網頁 ➡️
-                </div>
-              </a>
-            </div>
-            <div class="course-card glass-card">
-              <a href="surfing/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-                <div>
-                  <div class="course-header">
-                    <span class="course-badge badge-amber" style="background: #0284C7; color: #fff;">每日海灘</span>
-                    <h4>衝浪與海洋漂浮</h4>
-                  </div>
-                  <p class="course-teacher">引導：阿中 (每日下午 16:00 鉛橋海灘)</p>
-                  <p class="course-desc">藍色也是很療癒！與太平洋親密接觸，隨浪漂浮放空自我。落實沙灘每天一個寶特瓶回收，以微行動守護海洋。</p>
-                </div>
-                <div class="card-action" style="margin-top: 15px; font-weight: bold; color: #0284C7; font-size: 14px;">
-                  開啟專屬網頁 ➡️
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Category: Body & Mind -->
-        <div class="course-category-group">
-          <h3 class="category-title">🧘 身心靈探索與成長</h3>
-          <div class="category-grid">
-            <div class="course-card glass-card">
-              <a href="yanyan/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-                <div>
-                  <div class="course-header">
-                    <span class="course-badge badge-purple">新增課程</span>
-                    <h4>氣韻漫舞</h4>
-                  </div>
-                  <p class="course-teacher">講師：林爰言</p>
-                  <p class="course-desc">將深厚美學素養融入肢體開發，透過氣韻漫舞與禪修相融（動態禪修），引導您修復身心並體驗身心合一的流動藝術。</p>
-                </div>
-                <div class="card-action" style="margin-top: 15px; font-weight: bold; color: var(--accent-color, #C86D51); font-size: 14px;">
-                  開啟專屬網頁 ➡️
-                </div>
-              </a>
-            </div>
-            <div class="course-card glass-card">
-              <div class="course-header">
-                <h4>身心靈探索</h4>
-              </div>
-              <p class="course-teacher">講師：gunja</p>
-              <p class="course-desc">透過呼吸調息、內觀冥想與自我覺察練習，釋放身體經年的緊繃，重整心靈節律以接受生命能量。</p>
-            </div>
-            <div class="course-card glass-card">
-              <div class="course-header">
-                <h4>靈魂治療</h4>
-              </div>
-              <p class="course-teacher">講師：Rebaca</p>
-              <p class="course-desc">聚焦於內在創傷修復、能量平衡引導，協助學員與潛意識對話，化解靈魂深處的糾結與負擔。</p>
-            </div>
-            <div class="course-card glass-card">
-              <a href="huijun/index.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-                <div>
-                  <div class="course-header">
-                    <span class="course-badge badge-purple">心靈音樂</span>
-                    <h4>療癒角落 (木沐沐)</h4>
-                  </div>
-                  <p class="course-teacher">講師：蕙君 (木沐沐)</p>
-                  <p class="course-desc">在白色鋼琴流淌的 438Hz 呢喃琴聲與長桌上散發大地氣息的陶土中，結合聽琴、捏陶與植物拓印手作，釋放旅人疲憊的心靈。</p>
-                </div>
-                <div class="card-action" style="margin-top: 15px; font-weight: bold; color: var(--accent-color, #C86D51); font-size: 14px;">
-                  開啟專屬網頁 ➡️
-                </div>
-              </a>
-            </div>
-            <div class="course-card glass-card">
-              <a href="https://sites.google.com/view/energycompass/%E9%A6%96%E9%A0%81" target="_blank" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-                <div>
-                  <div class="course-header">
-                    <h4>職涯發展規劃</h4>
-                  </div>
-                  <p class="course-teacher">講師：林玉鳳</p>
-                  <p class="course-desc">針對人生下半場的轉折或職場生涯轉換，引導您釐清內在真實渴望，重新繪製具備熱情與方向的職涯藍圖。</p>
-                </div>
-                <div class="card-action" style="margin-top: 15px; font-weight: bold; color: var(--accent-color, #C86D51); font-size: 14px;">
-                  開啟專屬網頁 ➡️
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Combo Package Promo Card (共學堂三部曲組合推廣) -->
-      <div style="margin-top: 3.5rem; background: linear-gradient(135deg, rgba(30, 63, 51, 0.95) 0%, rgba(18, 40, 32, 0.98) 100%); border-radius: 1.75rem; border: 2px solid var(--accent-color, #C86D51); padding: 2.5rem 2rem; box-shadow: 0 16px 48px rgba(0,0,0,0.25); position: relative; overflow: hidden;">
-        <div style="position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: var(--accent-color, #C86D51); opacity: 0.12; filter: blur(40px); border-radius: 50%;"></div>
         
-        <div style="position: relative; z-index: 2; display: flex; flex-direction: column; md:flex-row; gap: 2rem; align-items: center; justify-content: space-between;">
-          <div style="flex: 1;">
-            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent-color, #C86D51); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.3rem 0.85rem; border-radius: 9999px; letter-spacing: 0.05em; margin-bottom: 1rem;">
-              🎯 組合推廣 · 全方位賦能
-            </div>
-            <h3 style="font-family: var(--font-serif, 'Noto Serif TC', serif); font-size: 1.6rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; line-height: 1.4;">
-              共學堂三部曲：重塑心智 × 記錄歲月 × 接軌未來
-            </h3>
-            <p style="font-size: 0.92rem; color: rgba(255,255,255,0.8); line-height: 1.7; max-width: 680px; margin-bottom: 1.25rem;">
-              不論是想從低谷逆轉找回生命主控權（阿中）、把大半生閱歷淬鍊成書（江冠明），或是輕鬆駕馭最新 AI 工具邁向一人公司生產力（哈爸），三部曲為您提供從內在心智到外在數位技能的完整進化方案。
-            </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.85rem; color: #6EE7B7;">
-              <span>🌱 <strong>阿中：</strong>微習慣與身心重塑</span>
-              <span style="color: rgba(255,255,255,0.3);">|</span>
-              <span style="color: #FCD34D;">✍️ <strong>江冠明：</strong>回憶錄與生命書寫</span>
-              <span style="color: rgba(255,255,255,0.3);">|</span>
-              <span style="color: #93C5FD;">🤖 <strong>哈爸：</strong>未來技能與 AI 賦能</span>
-            </div>
+        <!-- Category 1: AI & Tech -->
+        <div class="course-category-group">
+          <div class="category-header-wrap">
+            <h3 class="category-title">💻 AI 與慢活科技</h3>
+            <span class="category-desc">運用最新 AI 工具打造個人生產力與第二人生翻轉</span>
           </div>
-          <div style="display: flex; flex-direction: column; gap: 0.75rem; min-width: 200px; width: 100%; max-width: 240px;">
-            <a href="#flagship" style="display: inline-flex; align-items: center; justify-content: center; background: var(--accent-color, #C86D51); color: #fff; font-weight: 700; font-size: 0.9rem; padding: 0.85rem 1.5rem; border-radius: 9999px; text-decoration: none; text-align: center; transition: opacity 0.2s; box-shadow: 0 4px 16px rgba(200, 109, 81, 0.4);">
-              查看三部曲詳情 🌟
-            </a>
-            <a href="ai-september/index.html#register" style="display: inline-flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); color: #fff; font-weight: 600; font-size: 0.85rem; padding: 0.75rem 1.5rem; border-radius: 9999px; text-decoration: none; text-align: center; border: 1px solid rgba(255,255,255,0.25); transition: background 0.2s;">
-              預約九月活動與共學 🌟
-            </a>
+          <div class="category-grid">
+            
+            <!-- 九月特選活動 -->
+            <div class="course-card glass-card course-featured-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-hot">🔥 九月特選活動</span>
+                  <h4>用 AI 翻轉人生九月活動</h4>
+                </div>
+                <p class="course-teacher">9/1 起跑 ‧ 30 天網路打卡 ╳ 實體慢活營</p>
+                <p class="course-desc">史丹佛 Fogg 博士小習慣科學 × AI 改變人生 × AI 寫作。線上社群（YT/FB/LINE）30 天打卡共學，加開 2天1夜 (3500元) 及 3天2夜 (7000元) 山海慢活營！</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="ai-september/index.html" class="btn btn-course btn-course-accent">
+                  進入活動與報名專頁 ➡️
+                </a>
+              </div>
+            </div>
+
+            <!-- 阿中翻轉人生 -->
+            <div class="course-card glass-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-teal">🌱 身心重塑</span>
+                  <h4>用 AI 翻轉人生</h4>
+                </div>
+                <p class="course-teacher">講師：阿中 (陳豊鍾)</p>
+                <p class="course-desc">將大腦與 AI 深度連結。不談晦澀程式代碼，手把手引導學員運用 AI 工具提煉健康紅利、創作紅利與時間紅利，實現第二人生認知升級。</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="azhong/index.html" class="btn btn-course btn-course-teal">
+                  開啟專屬網頁 ➡️
+                </a>
+              </div>
+            </div>
+
+            <!-- 哈爸 AI 慢活共創營 -->
+            <div class="course-card glass-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-blue">🤖 實用科技</span>
+                  <h4>哈爸 AI 慢活共創營</h4>
+                </div>
+                <p class="course-teacher">講師：哈爸 (許武龍) ╳ 在地助教群</p>
+                <p class="course-desc">由國家級 AI (TAIDE) 第一代 PM 哈爸親自授課，配合在地助教手把手陪伴。聚焦於寫書創作、小農進銷存與民宿社群行銷的實戰落地。</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="Hapa/index.html" class="btn btn-course btn-course-blue">
+                  開啟專屬網頁 ➡️
+                </a>
+              </div>
+            </div>
+
           </div>
         </div>
-      </div>
 
+        <!-- Category 2: Art & Culture -->
+        <div class="course-category-group">
+          <div class="category-header-wrap">
+            <h3 class="category-title">🔨 工藝、寫作與藝術</h3>
+            <span class="category-desc">用雙手觸摸泥土與墨香，凝鍊個人生命故事</span>
+          </div>
+          <div class="category-grid">
+            
+            <!-- 江冠明人生寫作課 -->
+            <div class="course-card glass-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-amber">✍️ 人文感性</span>
+                  <h4>人生寫作課</h4>
+                </div>
+                <p class="course-teacher">講師：江冠明</p>
+                <p class="course-desc">結合語音錄音與 AI 整理，帶領學員挖掘並撰寫自己的生命故事，將大半輩子累積的人生歷練凝結成精采書籍與永恆篇章。</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="jianggm/index.html" class="btn btn-course btn-course-amber">
+                  開啟專屬網頁 ➡️
+                </a>
+              </div>
+            </div>
+
+            <!-- 古典吉他與民謠 -->
+            <div class="course-card glass-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-purple">音樂藝術</span>
+                  <h4>古典吉他與民謠</h4>
+                </div>
+                <p class="course-teacher">講師：陽光道</p>
+                <p class="course-desc">學習古典吉他基礎彈撥與樂理。採用阿美族直覺教學法，在都蘭的微風中撥動琴弦，唱出內在最純粹的生命感動。</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="yangguangdao/index.html" class="btn btn-course btn-course-purple">
+                  開啟專屬網頁 ➡️
+                </a>
+              </div>
+            </div>
+
+            <!-- 用月琴吟恆春古調 -->
+            <div class="course-card glass-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-purple">每月常態</span>
+                  <h4>用月琴吟恆春古調</h4>
+                </div>
+                <p class="course-teacher">講師：美蘭 (每月第一週週二上午 8:00)</p>
+                <p class="course-desc">在莊園晨光中，抱起傳統月琴，吟唱悠揚的恆春民謠與古調，進行聲音採集與土地靈魂的文化對話。</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="meilan/index.html" class="btn btn-course btn-course-purple">
+                  開啟專屬網頁 ➡️
+                </a>
+              </div>
+            </div>
+
+            <!-- 陶藝創作 -->
+            <div class="course-card glass-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-purple">大地體驗</span>
+                  <h4>陶藝創作</h4>
+                </div>
+                <p class="course-teacher">講師：洋洋</p>
+                <p class="course-desc">雙手觸摸黏土的芬芳，在捏塑與拉坯中體驗土的延展，並透過高溫燒製將個人的心境定格為實體陶藝。</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="yangyang/index.html" class="btn btn-course btn-course-purple">
+                  開啟專屬網頁 ➡️
+                </a>
+              </div>
+            </div>
+
+            <!-- 手作木工教室 -->
+            <div class="course-card glass-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-amber">小班召開</span>
+                  <h4>手作木工教室</h4>
+                </div>
+                <p class="course-teacher">講師：阿中</p>
+                <p class="course-desc">手持工具進行木工修繕、鋸木實作、舊料與漂流木再生，修復器物也修復內心，重拾手作生活的溫度。</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="woodworking/index.html" class="btn btn-course btn-course-amber">
+                  開啟專屬網頁 ➡️
+                </a>
+              </div>
+            </div>
+
+            <!-- 自由心靈書法 -->
+            <div class="course-card glass-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-red">心靈書寫</span>
+                  <h4>自由心靈書法</h4>
+                </div>
+                <p class="course-teacher">引導：阿中</p>
+                <p class="course-desc">丟掉永字八法，找回自己；捨棄比較美醜，重建獨特的個人風格。在山海間以墨修心，自由揮灑。</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="calligraphy/index.html" class="btn btn-course btn-course-red">
+                  開啟專屬網頁 ➡️
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Category 3: Ecology & Sea -->
+        <div class="course-category-group">
+          <div class="category-header-wrap">
+            <h3 class="category-title">🌱 生態與山海實作</h3>
+            <span class="category-desc">走出戶外，走入都蘭山與太平洋的大自然教室</span>
+          </div>
+          <div class="category-grid">
+            
+            <!-- 綠光食物森林學校 -->
+            <div class="course-card glass-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-teal">永續農法</span>
+                  <h4>綠光食物森林學校</h4>
+                </div>
+                <p class="course-teacher">講師：施炳霖</p>
+                <p class="course-desc">基於樸門永續農法（Permaculture），在自然林下建構豐富的可食用生態圈，學習如何與自然合作獲取豐盛食物。</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="shibinglin/index.html" class="btn btn-course btn-course-teal">
+                  開啟專屬網頁 ➡️
+                </a>
+              </div>
+            </div>
+
+            <!-- 都蘭山定點觀察 -->
+            <div class="course-card glass-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-teal">每月常態</span>
+                  <h4>都蘭山定點觀察</h4>
+                </div>
+                <p class="course-teacher">主辦：荒野台東分會 ‧ 施炳霖老師</p>
+                <p class="course-desc">每月第一個週日舉辦！免費用免報名。深入都蘭山步道進行定點踏查，記錄鳥類、地方植物與四季生態變遷。</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="dulanshan/index.html" class="btn btn-course btn-course-teal">
+                  開啟專屬網頁 ➡️
+                </a>
+              </div>
+            </div>
+
+            <!-- 衝浪與海洋漂浮 -->
+            <div class="course-card glass-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-blue">每日海灘</span>
+                  <h4>衝浪與海洋漂浮</h4>
+                </div>
+                <p class="course-teacher">引導：阿中 (每日下午 16:00 鉛橋海灘)</p>
+                <p class="course-desc">藍色也是很療癒！與太平洋親密接觸，隨浪漂浮放空自我。落實沙灘每天一個寶特瓶回收，以微行動守護海洋。</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="surfing/index.html" class="btn btn-course btn-course-blue">
+                  開啟專屬網頁 ➡️
+                </a>
+              </div>
+            </div>
+
+            <!-- 順美農場 -->
+            <div class="course-card glass-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-teal">在地友善</span>
+                  <h4>順美自然農場</h4>
+                </div>
+                <p class="course-teacher">在地小農夥伴</p>
+                <p class="course-desc">順應自然節氣耕作，以友善大地之法生產稻米與果物，實踐人與泥土的親密連結與在地好食。</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="shunmei-farm/index.html" class="btn btn-course btn-course-teal">
+                  開啟專屬網頁 ➡️
+                </a>
+              </div>
+            </div>
+
+            <!-- 水往上流 -->
+            <div class="course-card glass-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-blue">地景探索</span>
+                  <h4>水往上流生態踏查</h4>
+                </div>
+                <p class="course-teacher">都蘭共學生態小組</p>
+                <p class="course-desc">探索都蘭著名奇景水脈與周邊植被生態，理解都蘭沖積扇地質構造與自然景觀的奧秘。</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="water2000/index.html" class="btn btn-course btn-course-blue">
+                  開啟專屬網頁 ➡️
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Category 4: Body & Mind -->
+        <div class="course-category-group">
+          <div class="category-header-wrap">
+            <h3 class="category-title">🧘 身心靈探索與成長</h3>
+            <span class="category-desc">傾聽內在聲音，修復疲憊心靈，找回自我平衡</span>
+          </div>
+          <div class="category-grid">
+            
+            <!-- 氣韻漫舞 -->
+            <div class="course-card glass-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-purple">動態禪修</span>
+                  <h4>氣韻漫舞 ‧ 舞中禪</h4>
+                </div>
+                <p class="course-teacher">導師：林爰言</p>
+                <p class="course-desc">將深厚美學素養融入肢體開發，透過氣韻漫舞與動態禪修相融，引導您修復身心並體驗身心合一的流動藝術。</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="yanyan/index.html" class="btn btn-course btn-course-purple">
+                  開啟專屬網頁 ➡️
+                </a>
+              </div>
+            </div>
+
+            <!-- 身心靈探索 -->
+            <div class="course-card glass-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-purple">常態內觀</span>
+                  <h4>身心靈探索</h4>
+                </div>
+                <p class="course-teacher">講師：gunja (每週二 10:30)</p>
+                <p class="course-desc">透過呼吸調息、內觀冥想與自我覺察練習，釋放身體經年的緊繃，重整心靈節律以接受生命豐盛的能量。</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="#register" class="btn btn-course btn-course-purple">
+                  📍 莊園現場常態參與 ➡️
+                </a>
+              </div>
+            </div>
+
+            <!-- 靈魂治療 -->
+            <div class="course-card glass-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-purple">能量引導</span>
+                  <h4>靈魂治療</h4>
+                </div>
+                <p class="course-teacher">講師：Rebaca</p>
+                <p class="course-desc">聚焦於內在創傷修復、能量平衡引導，協助學員與潛意識深層對話，化解靈魂深處的糾結與沉重負擔。</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="#register" class="btn btn-course btn-course-purple">
+                  🔮 預約個別諮詢 ➡️
+                </a>
+              </div>
+            </div>
+
+            <!-- 療癒角落 (木沐沐) -->
+            <div class="course-card glass-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-purple">心靈音樂</span>
+                  <h4>療癒角落 (木沐沐)</h4>
+                </div>
+                <p class="course-teacher">講師：蕙君 (木沐沐)</p>
+                <p class="course-desc">在白色鋼琴流淌的 438Hz 呢喃琴聲與長桌上散發大地氣息的陶土中，結合聽琴、捏陶與植物拓印手作，釋放旅人疲憊的心靈。</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="huijun/index.html" class="btn btn-course btn-course-purple">
+                  開啟專屬網頁 ➡️
+                </a>
+              </div>
+            </div>
+
+            <!-- 職涯發展規劃 -->
+            <div class="course-card glass-card">
+              <div class="course-card-content">
+                <div class="course-header">
+                  <span class="course-badge badge-blue">第二人生</span>
+                  <h4>職涯發展規劃</h4>
+                </div>
+                <p class="course-teacher">講師：林玉鳳</p>
+                <p class="course-desc">針對人生下半場的轉折或職場生涯轉換，引導您釐清內在真實渴望，重新繪製具備熱情與方向的職涯藍圖。</p>
+              </div>
+              <div class="course-card-footer">
+                <a href="yufeng/index.html" class="btn btn-course btn-course-blue">
+                  開啟專屬網頁 ➡️
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -659,8 +915,9 @@
   <section class="stories-section" id="stories">
     <div class="container">
       <div class="section-header">
+        <span class="badge">💡 真實案例</span>
         <h2 class="section-title" id="storiesTitle">都蘭共學實戰故事</h2>
-        <p class="section-subtitle" id="storiesSubtitle">AI 在都蘭不是冰冷的科技，而是連接人與人、人與土地的溫度</p>
+        <p class="section-subtitle" id="storiesSubtitle">AI 在都蘭不是冰冷的科技，而是連接人與人、人與土地的溫暖陪伴</p>
       </div>
 
       <!-- Carousel Container -->
@@ -677,7 +934,7 @@
               <h3>📱 救回貴美阿嬤鎖死的三星手機</h3>
               <p class="story-meta">💡 都蘭共學堂第二堂課的真實數位救援冒險</p>
               <div class="story-text">
-                貴美阿嬤在課堂上意外設定了開機密碼並忘記，手機瞬間鎖死變「磚頭」。由於是美版二手機無購買證明，官方維修站直接拒收。阿中教練沒有查死板的手冊，而是把 Google Gemini 當成「數位雪巴嚮導」進行實時排障重置的溫暖場景。Gemini 精確指引「必須先接上傳輸線連接電腦，再長按特定按鍵組合 7 秒」才能順利進入 Android 工程模式，最終成功強制重置手機，保住了阿嬤的手機與笑臉！
+                貴美阿嬤在課堂上意外設定了開機密碼並忘記，手機瞬間鎖死變「磚頭」。由於是美版二手機無購買證明，官方維修站直接拒收。阿中教練沒有查死板的手冊，而是把 Google Gemini 當成「數位雪巴嚮導」進行實時排障重置。Gemini 精確指引「必須先接上傳輸線連接電腦，再長按特定按鍵組合 7 秒」才能順利進入 Android 工程模式，最終成功強制重置手機，保住了阿嬤的手機與笑臉！
               </div>
               <div class="story-footer">
                 <span class="story-highlight">啟示：AI 提供的是「互動決策」而非死板的百科全書，也是長輩學習的最暖安全網。</span>
@@ -720,7 +977,7 @@
                 阿中教練利用 NotebookLM 作為個人「黃金提煉機」，成功把人生閱歷轉化為四桶金：第一桶「健康紅利」，用 AI 精準分析個人健檢並監控健康；第二桶「財經冷靜劑」，篩選紛雜的財經新聞以做出理智投資；第三桶「創作自我實現」，把語音紀錄、靈感寫成多本書籍與播客；第四桶「時間紅利」，讓 AI 託管繁重行政，省下數天時間去海邊衝浪與生活。
               </div>
               <div class="story-footer">
-                <span class="story-highlight">啟示：學習是「私有化」的自我成長，有了 AI 廚房，人人都可自主掌控人生的主廚。</span>
+                <span class="story-highlight">啟示：學習是「私有化」的自我成長，有了 AI 廚房，人人人都可以自主掌控人生的主廚。</span>
               </div>
             </div>
           </div>
@@ -741,19 +998,21 @@
   <section class="stores-section" id="stores">
     <div class="container">
       <div class="section-header">
+        <span class="badge">🏪 共享市集</span>
         <h2 class="section-title">都蘭共生商店</h2>
-        <p class="section-subtitle">共享社區的實體物產、數位智慧與生活工具資源</p>
+        <p class="section-subtitle">共享社區的實體物產、數位智慧出版與生活工具資源</p>
       </div>
 
       <!-- Store Tabs Navigation -->
       <div class="store-tabs">
         <button class="store-tab-btn active" data-tab="physical">🏪 實體商店</button>
-        <button class="store-tab-btn" data-tab="digital">💾 數位商店</button>
-        <button class="store-tab-btn" data-tab="rental">🚲 出租商店</button>
+        <button class="store-tab-btn" data-tab="digital">💾 數位新書</button>
+        <button class="store-tab-btn" data-tab="rental">🚲 出租共享</button>
       </div>
 
       <!-- Store Panels Content -->
       <div class="store-panels">
+        
         <!-- Panel 1: Physical Store -->
         <div class="store-panel active" id="store-panel-physical">
           <div class="store-grid">
@@ -796,9 +1055,10 @@
         <!-- Panel 2: Digital Store -->
         <div class="store-panel" id="store-panel-digital">
           <div class="store-grid">
+            
             <!-- 2026 重磅新作出售：人生70才開始 -->
-            <div class="store-card glass-card" style="border: 2px solid rgba(16, 185, 129, 0.5); position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(18, 40, 32, 0.95), rgba(30, 63, 51, 0.95)); color: #fff;">
-              <div style="position: absolute; top: 12px; right: 12px; background: #10B981; color: #fff; font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px;">🔥 2026 新書出售</div>
+            <div class="store-card glass-card store-card-highlight">
+              <div class="card-badge-pill badge-green">🔥 2026 新書出售</div>
               <div class="store-card-visual" style="padding-top: 0.5rem;">
                 <img src="assets/book2_cover.jpg" alt="人生70才開始" style="max-height: 110px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.4); margin: 0 auto; display: block;">
               </div>
@@ -806,14 +1066,14 @@
                 <h4 style="color: #6EE7B7;">《人生70才開始》新書出售</h4>
                 <p class="store-card-price" style="color: #FBBF24; font-weight: 800;">NT$ 99 <span class="price-unit" style="color: rgba(255,255,255,0.7);">/ 全書完整版 (Word/PDF/EPUB)</span></p>
                 <p class="store-card-desc" style="color: rgba(255,255,255,0.85);">阿鐘下半場人生實踐：身心靈修復、好油飲食、周冠男指數化投資、流浪犬小黑生命課與配得豐盛哲學。</p>
-                <button class="btn-add-to-cart" style="background: #C86D51; color: #fff; border-color: #C86D51;" onclick="addToCart('book2', '《人生70才開始》全書完整版', 99, '本', 'assets/book2_cover.jpg')">
+                <button class="btn-add-to-cart" style="background: var(--accent-color); color: #fff; border-color: var(--accent-color);" onclick="addToCart('book2', '《人生70才開始》全書完整版', 99, '本', 'assets/book2_cover.jpg')">
                   🛒 加入購物車 (NT$ 99)
                 </button>
-                <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem;">
-                  <a href="book2/index.html" class="btn btn-secondary" style="flex: 1; font-size: 0.75rem; padding: 0.35rem 0.6rem; border-radius: 9999px; text-align: center; text-decoration: none; border-color: rgba(255,255,255,0.3); color: #fff;">
+                <div class="book-card-links">
+                  <a href="book2/index.html" class="btn btn-secondary">
                     📖 查看新書專頁
                   </a>
-                  <a href="book2/index.html#chapters" class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.6rem; border-radius: 9999px; text-align: center; text-decoration: none; border-color: rgba(255,255,255,0.3); color: #fff;">
+                  <a href="book2/index.html#chapters" class="btn btn-secondary">
                     📋 16章大綱
                   </a>
                 </div>
@@ -821,23 +1081,23 @@
             </div>
 
             <!-- 第一部：從酒鬼到AI作家 -->
-            <div class="store-card glass-card" style="border: 2px solid rgba(200, 109, 81, 0.4); position: relative; overflow: hidden;">
-              <div style="position: absolute; top: 12px; right: 12px; background: #C86D51; color: #fff; font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px;">⭐ 熱銷推薦</div>
+            <div class="store-card glass-card">
+              <div class="card-badge-pill badge-accent">⭐ 熱銷推薦</div>
               <div class="store-card-visual" style="padding-top: 0.5rem;">
                 <img src="assets/book_cover.png" alt="從酒鬼到AI作家" style="max-height: 110px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); margin: 0 auto; display: block;">
               </div>
               <div class="store-card-body">
                 <h4>《從酒鬼到AI作家》電子書</h4>
-                <p class="store-card-price" style="color: #C86D51; font-weight: 800;">NT$ 99 <span class="price-unit">/ 全書完整版 (EPUB & PDF)</span></p>
+                <p class="store-card-price" style="color: var(--accent-color); font-weight: 800;">NT$ 99 <span class="price-unit">/ 全書完整版 (EPUB & PDF)</span></p>
                 <p class="store-card-desc">阿鐘70歲重生奇蹟：從酒精泥淖、福格微習慣到人機協作14天出版實踐。內含 EPUB 流動版與 PDF 精編版。</p>
                 <button class="btn-add-to-cart" onclick="addToCart('book1', '《從酒鬼到AI作家》電子書', 99, '本', 'assets/book_cover.png')">
                   🛒 加入購物車 (NT$ 99)
                 </button>
-                <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem;">
-                  <a href="book/index.html" class="btn btn-secondary" style="flex: 1; font-size: 0.75rem; padding: 0.35rem 0.6rem; border-radius: 9999px; text-align: center; text-decoration: none;">
+                <div class="book-card-links">
+                  <a href="book/index.html" class="btn btn-secondary">
                     📖 查看專頁
                   </a>
-                  <a href="book/sample.pdf" target="_blank" class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.6rem; border-radius: 9999px; text-align: center; text-decoration: none;">
+                  <a href="book/sample.pdf" target="_blank" class="btn btn-secondary">
                     📄 免費試閱
                   </a>
                 </div>
@@ -845,8 +1105,8 @@
             </div>
 
             <!-- 公益寫作計畫：筆尖上的重生 -->
-            <div class="store-card glass-card" style="border: 2px solid rgba(212, 175, 55, 0.5); position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(28, 25, 23, 0.95), rgba(41, 37, 36, 0.95)); color: #fff;">
-              <div style="position: absolute; top: 12px; right: 12px; background: #D97706; color: #fff; font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px;">🕊️ 公益預售</div>
+            <div class="store-card glass-card store-card-warm">
+              <div class="card-badge-pill badge-amber">🕊️ 公益預售</div>
               <div class="store-card-visual" style="padding-top: 0.5rem;">
                 <img src="assets/pen_rebirth_cover.jpg" alt="高牆內的血痕與微光" style="max-height: 110px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.5); margin: 0 auto; display: block;">
               </div>
@@ -857,20 +1117,21 @@
                 <button class="btn-add-to-cart" style="background: #D97706; color: #fff; border-color: #D97706;" onclick="addToCart('rebirth', '『筆尖上的重生』公益預售', 99, '本', 'assets/pen_rebirth_cover.jpg')">
                   🛒 加入購物車 (NT$ 99)
                 </button>
-                <a href="https://p.ecpay.com.tw/8C6A33A" target="_blank" style="display: block; text-align: center; font-size: 0.75rem; color: #FCD34D; text-decoration: underline; margin-top: 0.4rem;">
-                  💳 或直接點此前往綠界公益預售付款 (NT$ 99) ➡️
+                <a href="https://p.ecpay.com.tw/8C6A33A" target="_blank" class="btn-ecpay-quick">
+                  💳 直接前往綠界公益付款 (NT$ 99) ➡️
                 </a>
-                <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem;">
-                  <a href="rebirth/index.html" class="btn btn-secondary" style="flex: 1; font-size: 0.75rem; padding: 0.35rem 0.6rem; border-radius: 9999px; text-align: center; text-decoration: none; border-color: rgba(255,255,255,0.3); color: #fff;">
+                <div class="book-card-links">
+                  <a href="rebirth/index.html" class="btn btn-secondary">
                     🕊️ 專案介紹
                   </a>
-                  <a href="rebirth/index.html#reading" class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.6rem; border-radius: 9999px; text-align: center; text-decoration: none; border-color: rgba(255,255,255,0.3); color: #fff;">
+                  <a href="rebirth/index.html#reading" class="btn btn-secondary">
                     📖 讀第一章
                   </a>
                 </div>
               </div>
             </div>
 
+            <!-- AI 學習筆記精選總集 -->
             <div class="store-card glass-card">
               <div class="store-card-visual">📖</div>
               <div class="store-card-body">
@@ -882,6 +1143,7 @@
                 </button>
               </div>
             </div>
+
           </div>
         </div>
 
@@ -895,7 +1157,7 @@
                 <p class="store-card-price">免費 / 勞務折抵 <span class="price-unit">(學員專享)</span></p>
                 <p class="store-card-desc">提供不同尺寸衝浪板、趴板、防寒衣及安全救生衣。每天下午 16:00 鉛橋海灘共學漂浮時段可預約租借。</p>
                 <div style="margin-top: 1rem;">
-                  <a href="https://docs.google.com/forms/d/1rLJT3MEGNBE6JYeOpAvXk8bTDej3r1JvnlSRLsDo-7s/viewform" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; font-size: 0.85rem; padding: 0.6rem 1rem; border-radius: 9999px; text-decoration: none;">
+                  <a href="https://docs.google.com/forms/d/1rLJT3MEGNBE6JYeOpAvXk8bTDej3r1JvnlSRLsDo-7s/viewform" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; font-size: 0.85rem; padding: 0.6rem 1rem; border-radius: 9999px; text-decoration: none;">
                     📋 填寫設備租借預約表 ➡️
                   </a>
                 </div>
@@ -906,7 +1168,7 @@
               <div class="store-card-body">
                 <h4>木工與農務工具互助共享</h4>
                 <p class="store-card-price">點數折抵 <span class="price-unit">(社區共享)</span></p>
-                <p class="store-card-desc">包含高性能電鋸、手持電鑽、除草機、農務工具與整地工具。支持以勞務協助（如協助打草）進行租借折抵。</p>
+                <p class="store-card-desc">包含高性能電鋸、手持電鑽、除草機、農務工具與整地工具。支持以勞務協助（如協助莊園打草）進行租借折抵。</p>
               </div>
             </div>
             <div class="store-card glass-card">
@@ -922,6 +1184,7 @@
             </div>
           </div>
         </div>
+
       </div>
 
       <!-- ========================================================
@@ -943,7 +1206,7 @@
           <div id="cartEmptyMsg" style="text-align: center; padding: 2.5rem 1rem; color: var(--text-muted);">
             <div style="font-size: 3rem; margin-bottom: 0.75rem; opacity: 0.6;">🛒</div>
             <p style="font-size: 1rem; margin-bottom: 0.5rem;">您的購物車目前是空的</p>
-            <p style="font-size: 0.85rem; opacity: 0.8;">請從上方「實體商店」或「數位商店」點擊「加入購物車」挑選您喜歡的商品或書籍！</p>
+            <p style="font-size: 0.85rem; opacity: 0.8;">請從上方「實體商店」或「數位新書」點擊「加入購物車」挑選您喜歡的商品或書籍！</p>
           </div>
 
           <div id="cartTableWrap" style="display: none; overflow-x: auto;">
@@ -976,7 +1239,7 @@
             </div>
           </div>
 
-          <div style="display: flex; flex-direction: column; sm:flex-row; gap: 0.75rem; align-items: stretch;">
+          <div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: stretch;">
             <!-- 複製訂單明細按鈕 -->
             <button onclick="copyCartSummary()" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.75rem 1.25rem; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; cursor: pointer;">
               📋 複製購買明細
@@ -1007,6 +1270,7 @@
   <section class="podcast-section" id="podcast">
     <div class="container">
       <div class="section-header">
+        <span class="badge">🎙️ 聲音專欄</span>
         <h2 class="section-title" id="podcastTitle">播客影音與學習典藏</h2>
         <p class="section-subtitle" id="podcastSubtitle">傾聽都蘭共學小組的深度對談，在對話中開啟思維啟發</p>
       </div>
@@ -1102,6 +1366,7 @@
 
         </div>
       </div>
+      
       <div class="archive-links-wrap" id="archiveLinks">
         <a href="https://www.youtube.com/@LearnDulanWay" target="_blank" class="archive-btn btn-yt" id="btnYoutube">
           <span>📺 前往 YouTube 官方頻道 @LearnDulanWay</span>
@@ -1116,23 +1381,23 @@
     </div>
   </section>
 
-  <!-- Interactive Registration Form (預約報名系統 - 哈爸 AI 與常態共學) -->
+  <!-- Interactive Registration Form (預約報名系統) -->
   <section class="register-section" id="register">
     <div class="container">
       <div class="register-layout glass-card">
         <div class="register-info-panel">
-          <span class="panel-badge">哈爸 AI 慢活營 ╳ 常態共學</span>
-          <h2>開啟您的<br>哈爸 AI 慢活共學生活</h2>
-          <p>保留給「哈爸 AI 慢活共創營」與在地常態共學預約！支援在地小農以物易物折抵、外縣市莊園加購住宿，以及手把手在地教練實體陪伴。</p>
+          <span class="panel-badge">🌿 預約報名</span>
+          <h2>開啟您的<br>都蘭山海共學生活</h2>
+          <p>歡迎預約各項常態共學與專題工坊！我們支援在地小農以物易物折抵、外縣市莊園加購住宿，以及手把手在地教練實體陪伴。</p>
           <ul class="benefit-list">
-            <li>🤖 <strong>國家級 AI PM 親授：</strong> 哈爸手把手引領 AI 創作與生活賦能</li>
+            <li>🤖 <strong>雙核心工具賦能：</strong> AI 實戰與史丹佛微習慣科學</li>
             <li>🤝 <strong>支持以物易物：</strong> 在地小農與民宿主可用農產或勞務折抵學費</li>
             <li>🌴 <strong>莊園加購住宿：</strong> 深度融入都蘭四季八里，享受充實慢活假期</li>
           </ul>
 
           <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-color);">
             <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">💳 線上繳納訂金 / 課程學費：</div>
-            <a href="https://p.ecpay.com.tw/21C851F" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #00A650, #059669); color: #fff; padding: 0.65rem 1.25rem; border-radius: 9999px; font-weight: 700; text-decoration: none; font-size: 0.85rem; box-shadow: 0 4px 12px rgba(0, 166, 80, 0.35);">
+            <a href="https://p.ecpay.com.tw/21C851F" target="_blank" class="btn-green-pay">
               <span>🛡️</span> 綠界官方核准安全線上付款 ➡️
             </a>
           </div>
@@ -1141,17 +1406,17 @@
         <div class="register-form-panel">
           
           <!-- 九月活動專屬報名表導引 -->
-          <div style="background: linear-gradient(135deg, rgba(200, 109, 81, 0.15) 0%, rgba(13, 115, 119, 0.15) 100%); border: 1.5px solid var(--accent-color, #C86D51); border-radius: 1rem; padding: 1rem 1.25rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+          <div class="september-enroll-guide">
             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
-              <span style="background: var(--accent-color, #C86D51); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px; letter-spacing: 0.05em;">🔥 9/1 主推旗艦活動</span>
+              <span class="guide-tag">🔥 9/1 主推旗艦活動</span>
               <span style="font-size: 0.75rem; color: #6EE7B7; font-weight: 600;">30天打卡 ╳ 2天1夜 ╳ 3天2夜</span>
             </div>
-            <strong style="color: #fff; font-size: 0.95rem;">欲報名「用 AI 翻轉人生九月活動」？</strong>
-            <p style="font-size: 0.8rem; color: rgba(255,255,255,0.75); line-height: 1.5; margin: 0;">
+            <strong style="color: var(--text-primary); font-size: 0.95rem;">欲報名「用 AI 翻轉人生九月活動」？</strong>
+            <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">
               九月活動提供專屬報名回函信、三大社群一鍵直達（YT/FB/LINE）、郵局劃撥（戶名：陳豊鍾）及額滿防呆功能！
             </p>
             <div style="margin-top: 0.25rem;">
-              <a href="ai-september/index.html#register" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: var(--accent-color, #C86D51); color: #fff; font-weight: 700; font-size: 0.82rem; padding: 0.55rem 1.25rem; border-radius: 9999px; text-decoration: none; box-shadow: 0 4px 12px rgba(200,109,81,0.35);">
+              <a href="ai-september/index.html#register" class="btn-guide-link">
                 前往九月活動專屬報名表 ➡️
               </a>
             </div>
@@ -1162,6 +1427,10 @@
             <div class="form-group">
               <label for="studentName">姓名 / 稱呼 <span class="required">*</span></label>
               <input type="text" id="studentName" name="name" required placeholder="例如：林阿芬">
+              <input type="hidden" id="studentLineId" name="lineUserId" value="">
+              <span id="lineAutoFillNote" style="display: none; font-size: 0.8rem; color: #10B981; font-weight: 600; margin-top: 0.35rem;">
+                🟢 已由 LINE 會員自動帶入
+              </span>
             </div>
 
             <div class="form-row">
@@ -1178,27 +1447,30 @@
             <!-- Course Selection -->
             <div class="form-group">
               <label for="courseSelect">欲選讀的課程或體驗項目 <span class="required">*</span></label>
-              <select id="courseSelect" name="course_select" class="form-select" required style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(15, 23, 42, 0.6); color: var(--text-color); margin-top: 0.5rem; outline: none; font-size: 0.95rem;">
+              <select id="courseSelect" name="course_select" class="form-select" required>
                 <option value="" disabled>請選擇您想預約的課程...</option>
                 <optgroup label="💻 AI 與慢活科技">
                   <option value="哈爸 AI 慢活共創營" selected>哈爸 AI 慢活共創營 (哈爸 ╳ 在地助教群)</option>
                   <option value="用 AI 翻轉人生">用 AI 翻轉人生 (阿中)</option>
+                  <option value="用 AI 翻轉人生九月活動">用 AI 翻轉人生九月活動 (30天打卡營)</option>
                 </optgroup>
                 <optgroup label="🌱 生態與山海實作">
                   <option value="綠光食物森林學校">綠光食物森林學校 (施炳霖)</option>
-                  <option value="都蘭山定點觀察">都蘭山定點觀察 (施炳霖)</option>
+                  <option value="都蘭山定點觀察">都蘭山定點觀察 (施炳霖 / 荒野台東)</option>
                   <option value="衝浪與海洋漂浮">衝浪與海洋漂浮 (阿中)</option>
                   <option value="水上運動設備租借">水上運動設備租借 (專屬表單)</option>
+                  <option value="順美自然農場">順美自然農場踏查</option>
                 </optgroup>
                 <optgroup label="🔨 工藝、寫作與藝術">
                   <option value="人生寫作課">人生寫作課 (江冠明)</option>
                   <option value="古典吉他與民謠">古典吉他與民謠 (陽光道)</option>
-                  <option value="用月琴吟恆春古調">用月琴吟恆春古調 (在地)</option>
+                  <option value="用月琴吟恆春古調">用月琴吟恆春古調 (美蘭)</option>
                   <option value="陶藝創作">陶藝創作 (洋洋)</option>
                   <option value="手作木工教室">手作木工教室 (阿中)</option>
                   <option value="自由心靈書法">自由心靈書法 (阿中)</option>
                 </optgroup>
                 <optgroup label="🧘 身心靈探索與成長">
+                  <option value="氣韻漫舞 ‧ 舞中禪">氣韻漫舞 ‧ 舞中禪 (林爰言)</option>
                   <option value="身心靈探索">身心靈探索 (gunja)</option>
                   <option value="靈魂治療">靈魂治療 (Rebaca)</option>
                   <option value="療癒角落 (木沐沐)">療癒角落 -- 木沐沐 (蕙君)</option>
@@ -1226,6 +1498,7 @@
   <section class="contact-section" id="contact">
     <div class="container">
       <div class="section-header">
+        <span class="badge">🏡 實體空間</span>
         <h2 class="section-title" id="contactTitle">實體基地與聯絡窗口</h2>
         <p class="section-subtitle" id="contactSubtitle">歡迎預約參訪、報名共學或洽詢以物易物提案</p>
       </div>
@@ -1245,7 +1518,7 @@
           <div class="contact-icon">☕</div>
           <h3>台東市區輔導教室</h3>
           <p>位於市區的「生活管家就醬點」，每週三下午在此舉辦 AI 補課、數位問題排障與諮詢。</p>
-          <p class="contact-detail">📍 台東市正氣北路166巷90號(生活管家就醬點)</p>
+          <p class="contact-detail">📍 台東市正氣北路166巷90號 (生活管家就醬點)</p>
         </div>
 
       </div>
@@ -1265,16 +1538,16 @@
       <div class="footer-bottom">
         <p class="copyright">&copy; 2026 四季八里都蘭共學堂. All rights reserved.</p>
         <p class="location-stamp">服務處：台東縣東河鄉都蘭村舊部 14 之 2 號 ｜ 聯絡電話：0908853322</p>
-        <p style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
-          <a href="https://www.facebook.com/LongstayTAITUNG" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; color: #C86D51; text-decoration: none; font-size: 13px; font-weight: bold;">
+        <div class="footer-social-links">
+          <a href="https://www.facebook.com/LongstayTAITUNG" target="_blank" class="footer-social-link">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></svg>
-            🏠 粉絲專頁：Long Stay-四季八里自然莊園
+            <span>粉絲專頁：Long Stay-四季八里自然莊園</span>
           </a>
-          <a href="https://www.facebook.com/groups/436380507204616" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; color: #C86D51; text-decoration: none; font-size: 13px; font-weight: bold;">
+          <a href="https://www.facebook.com/groups/436380507204616" target="_blank" class="footer-social-link">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></svg>
-            👥 加入社團：四季八里──都蘭共學堂
+            <span>加入社團：四季八里──都蘭共學堂</span>
           </a>
-        </p>
+        </div>
       </div>
     </div>
   </footer>
@@ -1311,6 +1584,49 @@
           📥 匯出並下載報名試算表 (CSV)
         </button>
         <button class="btn btn-secondary" id="closeModalBtn" style="opacity: 0.8; margin-top: 0.25rem;">關閉視窗</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LINE Member Center Modal (都蘭共學堂會員中心) -->
+  <div class="modal-overlay hidden" id="memberModal">
+    <div class="modal-content glass-card member-modal-content" style="max-width: 480px; text-align: center;">
+      <div class="member-card-header">
+        <img id="modalMemberAvatar" class="member-modal-avatar" src="assets/logo.png" alt="學員頭像">
+        <h3 id="modalMemberName" style="margin: 0.6rem 0 0.2rem 0; font-size: 1.3rem;">學員姓名</h3>
+        <span class="member-tag-badge">🌿 都蘭共學堂 認證會員</span>
+        <p id="modalMemberStatus" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.35rem;">享受慢活共學，邁向共生</p>
+      </div>
+      
+      <div class="member-info-box glass-card" style="margin: 1.25rem 0; padding: 1rem; text-align: left; font-size: 0.88rem; line-height: 1.7;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.4rem;">
+          <span style="color: var(--text-muted);">LINE 會員 ID：</span>
+          <span id="modalMemberUserId" style="font-family: monospace; font-size: 0.78rem; max-width: 180px; overflow: hidden; text-overflow: ellipsis; color: var(--text-secondary);">未連動</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.4rem;">
+          <span style="color: var(--text-muted);">帳號連動狀態：</span>
+          <span style="color: #10B981; font-weight: 700;">LINE 官方認證登入 🟢</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="color: var(--text-muted);">官方 LIFF 入口：</span>
+          <a href="https://liff.line.me/2011582104-SViPHns0" target="_blank" style="color: #06C755; font-size: 0.8rem; font-weight: 600; text-decoration: underline;">在 LINE 中打開 📲</a>
+        </div>
+      </div>
+
+      <div class="member-modal-actions" style="display: flex; flex-direction: column; gap: 0.65rem;">
+        <a href="#register" class="btn btn-primary" id="btnMemberQuickRegister" style="background: linear-gradient(135deg, #0D7377, #149196); border: none; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; font-weight: bold;">
+          📝 前往預約課程（已自動帶入身分）
+        </a>
+        <a href="https://line.me/ti/p/~0908853322" target="_blank" class="btn btn-secondary" style="border: 1.5px solid #06C755; color: #06C755; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; font-weight: bold; background: rgba(6,199,85,0.06);">
+          📲 聯繫專屬教練阿中 (LINE)
+        </a>
+        <a href="https://line.me/ti/g2/-wQG7m__gxJrrtV59eJYXDmzrJqyyBDYjem91A?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="btn btn-secondary" style="border: 1px solid var(--border-color); text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;">
+          💬 加入「都蘭共學堂」LINE 社群
+        </a>
+        <button type="button" class="btn btn-secondary" id="btnLineLogout" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.4); margin-top: 0.25rem;">
+          🚪 登出 LINE 會員
+        </button>
+        <button type="button" class="btn btn-secondary" id="closeMemberModalBtn" style="opacity: 0.8; margin-top: 0.2rem;">關閉</button>
       </div>
     </div>
   </div>
