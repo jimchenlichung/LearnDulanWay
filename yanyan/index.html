@@ -40,9 +40,12 @@
     <!-- Header Navigation -->
     <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2 sm:gap-3">
                 <a href="https://jimchenlichung.github.io/LearnDulanWay/" class="inline-flex items-center gap-1.5 text-xs text-dulan-forest bg-dulan-sand hover:bg-gray-100 px-3 py-1.5 rounded-full border border-dulan-forest/10 transition">
-                    <i class="fa-solid fa-arrow-left"></i> 返回共學堂首頁
+                    <i class="fa-solid fa-arrow-left"></i> 返回首頁
+                </a>
+                <a href="#dance-records" class="inline-flex items-center gap-1.5 text-xs text-white bg-dulan-clay hover:bg-[#b55c42] px-3.5 py-1.5 rounded-full font-bold shadow-sm hover:shadow transition">
+                    <i class="fa-solid fa-film"></i> 舞米山莊演出影音
                 </a>
             </div>
             <div class="text-right">
@@ -126,14 +129,50 @@
                         </div>
                     </div>
 
-                    <!-- Video Clips (體驗活動影音) -->
-                    <!-- Video Clips (體驗活動影音) -->
-                    <div class="space-y-8">
-                        <!-- YouTube Full Videos -->
+                    <!-- Video Clips (體驗活動影音與現場實況) -->
+                    <div class="space-y-8" id="dance-records">
+                        <!-- 9/19 舞米山莊首演現場實況 (Featured Videos) -->
                         <div class="space-y-4">
-                            <h3 class="font-serif text-2xl font-bold text-dulan-forest border-b border-gray-200 pb-2">
-                                📹 完整版線上收看 (YouTube)
-                            </h3>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-200 pb-2 gap-2">
+                                <h3 class="font-serif text-2xl font-bold text-dulan-forest flex items-center gap-2">
+                                    <i class="fa-solid fa-film text-dulan-clay"></i> 舞米山莊演出紀實 (現場精選)
+                                </h3>
+                                <span class="text-xs text-emerald-800 bg-emerald-100 font-bold px-3 py-1 rounded-full w-fit">
+                                    🌸 2026.09.19 首演現場實況
+                                </span>
+                            </div>
+                            <p class="text-gray-600 text-sm">2026年9月19日於都蘭興昌舞米山莊首演現場紀實，由林爰言導師親授引導，學員在山海大自然中以舞會心、舒展氣韻：</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-semibold text-dulan-clay bg-dulan-clay/10 px-2.5 py-1 rounded">《氣韻漫舞——在舞米山莊》</span>
+                                        <a href="https://youtu.be/qz-Q1btURwg" target="_blank" class="text-xs text-red-600 hover:underline flex items-center gap-1 font-medium">
+                                            <i class="fa-brands fa-youtube"></i> 開啟 YouTube ↗
+                                        </a>
+                                    </div>
+                                    <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200 bg-black aspect-video">
+                                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/qz-Q1btURwg" title="氣韻漫舞--在舞米山莊" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-semibold text-dulan-clay bg-dulan-clay/10 px-2.5 py-1 rounded">《舞米山莊愉悅漫舞》</span>
+                                        <a href="https://youtu.be/FQ_S00Ag-FQ" target="_blank" class="text-xs text-red-600 hover:underline flex items-center gap-1 font-medium">
+                                            <i class="fa-brands fa-youtube"></i> 開啟 YouTube ↗
+                                        </a>
+                                    </div>
+                                    <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200 bg-black aspect-video">
+                                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/FQ_S00Ag-FQ" title="舞米山莊愉悅漫舞" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 歷年經典展演收看 (YouTube) -->
+                        <div class="space-y-4">
+                            <h4 class="font-serif text-xl font-bold text-dulan-forest border-b border-gray-200 pb-2">
+                                📹 歷年經典展演收看 (YouTube)
+                            </h4>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div class="space-y-2">
                                     <span class="text-xs font-semibold text-dulan-clay bg-dulan-clay/10 px-2.5 py-1 rounded">《微瀾漫舞》舞中禪的美學 (2025)</span>
@@ -152,9 +191,9 @@
 
                         <!-- Local Trimmed Previews -->
                         <div class="space-y-4">
-                            <h3 class="font-serif text-2xl font-bold text-dulan-forest border-b border-gray-200 pb-2">
+                            <h4 class="font-serif text-xl font-bold text-dulan-forest border-b border-gray-200 pb-2">
                                 📹 體驗短片預覽 (精簡版，每段 40 秒)
-                            </h3>
+                            </h4>
                             <p class="text-gray-600 text-sm">此為方便 GitHub 上傳的精簡預覽版，您可點此觀賞片段：</p>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div class="space-y-2">
@@ -179,19 +218,19 @@
                         <p class="text-sm text-dulan-clay font-bold mt-2">— 以「舞」悅「心」 ｜ 林爰言</p>
                     </div>
 
-                    <!-- 9/19 Special Event Registration CTA -->
+                    <!-- 9/19 Event Recap & Community Connection -->
                     <div class="bg-dulan-forest text-white rounded-2xl p-6 sm:p-8 text-center space-y-4 shadow-lg">
                         <span class="inline-block px-3 py-1 rounded-full bg-emerald-400 text-dulan-dark text-xs font-bold">
-                            🌸 9/19 特別企劃 ‧ 舞米山莊首演場 (免費參加)
+                            🌸 舞米山莊首演 ‧ 圓滿落幕
                         </span>
-                        <h3 class="font-serif text-2xl font-bold">《微瀾漫舞》舞中禪首場演出 ＆ 動態禪修</h3>
+                        <h3 class="font-serif text-2xl font-bold">《微瀾漫舞》舞中禪首場演出圓滿完成</h3>
                         <p class="text-xs sm:text-sm text-white/80 max-w-xl mx-auto">
-                            時間：2026 年 9 月 19 日（週六）14:00~17:00 ｜ 地點：都蘭 舞米山莊<br>
-                            費用：<strong>免費參加</strong>（席位有限，額滿即止）！
+                            2026 年 9 月 19 日於都蘭興昌舞米山莊舉辦之《微瀾漫舞》首演已圓滿落幕！感謝所有蒞臨參與動態禪修的朋友。<br>
+                            現場影音紀錄已完整公開，歡迎觀賞現場影音，並加入共學堂 LINE 社群關注後續課程與工作坊資訊。
                         </p>
                         <div class="pt-2 flex flex-col sm:flex-row gap-3 justify-center">
-                            <a href="../ai-september/index.html#register" class="inline-flex items-center justify-center gap-2 bg-dulan-clay hover:bg-[#b55c42] text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition transform hover:-translate-y-0.5 text-sm">
-                                <i class="fa-solid fa-pen-to-square"></i> 立即免費報名 9/19《微瀾漫舞》首演場 ➡️
+                            <a href="#dance-records" class="inline-flex items-center justify-center gap-2 bg-dulan-clay hover:bg-[#b55c42] text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition transform hover:-translate-y-0.5 text-sm">
+                                <i class="fa-solid fa-film"></i> 觀賞舞米山莊現場影音 🎬
                             </a>
                             <a href="https://line.me/ti/g2/-wQG7m__gxJrrtV59eJYXDmzrJqyyBDYjem91A?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="inline-flex items-center justify-center gap-2 bg-[#06C755] hover:bg-[#05b34c] text-white font-bold px-6 py-3.5 rounded-full shadow transition text-sm">
                                 <i class="fa-brands fa-line text-lg"></i> 加入共學堂 LINE 社群（密碼：Dulan）
