@@ -14,8 +14,6 @@
   <!-- Stylesheet with Cache Buster -->
   <link rel="stylesheet" href="style.css?v=20260913_line">
   
-  <!-- LINE LIFF SDK v2 -->
-  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   
   <style>
     /* 核心按鈕保證樣式 (Guaranteed Button Styles) */
@@ -109,89 +107,6 @@
       color: #000000 !important;
     }
 
-    /* LINE 會員專屬按鈕與頭像樣式 */
-    .line-member-nav {
-      display: flex;
-      align-items: center;
-    }
-    .btn-line-login {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: #06C755;
-      color: #ffffff !important;
-      border: none;
-      padding: 0.45rem 0.95rem;
-      border-radius: 9999px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      box-shadow: 0 3px 10px rgba(6, 199, 85, 0.35);
-      transition: all 0.25s ease;
-      white-space: nowrap;
-    }
-    .btn-line-login:hover {
-      background: #05b04c;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 14px rgba(6, 199, 85, 0.5);
-    }
-    .line-user-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      background: rgba(6, 199, 85, 0.12);
-      border: 1.5px solid #06C755;
-      padding: 0.25rem 0.65rem 0.25rem 0.35rem;
-      border-radius: 9999px;
-      cursor: pointer;
-    }
-    .line-user-avatar {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1.5px solid #06C755;
-    }
-    .line-user-name {
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      max-width: 90px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .btn-member-portal {
-      background: #06C755;
-      color: #ffffff;
-      border: none;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 0.18rem 0.5rem;
-      border-radius: 9999px;
-      cursor: pointer;
-    }
-    .member-modal-avatar {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #06C755;
-      box-shadow: 0 4px 14px rgba(6, 199, 85, 0.3);
-      margin: 0 auto;
-    }
-    .member-tag-badge {
-      display: inline-block;
-      background: rgba(6, 199, 85, 0.15);
-      color: #06C755;
-      border: 1px solid #06C755;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.2rem 0.6rem;
-      border-radius: 9999px;
-      margin-top: 0.25rem;
-    }
   </style>
 </head>
 <body>
@@ -221,22 +136,8 @@
         <a href="#register" class="nav-btn" id="link-register">預約報名</a>
       </nav>
 
-      <!-- Right Actions: LINE Member, Theme Toggle & Mobile Toggle -->
+      <!-- Right Actions: Theme Toggle & Mobile Toggle -->
       <div class="nav-actions">
-        <!-- LINE Member Widget -->
-        <div id="lineMemberNav" class="line-member-nav">
-          <button type="button" id="btnLineLogin" class="btn-line-login" title="LINE 一鍵登入 / 加入會員">
-            <svg class="line-brand-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-              <path d="M12 2C6.48 2 2 5.92 2 10.75c0 3.01 1.76 5.67 4.45 7.16-.19.67-.69 2.45-.79 2.82-.12.45.16.44.34.32.14-.09 2.22-1.51 3.12-2.12.93.18 1.9.27 2.88.27 5.52 0 10-3.92 10-8.75S17.52 2 12 2z"/>
-            </svg>
-            <span>LINE 登入</span>
-          </button>
-          <div id="lineUserBadge" class="line-user-badge" style="display: none;" title="點擊開啟會員中心">
-            <img id="lineUserAvatar" class="line-user-avatar" src="assets/logo.png" alt="學員頭像" />
-            <span id="lineUserName" class="line-user-name">學員</span>
-            <button type="button" id="btnOpenMemberModal" class="btn-member-portal" title="會員中心">會員中心</button>
-          </div>
-        </div>
 
         <!-- Theme Switcher -->
         <button class="theme-toggle" id="themeToggle" aria-label="切換深淺模式" title="切換深淺模式">
@@ -1496,10 +1397,6 @@
             <div class="form-group">
               <label for="studentName">姓名 / 稱呼 <span class="required">*</span></label>
               <input type="text" id="studentName" name="name" required placeholder="例如：林阿芬">
-              <input type="hidden" id="studentLineId" name="lineUserId" value="">
-              <span id="lineAutoFillNote" style="display: none; font-size: 0.8rem; color: #10B981; font-weight: 600; margin-top: 0.35rem;">
-                🟢 已由 LINE 會員自動帶入
-              </span>
             </div>
 
             <div class="form-row">
@@ -1673,50 +1570,6 @@
       </div>
     </div>
   </div>
-
-  <!-- LINE Member Center Modal (都蘭共學堂會員中心) -->
-  <div class="modal-overlay hidden" id="memberModal">
-    <div class="modal-content glass-card member-modal-content" style="max-width: 480px; text-align: center;">
-      <div class="member-card-header">
-        <img id="modalMemberAvatar" class="member-modal-avatar" src="assets/logo.png" alt="學員頭像">
-        <h3 id="modalMemberName" style="margin: 0.6rem 0 0.2rem 0; font-size: 1.3rem;">學員姓名</h3>
-        <span class="member-tag-badge">🌿 都蘭共學堂 認證會員</span>
-        <p id="modalMemberStatus" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.35rem;">享受慢活共學，邁向共生</p>
-      </div>
-      
-      <div class="member-info-box glass-card" style="margin: 1.25rem 0; padding: 1rem; text-align: left; font-size: 0.88rem; line-height: 1.7;">
-        <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.4rem;">
-          <span style="color: var(--text-muted);">LINE 會員 ID：</span>
-          <span id="modalMemberUserId" style="font-family: monospace; font-size: 0.78rem; max-width: 180px; overflow: hidden; text-overflow: ellipsis; color: var(--text-secondary);">未連動</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.4rem;">
-          <span style="color: var(--text-muted);">帳號連動狀態：</span>
-          <span style="color: #10B981; font-weight: 700;">LINE 官方認證登入 🟢</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span style="color: var(--text-muted);">官方 LIFF 入口：</span>
-          <a href="https://liff.line.me/2011582104-SViPHns0" target="_blank" style="color: #06C755; font-size: 0.8rem; font-weight: 600; text-decoration: underline;">在 LINE 中打開 📲</a>
-        </div>
-      </div>
-
-      <div class="member-modal-actions" style="display: flex; flex-direction: column; gap: 0.65rem;">
-        <a href="#register" class="btn btn-primary" id="btnMemberQuickRegister" style="background: linear-gradient(135deg, #0D7377, #149196); border: none; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; font-weight: bold;">
-          📝 前往預約課程（已自動帶入身分）
-        </a>
-        <a href="https://line.me/ti/p/~0908853322" target="_blank" class="btn btn-secondary" style="border: 1.5px solid #06C755; color: #06C755; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; font-weight: bold; background: rgba(6,199,85,0.06);">
-          📲 聯繫專屬教練阿中 (LINE)
-        </a>
-        <a href="https://line.me/ti/g2/-wQG7m__gxJrrtV59eJYXDmzrJqyyBDYjem91A?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="btn btn-secondary" style="border: 1px solid var(--border-color); text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;">
-          💬 加入「都蘭共學堂」LINE 社群
-        </a>
-        <button type="button" class="btn btn-secondary" id="btnLineLogout" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.4); margin-top: 0.25rem;">
-          🚪 登出 LINE 會員
-        </button>
-        <button type="button" class="btn btn-secondary" id="closeMemberModalBtn" style="opacity: 0.8; margin-top: 0.2rem;">關閉</button>
-      </div>
-    </div>
-  </div>
-
   <script src="app.js"></script>
 </body>
 </html>
