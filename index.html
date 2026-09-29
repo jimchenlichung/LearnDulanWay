@@ -1647,9 +1647,21 @@
       <div class="modal-summary glass-card" id="modalSummary" style="text-align: left; margin: 1.25rem 0; font-size: 0.9rem; line-height: 1.6;">
         <!-- Will be filled by JS -->
       </div>
+      <div id="emailActivationNotice" style="display: none; background: rgba(245, 158, 11, 0.15); border: 1.5px solid #F59E0B; color: #FCD34D; padding: 0.75rem; border-radius: 0.75rem; font-size: 0.82rem; margin-bottom: 0.75rem; text-align: left; line-height: 1.5;">
+        ⚠️ <strong>初次啟用提醒：</strong>系統已向您的 Gmail（<code>jimchenlichung@gmail.com</code>）寄發 FormSubmit 啟用信，請至 Gmail 收件匣或垃圾郵件匣點擊 <strong>「Activate Form」</strong>，往後每筆報名即可正常自動入信！
+      </div>
       <div style="display: flex; flex-direction: column; gap: 0.65rem; margin-top: 1rem;">
+        <button type="button" id="btnCopyBookingText" class="btn btn-primary" style="background: linear-gradient(135deg, #10B981, #059669); border: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none; font-weight: bold; cursor: pointer;">
+          📋 一鍵複製完整預約資料
+        </button>
         <a id="btnHomeLineCoachNotify" href="https://line.me/ti/p/~0908853322" target="_blank" class="btn btn-primary" style="background: #06C755; border: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none; font-weight: bold;">
-          📲 一鍵將預約資料透過 LINE 傳給阿鐘教練
+          📲 加阿中教練 LINE（ID: 0908853322）直接洽詢
+        </a>
+        <a id="btnEmailDirectFallback" href="mailto:jimchenlichung@gmail.com" class="btn btn-secondary" style="border: 1.5px solid #3B82F6; color: #60A5FA; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none; font-weight: bold; background: rgba(59,130,246,0.08);">
+          ✉️ 透過 Email 直接寄送預約單給主辦人
+        </a>
+        <a href="tel:0908853322" class="btn btn-secondary" style="border: 1.5px solid #F59E0B; color: #FCD34D; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none; font-weight: bold; background: rgba(245,158,11,0.08);">
+          📞 電話直接聯繫阿中教練：0908-853322
         </a>
         <a href="https://line.me/ti/g2/-wQG7m__gxJrrtV59eJYXDmzrJqyyBDYjem91A?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="btn btn-secondary" style="border: 1.5px solid #06C755; color: #06C755; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none; font-weight: bold; background: rgba(6,199,85,0.08);">
           💬 加入「都蘭共學堂」LINE 社群（🔑 入群密碼：Dulan）
