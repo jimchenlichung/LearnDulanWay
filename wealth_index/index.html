@@ -12,10 +12,6 @@
 
   gtag('config', 'AW-1015765517');
 </script>
-<!-- Event snippet for 網頁瀏覽 conversion page -->
-<script>
-  gtag('event', 'conversion', {'send_to': 'AW-1015765517/VTtFCNrj05QZEI20reQD'});
-</script>
 
   <meta name="description" content="都蘭共學堂 10 月線上共學打卡營：人生 70 才開始──如何創造財富。重新定義財務自由，盤點 6 大資產，結合微習慣科學與每日 3 分鐘練習，邁向自足豐盛人生。">
   
@@ -496,7 +492,14 @@
   </section>
 
   <script>
+    function triggerAdsConversion() {
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {'send_to': 'AW-1015765517/VTtFCNrj05QZEI20reQD'});
+      }
+    }
+
     function submitConsultBooking() {
+      triggerAdsConversion();
       const course = document.getElementById('consultCourseSelect').value;
       const method = document.getElementById('consultMethodSelect').value;
       const user = document.getElementById('consultUserName').value.trim() || '未填寫稱呼';
@@ -504,6 +507,11 @@
       const url = `https://line.me/ti/p/~0908853322?text=` + encodeURIComponent(msg);
       window.open(url, '_blank');
     }
+
+    // 為所有加入 LINE 社群 / 官方帳號按鈕綁定轉換追蹤
+    document.querySelectorAll('a[href*="line.me"]').forEach(link => {
+      link.addEventListener('click', triggerAdsConversion);
+    });
   </script>
 </body>
 </html>

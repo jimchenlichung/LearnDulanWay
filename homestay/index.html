@@ -13,10 +13,6 @@
 
   gtag('config', 'AW-1015765517');
 </script>
-<!-- Event snippet for 網頁瀏覽 conversion page -->
-<script>
-  gtag('event', 'conversion', {'send_to': 'AW-1015765517/VTtFCNrj05QZEI20reQD'});
-</script>
 
   <meta name="description" content="都蘭共學堂 10 月實體營隊：一人開創的理想生活──從零到民宿經營管理實戰營。善用 AI 與微習慣，三天兩夜深入東台灣旅宿美學、房務水電實務、在地導覽規劃與零風險實習機制。">
   
@@ -449,81 +445,41 @@
           </div>
         </div>
 
-        <div class="text-center space-y-2 pt-4 pb-2 border-t border-gray-300">
-          <span class="text-xs font-bold text-[#C86D51] tracking-widest uppercase">BACKUP REGISTRATION</span>
-          <h2 class="text-xl sm:text-2xl font-serif font-black text-[#1E3F33]">或使用本頁快速登記表</h2>
-          <p class="text-xs sm:text-sm text-gray-600">
-            填寫送出將自動為您整理確認單並可直連 LINE（<code>0908853322</code>）與阿中教練聯繫！
-          </p>
+        <!-- 嵌入官方 Google 表單 -->
+        <div class="w-full bg-white rounded-2xl overflow-hidden border border-emerald-500/30 shadow-md">
+          <iframe 
+            src="https://docs.google.com/forms/d/e/1FAIpQLSfPKSKU0ThH9_ZTl3ikBDJbkMo9la1p9gdq-ZDJEkGfIbJcig/viewform?embedded=true" 
+            width="100%" 
+            height="850" 
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0" 
+            class="w-full block">
+            載入 Google 表單中...
+          </iframe>
         </div>
 
-        <form id="homestayForm" onsubmit="handleHomestaySubmit(event)" class="space-y-4 text-xs sm:text-sm">
-          <div>
-            <label class="block font-bold text-gray-700 mb-1">報名身份與方案 <span class="text-red-500">*</span></label>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <label class="flex items-center gap-2 p-3 bg-white rounded-xl border border-gray-300 cursor-pointer hover:border-emerald-600">
-                <input type="radio" name="plan" value="正式學員 (NT$ 9,999)" checked class="text-emerald-700">
-                <span class="font-bold text-gray-800">正式學員（NT$ 9,999）</span>
-              </label>
-              <label class="flex items-center gap-2 p-3 bg-white rounded-xl border border-gray-300 cursor-pointer hover:border-amber-600">
-                <input type="radio" name="plan" value="實作助理 (NT$ 4,999 - 限額2名)" class="text-amber-600">
-                <span class="font-bold text-gray-800">實作助理（NT$ 4,999 / 限2名）</span>
-              </label>
-            </div>
+        <!-- 諮詢與綠界安全付款支援 -->
+        <div class="p-5 bg-white rounded-2xl border border-gray-200 space-y-3 text-xs">
+          <div class="font-bold text-gray-800 flex items-center justify-between">
+            <span class="text-sm">💳 繳費諮詢與線上刷卡支援：</span>
+            <span class="text-emerald-700 font-semibold">綠界科技安全認證</span>
           </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block font-bold text-gray-700 mb-1">您的姓名 / 稱呼 <span class="text-red-500">*</span></label>
-              <input type="text" id="hsName" required placeholder="例：林阿芬" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-600 bg-white">
-            </div>
-            <div>
-              <label class="block font-bold text-gray-700 mb-1">行動電話 <span class="text-red-500">*</span></label>
-              <input type="tel" id="hsPhone" required placeholder="例：0912-345-678" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-600 bg-white">
-            </div>
+          <p class="text-gray-600 leading-relaxed">
+            填寫上方 Google 表單後將即刻排定席位；您亦可透過下方綠界收銀台先行預付或全額刷卡，並加入阿中教練 LINE 確認：
+          </p>
+          <div class="flex flex-wrap gap-2 pt-1">
+            <a href="https://p.ecpay.com.tw/21C851F" target="_blank" class="inline-flex items-center gap-1.5 bg-[#00A650] hover:bg-[#009245] text-white font-bold px-4 py-2.5 rounded-xl transition shadow-sm text-xs">
+              <i class="fa-solid fa-credit-card"></i> 前往綠界線上安全付款 ➡️
+            </a>
+            <a href="https://line.me/ti/p/~0908853322" target="_blank" class="inline-flex items-center gap-1.5 bg-[#06C755] hover:bg-[#05b04c] text-white font-bold px-4 py-2.5 rounded-xl transition shadow-sm text-xs">
+              <i class="fab fa-line text-sm"></i> 加阿中教練 LINE (0908853322) 聯繫
+            </a>
+            <a href="tel:0908853322" class="inline-flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold px-4 py-2.5 rounded-xl transition text-xs border border-gray-300">
+              <i class="fa-solid fa-phone text-sm"></i> 電話洽詢：0908-853-322
+            </a>
           </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block font-bold text-gray-700 mb-1">LINE ID（重要聯絡與建立學員群） <span class="text-red-500">*</span></label>
-              <input type="text" id="hsLine" required placeholder="例：fen888" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-600 bg-white">
-            </div>
-            <div>
-              <label class="block font-bold text-gray-700 mb-1">電子信箱 Email（接收行前通知與講義）</label>
-              <input type="email" id="hsEmail" placeholder="例：fen@gmail.com" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-600 bg-white">
-            </div>
-          </div>
-
-          <div>
-            <label class="block font-bold text-gray-700 mb-1">您目前的工作背景與參加期待（選填）</label>
-            <textarea id="hsExpectation" rows="2" placeholder="例：希望五年後在東海岸開一間有生活美學的民宿、目前在考慮轉職學習一人營運..." class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-600 bg-white"></textarea>
-          </div>
-
-          <!-- Payment Instructions -->
-          <div class="p-4 bg-white rounded-2xl border border-gray-200 space-y-2 text-xs">
-            <div class="font-bold text-gray-800 flex items-center justify-between">
-              <span>💳 繳費方式（綠界線上安全刷卡 / 郵局劃撥）：</span>
-              <span class="text-emerald-700 font-semibold">提供官方確認憑證</span>
-            </div>
-            <p class="text-gray-600 leading-relaxed">
-              送出預約表單後，系統將自動為您生成官方確認單並複製至剪貼簿；您亦可透過下方綠界科技官方收銀台直接以信用卡或超商代碼完成報名訂金：
-            </p>
-            <div class="flex flex-wrap gap-2 pt-1">
-              <a href="https://p.ecpay.com.tw/21C851F" target="_blank" class="inline-flex items-center gap-1.5 bg-[#00A650] hover:bg-[#009245] text-white font-bold px-4 py-2 rounded-lg transition shadow-sm">
-                <i class="fa-solid fa-credit-card"></i> 前往綠界線上安全付款 ➡️
-              </a>
-              <a href="https://line.me/ti/p/~0908853322" target="_blank" class="inline-flex items-center gap-1.5 bg-[#06C755] hover:bg-[#05b04c] text-white font-bold px-4 py-2 rounded-lg transition shadow-sm">
-                <i class="fab fa-line"></i> 加阿中教練 LINE (0908853322) 對帳
-              </a>
-            </div>
-          </div>
-
-          <div class="pt-2">
-            <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-[#C86D51] hover:bg-[#b35a3f] text-white font-bold text-sm shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
-              <i class="fa-solid fa-paper-plane"></i> 送出預約申請表 ➡️
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   </section>
@@ -550,44 +506,17 @@
 
   <!-- Script for form handling -->
   <script>
-    function handleHomestaySubmit(e) {
-      e.preventDefault();
-      const plan = document.querySelector('input[name="plan"]:checked')?.value || '正式學員';
-      const name = document.getElementById('hsName').value.trim();
-      const phone = document.getElementById('hsPhone').value.trim();
-      const line = document.getElementById('hsLine').value.trim();
-      const email = document.getElementById('hsEmail').value.trim();
-      const exp = document.getElementById('hsExpectation').value.trim();
-      
-      const sn = 'HS-' + new Date().toISOString().slice(2,10).replace(/-/g,'') + '-' + Math.floor(1000 + Math.random() * 9000);
-      
-      const msg = `【都蘭共學堂 ‧ 民宿經營實戰營 預約回函】\n` +
-                  `流水編號：${sn}\n` +
-                  `報名方案：${plan}\n` +
-                  `姓名：${name}\n` +
-                  `電話：${phone}\n` +
-                  `LINE ID：${line}\n` +
-                  `Email：${email || '未填寫'}\n` +
-                  `期待：${exp || '未填寫'}\n` +
-                  `活動日期：2026/10/09 - 10/11 (台東都蘭四季八里莊園)\n` +
-                  `洽詢導師：阿中教練 (0908853322)\n` +
-                  `綠界線上繳費網址：https://p.ecpay.com.tw/21C851F`;
-                  
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(msg).catch(() => {});
-      }
-      
-      alert(`🎉 恭喜您，預約登記已成功送出！\n\n【預約序號】${sn}\n【預約方案】${plan}\n\n已將報名資訊複製至您的剪貼簿！\n請直接加阿中教練 LINE（ID: 0908853322）或點擊綠界完成付款確認。`);
-      
-      // Open LINE to coach
-      window.open('https://line.me/ti/p/~0908853322', '_blank');
-    }
-
     // 民宿實戰營 Google 表單統一設定（首頁與子頁同步設定）
     const HOMESTAY_GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfPKSKU0ThH9_ZTl3ikBDJbkMo9la1p9gdq-ZDJEkGfIbJcig/viewform";
     document.querySelectorAll('.btn-homestay-gform').forEach(btn => {
       btn.setAttribute('href', HOMESTAY_GOOGLE_FORM_URL);
       btn.setAttribute('target', '_blank');
+      btn.addEventListener('click', () => {
+        // Google Ads 轉換事件追蹤 (方案 A: 點擊前往 Google 表單報名)
+        if (typeof gtag === 'function') {
+          gtag('event', 'conversion', {'send_to': 'AW-1015765517/VTtFCNrj05QZEI20reQD'});
+        }
+      });
     });
   </script>
 </body>
