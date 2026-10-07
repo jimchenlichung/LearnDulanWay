@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏋️ 郭紘嘉教練 運動科學與健康管理諮詢 | 生理年齡逆轉 31 歲的奇蹟 - 都蘭共學堂</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1015765517"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1015765517');
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dulan: {
+                            forest: '#1E3F33',
+                            dark:   '#122820',
+                            sand:   '#F9F6F0',
+                            clay:   '#C86D51',
+                            wood:   '#8C6849',
+                            leaf:   '#4A7C59',
+                            teal:   '#0D7377',
+                            gold:   '#D4AF37',
+                            amber:  '#D97706'
+                        }
+                    },
+                    fontFamily: {
+                        sans:  ['Noto Sans TC', 'sans-serif'],
+                        serif: ['Noto Serif TC', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-pattern {
+            background-image: linear-gradient(135deg, rgba(18, 40, 32, 0.93) 0%, rgba(13, 115, 119, 0.88) 50%, rgba(200, 109, 81, 0.82) 100%),
+                              url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1600&auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .quote-box {
+            position: relative;
+        }
+        .quote-box::before {
+            content: "“";
+            position: absolute;
+            top: -25px;
+            left: 15px;
+            font-size: 5rem;
+            color: rgba(200, 109, 81, 0.18);
+            font-family: serif;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-[#F9F6F0] antialiased">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="https://jimchenlichung.github.io/LearnDulanWay/" class="inline-flex items-center gap-1.5 text-xs text-dulan-forest bg-dulan-sand hover:bg-gray-100 px-3.5 py-2 rounded-full border border-dulan-forest/15 font-semibold transition">
+                    <i class="fa-solid fa-arrow-left"></i> 返回共學堂首頁
+                </a>
+                <a href="#video-section" class="hidden sm:inline-flex items-center gap-1.5 text-xs text-dulan-forest bg-amber-50 hover:bg-amber-100 border border-amber-300 px-3.5 py-2 rounded-full font-bold transition">
+                    <i class="fa-brands fa-youtube text-red-600"></i> 收看官方影音
+                </a>
+            </div>
+            <div class="text-right">
+                <span class="font-serif text-lg font-bold text-dulan-forest block leading-none">都蘭共學堂</span>
+                <span class="text-[9px] text-dulan-clay tracking-widest uppercase block mt-1">Coach Guo Consulting</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern text-white py-20 sm:py-28 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold text-amber-200">
+                <i class="fa-solid fa-dumbbell"></i> 運動科學 ‧ 功能醫學 ‧ 生理年齡逆轉
+            </div>
+            <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl font-black leading-tight tracking-tight">
+                天空大地，<br>
+                <span class="text-amber-300">用智慧好好愛自己</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed">
+                曾被救護車送入加護病房，身分證 40 歲生理年齡高達 69 歲。<br class="hidden sm:inline">
+                郭紘嘉副教授以運動科學與自體修復，不可思議逆轉為 38 歲！<br class="hidden sm:inline">
+                為您量身打造安全、無痛、受用一生的中高齡肌力與體能處方。
+            </p>
+            <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#booking" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-dulan-clay hover:bg-[#b55c42] text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-heart-pulse"></i> 預約健康管理諮詢
+                </a>
+                <a href="#video-section" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 text-white font-semibold px-6 py-3.5 rounded-full border border-white/30 backdrop-blur-sm transition">
+                    <i class="fa-brands fa-youtube text-red-400"></i> 聆聽都蘭共學堂專訪
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Statistics -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 -mt-10 relative z-10">
+        <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-gray-100">
+            <div class="space-y-1">
+                <span class="text-3xl sm:text-4xl font-black text-dulan-clay font-serif">-31 歲</span>
+                <p class="text-xs text-gray-500 font-medium">生理年齡逆轉奇蹟</p>
+                <p class="text-[11px] text-gray-400">從 69 歲逆轉至 38 歲</p>
+            </div>
+            <div class="space-y-1 pt-4 md:pt-0">
+                <span class="text-3xl sm:text-4xl font-black text-dulan-teal font-serif">文化大學</span>
+                <p class="text-xs text-gray-500 font-medium">體育系副教授親授</p>
+                <p class="text-[11px] text-gray-400">金牌國手與國家級金牌教練</p>
+            </div>
+            <div class="space-y-1 pt-4 md:pt-0">
+                <span class="text-3xl sm:text-4xl font-black text-dulan-forest font-serif">握力 × 骨鬆</span>
+                <p class="text-xs text-gray-500 font-medium">精準全身機能指標</p>
+                <p class="text-[11px] text-gray-400">破除肌少症與跌倒風險</p>
+            </div>
+            <div class="space-y-1 pt-4 md:pt-0">
+                <span class="text-3xl sm:text-4xl font-black text-dulan-gold font-serif">零傷害</span>
+                <p class="text-xs text-gray-500 font-medium">客製化漸進運動處方</p>
+                <p class="text-[11px] text-gray-400">不盲目重訓、在家就能做</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-16 space-y-16">
+
+        <!-- YouTube Video Showcase Section -->
+        <section id="video-section" class="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-gray-100 space-y-6">
+            <div class="text-center space-y-2">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 text-red-600 text-xs font-bold tracking-wider border border-red-200">
+                    <i class="fa-brands fa-youtube"></i> 都蘭共學堂 YouTube 官方頻道收錄
+                </span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-dulan-forest">
+                    《積極健身房：專業指導下的力量再生》
+                </h2>
+                <p class="text-xs sm:text-sm text-gray-600 max-w-xl mx-auto">
+                    由阿鐘教練親自錄製與分享，紀錄與文化大學郭紘嘉教練在都蘭相遇、打破老年不敢重訓迷思的精彩心路歷程。
+                </p>
+            </div>
+
+            <!-- YouTube Iframe Responsive Container -->
+            <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-black">
+                <iframe 
+                    class="absolute top-0 left-0 w-full h-full"
+                    src="https://www.youtube.com/embed/efqcfsudiA8" 
+                    title="都蘭共學堂 第 11 章 積極健身房：郭紘嘉教練" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 text-xs text-gray-500 border-t border-gray-100">
+                <span class="flex items-center gap-2">
+                    <i class="fa-solid fa-headphones-simple text-dulan-clay"></i> 建議戴上耳機聆聽郭教練與阿鐘老師的精彩對談
+                </span>
+                <a href="https://youtu.be/efqcfsudiA8" target="_blank" class="inline-flex items-center gap-1 text-red-600 hover:text-red-700 font-bold transition">
+                    前往 YouTube App 收看 ↗
+                </a>
+            </div>
+        </section>
+
+        <!-- Coach Profile Section -->
+        <section id="coach" class="space-y-10">
+            <div class="text-center space-y-3">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-dulan-teal/10 text-dulan-teal text-xs font-bold tracking-widest uppercase">
+                    Profile & Story
+                </span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-dulan-forest">
+                    郭紘嘉 教練資歷與生命轉折
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 max-w-xl mx-auto leading-relaxed">
+                    從選手時代追求金牌，到人生中年為健康奮鬥，最後以運動科學幫助所有人找回生命的圓滿。
+                </p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-sm border border-gray-100 space-y-8">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 pb-6 border-b border-gray-100">
+                    <div class="w-20 h-20 rounded-2xl bg-dulan-clay/10 text-dulan-clay flex items-center justify-center text-3xl font-serif font-black shrink-0">
+                        郭
+                    </div>
+                    <div class="space-y-1">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-dulan-forest">郭紘嘉 副教授</h3>
+                            <span class="px-2.5 py-0.5 rounded-full bg-dulan-forest text-white text-xs font-bold">郭教練 ‧ 三寶教練</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-dulan-clay font-bold tracking-wide">
+                            中國文化大學體育副教授 ‧ 國家金牌選手 ‧ 國家級金牌教練 ‧ 運動科學專家
+                        </p>
+                        <p class="text-xs text-gray-500">
+                            專長：運動生理學、中高齡功能性體適能訓練、功能醫學與作息整合、心肺 VO2 max 調控
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Story Blocks -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <!-- Left: 加護病房的覺醒 -->
+                    <div class="space-y-4 bg-amber-50/60 p-6 rounded-2xl border border-amber-200/60">
+                        <h4 class="font-serif text-lg font-bold text-amber-900 flex items-center gap-2">
+                            <i class="fa-solid fa-hospital text-dulan-clay"></i> 加護病房裡的當頭棒喝
+                        </h4>
+                        <p class="text-xs sm:text-sm text-gray-700 leading-relaxed">
+                            年輕時身為頂尖棒球運動員，帶隊屢獲全國金牌。退役進入大學與研究所任教，兼負繁重行政。四十多歲那年，高壓工作終於壓垮身軀，被救護車緊急送進醫院急診室。
+                        </p>
+                        <blockquote class="text-xs sm:text-sm text-dulan-clay font-bold border-l-2 border-dulan-clay pl-3 italic">
+                            「主治醫師走進病房第一句話問我：『郭老師，你是要錢還是要命？』」
+                        </blockquote>
+                        <p class="text-xs text-gray-600 leading-relaxed">
+                            當時身分證四十多歲，儀器測出生理年齡竟然老化到了 <strong>69 歲</strong>，體重飆至 75 公斤，肌肉量流失、心血管數值亮起紅燈。那次死裡逃生，讓他痛定思痛：<strong>沒有了健康，事業與金牌皆是虛妄。</strong>
+                        </p>
+                    </div>
+
+                    <!-- Right: 生理年齡逆轉 31 歲 -->
+                    <div class="space-y-4 bg-emerald-50/60 p-6 rounded-2xl border border-emerald-200/60">
+                        <h4 class="font-serif text-lg font-bold text-emerald-900 flex items-center gap-2">
+                            <i class="fa-solid fa-arrow-trend-down text-emerald-700"></i> 生理年齡 38 歲的逆轉奇蹟
+                        </h4>
+                        <p class="text-xs sm:text-sm text-gray-700 leading-relaxed">
+                            郭教練運用畢生運動科學專業，結合功能醫學、精準營養調控與身心靈能量整合，以自己的身體展開精密實驗。
+                        </p>
+                        <ul class="space-y-2 text-xs text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
+                                <span><strong>體態精實長駐：</strong>長年體重穩定維持在 62～63 公斤，肌肉量飽滿。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
+                                <span><strong>生理時鐘回春：</strong>現年 60 歲，最新儀器生理年齡評估為 <strong>38 歲</strong>！</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-emerald-600 mt-0.5"></i>
+                                <span><strong>都蘭動態健康工作坊：</strong>親自來到都蘭，為社區長輩傳授「天空大地愛自己」科學自練心法。</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Azhong Endorsement Section -->
+        <section class="bg-gradient-to-br from-dulan-forest to-[#122820] text-white rounded-3xl p-8 sm:p-12 shadow-xl relative overflow-hidden">
+            <div class="space-y-6 relative z-10">
+                <div class="flex items-center gap-3">
+                    <span class="px-3 py-1 rounded-full bg-dulan-gold/20 text-amber-300 text-xs font-bold tracking-wider border border-amber-300/30">
+                        📖 自傳《成為自己》第 11 章真摯推薦
+                    </span>
+                </div>
+                <h3 class="font-serif text-2xl sm:text-3xl font-bold leading-snug">
+                    「七十歲進健身房，<br class="hidden sm:inline">是郭教練開啟了我對力量再生的渴望。」
+                </h3>
+                <div class="quote-box text-sm sm:text-base text-white/85 leading-relaxed space-y-4">
+                    <p>
+                        「在傳統迷思裡，老人家談健康總是在公園散散步、甩甩手，覺得動碰器材會受傷。但我看著家族裡兩位嫂子承受著失智症的折磨，看著親人在迷霧中流失記憶，我深知：<strong>肌肉與大腦神經網絡的萎縮是同時發生的！</strong>阻力訓練是預防高齡失智、對抗骨質疏鬆最強大的防線。」
+                    </p>
+                    <p>
+                        「郭紘嘉教練來到都蘭，沒有教我們那些花俏昂貴的器材，而是教我們用手邊的寶特瓶、椅子和自身體重，在家進行最安全的肌力練習。郭教練證明了：<strong>年齡只是身分證上的數字，只要找對運動科學，七十歲也能迎來生命的枯木逢春！</strong>」
+                    </p>
+                </div>
+                <div class="pt-2 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center font-bold text-amber-300 border border-white/20">
+                        阿中
+                    </div>
+                    <div>
+                        <span class="font-bold text-white block text-sm">都蘭阿中（陳豊鍾）</span>
+                        <span class="text-xs text-white/60">都蘭共學堂創辦人 ‧ 小習慣訓練師 ‧ AI 作家</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Four Core Exercise Science Principles -->
+        <section class="space-y-10">
+            <div class="text-center space-y-3">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-dulan-clay/10 text-dulan-clay text-xs font-bold tracking-widest uppercase">
+                    Core Methodology
+                </span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-dulan-forest">
+                    四大運動科學核心理念
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 max-w-xl mx-auto leading-relaxed">
+                    不盲目苦練，拒絕運動傷害，用精準數據與生理學保護身體。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- 1. 握力與健康指標 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-50 text-dulan-clay flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-hand-back-fist"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-dulan-forest">1. 握力：全身健康的生物時鐘</h3>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                        握力不僅是手部力量，更是全身體力、心血管健康、糖尿病與跌倒失能的重要預測指標。日常檢測很簡單：能否輕鬆轉開未開封的寶特瓶蓋？虎口與太陽穴是否飽滿？透過居家自我檢測，第一時間察覺肌肉衰退警訊。
+                    </p>
+                </div>
+
+                <!-- 2. 骨鬆與肌少症連動 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-dulan-leaf flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-bone"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-dulan-forest">2. 骨質疏鬆與肌肉萎縮相伴生</h3>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                        骨骼需要足夠的壓力刺激才能鎖住鈣質；光靠散步無法喚醒沉睡的骨細胞。郭教練運用「漸進式超負荷」原則，為中高齡設計安全無衝擊的阻力訓練，刺激肌肉再生，有效穩固骨質密度。
+                    </p>
+                </div>
+
+                <!-- 3. 心肺強度與避免免疫空窗 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-teal-50 text-dulan-teal flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-dulan-forest">3. 精準心跳率與防禦免疫空窗</h3>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                        運動不是越累越好。超過臨界負荷的高強度運動會消耗大量血漿「L-麩醯胺酸（Glutamine）」，造成免疫力空窗期反易感染。教您計算最大心跳率（有氧耐力 65-79%、高間歇動力 70-90%），精準鍛鍊心肺能力。
+                    </p>
+                </div>
+
+                <!-- 4. 痠痛不是指標 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-700 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-dulan-forest">4. 痠痛不代表有效：先力量後增肌</h3>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                        運動後的嚴重痠痛往往只是肌肉微撕裂與發炎，並非增肌唯一指標。真正關鍵是「神經系統徵召肌纖維的能力」。先透過精準動作找回協調性與發力記憶，再透過高吸收率蛋白質補充，讓身體自然強壯。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Consulting Services -->
+        <section id="services" class="space-y-10">
+            <div class="text-center space-y-3">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-dulan-teal/10 text-dulan-teal text-xs font-bold tracking-widest uppercase">
+                    Consulting Programs
+                </span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-dulan-forest">
+                    郭教練健康管理諮詢服務
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 max-w-xl mx-auto leading-relaxed">
+                    結合大學運動科學專業與數十年實務教學，為您量身打造一套真正受用終身、在家就能安全執行的強身處方。
+                </p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- 方案 1 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:border-dulan-teal/30 transition flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+                    <div class="space-y-2 flex-1">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded-full bg-dulan-teal/10 text-dulan-teal text-xs font-bold">專案 A</span>
+                            <h3 class="font-serif text-xl font-bold text-dulan-forest">1 對 1 體適能功能評估 ╳ 客製化居家運動處方</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            握力、關節活動度、下肢肌耐力與心肺基礎全面盤點。依據您的生活習慣與身體限制，設計專屬「50 分及格法」微習慣練習，免買昂貴器械，在家利用椅子與水瓶就能開練。
+                        </p>
+                        <div class="text-xs text-gray-500 flex flex-wrap gap-4 pt-1">
+                            <span><i class="fa-regular fa-clock text-dulan-clay"></i> 諮詢時間：60 分鐘</span>
+                            <span><i class="fa-solid fa-laptop text-dulan-teal"></i> 形式：線上視訊對話 / 都蘭莊園實體面談</span>
+                        </div>
+                    </div>
+                    <div class="text-left md:text-right shrink-0">
+                        <span class="text-xl sm:text-2xl font-bold text-dulan-forest block">NT$ 2,500</span>
+                        <span class="text-xs text-gray-400 block mb-3">單次深度全面評估</span>
+                        <a href="#booking" class="inline-flex items-center gap-1.5 bg-dulan-forest hover:bg-dulan-teal text-white text-xs font-bold px-5 py-2.5 rounded-full transition">
+                            立即預約 ➡️
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 方案 2 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:border-dulan-clay/30 transition flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+                    <div class="space-y-2 flex-1">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded-full bg-dulan-clay/10 text-dulan-clay text-xs font-bold">專案 B</span>
+                            <h3 class="font-serif text-xl font-bold text-dulan-forest">中高齡抗老逆齡 ╳ 肌少症與骨鬆 3 個月系統陪跑</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            針對退化性關節不適、肌少症紅字、體力不足的長期指導。每週定期動作檢核與姿勢校正、飲食蛋白質吸收節奏調控、防範運動傷害與生理年齡重塑。
+                        </p>
+                        <div class="text-xs text-gray-500 flex flex-wrap gap-4 pt-1">
+                            <span><i class="fa-solid fa-calendar-check text-dulan-clay"></i> 3 個月全程定期追蹤</span>
+                            <span><i class="fa-brands fa-line text-green-600"></i> 私 LINE 影片動作指導與答疑</span>
+                        </div>
+                    </div>
+                    <div class="text-left md:text-right shrink-0">
+                        <span class="text-xl sm:text-2xl font-bold text-dulan-clay block">NT$ 9,999</span>
+                        <span class="text-xs text-gray-400 block mb-3">三個月專業指導陪跑</span>
+                        <a href="#booking" class="inline-flex items-center gap-1.5 bg-dulan-clay hover:bg-[#b55c42] text-white text-xs font-bold px-5 py-2.5 rounded-full transition">
+                            申請系統陪跑 ➡️
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 方案 3 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:border-dulan-forest/30 transition flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+                    <div class="space-y-2 flex-1">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded-full bg-dulan-gold/20 text-amber-700 text-xs font-bold">專案 C</span>
+                            <h3 class="font-serif text-xl font-bold text-dulan-forest">都蘭三天兩夜 ‧ 山海體適能與動態健康實作營</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            入住台東都蘭「四季八里自然莊園」，串聯都蘭 A 計劃專業健身房器材實作、都蘭山健行晨走、加母子灣潮間帶活動度訓練，親身體驗運動科學如何與東海岸慢活完美融合。
+                        </p>
+                        <div class="text-xs text-gray-500 flex flex-wrap gap-4 pt-1">
+                            <span><i class="fa-solid fa-hotel text-dulan-clay"></i> 含兩晚莊園住宿與在地純淨食宿</span>
+                            <span><i class="fa-solid fa-users text-dulan-teal"></i> 小班沉浸 ‧ 每週五六日梯次</span>
+                        </div>
+                    </div>
+                    <div class="text-left md:text-right shrink-0">
+                        <span class="text-xl sm:text-2xl font-bold text-dulan-forest block">NT$ 9,999 / 人</span>
+                        <span class="text-xs text-gray-400 block mb-3">三天兩夜全包體驗</span>
+                        <a href="#booking" class="inline-flex items-center gap-1.5 bg-dulan-forest hover:bg-dulan-teal text-white text-xs font-bold px-5 py-2.5 rounded-full transition">
+                            預約實體營隊 ➡️
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="space-y-8">
+            <div class="text-center space-y-2">
+                <span class="text-xs font-bold text-dulan-clay uppercase tracking-widest">FAQ</span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-dulan-forest">常見運動科學疑問</h2>
+            </div>
+
+            <div class="space-y-4">
+                <details class="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 cursor-pointer">
+                    <summary class="font-serif font-bold text-base sm:text-lg text-dulan-forest flex justify-between items-center list-none">
+                        <span>Q1：年紀超過六十歲甚至七十歲，適合做阻力或重量訓練嗎？</span>
+                        <span class="text-dulan-clay transition group-open:rotate-180"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed mt-4 pt-4 border-t border-gray-100">
+                        非常適合，甚至比年輕人更需要！三十歲以後人體肌肉以每年 1% 速度自然流失，關節炎與骨鬆往往源於肌肉失去支撐。在專業指導下，以「漸進式超負荷」給予骨骼適當壓力刺激，能有效促進骨質生成、喚醒神經連結，阿鐘老師七十歲才走進健身房就是最棒的實踐！
+                    </p>
+                </details>
+
+                <details class="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 cursor-pointer">
+                    <summary class="font-serif font-bold text-base sm:text-lg text-dulan-forest flex justify-between items-center list-none">
+                        <span>Q2：我每天都有散步一萬步，這樣算不算足夠的肌力運動？</span>
+                        <span class="text-dulan-clay transition group-open:rotate-180"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed mt-4 pt-4 border-t border-gray-100">
+                        散步屬於很好的日常低強度有氧活動，但<strong>無法取代肌力與阻力訓練</strong>。長期缺乏阻力刺激，即使每天走萬步，上半身核心與大腿肌群仍會持續萎縮。郭教練會教您如何搭配簡單的深蹲、推撐與核心啟動，讓有氧與肌力相輔相成。
+                    </p>
+                </details>
+
+                <details class="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 cursor-pointer">
+                    <summary class="font-serif font-bold text-base sm:text-lg text-dulan-forest flex justify-between items-center list-none">
+                        <span>Q3：運動隔天一定要很痠痛才算是有效果嗎？</span>
+                        <span class="text-dulan-clay transition group-open:rotate-180"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed mt-4 pt-4 border-t border-gray-100">
+                        這是一個大迷思！痠痛只是延遲性肌肉酸痛（DOMS），與長期增肌效果並無必然正相關；嚴重痠痛甚至會干擾正常生活造成傷害。郭教練強調「安全、神經徵召與動作結構品質」，無痛也能達成強大的細胞生化合成！
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <!-- Booking & Contact Section -->
+        <section id="booking" class="bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-gray-100 space-y-8">
+            <div class="text-center space-y-3">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-dulan-clay/10 text-dulan-clay text-xs font-bold tracking-widest uppercase">
+                    Get in Touch
+                </span>
+                <h2 class="font-serif text-3xl font-bold text-dulan-forest">
+                    預約郭教練健康管理諮詢
+                </h2>
+                <p class="text-xs sm:text-sm text-gray-500 max-w-md mx-auto">
+                    歡迎透過都蘭共學堂專人電話或 LINE 預約，為您安排專屬諮詢時間。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-dulan-sand p-6 sm:p-8 rounded-2xl space-y-4 border border-dulan-forest/5">
+                    <h3 class="font-serif text-lg font-bold text-dulan-forest flex items-center gap-2">
+                        <i class="fa-solid fa-phone-volume text-dulan-clay"></i> 快速聯絡管道
+                    </h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        請撥打電話或加入 LINE，留言「預約郭教練健康管理諮詢」：
+                    </p>
+                    <div class="space-y-3 pt-2 text-sm">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </span>
+                            <div>
+                                <span class="text-xs text-gray-400 block">諮詢專線</span>
+                                <a href="tel:0908853322" class="font-bold text-dulan-forest hover:text-dulan-clay">0908-853-322</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center shrink-0">
+                                <i class="fa-brands fa-line text-lg"></i>
+                            </span>
+                            <div>
+                                <span class="text-xs text-gray-400 block">LINE ID 洽詢</span>
+                                <span class="font-bold text-dulan-forest">0908853322</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </span>
+                            <div>
+                                <span class="text-xs text-gray-400 block">莊園地址</span>
+                                <span class="text-xs font-bold text-gray-700">台東縣東河鄉都蘭村舊廍 14-2 號（四季八里自然莊園）</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <p class="text-xs text-gray-600 font-semibold mb-2">預約步驟：</p>
+                    <ol class="space-y-3 text-xs sm:text-sm text-gray-700">
+                        <li class="flex items-start gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-dulan-forest text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">1</span>
+                            <span><strong>電話或加 LINE 聯繫：</strong>簡述目前關心的體能課題（關節活動度、肌力衰退、骨鬆預防）。</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-dulan-forest text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">2</span>
+                            <span><strong>課前初步評估：</strong>回傳日常作息、運動習慣與近期健檢概要。</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-dulan-forest text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">3</span>
+                            <span><strong>正式諮詢與處方交付：</strong>郭教練親自一對一解析，交付安全微習慣訓練指引。</span>
+                        </li>
+                    </ol>
+
+                    <div class="pt-4">
+                        <a href="tel:0908853322" class="w-full inline-flex items-center justify-center gap-2 bg-dulan-clay hover:bg-[#b55c42] text-white font-bold py-3.5 px-6 rounded-full shadow-lg transition">
+                            <i class="fa-solid fa-phone-volume"></i> 撥打諮詢電話 (0908-853-322)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dulan-dark text-white/70 py-12 border-t border-white/10 text-xs">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="text-center sm:text-left space-y-1">
+                <span class="font-serif text-base font-bold text-white block">都蘭共學堂 ╳ 四季八里自然莊園</span>
+                <p class="text-white/50 text-[11px]">一手拿滑鼠，一手摸泥土 ‧ 人生何時開始都不晚</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="https://jimchenlichung.github.io/LearnDulanWay/" class="hover:text-white transition">返回首頁</a>
+                <span class="text-white/20">|</span>
+                <a href="../health-consulting/index.html" class="hover:text-white transition">姜老師食養諮詢</a>
+                <span class="text-white/20">|</span>
+                <a href="../azhong/index.html" class="hover:text-white transition">認識阿中教練</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

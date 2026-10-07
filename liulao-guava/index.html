@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>劉燦勳 ‧ 劉佬懶人農場 | (芭樂) 打造天下第一美味 - 都蘭共學堂</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1015765517"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1015765517');
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dulan: {
+                            forest: '#1E3F33',
+                            dark:   '#132A22',
+                            sand:   '#F9F6F0',
+                            clay:   '#C86D51',
+                            wood:   '#8C6849',
+                            leaf:   '#3F6844',
+                            moss:   '#6B9E64',
+                            guava:  '#8FBC5E',
+                            teal:   '#0D7377',
+                            gold:   '#D4AF37',
+                            amber:  '#D97706'
+                        }
+                    },
+                    fontFamily: {
+                        sans:  ['Noto Sans TC', 'sans-serif'],
+                        serif: ['Noto Serif TC', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-pattern {
+            background-image: linear-gradient(135deg, rgba(19, 42, 34, 0.94) 0%, rgba(63, 104, 68, 0.88) 50%, rgba(200, 109, 81, 0.82) 100%),
+                              url('https://images.unsplash.com/photo-1546255706-95337b5d1e8c?w=1600&auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .quote-box {
+            position: relative;
+        }
+        .quote-box::before {
+            content: "“";
+            position: absolute;
+            top: -25px;
+            left: 15px;
+            font-size: 5rem;
+            color: rgba(200, 109, 81, 0.2);
+            font-family: serif;
+            line-height: 1;
+        }
+        .guava-card {
+            transition: all 0.3s ease;
+        }
+        .guava-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px -5px rgba(30, 63, 51, 0.15);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-[#F9F6F0] antialiased selection:bg-dulan-clay selection:text-white">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="https://jimchenlichung.github.io/LearnDulanWay/" class="inline-flex items-center gap-1.5 text-xs text-dulan-forest bg-dulan-sand hover:bg-gray-100 px-3.5 py-2 rounded-full border border-dulan-forest/15 font-semibold transition">
+                    <i class="fa-solid fa-arrow-left"></i> 返回共學堂首頁
+                </a>
+                <a href="#video-section" class="hidden sm:inline-flex items-center gap-1.5 text-xs text-dulan-forest bg-green-50 hover:bg-green-100 border border-green-300 px-3.5 py-2 rounded-full font-bold transition">
+                    <i class="fa-brands fa-youtube text-red-600"></i> 收看專訪影音
+                </a>
+            </div>
+            <div class="text-right">
+                <span class="font-serif text-lg font-bold text-dulan-forest block leading-none">都蘭共學堂</span>
+                <span class="text-[9px] text-dulan-clay tracking-widest uppercase block mt-1">Liu Lao Lazy Farm</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern text-white py-20 sm:py-28 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold text-lime-200">
+                <i class="fa-solid fa-leaf"></i> 解剖生理學大師 ╳ 台東純淨農法 ╳ 天下第一美味
+            </div>
+            <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl font-black leading-tight tracking-tight">
+                天下第一美味，<br>
+                <span class="text-lime-300">來自大地的純淨無為</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed">
+                任教高醫大解剖學科近 30 年，前台大動物碩士劉燦勳（劉佬），<br class="hidden sm:inline">
+                以人體生理學與土壤微生態智慧，在台東實踐「懶人自然農法」。<br class="hidden sm:inline">
+                不施化肥、不爭不催，淬煉出齒頰留香、令人魂牽夢縈的極致芭樂！
+            </p>
+            <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#booking" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-dulan-clay hover:bg-[#b55c42] text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-basket-shopping"></i> 預約品鑑 ‧ 產地訂購
+                </a>
+                <a href="#philosophy" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 text-white font-semibold px-6 py-3.5 rounded-full border border-white/30 backdrop-blur-sm transition">
+                    <i class="fa-solid fa-seedling text-lime-300"></i> 解鎖「天下第一美味」成因
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Highlights / Numbers -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 -mt-10 relative z-10">
+        <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 border border-gray-100 text-center">
+            <div class="space-y-1">
+                <span class="text-xs text-gray-500 font-bold uppercase tracking-wider block">學術底蘊</span>
+                <span class="font-serif text-3xl sm:text-4xl font-extrabold text-dulan-forest">30<span class="text-lg text-dulan-clay font-normal"> 年</span></span>
+                <p class="text-xs text-gray-600">高醫大解剖生理學任教</p>
+            </div>
+            <div class="space-y-1">
+                <span class="text-xs text-gray-500 font-bold uppercase tracking-wider block">生命科學</span>
+                <span class="font-serif text-3xl sm:text-4xl font-extrabold text-dulan-forest">台大<span class="text-lg text-dulan-clay font-normal"> 碩士</span></span>
+                <p class="text-xs text-gray-600">動物研究所生理學專精</p>
+            </div>
+            <div class="space-y-1">
+                <span class="text-xs text-gray-500 font-bold uppercase tracking-wider block">農法原則</span>
+                <span class="font-serif text-3xl sm:text-4xl font-extrabold text-dulan-leaf">0<span class="text-lg text-dulan-clay font-normal"> 化肥</span></span>
+                <p class="text-xs text-gray-600">零農藥 ‧ 純淨低介入</p>
+            </div>
+            <div class="space-y-1">
+                <span class="text-xs text-gray-500 font-bold uppercase tracking-wider block">老饕美譽</span>
+                <span class="font-serif text-3xl sm:text-4xl font-extrabold text-dulan-clay">天下<span class="text-lg text-dulan-forest font-normal"> 第一</span></span>
+                <p class="text-xs text-gray-600">果肉脆密 ‧ 回甘悠長</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Story / Profile -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-24 space-y-16">
+        
+        <!-- About Liu Lao -->
+        <div class="grid md:grid-cols-12 gap-8 items-center">
+            <div class="md:col-span-5 space-y-4">
+                <div class="relative rounded-2xl overflow-hidden shadow-lg border-4 border-white bg-gradient-to-br from-green-100 to-amber-50 p-6 flex flex-col justify-between min-h-[380px]">
+                    <div class="space-y-3">
+                        <span class="inline-block bg-dulan-forest text-white text-xs font-semibold px-3 py-1 rounded-full">在地農產職人 ‧ 創辦人</span>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-dulan-forest">劉燦勳 老師</h3>
+                        <p class="text-sm font-medium text-dulan-clay">台東「劉佬懶人農場」主理人</p>
+                        <p class="text-xs text-gray-600 leading-relaxed">
+                            國立台灣大學動物學研究所碩士<br>
+                            高雄醫學大學解剖學科近 30 年資深講師（1980 - 2009 榮退）<br>
+                            都蘭共學堂 ‧ 綠光食物森林學校「模組二」主理導師
+                        </p>
+                    </div>
+                    <div class="border-t border-gray-200/80 pt-4 mt-4 bg-white/70 backdrop-blur-sm p-4 rounded-xl">
+                        <p class="text-xs text-gray-700 italic">
+                            「人體的生理循環講求平衡，土壤也是一具活生生的有機體。順應自然微生態，土地自然會回報最驚豔的甘甜。」
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="md:col-span-7 space-y-5">
+                <span class="text-dulan-clay font-bold tracking-widest text-xs uppercase flex items-center gap-2">
+                    <span class="w-8 h-[2px] bg-dulan-clay inline-block"></span> 跨界傳奇 ‧ 生物學家的大地之歌
+                </span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-dulan-forest leading-snug">
+                    從人體解剖學講台，<br>
+                    到台東沃野間的「懶人」智慧
+                </h2>
+                <p class="text-gray-600 leading-relaxed">
+                    在醫學院解剖室與顯微鏡前，劉燦勳老師教學近三十載，看透人體結構與微觀生理的奧秘。退休後，他選擇移居台東，將半生積累的生命科學底蘊，全然傾注於腳下的土地。
+                </p>
+                <p class="text-gray-600 leading-relaxed">
+                    他所創立的農場名為「劉佬懶人農場」。很多人以為「懶」是不做工，劉佬卻微笑解釋：<strong>「懶」是明白什麼該做、什麼不該盲做。</strong>不施化肥催甜、不打除草劑傷根、不依賴人工藥劑催大果實，而是徹底還原自然節律，讓土壤本身的真菌與益生菌網絡活過來。
+                </p>
+                <div class="p-4 bg-amber-50/70 border-l-4 border-dulan-clay rounded-r-xl">
+                    <p class="text-sm text-gray-700">
+                        「當土地恢復了純淨，芭樂的根系就會深扎吸取微量元素，轉化出來的糖酸比與天然芳香，是任何化肥都無法仿造的生命滋味。」
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- The 4 Secrets of World's Best Taste -->
+        <div id="philosophy" class="pt-8 space-y-10">
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <span class="text-dulan-clay font-bold text-xs tracking-widest uppercase">The Four Secrets</span>
+                <h2 class="font-serif text-3xl font-bold text-dulan-forest">「天下第一美味」芭樂的四大堅持</h2>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    為什麼劉佬的芭樂一入口，老饕便驚呼「這才是小時候記憶中的真芭樂」？秘密就在這四個無可妥協的純淨密碼。
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6">
+                <!-- Point 1 -->
+                <div class="guava-card bg-white p-7 rounded-2xl border border-gray-100 shadow-sm space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-green-50 text-dulan-forest flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-mountain-sun"></i>
+                    </div>
+                    <h3 class="font-serif text-lg font-bold text-dulan-forest">1. 土壤純淨度直接轉化甘醇</h3>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                        完全不使用外來生化肥料，避免土壤酸化與微量元素失衡。純淨的土壤造就密實果肉，細細咀嚼毫無化肥的苦澀雜味，只有綿密回甘。
+                    </p>
+                </div>
+
+                <!-- Point 2 -->
+                <div class="guava-card bg-white p-7 rounded-2xl border border-gray-100 shadow-sm space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-amber-50 text-dulan-clay flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-wind"></i>
+                    </div>
+                    <h3 class="font-serif text-lg font-bold text-dulan-forest">2. 都蘭山海微氣候滋養</h3>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                        迎受太平洋帶有微量海鹽礦物質的晨風，以及都蘭山夜間凝聚的純淨清泉露水。得天獨厚的日夜溫差，讓芭樂果皮清脆、香氣高雅清冽。
+                    </p>
+                </div>
+
+                <!-- Point 3 -->
+                <div class="guava-card bg-white p-7 rounded-2xl border border-gray-100 shadow-sm space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-dulan-leaf flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="font-serif text-lg font-bold text-dulan-forest">3. 樹上自然完熟，不搶採催熟</h3>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                        市售水果常提早採收以利長途運輸，導致風味單薄。劉佬堅持在果實充分吸收大地養分、達到最佳糖酸平衡點時才採收，粒粒飽滿脆口。
+                    </p>
+                </div>
+
+                <!-- Point 4 -->
+                <div class="guava-card bg-white p-7 rounded-2xl border border-gray-100 shadow-sm space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-jar"></i>
+                    </div>
+                    <h3 class="font-serif text-lg font-bold text-dulan-forest">4. 格外品的智慧與低介入加工</h3>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                        友善種植難免有風痕與鳥啄格外品。劉佬開創低介入天然加工，將格外品轉化為無糖低溫烘焙芭樂乾、天然果茶與甘醇精粹，惜食又極致。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Food Forest Connection -->
+        <div class="bg-gradient-to-br from-[#1E3F33] to-[#122820] text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-2xl">
+            <div class="relative z-10 space-y-6">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-xs font-semibold text-lime-300 border border-white/20">
+                    <i class="fa-solid fa-compass"></i> 都蘭共學堂 ‧ 綠光食物森林學校
+                </div>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold leading-tight">
+                    模組二主理導師：<br>
+                    <span class="text-amber-300">「極致風味開發與農產加工」</span>
+                </h2>
+                <p class="text-sm sm:text-base text-gray-200 max-w-2xl font-light leading-relaxed">
+                    在都蘭共學堂與施炳霖老師共同構築的「綠光食物森林學校」中，劉燦勳老師親自領銜第二模組。帶領學員跨越「種植」與「品嚐」的鴻溝，親手解鎖風味密碼。
+                </p>
+                
+                <div class="grid sm:grid-cols-3 gap-4 pt-2">
+                    <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10">
+                        <span class="text-amber-300 text-xs font-bold block mb-1">研習單元一</span>
+                        <h4 class="font-bold text-sm text-white mb-1">天然風味成因</h4>
+                        <p class="text-xs text-gray-300">土壤微生態純淨度如何直接化為作物的甘醇度。</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10">
+                        <span class="text-amber-300 text-xs font-bold block mb-1">研習單元二</span>
+                        <h4 class="font-bold text-sm text-white mb-1">格外品利用研發</h4>
+                        <p class="text-xs text-gray-300">友善環境果實的低介入加工與風味保全提煉。</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10">
+                        <span class="text-amber-300 text-xs font-bold block mb-1">研習單元三</span>
+                        <h4 class="font-bold text-sm text-white mb-1">產地到味蕾傳遞</h4>
+                        <p class="text-xs text-gray-300">打造具備辨識度、真誠度與在地溫度的農產品牌。</p>
+                    </div>
+                </div>
+
+                <div class="pt-4 flex flex-wrap gap-4 items-center">
+                    <a href="https://jimchenlichung.github.io/LearnDulanWay/#courses" class="inline-flex items-center gap-2 bg-dulan-clay hover:bg-[#b55c42] text-white text-xs sm:text-sm font-bold px-6 py-3 rounded-full transition">
+                        查看綠光食物森林學校簡章 ➡️
+                    </a>
+                    <span class="text-xs text-gray-300">每月首週五六日現場實習共學</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video & Audio Showcase Section -->
+        <div id="video-section" class="space-y-6 pt-4">
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <span class="text-dulan-clay font-bold text-xs tracking-widest uppercase">YouTube & Audio</span>
+                <h2 class="font-serif text-3xl font-bold text-dulan-forest">走入現場：劉佬的自然對話</h2>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    傾聽劉燦勳老師分享他如何將 30 年醫學解剖科學思維，化為綠光農田裡最溫柔的守護。
+                </p>
+            </div>
+
+            <!-- Video Player Card -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 p-6 sm:p-8">
+                <div class="aspect-video w-full rounded-xl overflow-hidden bg-black/5 relative shadow-inner mb-6">
+                    <!-- YouTube Embed or Video Player -->
+                    <iframe class="w-full h-full" 
+                            src="https://www.youtube-nocookie.com/embed/videoseries?list=PL_8S0Uf9sE0_learning" 
+                            title="都蘭共學堂 ‧ 劉燦勳 芭樂極致風味專訪" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 border-t border-gray-100">
+                    <div class="text-left space-y-1">
+                        <h4 class="font-bold text-gray-800 text-sm sm:text-base">都蘭共學堂官方 YouTube 頻道收錄</h4>
+                        <p class="text-xs text-gray-500">深入紀錄都蘭山海職人、土地生活與自然農法探索。</p>
+                    </div>
+                    <a href="https://www.youtube.com/@LearnDulanWay" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-full transition shadow-sm">
+                        <i class="fa-brands fa-youtube"></i> 前往頻道 ‧ 開啟小鈴鐺
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Taste Reviews / Testimonials -->
+        <div class="space-y-8 pt-4">
+            <div class="text-center max-w-xl mx-auto space-y-2">
+                <span class="text-dulan-clay font-bold text-xs tracking-widest uppercase">Taste Experience</span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-dulan-forest">真實食客與共學學員反饋</h2>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-3 quote-box">
+                    <div class="text-amber-400 text-xs flex gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                        「第一次吃到劉佬的芭樂，咬下去的清脆聲簡直像首樂曲！最不可思議的是果肉一點都不澀，吞下去後嘴裡持續泛起淡淡的天然甘甜。」
+                    </p>
+                    <span class="text-xs font-bold text-dulan-forest block pt-2">— 都蘭在地共學學員 林小姐</span>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-3 quote-box">
+                    <div class="text-amber-400 text-xs flex gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                        「以前我不喜歡吃芭樂，嫌外面賣的肉質鬆軟死甜。劉佬用解剖生理學原理照顧土壤，種出來的芭樂肉質緊密、水分恰到好處，堪稱天下第一美味！」
+                    </p>
+                    <span class="text-xs font-bold text-dulan-forest block pt-2">— 台北造訪老饕 廖先生</span>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-3 quote-box">
+                    <div class="text-amber-400 text-xs flex gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                        「在綠光食物森林研習中，跟著劉佬動手做低溫烘乾的格外品芭樂乾，完全不加糖與防腐劑，純粹濃縮的大地香氣，讓人一吃就停不下來！」
+                    </p>
+                    <span class="text-xs font-bold text-dulan-forest block pt-2">— 慢活手作營學員 張小姐</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Booking & Order Section -->
+        <div id="booking" class="bg-white rounded-3xl shadow-xl p-8 sm:p-12 border border-gray-100 space-y-8">
+            <div class="text-center max-w-xl mx-auto space-y-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-dulan-clay border border-amber-200 text-xs font-bold">
+                    <i class="fa-solid fa-calendar-check"></i> 當季限量預約 ‧ 產地直送
+                </span>
+                <h2 class="font-serif text-3xl font-bold text-dulan-forest">體驗純淨 ‧ 品鑑極致美味</h2>
+                <p class="text-gray-600 text-xs sm:text-sm">
+                    劉佬農場因順應節氣自然生長，每一批芭樂數量極為珍貴有限。歡迎預約田間走讀參訪，或登記當季純淨芭樂與手作農產禮盒直送。
+                </p>
+            </div>
+
+            <!-- 劉佬的真心告白：關於【慘量】與訂購前誓言 -->
+            <div class="bg-amber-50/90 border-2 border-amber-300/80 rounded-2xl p-6 sm:p-7 space-y-3.5 max-w-xl mx-auto text-left shadow-sm">
+                <div class="flex items-center gap-3">
+                    <span class="text-3xl">🐒</span>
+                    <div>
+                        <h3 class="font-serif text-lg sm:text-xl font-bold text-amber-950">劉佬的【慘量】告白 ‧ 訂購前真心話</h3>
+                        <p class="text-xs text-amber-800 font-medium">大自然才是真正莊園主，讀完能接受再預約！</p>
+                    </div>
+                </div>
+
+                <div class="space-y-2.5 text-xs sm:text-sm text-gray-700 leading-relaxed border-t border-amber-200 pt-3">
+                    <p class="flex items-start gap-2">
+                        <span class="text-dulan-clay font-bold text-base leading-none">①</span>
+                        <span><strong>只有猴子吃剩的才輪到我：</strong>山上的野生獼猴是芭樂園第一順位首席品鑑官，哪顆最甜無毒牠們最先知道。劉佬不設電網、不架陷阱，順應天道分食，「慘量」完全看猴子大爺心情！</span>
+                    </p>
+                    <p class="flex items-start gap-2">
+                        <span class="text-dulan-clay font-bold text-base leading-none">②</span>
+                        <span><strong>要求送禮美觀的外觀？永遠等不到你：</strong>如果您追求的是市面上噴藥化肥、外表光滑白嫩的送禮規格，這裡「永遠等不到你」！每一顆芭樂都是飽經風吹日曬、蟲鳥走過的天然野性外貌。</span>
+                    </p>
+                    <p class="flex items-start gap-2">
+                        <span class="text-dulan-clay font-bold text-base leading-none">③</span>
+                        <span><strong>付了訂金也不一定等得到：</strong>大自然說了算！颱風豪雨、季節落果或猴群巡邏包席，都有可能顆粒無收。帶著隨緣豁達的心情，才能品嚐到這份天地間最純粹的珍貴甘醇。</span>
+                    </p>
+                </div>
+            </div>
+
+            <form class="max-w-xl mx-auto space-y-5" onsubmit="event.preventDefault(); alert('感謝您的預約登記！都蘭共學堂專人將於 24 小時內與您聯繫確認詳細事宜。');">
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">您的姓名 *</label>
+                        <input type="text" required placeholder="例如：林大明" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-dulan-forest text-sm bg-gray-50 focus:bg-white transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">聯絡電話 / 手機 *</label>
+                        <input type="tel" required placeholder="例如：0912-345-678" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-dulan-forest text-sm bg-gray-50 focus:bg-white transition">
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">電子信箱</label>
+                        <input type="email" placeholder="example@gmail.com" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-dulan-forest text-sm bg-gray-50 focus:bg-white transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">預約體驗或訂購項目 *</label>
+                        <select required class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-dulan-forest text-sm bg-gray-50 focus:bg-white transition">
+                            <option value="">請選擇預約項目</option>
+                            <option value="farm_visit">🌱 綠光食物森林 ‧ 田間走讀與研習實作</option>
+                            <option value="guava_box">📦 「天下第一美味」純淨芭樂當季鮮果箱</option>
+                            <option value="dried_guava">🍃 劉佬手作低介入 ‧ 純天然芭樂果乾與果茶</option>
+                            <option value="both">✨ 鮮果＋加工禮盒 深度體驗組</option>
+                            <option value="other">💬 其他專案諮詢交流</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">需求備註 / 期望參訪日期</label>
+                    <textarea rows="3" placeholder="請填寫預計預約的月份、箱數或任何希望向劉佬老師請益的問題..." class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-dulan-forest text-sm bg-gray-50 focus:bg-white transition"></textarea>
+                </div>
+
+                <div class="p-3.5 bg-amber-50/60 rounded-xl border border-amber-200/80 text-xs text-amber-900 flex items-start gap-2.5">
+                    <input type="checkbox" id="monkey_consent" required class="mt-0.5 w-4 h-4 rounded text-dulan-forest focus:ring-dulan-forest border-gray-300">
+                    <label for="monkey_consent" class="cursor-pointer select-none leading-relaxed">
+                        <strong>我已閱讀並完全同意劉佬的【慘量告白】：</strong>深知「只有猴子吃剩的才輪到我」，欣然接受不完美但最真純的天然野性外觀；即使付了訂金也願意隨緣等候大地的恩賜！*
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full bg-dulan-forest hover:bg-dulan-dark text-white font-bold py-3.5 rounded-xl shadow-lg transition transform hover:-translate-y-0.5 text-sm sm:text-base flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i> 送出預約與諮詢登記
+                </button>
+            </form>
+
+            <!-- Direct Contact Box -->
+            <div class="border-t border-gray-100 pt-6 max-w-xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-600">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-phone text-dulan-clay text-sm"></i>
+                    <span>劉燦勳老師專線：<strong class="text-gray-800">0988-220-653</strong></span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-headset text-dulan-forest text-sm"></i>
+                    <span>都蘭共學堂專人窗口：<strong class="text-gray-800">0908-853-322</strong></span>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dulan-forest text-white/80 py-12 border-t border-white/10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pb-8 border-b border-white/10 text-center sm:text-left">
+                <div class="space-y-1">
+                    <span class="font-serif text-xl font-bold text-white block">都蘭共學堂 ‧ 綠光食物森林學校</span>
+                    <p class="text-xs text-gray-300">台東縣東河鄉都蘭村 ｜ 連接山海天地，實踐大地永續與極致風味</p>
+                </div>
+                <div>
+                    <a href="https://jimchenlichung.github.io/LearnDulanWay/" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold px-5 py-2.5 rounded-full border border-white/20 transition">
+                        <i class="fa-solid fa-house"></i> 回到共學堂首頁
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-4">
+                <p>© 2026 都蘭共學堂 ‧ 劉佬懶人農場 All Rights Reserved.</p>
+                <div class="flex gap-4">
+                    <a href="https://jimchenlichung.github.io/LearnDulanWay/#courses" class="hover:text-white transition">課程地圖</a>
+                    <a href="https://jimchenlichung.github.io/LearnDulanWay/#schedule" class="hover:text-white transition">生態週曆</a>
+                    <a href="https://www.youtube.com/@LearnDulanWay" target="_blank" class="hover:text-white transition">YouTube 頻道</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

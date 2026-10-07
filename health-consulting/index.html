@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌿 姜老師 ╳ 嫊媖 全方位健康管理諮詢 | 人如其食，奪回身體的自主權 - 都蘭共學堂</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1015765517"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1015765517');
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dulan: {
+                            forest: '#1E3F33',
+                            dark:   '#122820',
+                            sand:   '#F9F6F0',
+                            clay:   '#C86D51',
+                            wood:   '#8C6849',
+                            leaf:   '#4A7C59',
+                            teal:   '#0D7377',
+                            gold:   '#D4AF37'
+                        }
+                    },
+                    fontFamily: {
+                        sans:  ['Noto Sans TC', 'sans-serif'],
+                        serif: ['Noto Serif TC', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-pattern {
+            background-image: linear-gradient(135deg, rgba(18, 40, 32, 0.92) 0%, rgba(13, 115, 119, 0.85) 50%, rgba(200, 109, 81, 0.75) 100%),
+                              url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=1600&auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .quote-box {
+            position: relative;
+        }
+        .quote-box::before {
+            content: "“";
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(200, 109, 81, 0.15);
+            font-family: serif;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-[#F9F6F0] antialiased">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="https://jimchenlichung.github.io/LearnDulanWay/" class="inline-flex items-center gap-1.5 text-xs text-dulan-forest bg-dulan-sand hover:bg-gray-100 px-3.5 py-2 rounded-full border border-dulan-forest/15 font-semibold transition">
+                    <i class="fa-solid fa-arrow-left"></i> 返回共學堂首頁
+                </a>
+                <a href="#booking" class="hidden sm:inline-flex items-center gap-1.5 text-xs text-white bg-dulan-clay hover:bg-[#b55c42] px-4 py-2 rounded-full font-bold shadow-sm transition">
+                    <i class="fa-regular fa-calendar-check"></i> 預約個別諮詢
+                </a>
+            </div>
+            <div class="text-right">
+                <span class="font-serif text-lg font-bold text-dulan-forest block leading-none">都蘭共學堂</span>
+                <span class="text-[9px] text-dulan-clay tracking-widest uppercase block mt-1">Health Consulting</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern text-white py-20 sm:py-28 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold text-emerald-200">
+                <i class="fa-solid fa-heart-pulse"></i> 預防醫學 ‧ 食養科學 ‧ 專屬家庭健康諮詢
+            </div>
+            <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl font-black leading-tight tracking-tight">
+                人如其食，<br>
+                <span class="text-amber-300">奪回身體自主權</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed">
+                擺脫健檢紅字焦慮，破解超加工食品謊言。<br class="hidden sm:inline">
+                以客觀生理學與 120 兆腸道菌群為導航，找回原本就屬於你的蓬勃活力。
+            </p>
+            <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#booking" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-dulan-clay hover:bg-[#b55c42] text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-stethoscope"></i> 預約健康管理諮詢
+                </a>
+                <a href="#teachers" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 text-white font-semibold px-6 py-3.5 rounded-full border border-white/30 backdrop-blur-sm transition">
+                    認識姜老師與嫊媖 <i class="fa-solid fa-arrow-down text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Insights Stats -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 -mt-10 relative z-10">
+        <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-gray-100">
+            <div class="space-y-1">
+                <span class="text-3xl sm:text-4xl font-black text-dulan-teal font-serif">120 兆</span>
+                <p class="text-xs text-gray-500 font-medium">腸道微生物共生群</p>
+                <p class="text-[11px] text-gray-400">人體真正的第二大腦</p>
+            </div>
+            <div class="space-y-1 pt-4 md:pt-0">
+                <span class="text-3xl sm:text-4xl font-black text-dulan-clay font-serif">85%</span>
+                <p class="text-xs text-gray-500 font-medium">人體基因與微生態連動</p>
+                <p class="text-[11px] text-gray-400">你吃的食物正在重塑基因</p>
+            </div>
+            <div class="space-y-1 pt-4 md:pt-0">
+                <span class="text-3xl sm:text-4xl font-black text-dulan-forest font-serif">零盲點</span>
+                <p class="text-xs text-gray-500 font-medium">食品標籤化學拆解</p>
+                <p class="text-[11px] text-gray-400">識破超加工與致炎添加物</p>
+            </div>
+            <div class="space-y-1 pt-4 md:pt-0">
+                <span class="text-3xl sm:text-4xl font-black text-dulan-gold font-serif">1 對 1</span>
+                <p class="text-xs text-gray-500 font-medium">專屬健康管理顧問</p>
+                <p class="text-[11px] text-gray-400">每個家庭必備的前端防線</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-16 space-y-16">
+
+        <!-- Teachers Profile Section -->
+        <section id="teachers" class="space-y-10">
+            <div class="text-center space-y-3">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-dulan-teal/10 text-dulan-teal text-xs font-bold tracking-widest uppercase">
+                    Consultants
+                </span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-dulan-forest">
+                    專業諮詢導師介紹
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 max-w-xl mx-auto leading-relaxed">
+                    從生命終極危機中覺醒，跑遍全台灣尋訪真實無毒食材，只為替每一個家庭把關餐桌上的第一道健康防線。
+                </p>
+            </div>
+
+            <!-- Profile Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 姜老師 -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 flex flex-col justify-between space-y-6 hover:shadow-md transition">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-2xl bg-dulan-forest/10 flex items-center justify-center text-dulan-forest text-2xl font-serif font-black">
+                                姜
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-2xl font-bold text-dulan-forest">姜老師</h3>
+                                <p class="text-xs text-dulan-clay font-bold tracking-wide">資深食養專家 ‧ 食品安全顧問</p>
+                            </div>
+                        </div>
+                        <div class="bg-dulan-sand p-4 rounded-2xl text-xs text-gray-700 leading-relaxed space-y-2 border border-dulan-forest/5">
+                            <p class="font-bold text-dulan-forest"><i class="fa-solid fa-quote-left text-dulan-clay mr-1"></i> 生命的大病覺醒：</p>
+                            <p>中年時期曾因身體嚴重透支住院，迎來生命與健康的終極覺醒。那次震撼教訓，讓他深刻體悟古希臘醫聖之訓：<strong>「人如其食」（You are what you eat）</strong>。從此放下繁雜世務，全心投入臨床營養與食品安全深度研究。</p>
+                        </div>
+                        <ul class="space-y-2 text-xs sm:text-sm text-gray-600">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check-circle text-dulan-teal mt-0.5"></i>
+                                <span><strong>食品標籤化學拆解：</strong>拆穿商業加工食品偽裝，教導大眾用科學看清致炎添加物。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check-circle text-dulan-teal mt-0.5"></i>
+                                <span><strong>腸道微生態與自體酵素：</strong>掌握人體代謝關鍵，從消化源頭節省酵素能量。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check-circle text-dulan-teal mt-0.5"></i>
+                                <span><strong>全台風土食材探尋：</strong>走訪產地田野，只選真正無毒、純淨且物美價廉的在地好物。</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 嫊媖 老師 -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 flex flex-col justify-between space-y-6 hover:shadow-md transition">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-2xl bg-dulan-clay/10 flex items-center justify-center text-dulan-clay text-2xl font-serif font-black">
+                                嫊
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-2xl font-bold text-dulan-forest">嫊媖 老師</h3>
+                                <p class="text-xs text-dulan-clay font-bold tracking-wide">專業健康管理師 ‧ 家庭健康諮詢顧問</p>
+                            </div>
+                        </div>
+                        <div class="bg-dulan-sand p-4 rounded-2xl text-xs text-gray-700 leading-relaxed space-y-2 border border-dulan-forest/5">
+                            <p class="font-bold text-dulan-forest"><i class="fa-solid fa-quote-left text-dulan-clay mr-1"></i> 核心信念：</p>
+                            <p><strong>「每個家庭都應該有一位值得信賴的健康管理師。」</strong> 醫師負責處理後端的疾病急性治療，而健康管理師則陪伴您走在最前端，從每日餐盤、生活作息、睡眠與情緒壓力守護全家人的本金。</p>
+                        </div>
+                        <ul class="space-y-2 text-xs sm:text-sm text-gray-600">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check-circle text-dulan-clay mt-0.5"></i>
+                                <span><strong>健檢數據前端防護：</strong>解讀紅字背後的生活訊號，化解慢性恐慌與單一數據焦慮。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check-circle text-dulan-clay mt-0.5"></i>
+                                <span><strong>全家生活作息調理：</strong>依家庭成員體質與年齡，量身訂做無痛可執行的微習慣替換法。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check-circle text-dulan-clay mt-0.5"></i>
+                                <span><strong>慢性病照護與食養引導：</strong>以溫暖細緻的陪伴，協助建立健康餐飲與長久生活守護網。</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Azhong Endorsement Section -->
+        <section class="bg-gradient-to-br from-dulan-forest to-[#122820] text-white rounded-3xl p-8 sm:p-12 shadow-xl relative overflow-hidden">
+            <div class="space-y-6 relative z-10">
+                <div class="flex items-center gap-3">
+                    <span class="px-3 py-1 rounded-full bg-dulan-gold/20 text-amber-300 text-xs font-bold tracking-wider border border-amber-300/30">
+                        📖 自傳《成為自己》第 12 章收錄推薦
+                    </span>
+                </div>
+                <h3 class="font-serif text-2xl sm:text-3xl font-bold leading-snug">
+                    「姜老師與嫊媖的食養科學，<br class="hidden sm:inline">徹底幫我奪回了健康的知情同意權。」
+                </h3>
+                <div class="quote-box text-sm sm:text-base text-white/85 leading-relaxed space-y-4">
+                    <p>
+                        「實不相瞞，我年屆七十，曾是一位膽固醇數值非常高的長輩，過去被各種健檢數據與廣告包裝弄得暈頭轉向。直到在都蘭參加了姜老師與嫊媖老師的健康講座，那一刻有如一道溫和的陽光，照亮了我們過去的盲區。」
+                    </p>
+                    <p>
+                        「姜老師拆解超加工食品背後的化學謊言，教我們認識人體 120 兆腸道菌是怎麼默默為我們工作的；嫊媖老師則教我們如何把預防醫學落實在每日的三餐與採買裡。我依此調整生活：遠離氧化劣質油、吃新鮮原型活菌食物、建立微習慣，讓我深深感受到身體前所未有的輕盈自癒力。」
+                    </p>
+                </div>
+                <div class="pt-2 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center font-bold text-amber-300 border border-white/20">
+                        阿中
+                    </div>
+                    <div>
+                        <span class="font-bold text-white block text-sm">都蘭阿中（陳豊鍾）</span>
+                        <span class="text-xs text-white/60">都蘭共學堂創辦人 ‧ 小習慣訓練師 ‧ AI 作家</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Four Core Principles of Health -->
+        <section class="space-y-10">
+            <div class="text-center space-y-3">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-dulan-clay/10 text-dulan-clay text-xs font-bold tracking-widest uppercase">
+                    Core Science
+                </span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-dulan-forest">
+                    四大食養與代謝核心科學
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 max-w-xl mx-auto leading-relaxed">
+                    健康不靠昂貴偏方，而是回歸身體最真實的生理運行機制。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- 1. 拆解食品標籤 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-50 text-dulan-clay flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-barcode"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-dulan-forest">1. 識破超加工食品標籤</h3>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                        讀懂食品背後的成分表，是現代人自我防衛的第一步。許多標榜「低脂、高纖、養生」的食品，背後隱藏了大量增稠劑、精緻糖精與化學防腐劑。教你如何用眼睛精準避開身體慢性發炎的陷阱。
+                    </p>
+                </div>
+
+                <!-- 2. 120兆腸道微生態 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-dulan-leaf flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-bacteria"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-dulan-forest">2. 餵養 120 兆腸道菌群</h3>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                        人體腸道內寄宿著 120 兆至 200 兆的微生物，掌管人體 85% 的健康訊息。比起盲目花大錢購買易氧化的死菌，更重要的是學會吃天然「益生元」與安全活發酵食物，讓原生益菌自行繁殖壯大。
+                    </p>
+                </div>
+
+                <!-- 3. 自體酵素與修復 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-teal-50 text-dulan-teal flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-dna"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-dulan-forest">3. 節省消化酵素，啟動深層修復</h3>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                        體內酵素總量有限。當你暴飲暴食或長期食用難以消化的加工食品，身體必須耗盡所有酵素來救火；透過科學飲食順序與體外食物酵素輔助，省下珍貴體內酵素，專注於細胞修復、排毒與免疫平衡。
+                    </p>
+                </div>
+
+                <!-- 4. 遠離氧化油脂 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-fire-burner"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-dulan-forest">4. 遠離高溫氧化劣質油</h3>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                        心血管危機與脂肪肝的元凶往往不是天然膽固醇，而是高溫重複油炸、長時間暴露氧化的化學精煉油。教您辨識生油、冷壓初榨好油，並學會正確的低溫烹調法，洗淨血管負擔。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Consulting Services -->
+        <section id="services" class="space-y-10">
+            <div class="text-center space-y-3">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-dulan-teal/10 text-dulan-teal text-xs font-bold tracking-widest uppercase">
+                    Services & Programs
+                </span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-dulan-forest">
+                    健康管理諮詢服務項目
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 max-w-xl mx-auto leading-relaxed">
+                    無論您是想釐清個人體檢數值、為長輩規劃慢性病照護，或是重整家庭飲食，我們皆提供專業而溫暖的支持。
+                </p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- 服務 1 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:border-dulan-teal/30 transition flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+                    <div class="space-y-2 flex-1">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded-full bg-dulan-teal/10 text-dulan-teal text-xs font-bold">專案 A</span>
+                            <h3 class="font-serif text-xl font-bold text-dulan-forest">個人健檢報告深度解讀 ╳ 1 對 1 食養生活諮詢</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            針對三高、膽固醇、肝腎機能指標進行全方位生理學解讀。不開藥、不推銷保健品，陪伴您檢視每日三餐與生活作息盲點，制定 30 天專屬微習慣落地清單。
+                        </p>
+                        <div class="text-xs text-gray-500 flex flex-wrap gap-4 pt-1">
+                            <span><i class="fa-regular fa-clock text-dulan-clay"></i> 諮詢時間：60 分鐘</span>
+                            <span><i class="fa-solid fa-laptop text-dulan-teal"></i> 形式：線上 Google Meet / 實體面談</span>
+                        </div>
+                    </div>
+                    <div class="text-left md:text-right shrink-0">
+                        <span class="text-xl sm:text-2xl font-bold text-dulan-forest block">NT$ 2,500</span>
+                        <span class="text-xs text-gray-400 block mb-3">單次深度全面評估</span>
+                        <a href="#booking" class="inline-flex items-center gap-1.5 bg-dulan-forest hover:bg-dulan-teal text-white text-xs font-bold px-5 py-2.5 rounded-full transition">
+                            立即預約 ➡️
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 服務 2 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:border-dulan-clay/30 transition flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+                    <div class="space-y-2 flex-1">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded-full bg-dulan-clay/10 text-dulan-clay text-xs font-bold">專案 B</span>
+                            <h3 class="font-serif text-xl font-bold text-dulan-forest">家庭專屬常備健康管理師（三個月全家守護計畫）</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            打造全家人的健康防火牆。協助盤點家中廚房調味品與食材、每週私 LINE 飲食拍照回饋分析、長輩慢性病照護引導、每月定期生活型態追蹤調整。
+                        </p>
+                        <div class="text-xs text-gray-500 flex flex-wrap gap-4 pt-1">
+                            <span><i class="fa-solid fa-users text-dulan-clay"></i> 服務範圍：全戶家庭成員</span>
+                            <span><i class="fa-brands fa-line text-green-600"></i> 專屬私 LINE 持續追蹤答疑</span>
+                        </div>
+                    </div>
+                    <div class="text-left md:text-right shrink-0">
+                        <span class="text-xl sm:text-2xl font-bold text-dulan-clay block">NT$ 9,999</span>
+                        <span class="text-xs text-gray-400 block mb-3">全家三個月深度陪跑</span>
+                        <a href="#booking" class="inline-flex items-center gap-1.5 bg-dulan-clay hover:bg-[#b55c42] text-white text-xs font-bold px-5 py-2.5 rounded-full transition">
+                            申請全家顧問 ➡️
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 服務 3 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:border-dulan-forest/30 transition flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+                    <div class="space-y-2 flex-1">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded-full bg-dulan-gold/20 text-amber-700 text-xs font-bold">專案 C</span>
+                            <h3 class="font-serif text-xl font-bold text-dulan-forest">都蘭三天兩夜 ‧ 山海食養與身心代謝沉浸營</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            在台東都蘭「四季八里自然莊園」實體沉浸。結合食物森林現採純淨飲食、晨間太平洋動禪散步、都蘭山森林走讀，由姜老師與嫊媖老師現場親授食養操作。
+                        </p>
+                        <div class="text-xs text-gray-500 flex flex-wrap gap-4 pt-1">
+                            <span><i class="fa-solid fa-hotel text-dulan-clay"></i> 含兩晚自然莊園住宿與在地純淨食宿</span>
+                            <span><i class="fa-solid fa-calendar-days text-dulan-teal"></i> 每月固定梯次（每週五六日）</span>
+                        </div>
+                    </div>
+                    <div class="text-left md:text-right shrink-0">
+                        <span class="text-xl sm:text-2xl font-bold text-dulan-forest block">NT$ 9,999 / 人</span>
+                        <span class="text-xs text-gray-400 block mb-3">三天兩夜全包沉浸實踐</span>
+                        <a href="#booking" class="inline-flex items-center gap-1.5 bg-dulan-forest hover:bg-dulan-teal text-white text-xs font-bold px-5 py-2.5 rounded-full transition">
+                            預約實體營隊 ➡️
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Frequently Asked Questions -->
+        <section class="space-y-8">
+            <div class="text-center space-y-2">
+                <span class="text-xs font-bold text-dulan-clay uppercase tracking-widest">FAQ</span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-dulan-forest">常見健康疑問解析</h2>
+            </div>
+
+            <div class="space-y-4">
+                <details class="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 cursor-pointer">
+                    <summary class="font-serif font-bold text-base sm:text-lg text-dulan-forest flex justify-between items-center list-none">
+                        <span>Q1：吃益生菌真的能讓腸道健康嗎？</span>
+                        <span class="text-dulan-clay transition group-open:rotate-180"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed mt-4 pt-4 border-t border-gray-100">
+                        市面上大部分益生菌主要為少數幾株乳酸菌，出廠後隨時間活性遞減，且通過胃酸與膽汁後存活有限。相較於花大錢買益生菌，姜老師更強調<strong>「養菌勝於補菌」</strong>——透過足夠的膳食纖維、果寡糖等「益生元」餵飽體內原本就有的 120 兆原生菌種，並搭配天然發酵無添加食物，才是長治久安之道。
+                    </p>
+                </details>
+
+                <details class="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 cursor-pointer">
+                    <summary class="font-serif font-bold text-base sm:text-lg text-dulan-forest flex justify-between items-center list-none">
+                        <span>Q2：健康管理師跟一般醫生有何不同？</span>
+                        <span class="text-dulan-clay transition group-open:rotate-180"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed mt-4 pt-4 border-t border-gray-100">
+                        醫生專精於急性疾病診斷、開藥與手術治療（屬於後端醫療介入）；而<strong>健康管理師則是走在生活的最前端</strong>，協助您在身體還沒真正發病、健檢剛出現紅字警訊時，全面盤點餐桌飲食、作息習慣、代謝節奏，陪伴您用生活微習慣扭轉健康軌跡，避免日後依賴終身藥物。
+                    </p>
+                </details>
+
+                <details class="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 cursor-pointer">
+                    <summary class="font-serif font-bold text-base sm:text-lg text-dulan-forest flex justify-between items-center list-none">
+                        <span>Q3：膽固醇過高一定要立刻吃降血脂藥嗎？</span>
+                        <span class="text-dulan-clay transition group-open:rotate-180"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed mt-4 pt-4 border-t border-gray-100">
+                        現代醫學已逐漸證實，單純的總膽固醇數值不能代表心血管風險，更關鍵的是身體是否有慢性發炎、氧化壓力以及小而密低密度脂蛋白（sdLDL）的比例。諮詢中我們將協助您看懂健檢全貌，學習如何以無毒抗發炎飲食與生活型態，奪回屬於自己的知情同意權。
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <!-- Booking & Contact Section -->
+        <section id="booking" class="bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-gray-100 space-y-8">
+            <div class="text-center space-y-3">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-dulan-clay/10 text-dulan-clay text-xs font-bold tracking-widest uppercase">
+                    Take Action
+                </span>
+                <h2 class="font-serif text-3xl font-bold text-dulan-forest">
+                    預約您的專屬健康諮詢
+                </h2>
+                <p class="text-xs sm:text-sm text-gray-500 max-w-md mx-auto">
+                    請填寫下方意向，或直接加入共學堂 LINE，我們將有專人與您聯繫確認時間與細節。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-dulan-sand p-6 sm:p-8 rounded-2xl space-y-4 border border-dulan-forest/5">
+                    <h3 class="font-serif text-lg font-bold text-dulan-forest flex items-center gap-2">
+                        <i class="fa-solid fa-address-book text-dulan-clay"></i> 快速聯絡管道
+                    </h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        您也可以直接透過以下方式與都蘭共學堂專人聯絡，註明「預約姜老師 ╳ 嫊媖 健康管理諮詢」：
+                    </p>
+                    <div class="space-y-3 pt-2 text-sm">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </span>
+                            <div>
+                                <span class="text-xs text-gray-400 block">諮詢專線</span>
+                                <a href="tel:0908853322" class="font-bold text-dulan-forest hover:text-dulan-clay">0908-853-322</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center shrink-0">
+                                <i class="fa-brands fa-line text-lg"></i>
+                            </span>
+                            <div>
+                                <span class="text-xs text-gray-400 block">LINE ID 洽詢</span>
+                                <span class="font-bold text-dulan-forest">0908853322</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </span>
+                            <div>
+                                <span class="text-xs text-gray-400 block">實體面談地點</span>
+                                <span class="text-xs font-bold text-gray-700">台東縣東河鄉都蘭村舊廍 14-2 號（四季八里自然莊園）</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Direct Intent Box -->
+                <div class="space-y-4">
+                    <p class="text-xs text-gray-600 font-semibold mb-2">預約諮詢流程：</p>
+                    <ol class="space-y-3 text-xs sm:text-sm text-gray-700">
+                        <li class="flex items-start gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-dulan-forest text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">1</span>
+                            <span><strong>電話或加 LINE 聯繫：</strong>簡述您目前關心的健康課題（健檢紅字、長輩照護、飲食調整）。</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-dulan-forest text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">2</span>
+                            <span><strong>課前資料提供：</strong>回傳近期健檢報告影本或近三日飲食記錄（保護隱私）。</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-dulan-forest text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">3</span>
+                            <span><strong>正式對談與方案交付：</strong>進行 60 分鐘深度一對一剖析，取得可落地執行的微習慣生活手冊。</span>
+                        </li>
+                    </ol>
+
+                    <div class="pt-4">
+                        <a href="tel:0908853322" class="w-full inline-flex items-center justify-center gap-2 bg-dulan-clay hover:bg-[#b55c42] text-white font-bold py-3.5 px-6 rounded-full shadow-lg transition">
+                            <i class="fa-solid fa-phone-volume"></i> 立即撥打電話洽詢 (0908-853-322)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dulan-dark text-white/70 py-12 border-t border-white/10 text-xs">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="text-center sm:text-left space-y-1">
+                <span class="font-serif text-base font-bold text-white block">都蘭共學堂 ╳ 四季八里自然莊園</span>
+                <p class="text-white/50 text-[11px]">一手拿滑鼠，一手摸泥土 ‧ 人生何時開始都不晚</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="https://jimchenlichung.github.io/LearnDulanWay/" class="hover:text-white transition">返回首頁</a>
+                <span class="text-white/20">|</span>
+                <a href="../azhong/index.html" class="hover:text-white transition">認識阿中教練</a>
+                <span class="text-white/20">|</span>
+                <a href="../homestay/index.html" class="hover:text-white transition">民宿經營實戰營</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
