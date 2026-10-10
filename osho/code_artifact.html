@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>奧修禪卡 1-99 心靈靈數｜正向賦能遊戲</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Noto Serif TC & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Noto Serif TC"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            zen: {
+              bg: '#090D16',
+              card: '#161F30',
+              gold: '#E5B869',
+              goldLight: '#FBE8B3',
+              fire: '#EF4444',
+              water: '#38BDF8',
+              clouds: '#A855F7',
+              rainbow: '#10B981',
+              major: '#F59E0B'
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'spin-slow': 'spin 20s linear infinite',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* 3D 翻牌專用樣式 */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+    /* 自訂平滑滾動條 */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.6);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(229, 184, 105, 0.35);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(229, 184, 105, 0.65);
+    }
+  </style>
+</head>
+<body class="bg-[#090D16] text-slate-100 min-h-screen flex flex-col font-sans selection:bg-amber-500/30 selection:text-amber-200 antialiased relative overflow-x-hidden">
+
+  <!-- 背景禪意氛圍光點 -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-amber-500/10 rounded-full blur-[140px] animate-pulse-slow"></div>
+    <div class="absolute bottom-10 -left-20 w-[450px] h-[450px] bg-indigo-600/10 rounded-full blur-[120px]"></div>
+    <div class="absolute top-1/3 -right-20 w-[400px] h-[400px] bg-emerald-600/10 rounded-full blur-[120px]"></div>
+  </div>
+
+  <!-- 頂部導航列 -->
+  <header class="relative z-10 border-b border-white/10 backdrop-blur-md bg-[#0B0F19]/80 sticky top-0 px-4 lg:px-8 py-3.5 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-600 to-amber-300 p-0.5 shadow-lg shadow-amber-500/20 flex items-center justify-center">
+        <div class="w-full h-full bg-[#0D1322] rounded-[10px] flex items-center justify-center">
+          <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3" stroke-width="2"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 2v3m0 14v3M2 12h3m14 0h3m-3.5-6.5l-2.1 2.1m-8.8 8.8l-2.1 2.1m0-13l2.1 2.1m8.8 8.8l2.1 2.1"/>
+          </svg>
+        </div>
+      </div>
+      <div>
+        <h1 class="font-serif font-bold text-base sm:text-lg text-slate-100 tracking-wider flex items-center gap-2">
+          奧修禪卡 <span class="text-xs bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-full font-sans font-normal">1-99 心靈靈數</span>
+        </h1>
+        <p id="brandSubtitle" class="text-[11px] text-slate-400">覺察當下 ✦ 轉化智慧 ✦ 正向賦能</p>
+      </div>
+    </div>
+
+    <!-- 頂部工具按鈕群 -->
+    <div class="flex items-center gap-1.5 sm:gap-2">
+      <!-- 中英文切換按鈕 -->
+      <button id="langToggleBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-amber-500/40 bg-amber-500/15 text-xs text-amber-300 hover:bg-amber-500/25 transition-all font-semibold shadow-sm cursor-pointer">
+        <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+        </svg>
+        <span id="langBtnText">EN / 中文</span>
+      </button>
+
+      <!-- 禪音開關 -->
+      <button id="soundToggleBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer">
+        <svg id="soundIconOn" class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+        </svg>
+        <span id="soundText" class="hidden sm:inline">禪音已開</span>
+      </button>
+
+      <!-- 99 數字總覽目錄 -->
+      <button id="openCatalogBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-amber-500/30 bg-amber-500/10 text-xs text-amber-200 hover:bg-amber-500/20 transition-all cursor-pointer">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+        </svg>
+        <span id="catalogBtnText">99 數字總覽</span>
+      </button>
+
+      <!-- 自訂牌圖庫上傳管理 -->
+      <button id="openUploadBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-emerald-500/40 bg-emerald-500/15 text-xs text-emerald-300 hover:bg-emerald-500/25 transition-all shadow-sm cursor-pointer">
+        <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <span id="uploadBtnText">自訂牌圖 (0/79)</span>
+      </button>
+
+      <!-- 轉贈/匯出遊戲單檔 -->
+      <button id="exportGameBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-indigo-500/40 bg-indigo-500/15 text-xs text-indigo-300 hover:bg-indigo-500/25 transition-all shadow-sm cursor-pointer">
+        <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+        </svg>
+        <span id="exportBtnText">轉贈遊戲</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 主內容容器 -->
+  <main class="relative z-10 flex-1 max-w-5xl w-full mx-auto px-4 py-6 md:py-10 flex flex-col items-center">
+    
+    <!-- 玩法切換標籤頁 -->
+    <div class="flex p-1 bg-slate-900/90 border border-white/10 rounded-2xl mb-8 shadow-xl">
+      <button id="tabInput" class="tab-btn px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 flex items-center gap-2 bg-gradient-to-r from-amber-500/20 to-amber-600/30 text-amber-200 border border-amber-500/40 shadow cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/></svg>
+        <span id="tabInputText">直覺選號 (1-99)</span>
+      </button>
+      <button id="tabGrid" class="tab-btn px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-400 hover:text-slate-200 transition-all duration-200 flex items-center gap-2 cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+        <span id="tabGridText">百數心靈星盤</span>
+      </button>
+      <button id="tabBreath" class="tab-btn px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-400 hover:text-slate-200 transition-all duration-200 flex items-center gap-2 cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <span id="tabBreathText">呼吸冥想隨機</span>
+      </button>
+    </div>
+
+    <!-- 模式一：直覺輸入選號 -->
+    <section id="panelInput" class="w-full max-w-xl mx-auto flex flex-col items-center">
+      <div class="text-center mb-6">
+        <p id="panelInputPre" class="text-amber-400/90 text-xs tracking-widest uppercase font-semibold mb-1">INTUITIVE DIVINATION</p>
+        <h2 id="panelInputTitle" class="font-serif text-2xl md:text-3xl font-bold text-white">信任你當下的第一個直覺</h2>
+        <p id="panelInputDesc" class="text-slate-400 text-xs md:text-sm mt-2 max-w-md mx-auto">
+          閉上眼深呼吸一次，心中默念：「這刻我需要什麼成長力量？」，接著選擇或輸入 1 到 99 的任意數字。
+        </p>
+      </div>
+
+      <!-- 選號輸入框組 -->
+      <div class="w-full bg-slate-900/80 border border-slate-700/60 p-6 rounded-3xl shadow-2xl backdrop-blur-xl relative">
+        <div class="flex flex-col sm:flex-row items-center gap-3">
+          <div class="relative w-full sm:w-2/3">
+            <input 
+              id="numInput" 
+              type="number" 
+              min="1" 
+              max="99" 
+              placeholder="輸入 1 - 99"
+              class="w-full text-center sm:text-left pl-12 pr-4 py-3.5 bg-slate-950/70 border border-amber-500/30 rounded-2xl text-2xl font-bold text-amber-300 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
+            />
+            <div class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/></svg>
+            </div>
+          </div>
+
+          <button 
+            id="revealBtn"
+            class="w-full sm:w-1/3 py-3.5 px-6 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold rounded-2xl shadow-lg shadow-amber-500/25 transition-all transform active:scale-95 flex items-center justify-center gap-2 group cursor-pointer"
+          >
+            <span id="revealBtnText">揭示啟示</span>
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- 快速直覺號碼點選氣泡 -->
+        <div class="mt-5 pt-4 border-t border-slate-800">
+          <div class="flex items-center justify-between text-xs text-slate-400 mb-2">
+            <span id="quickChipsLabel">靈感推薦氣泡：</span>
+            <button id="quickRandomBtn" class="text-amber-400 hover:text-amber-300 flex items-center gap-1 transition-colors cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              <span id="quickRandomText">隨機更換</span>
+            </button>
+          </div>
+          <div id="quickChips" class="flex flex-wrap gap-2">
+            <!-- 動態注入快速選號氣泡 -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 模式二：1-99 心靈星盤矩陣 -->
+    <section id="panelGrid" class="w-full hidden flex-col items-center">
+      <div class="text-center mb-6">
+        <p id="panelGridPre" class="text-amber-400/90 text-xs tracking-widest uppercase font-semibold mb-1">MIND MATRIX</p>
+        <h2 id="panelGridTitle" class="font-serif text-2xl font-bold text-white">點選最吸引你目光的數字</h2>
+        <p id="panelGridDesc" class="text-slate-400 text-xs md:text-sm mt-1">每一個數字都是通往心靈更深處的鑰匙（80-99 代表高維螺旋昇華）</p>
+      </div>
+
+      <div class="w-full max-w-4xl bg-slate-900/70 border border-slate-800 p-4 md:p-6 rounded-3xl backdrop-blur-md">
+        <div class="flex items-center justify-between gap-4 mb-4 flex-wrap text-xs">
+          <div id="gridLegendBar" class="flex items-center gap-2 flex-wrap">
+            <span class="inline-flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> <span id="legMajor">1-23 大師/主牌</span></span>
+            <span class="inline-flex items-center gap-1 ml-2"><span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> <span id="legFire">24-37 火</span></span>
+            <span class="inline-flex items-center gap-1 ml-2"><span class="w-2.5 h-2.5 rounded-full bg-sky-500"></span> <span id="legWater">38-51 水</span></span>
+            <span class="inline-flex items-center gap-1 ml-2"><span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span> <span id="legClouds">52-65 雲</span></span>
+            <span class="inline-flex items-center gap-1 ml-2"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> <span id="legRainbow">66-79 彩虹</span></span>
+            <span class="inline-flex items-center gap-1 ml-2"><span class="w-2.5 h-2.5 rounded-full bg-amber-300 ring-1 ring-white"></span> <span id="legAscend">80-99 昇華</span></span>
+          </div>
+          <div id="gridTipText" class="text-slate-400">滑鼠懸停或輕觸探索</div>
+        </div>
+        <div id="numberGrid" class="grid grid-cols-5 sm:grid-cols-10 md:grid-cols-11 gap-1.5 max-h-[460px] overflow-y-auto pr-1">
+          <!-- JS 動態生成 1-99 號碼磚 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 模式三：呼吸靜心隨機模式 -->
+    <section id="panelBreath" class="w-full hidden flex-col items-center max-w-lg mx-auto text-center py-6">
+      <div class="mb-4">
+        <p id="panelBreathPre" class="text-amber-400 text-xs tracking-widest uppercase font-semibold">MINDFULNESS & STILLNESS</p>
+        <h2 id="panelBreathTitle" class="font-serif text-2xl font-bold text-white mt-1">三口氣靜心凝思</h2>
+        <p id="panelBreathDesc" class="text-slate-400 text-xs mt-1">隨著呼吸圓環吐納，當圓環光芒充盈時揭示今日指引</p>
+      </div>
+
+      <div class="relative my-8 flex items-center justify-center">
+        <!-- 呼吸環動態 -->
+        <div id="breathCircle" class="w-56 h-56 rounded-full border-2 border-amber-500/30 flex items-center justify-center transition-all duration-[4000ms] ease-in-out relative">
+          <div id="breathCore" class="w-28 h-28 rounded-full bg-gradient-to-tr from-amber-600/40 via-amber-400/20 to-indigo-500/30 blur-md transition-all duration-[4000ms] ease-in-out"></div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+            <span id="breathPhaseText" class="text-sm font-serif font-bold text-amber-200">請深吸一口氣...</span>
+            <span id="breathCounter" class="text-xs text-slate-400 mt-1">放鬆雙肩</span>
+          </div>
+        </div>
+      </div>
+
+      <button 
+        id="breathStartBtn"
+        class="px-8 py-3.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold rounded-2xl shadow-lg shadow-amber-500/20 transition-all flex items-center gap-2 mx-auto active:scale-95 cursor-pointer"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <span id="breathStartBtnText">開始靜心並隨機共鳴</span>
+      </button>
+    </section>
+
+    <!-- 解讀結果展示區 (3D 翻牌與三段式賦能) -->
+    <div id="resultContainer" class="w-full mt-10 hidden transition-all duration-700">
+      <div class="max-w-4xl mx-auto bg-slate-900/90 border border-slate-800 rounded-3xl p-5 md:p-8 shadow-2xl backdrop-blur-2xl relative overflow-hidden">
+        
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+          
+          <!-- 左側：牌卡 3D 視覺翻卡 -->
+          <div class="md:col-span-5 flex flex-col items-center">
+            
+            <div class="perspective-1000 w-64 h-96 relative cursor-pointer group" id="cardFlipWrapper" title="點擊牌卡可重新翻轉">
+              <div id="cardInner" class="w-full h-full transition-transform duration-700 transform-style-3d relative rounded-2xl shadow-2xl">
+                
+                <!-- 卡背 (Backface) -->
+                <div class="absolute inset-0 w-full h-full backface-hidden bg-gradient-to-br from-[#0f172a] via-[#1e1b4b] to-[#020617] rounded-2xl border-2 border-amber-500/40 p-4 flex flex-col items-center justify-between text-center">
+                  <div class="w-full flex justify-between text-[10px] text-amber-400 font-mono">
+                    <span>OSHO ZEN</span>
+                    <span>1-99 MAPPING</span>
+                  </div>
+                  <div class="w-24 h-24 rounded-full border border-amber-500/30 flex items-center justify-center p-3 animate-spin-slow">
+                    <svg class="w-full h-full text-amber-400/80" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <circle cx="12" cy="12" r="10" stroke-width="1.5"/>
+                      <path d="M12 2a10 10 0 0 1 10 10" stroke-width="2"/>
+                    </svg>
+                  </div>
+                  <div id="cardBackTouchHint" class="text-xs text-amber-200/80 font-serif">觸碰覺察・回歸當下</div>
+                </div>
+
+                <!-- 卡面 (Face) -->
+                <div id="cardFace" class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-slate-950 rounded-2xl border-2 border-amber-400/60 p-4 flex flex-col justify-between overflow-hidden shadow-2xl">
+                  <!-- 頂部：類別與號碼標記 -->
+                  <div class="flex items-center justify-between z-10">
+                    <span id="cardElementBadge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase">
+                      火之元素
+                    </span>
+                    <div class="flex items-center gap-1.5">
+                      <span id="userChosenNumBadge" class="bg-amber-400 text-slate-950 px-2 py-0.5 rounded-md text-xs font-black">
+                        #88
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- 牌面插畫意象 (SVG 禪意圖騰或自訂實體牌卡圖) -->
+                  <div class="my-auto flex flex-col items-center justify-center text-center px-2 py-3 relative z-10 w-full">
+                    <!-- 自訂實體照片容器 (如有上傳照片時顯示，否則顯示圖騰) -->
+                    <div id="cardRealImageWrapper" class="hidden w-40 h-52 rounded-xl overflow-hidden shadow-xl border border-white/20 mb-2 relative">
+                      <img id="cardRealImage" src="" alt="Card Art" class="w-full h-full object-cover">
+                    </div>
+
+                    <div id="cardArtContainer" class="w-24 h-24 rounded-full flex items-center justify-center mb-3 shadow-inner bg-slate-900 border border-white/10">
+                      <!-- 動態 SVG 圖騰 -->
+                    </div>
+                    <h3 id="cardTitle" class="font-serif text-2xl font-bold text-white tracking-wide">
+                      傻瓜
+                    </h3>
+                    <p id="cardSubtitle" class="text-xs text-amber-300 font-medium mt-0.5">
+                      The Fool (0)
+                    </p>
+                  </div>
+
+                  <!-- 底部標語 -->
+                  <div class="text-center pt-2 border-t border-white/10 text-[11px] text-slate-400 z-10 font-serif" id="cardCoreKeyword">
+                    純真的信心 ✦ 冒險的勇氣
+                  </div>
+
+                  <!-- 元素色彩底層流光 -->
+                  <div id="cardGlowOverlay" class="absolute inset-0 pointer-events-none opacity-20"></div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- 提示與翻轉提醒 -->
+            <div class="mt-4 flex items-center gap-3">
+              <button id="reflipBtn" class="text-xs text-slate-400 hover:text-amber-300 flex items-center gap-1.5 py-1 px-3 rounded-lg bg-slate-800/80 border border-slate-700 transition-colors cursor-pointer">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                <span id="reflipBtnText">翻轉牌面</span>
+              </button>
+              <button id="copyGuidanceBtn" class="text-xs text-amber-400 hover:text-amber-300 flex items-center gap-1.5 py-1 px-3 rounded-lg bg-amber-500/10 border border-amber-500/30 transition-colors cursor-pointer">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                <span id="copyGuidanceBtnText">複製今日賦能卡</span>
+              </button>
+            </div>
+
+            <!-- 號碼換算說明條 (針對 80-99 躍遷) -->
+            <div id="spiralLogicBox" class="mt-3 w-full max-w-xs p-2.5 bg-amber-500/10 border border-amber-500/20 rounded-xl text-[11px] text-amber-200/90 text-center hidden">
+              <!-- 動態說明 -->
+            </div>
+          </div>
+
+          <!-- 右側：三階賦能深度解析 (覺察 ➔ 轉化 ➔ 賦能) -->
+          <div class="md:col-span-7 space-y-4">
+            
+            <!-- 標題與能量定位 -->
+            <div class="border-b border-slate-800 pb-3 flex items-center justify-between flex-wrap gap-2">
+              <div>
+                <span class="text-[11px] tracking-wider uppercase text-amber-400 font-semibold">OSHO ZEN EMPOWERMENT</span>
+                <h3 class="text-xl font-bold font-serif text-slate-100 flex items-center gap-2">
+                  <span id="reportCardName">傻瓜</span>
+                  <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-sans font-normal" id="reportCardOrigin">
+                    原牌卡 #0
+                  </span>
+                </h3>
+              </div>
+              <div id="spiralAscensionTag" class="hidden text-xs bg-gradient-to-r from-amber-500/20 to-purple-500/20 border border-amber-500/40 text-amber-200 px-2.5 py-1 rounded-full">
+                ✦ 躍遷靈數回歸
+              </div>
+            </div>
+
+            <!-- 第一層：鏡子（當下覺察） -->
+            <div class="bg-slate-950/60 border border-slate-800/80 p-4 rounded-2xl relative overflow-hidden group hover:border-slate-700 transition-colors">
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center shrink-0 mt-0.5 text-blue-400">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                </div>
+                <div>
+                  <h4 id="titleMirror" class="text-xs font-bold uppercase tracking-wider text-blue-300 mb-1">【鏡子 ✦ 當下覺察】</h4>
+                  <p id="descMirror" class="text-sm text-slate-300 leading-relaxed">
+                    你可能站在某個分岔路口，頭腦試圖用過去的經驗去評估每一步的安全與否。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 第二層：智慧（禪意轉化） -->
+            <div class="bg-slate-950/60 border border-slate-800/80 p-4 rounded-2xl relative overflow-hidden group hover:border-slate-700 transition-colors">
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center shrink-0 mt-0.5 text-purple-400">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                </div>
+                <div>
+                  <h4 id="titleWisdom" class="text-xs font-bold uppercase tracking-wider text-purple-300 mb-1">【智慧 ✦ 禪意轉化】</h4>
+                  <p id="descWisdom" class="text-sm text-slate-300 leading-relaxed">
+                    未知的旅程並不可怕，傻瓜的智慧在於信任生命。當你放下算計，真正的直覺才會甦醒。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 第三層：光芒（正向肯定語 + 行動練習） -->
+            <div class="bg-gradient-to-br from-amber-500/10 via-amber-600/5 to-slate-900 border border-amber-500/30 p-4.5 rounded-2xl relative overflow-hidden">
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center shrink-0 mt-0.5 text-amber-300">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                </div>
+                <div class="w-full">
+                  <h4 id="titleRadiance" class="text-xs font-bold uppercase tracking-wider text-amber-300 mb-1.5">【光芒 ✦ 今日心靈賦能】</h4>
+                  
+                  <!-- 今日金句 -->
+                  <div class="p-3 bg-amber-400/10 border-l-2 border-amber-400 rounded-r-xl my-2">
+                    <p id="labelAffirmation" class="text-xs text-amber-200/70 mb-0.5 font-mono">✦ 今日肯定語 (Affirmation)</p>
+                    <p id="descAffirmation" class="text-sm md:text-base font-serif font-bold text-amber-100">
+                      「我帶著赤子般的信任踏出新的一步，整個宇宙都在溫柔接住我。」
+                    </p>
+                  </div>
+
+                  <!-- 具體微行動 -->
+                  <div class="mt-2.5 flex items-start gap-2 text-xs text-slate-300">
+                    <span id="badgeAction" class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-semibold shrink-0">落實行動</span>
+                    <p id="descAction" class="leading-relaxed">
+                      今天嘗試一件你從未嘗試過的小事，例如換一條路線散步，或對一位朋友真誠微笑。
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- 彈窗一：99 數字心靈快速目錄 -->
+  <div id="catalogModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="w-full max-w-2xl max-h-[85vh] bg-[#0E1524] border border-slate-700 rounded-3xl flex flex-col shadow-2xl overflow-hidden">
+      <div class="p-4 md:p-6 border-b border-slate-800 flex items-center justify-between">
+        <div>
+          <h3 id="catalogModalTitle" class="font-serif font-bold text-lg text-white">奧修禪卡 1-99 靈數指引全表</h3>
+          <p id="catalogModalSub" class="text-xs text-slate-400">點擊任意號碼可立即解牌</p>
+        </div>
+        <button id="closeCatalogBtn" class="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="p-4 border-b border-slate-800 bg-slate-900/60">
+        <input 
+          id="catalogSearch" 
+          type="text" 
+          placeholder="搜尋號碼或牌卡名稱（例如：24、火、傻瓜、勇氣）..."
+          class="w-full px-4 py-2 bg-slate-950 border border-slate-700 rounded-xl text-sm text-slate-200 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-amber-400"
+        >
+      </div>
+
+      <div id="catalogList" class="p-4 overflow-y-auto space-y-2 flex-1">
+        <!-- JS 動態生成 99 列表 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 彈窗二：上傳 79 張實體牌卡圖片管理庫 -->
+  <div id="uploadModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="w-full max-w-4xl max-h-[90vh] bg-[#0E1524] border border-slate-700 rounded-3xl flex flex-col shadow-2xl overflow-hidden">
+      
+      <!-- 彈窗頭部 -->
+      <div class="p-4 md:p-6 border-b border-slate-800 flex items-center justify-between">
+        <div>
+          <h3 id="uploadModalTitle" class="font-serif font-bold text-lg text-white">自訂上傳 79 張實體牌卡圖片庫</h3>
+          <p id="uploadModalSub" class="text-xs text-slate-400">支援批次多選（檔名請命名為 1.jpg ~ 79.jpg，或單張點選上傳），圖片儲存在您的瀏覽器中</p>
+        </div>
+        <button id="closeUploadBtn" class="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- 批次上傳控制列 -->
+      <div class="p-4 bg-slate-900/80 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+        <div class="flex items-center gap-2">
+          <label class="cursor-pointer px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl flex items-center gap-2 transition-all shadow">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+            <span id="batchUploadLabel">批次多選上傳 (支援 79 張)</span>
+            <input id="batchFileInput" type="file" multiple accept="image/*" class="hidden">
+          </label>
+          <button id="clearAllImagesBtn" class="px-3 py-2 bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 border border-rose-500/40 rounded-xl transition-all cursor-pointer">
+            清空所有自訂牌圖
+          </button>
+        </div>
+        <div id="uploadProgressInfo" class="text-slate-400">
+          已配置：<span id="customImageCount" class="text-amber-400 font-bold">0</span> / 79 張
+        </div>
+      </div>
+
+      <!-- 79 張牌卡上傳矩陣表格 -->
+      <div id="uploadCardGrid" class="p-4 md:p-6 overflow-y-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 flex-1">
+        <!-- JS 動態生成 79 張上傳卡片 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 提示氣泡 (Toast) -->
+  <div id="toastBox" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-amber-300 border border-amber-500/40 px-4 py-3 rounded-2xl shadow-2xl text-xs flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+    <span id="toastMsg">已成功複製金句！</span>
+  </div>
+
+  <!-- 頁腳 -->
+  <footer class="relative z-10 border-t border-white/5 py-4 text-center text-xs text-slate-500">
+    <p id="footerText">奧修禪卡心靈靈數遊戲 ✦ 覺察當下即是自由 ✦ 僅供個人心靈探索與成長賦能</p>
+  </footer>
+
+  <script>
+    /* =========================================================================
+       1. 多語言 (i18n) 字典與設定
+       ========================================================================= */
+    let currentLang = 'zh';
+
+    const I18N = {
+      zh: {
+        langBtn: 'EN / 中文',
+        brandSubtitle: '覺察當下 ✦ 轉化智慧 ✦ 正向賦能',
+        soundOn: '禪音已開',
+        soundOff: '靜音模式',
+        catalogBtn: '99 數字總覽',
+        tabInput: '直覺選號 (1-99)',
+        tabGrid: '百數心靈星盤',
+        tabBreath: '呼吸冥想隨機',
+        panelInputPre: 'INTUITIVE DIVINATION',
+        panelInputTitle: '信任你當下的第一個直覺',
+        panelInputDesc: '閉上眼深呼吸一次，心中默念：「這刻我需要什麼成長力量？」，接著選擇或輸入 1 到 99 的任意數字。',
+        numPlaceholder: '輸入 1 - 99',
+        revealBtn: '揭示啟示',
+        quickChipsLabel: '靈感推薦氣泡：',
+        quickRandom: '隨機更換',
+        panelGridPre: 'MIND MATRIX',
+        panelGridTitle: '點選最吸引你目光的數字',
+        panelGridDesc: '每一個數字都是通往心靈更深處的鑰匙（80-99 代表高維螺旋昇華）',
+        gridTip: '滑鼠懸停或輕觸探索',
+        legMajor: '1-23 大師/主牌',
+        legFire: '24-37 火',
+        legWater: '38-51 水',
+        legClouds: '52-65 雲',
+        legRainbow: '66-79 彩虹',
+        legAscend: '80-99 昇華',
+        panelBreathPre: 'MINDFULNESS & STILLNESS',
+        panelBreathTitle: '三口氣靜心凝思',
+        panelBreathDesc: '隨著呼吸圓環吐納，當圓環光芒充盈時揭示今日指引',
+        breathStartBtn: '開始靜心並隨機共鳴',
+        breathInhale: '吸氣 ✦ 接納天地能量',
+        breathExhale: '吐氣 ✦ 放下所有執著',
+        breathInhaleCount: (c, t) => `深沉吸氣... (${c}/${t})`,
+        breathExhaleCount: '放鬆雙肩與心神...',
+        breathDone: '心靈已安頓 ✦ 揭示共鳴',
+        cardBackHint: '觸碰覺察・回歸當下',
+        reflipBtn: '翻轉牌面',
+        copyGuidanceBtn: '複製今日賦能卡',
+        originCard: (id, code) => `原牌編號 #${id} (${code})`,
+        spiralTag: '✦ 躍遷靈數回歸',
+        titleMirror: '【鏡子 ✦ 當下覺察】',
+        titleWisdom: '【智慧 ✦ 禪意轉化】',
+        titleRadiance: '【光芒 ✦ 今日心靈賦能】',
+        labelAffirmation: '✦ 今日肯定語 (Affirmation)',
+        badgeAction: '落實行動',
+        footer: '奧修禪卡心靈靈數遊戲 ✦ 覺察當下即是自由 ✦ 僅供個人心靈探索與成長賦能',
+        catalogTitle: '奧修禪卡 1-99 靈數指引全表',
+        catalogSub: '點擊任意號碼可立即解牌',
+        catalogSearchPlaceholder: '搜尋號碼或牌卡名稱（例如：24、火、傻瓜、勇氣）...',
+        catalogReadBtn: '解讀 ➔',
+        catalogEmpty: '查無相關牌卡，請嘗試其他關鍵字',
+        spiralNotice: (n, m, name) => `✨ 號碼 ${n} 象徵超越第一輪 79 張完形圓滿，以更高維度的生命螺旋回歸 #${m}【${name}】！重啟初心，看見更宏觀的自性之光。`,
+        spiralSimple: (n) => `編號 #${n} 直觀呼應`,
+        copySuccess: '已複製今日賦能指引卡至剪貼簿！',
+        inputWarning: '請輸入 1 到 99 之間的數字！',
+        customCardsBadge: (c) => `自訂牌圖 (${c}/79)`,
+        exportGameBtn: '轉贈遊戲',
+        uploadModalTitle: '自訂上傳 79 張實體牌卡圖片庫',
+        uploadModalSub: '支援批次多選（檔名請命名為 1.jpg ~ 79.jpg，或單張點選上傳），圖片儲存在您的瀏覽器中',
+        batchUploadLabel: '批次多選上傳 (支援 79 張)',
+        clearAllImagesConfirm: '確定要清空所有已上傳的自訂牌圖嗎？',
+        allImagesCleared: '已清空自訂牌圖',
+        batchDone: (count) => `成功批次更新 ${count} 張牌卡圖片！`,
+        exportSuccess: '遊戲檔案已封裝下載！您可以將此 .html 檔案轉贈傳送給任何人。'
+      },
+      en: {
+        langBtn: '中文 / EN',
+        brandSubtitle: 'Present Awareness ✦ Transformative Wisdom ✦ Daily Empowerment',
+        soundOn: 'Sound On',
+        soundOff: 'Sound Muted',
+        catalogBtn: '99 Numbers Index',
+        tabInput: 'Intuitive Pick (1-99)',
+        tabGrid: 'Mind Matrix',
+        tabBreath: 'Breath Meditation',
+        panelInputPre: 'INTUITIVE DIVINATION',
+        panelInputTitle: 'Trust Your First Intuition',
+        panelInputDesc: 'Close your eyes and breathe deeply. Ask within: "What growth energy do I need right now?" Then enter or choose any number from 1 to 99.',
+        numPlaceholder: 'Enter 1 - 99',
+        revealBtn: 'Reveal Guidance',
+        quickChipsLabel: 'Inspiration Chips:',
+        quickRandom: 'Shuffle',
+        panelGridPre: 'MIND MATRIX',
+        panelGridTitle: 'Select the Number Calling to You',
+        panelGridDesc: 'Every number is a sacred key to deeper consciousness (80-99 represents spiral ascension).',
+        gridTip: 'Hover or tap to explore',
+        legMajor: '1-23 Major/Master',
+        legFire: '24-37 Fire',
+        legWater: '38-51 Water',
+        legClouds: '52-65 Clouds',
+        legRainbow: '66-79 Rainbow',
+        legAscend: '80-99 Ascension',
+        panelBreathPre: 'MINDFULNESS & STILLNESS',
+        panelBreathTitle: 'Three-Breath Centering Meditation',
+        panelBreathDesc: 'Breathe with the pulsing circle. When radiant light peaks, your daily guidance will be revealed.',
+        breathStartBtn: 'Begin Meditation & Draw Card',
+        breathInhale: 'Inhale ✦ Receive cosmic energy',
+        breathExhale: 'Exhale ✦ Release all tension',
+        breathInhaleCount: (c, t) => `Deep inhalation... (${c}/${t})`,
+        breathExhaleCount: 'Relax your shoulders and mind...',
+        breathDone: 'Centered in Stillness ✦ Resonance Found',
+        cardBackHint: 'Touch Awareness · Return to the Present',
+        reflipBtn: 'Flip Card',
+        copyGuidanceBtn: "Copy Today's Card",
+        originCard: (id, code) => `Original Card #${id} (${code})`,
+        spiralTag: '✦ Spiral Ascension',
+        titleMirror: '【Mirror ✦ Present Awareness】',
+        titleWisdom: '【Wisdom ✦ Zen Transformation】',
+        titleRadiance: '【Radiance ✦ Daily Empowerment】',
+        labelAffirmation: '✦ Daily Affirmation',
+        badgeAction: 'Action Step',
+        footer: 'Osho Zen Tarot Spiritual Numerology ✦ Awareness is Freedom ✦ For Mindfulness & Empowerment',
+        catalogTitle: 'Osho Zen Tarot 1-99 Guide Index',
+        catalogSub: 'Click any number to reveal guidance immediately',
+        catalogSearchPlaceholder: 'Search number or card name (e.g. 24, Fire, Fool, Courage)...',
+        catalogReadBtn: 'Reveal ➔',
+        catalogEmpty: 'No matching cards found, please try another search keyword.',
+        spiralNotice: (n, m, name) => `✨ Number ${n} transcends the 79-card complete circle, spiraling upward to #${m} 【${name}】! A fresh awakening to higher conscious light.`,
+        spiralSimple: (n) => `Card #${n} Direct Resonance`,
+        copySuccess: 'Empowerment card copied to clipboard!',
+        inputWarning: 'Please enter a number between 1 and 99!',
+        customCardsBadge: (c) => `Custom Art (${c}/79)`,
+        exportGameBtn: 'Gift / Export Game',
+        uploadModalTitle: 'Upload Custom 79 Tarot Card Artwork',
+        uploadModalSub: 'Supports batch upload (name files 1.jpg ~ 79.jpg, or click individual cards)',
+        batchUploadLabel: 'Batch Upload Cards (Up to 79)',
+        clearAllImagesConfirm: 'Are you sure you want to clear all custom card images?',
+        allImagesCleared: 'All custom card images cleared',
+        batchDone: (count) => `Successfully imported ${count} card images!`,
+        exportSuccess: 'Game file exported! You can now send this single .html file to anyone.'
+      }
+    };
+
+    /* =========================================================================
+       2. Web Audio API 禪意頌缽與銅鈴音效合成器
+       ========================================================================= */
+    class ZenAudioSynthesizer {
+      constructor() {
+        this.ctx = null;
+        this.soundEnabled = true;
+      }
+
+      initContext() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) {
+            this.ctx = new AudioContext();
+          }
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+
+      playSingingBowl() {
+        if (!this.soundEnabled) return;
+        try {
+          this.initContext();
+          if (!this.ctx) return;
+          const now = this.ctx.currentTime;
+          const freqs = [196, 392, 587.33, 783.99]; 
+          freqs.forEach((freq, idx) => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq + (idx * 0.8), now);
+            const duration = 3.5;
+            const initialVolume = idx === 0 ? 0.25 : 0.08 / idx;
+            gain.gain.setValueAtTime(0.0001, now);
+            gain.gain.exponentialRampToValueAtTime(initialVolume, now + 0.08);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(now);
+            osc.stop(now + duration);
+          });
+        } catch (e) {
+          console.warn('Audio play error:', e);
+        }
+      }
+
+      playRevealBell() {
+        if (!this.soundEnabled) return;
+        try {
+          this.initContext();
+          if (!this.ctx) return;
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(880, now);
+          osc.frequency.exponentialRampToValueAtTime(1760, now + 0.3);
+          gain.gain.setValueAtTime(0.001, now);
+          gain.gain.exponentialRampToValueAtTime(0.2, now + 0.04);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.2);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now);
+          osc.stop(now + 1.2);
+        } catch (e) {
+          console.warn('Audio play error:', e);
+        }
+      }
+    }
+
+    const zenAudio = new ZenAudioSynthesizer();
+
+    /* =========================================================================
+       3. IndexedDB 牌卡圖片儲存庫
+       ========================================================================= */
+    class CardImageDatabase {
+      constructor() {
+        this.dbName = 'OshoZenTarotDB_V2';
+        this.storeName = 'cardImages';
+        this.db = null;
+      }
+
+      async init() {
+        return new Promise((resolve, reject) => {
+          const req = indexedDB.open(this.dbName, 1);
+          req.onupgradeneeded = (e) => {
+            const db = e.target.result;
+            if (!db.objectStoreNames.contains(this.storeName)) {
+              db.createObjectStore(this.storeName, { keyPath: 'id' });
+            }
+          };
+          req.onsuccess = (e) => {
+            this.db = e.target.result;
+            resolve(this.db);
+          };
+          req.onerror = (e) => reject(e);
+        });
+      }
+
+      async saveImage(cardId, base64Data) {
+        if (!this.db) await this.init();
+        return new Promise((resolve, reject) => {
+          const tx = this.db.transaction([this.storeName], 'readwrite');
+          const store = tx.objectStore(this.storeName);
+          store.put({ id: cardId, data: base64Data });
+          tx.oncomplete = () => resolve();
+          tx.onerror = (e) => reject(e);
+        });
+      }
+
+      async getAllImages() {
+        if (!this.db) await this.init();
+        return new Promise((resolve, reject) => {
+          const tx = this.db.transaction([this.storeName], 'readonly');
+          const store = tx.objectStore(this.storeName);
+          const req = store.getAll();
+          req.onsuccess = () => {
+            const map = {};
+            (req.result || []).forEach(item => {
+              map[item.id] = item.data;
+            });
+            resolve(map);
+          };
+          req.onerror = (e) => reject(e);
+        });
+      }
+
+      async clearAll() {
+        if (!this.db) await this.init();
+        return new Promise((resolve, reject) => {
+          const tx = this.db.transaction([this.storeName], 'readwrite');
+          const store = tx.objectStore(this.storeName);
+          store.clear();
+          tx.oncomplete = () => resolve();
+          tx.onerror = (e) => reject(e);
+        });
+      }
+    }
+
+    const cardImgDB = new CardImageDatabase();
+    let customCardImages = {};
+
+    /* =========================================================================
+       4. 奧修禪卡 79 張官方標準編排 (23 主牌/大師 + 14 火 + 14 水 + 14 雲 + 14 彩虹)
+       ========================================================================= */
+    const ELEMENT_TYPES = {
+      MAJOR: { 
+        name: '主牌 (大阿爾克那)', 
+        nameEn: 'Major Arcana',
+        color: '#E5B869', 
+        bgClass: 'bg-amber-500/20 text-amber-300 border-amber-500/40', 
+        symbol: '✦' 
+      },
+      FIRE: { 
+        name: '火之組 (行動/熱情)', 
+        nameEn: 'Fire Suit (Action & Passion)',
+        color: '#EF4444', 
+        bgClass: 'bg-rose-500/20 text-rose-300 border-rose-500/40', 
+        symbol: '🔥' 
+      },
+      WATER: { 
+        name: '水之組 (情感/接納)', 
+        nameEn: 'Water Suit (Emotion & Love)',
+        color: '#38BDF8', 
+        bgClass: 'bg-sky-500/20 text-sky-300 border-sky-500/40', 
+        symbol: '💧' 
+      },
+      CLOUDS: { 
+        name: '雲之組 (思想/覺察)', 
+        nameEn: 'Clouds Suit (Mind & Awareness)',
+        color: '#A855F7', 
+        bgClass: 'bg-purple-500/20 text-purple-300 border-purple-500/40', 
+        symbol: '☁️' 
+      },
+      RAINBOW: { 
+        name: '彩虹之組 (實踐/豐盛)', 
+        nameEn: 'Rainbow Suit (Manifestation & Abundance)',
+        color: '#10B981', 
+        bgClass: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40', 
+        symbol: '🌈' 
+      },
+    };
+
+    // 嚴格按照官方 79 張禪卡順序編排
+    const ZEN_CARDS_DATA = [
+      // 01 - 23: Major Arcana (0 Fool ~ 21 Completion + The Master)
+      { id: 1, name: "傻瓜", nameEn: "The Fool", code: "0", element: "MAJOR", keyword: "純真與無畏信任", keywordEn: "Innocence & Fearless Trust", mirror: "你正站在生命的全新起點，頭腦可能有些擔心『這樣做好嗎？』。", mirrorEn: "You stand at a brand new threshold in life; the analytical mind may wonder if stepping out is safe.", wisdom: "傻瓜不是盲目，而是放下過往成見，全然信任宇宙的指引，每一步都是冒險也是奇蹟。", wisdomEn: "The Fool is not reckless, but free of past baggage, trusting existence unconditionally with childlike wonder.", affirm: "我懷抱純真與勇氣，全然信任生命的安排，勇敢跨出嶄新一步。", affirmEn: "With pure trust and bravery, I embrace life's grand adventure with an open heart.", action: "今天嘗試一件過去不敢做的小事，允許自己像孩子般充滿好奇心。", actionEn: "Try one small thing outside your comfort zone today with playful curiosity." },
+      { id: 2, name: "存在", nameEn: "Existence", code: "I", element: "MAJOR", keyword: "歸屬與生命連結", keywordEn: "Belonging & Universal Bond", mirror: "你偶爾可能感到孤單，覺得自己像一座孤島在漂流。", mirrorEn: "You might feel isolated at times, as if adrift like a lonely island.", wisdom: "你不是孤獨的，繁星、微風與大地都與你的心跳同頻，你本就是宇宙不可或缺的一部分。", wisdomEn: "You are never alone. The stars, breeze, and earth pulse with your heartbeat; you belong to existence.", affirm: "我就在這裡，宇宙無條件接納我，我本自具足並被深愛著。", affirmEn: "I am here, unconditionally welcomed and loved by the vast universe.", action: "脫下鞋子踩踩草地或赤腳踩地板 3 分鐘，深吸一口氣感受大地的承載。", actionEn: "Stand barefoot on the earth or floor for 3 minutes and ground into peace." },
+      { id: 3, name: "內在聲音", nameEn: "Inner Voice", code: "II", element: "MAJOR", keyword: "直覺與溫柔包容", keywordEn: "Intuition & Gentle Acceptance", mirror: "你可能習慣過度用力、靠邏輯與競爭來解決問題，感到疲累。", mirrorEn: "You might be over-striving through pure logic and competition, wearing yourself thin.", wisdom: "內在女性的能量是柔軟而深邃的湖泊，停止衝撞，你的直覺自然能浮現最清明的答案。", wisdomEn: "The inner voice is a quiet lake. When you stop fighting, deep truth bubbles up effortlessly.", affirm: "我傾聽內在柔軟的聲音，溫柔包容自己所有的脆弱與感受。", affirmEn: "I listen closely to my gentle inner voice and honor all of my feelings.", action: "用溫暖的雙手撫摸自己的心口，對自己說：『親愛的，慢慢來沒關係』。", actionEn: "Place a warm hand over your heart and whisper: 'It is okay to take it easy.'" },
+      { id: 4, name: "創造力", nameEn: "Creativity", code: "III", element: "MAJOR", keyword: "流動與生命豐盛", keywordEn: "Creative Flow & Expression", mirror: "你是否覺得思維被框架卡住，或者覺得自己缺乏某種天賦？", mirrorEn: "Do you feel creatively blocked or that you lack the right talent?", wisdom: "真正的創造力不是成為藝術家，而是允許生命能量自由流經你，把你獨特的熱忱分享出來。", wisdomEn: "True creativity is allowing life's vital stream to flow through you and into whatever you touch.", affirm: "我是生命創造力的純淨管道，我的每一個念頭都在編織美好。", affirmEn: "I am an open channel for creative joy and abundant expression.", action: "隨手拿起筆塗鴉、哼一首歌，或者為今天的空間插上一束鮮花。", actionEn: "Doodle freely, sing a tune, or arrange a flower in your living space." },
+      { id: 5, name: "叛逆者", nameEn: "The Rebel", code: "IV", element: "MAJOR", keyword: "獨立與真實之光", keywordEn: "Authenticity & Freedom", mirror: "周遭的眼光或社會的規則是否讓你想妥協、隱藏真實的自己？", mirrorEn: "Are social pressures prompting you to hide who you truly are?", wisdom: "叛逆者不是對抗世界，而是終於敢於活出自己的真理，打碎外在賦予你的束縛枷鎖。", wisdomEn: "The Rebel does not fight out of anger, but lives truth fearlessly, shining their authentic light.", affirm: "我有力量活出最真實的自己，我的靈魂自帶光芒，無須迎合他人。", affirmEn: "I have the courage to live my authentic truth without seeking approval.", action: "今天勇敢向一件你內心不想答應的請求，溫和但堅定地說『不』。", actionEn: "Gently yet firmly say 'no' to one request that does not align with your truth." },
+      { id: 6, name: "空 (無執)", nameEn: "No-Thingness", code: "V", element: "MAJOR", keyword: "純粹與不再討好", keywordEn: "Vast Emptiness & Purity", mirror: "你是否為了維持表面和諧，默默吞下了自己的界線與尊嚴？", mirrorEn: "Have you compromised your boundaries just to keep superficial harmony?", wisdom: "真正的和諧始於對自己的真實。不再討好並不是孤傲，而是對內在神聖神性最深切的忠誠。", wisdomEn: "Rest in the quiet void where no compromise is needed. Pure integrity brings effortless peace.", affirm: "我尊重內心的真實邊界，真誠使我自由且富有力量。", affirmEn: "I honor my sacred inner boundaries; clarity and authenticity set me free.", action: "寫下一件你曾勉強妥協的事，並告訴自己：『從今天起，我值得被尊重』。", actionEn: "Acknowledge a past forced compromise and declare your self-worth." },
+      { id: 7, name: "愛人 (戀人)", nameEn: "The Lovers", code: "VI", element: "MAJOR", keyword: "內在合一與深情", keywordEn: "Sacred Union & Love", mirror: "你渴望外在有人能填補寂寞，或者在親密關係中感到患得患失。", mirrorEn: "You may be seeking external validation to fill an inner void.", wisdom: "愛不是向外索求，而是看見自己內在完整的神聖共振；當你愛上自己，世界便回以擁抱。", wisdomEn: "Love begins with inner union. When you fall in love with your own being, love overflows naturally.", affirm: "我深深愛著且接納完整的自己，我的愛充盈並自然流向周遭。", affirmEn: "I deeply cherish my whole self; love radiates effortlessly from within.", action: "在鏡子前凝視自己的雙眼 15 秒，真摯地對自己說一句：『我愛你』。", actionEn: "Look into your eyes in the mirror for 15 seconds and sincerely say: 'I love you.'" },
+      { id: 8, name: "覺知", nameEn: "Awareness", code: "VII", element: "MAJOR", keyword: "觀照與看見真相", keywordEn: "Mindful Witnessing", mirror: "你可能被紛擾的思緒或突發事件牽著鼻子走，心緒浮躁。", mirrorEn: "You might feel caught in whirlwind thoughts and transient moods.", wisdom: "觀照者如同無雲的晴空，無論雲層是黑是白，晴空永遠平靜無礙。退後一步看，答案自明。", wisdomEn: "The witness is the open sky. Storm clouds pass, but the blue expanse remains untouched.", affirm: "我是當下的平靜觀照者，任何情緒都只是經過，無法撼動我的本質。", affirmEn: "I am the serene watcher of this moment; emotions come and go peacefully.", action: "閉上雙眼靜坐 2 分鐘，只是單純觀察自己的每一次吸氣與吐氣。", actionEn: "Close your eyes for 2 minutes and simply witness breath entering and leaving." },
+      { id: 9, name: "勇氣", nameEn: "Courage", code: "VIII", element: "MAJOR", keyword: "破土而出的生命力", keywordEn: "Sprouting Vitality", mirror: "眼前可能有個未知或挑戰讓你感到些微膽怯與不安。", mirrorEn: "An uncertain challenge ahead might trigger quiet hesitation.", wisdom: "種子破土而出時並不知道天空有多廣闊，但它依然勇敢向上。恐懼的存在正是勇氣的證明。", wisdomEn: "A tiny seed sprouts through rock without knowing the sky, driven by life's unstoppable power.", affirm: "我擁有破土而出的無窮力量，每一次挑戰都是我綻放的序曲。", affirmEn: "I hold the strength of a sprouting seed; every challenge is my prelude to blooming.", action: "挺起胸膛深呼吸三次，為今天最感到挑戰的一件事按下『執行』鍵。", actionEn: "Take three bold breaths and take the first decisive step on your biggest task." },
+      { id: 10, name: "獨處", nameEn: "Aloneness", code: "IX", element: "MAJOR", keyword: "沉靜與內在豐足", keywordEn: "Sacred Solitude", mirror: "你害怕安靜下來面對空虛，常常用手機或社交填滿每一分空檔。", mirrorEn: "You might rush to fill quiet moments with digital noise or chatter.", wisdom: "獨處（Aloneness）不是寂寞，而是與自己內在最美清泉重逢的聖地，在那裡你自成宇宙。", wisdomEn: "Aloneness is not loneliness; it is arriving home in your own luminous temple.", affirm: "我享受與自己在一起的寧靜時光，在深邃的安靜中重獲力量。", affirmEn: "I cherish stillness with myself; my inner sanctuary is rich and complete.", action: "放下手機 15 分鐘，給自己泡一杯茶，在寧靜中只與自己相處。", actionEn: "Put away digital devices for 15 minutes, savor tea, and simply be with yourself." },
+      { id: 11, name: "改變", nameEn: "Change", code: "X", element: "MAJOR", keyword: "命運轉輪與信任", keywordEn: "Wheel of Fortune & Trust", mirror: "生活中的變動打亂了你的計畫，讓你感到失控或有些慌張。", mirrorEn: "Sudden shifts have disrupted your plans, sparking unease about control.", wisdom: "生命就像巨大的命運轉輪，低谷是蓄力的過程，高峰是感恩的時刻。一切流轉皆有美意。", wisdomEn: "Life rotates like a great wheel. Troughs gather strength, peaks share gratitude. Trust the turn.", affirm: "我順應生命的起伏流轉，每次轉折都引領我走向更高的圓滿。", affirmEn: "I ride the waves of life with grace; every turn carries divine purpose.", action: "拍拍胸口，對現在所有的不確定性說：『我願意相信這是一場最好的禮物』。", actionEn: "Breathe into your heart and affirm: 'I welcome change as a hidden gift.'" },
+      { id: 12, name: "突破", nameEn: "Breakthrough", code: "XI", element: "MAJOR", keyword: "破繭而出的力量", keywordEn: "Breakthrough Power", mirror: "你感到壓抑已久，好像有一股強烈的能量想衝出舊有的框架。", mirrorEn: "You feel pent-up energy begging to burst through stale limitations.", wisdom: "破壞不是毀滅，而是新生力量衝破厚重外殼的宣誓。給你的內在力量一個自由的出口！", wisdomEn: "This is not destruction, but the shell cracking so the butterfly can take flight.", affirm: "我釋放所有舊有模式的重擔，迎向更寬廣無拘的新境界。", affirmEn: "I break free from obsolete chains and step into boundless possibilities.", action: "大聲喊一聲或者大力甩甩手腳，把累積在身體裡的悶氣徹底甩乾淨！", actionEn: "Shake out your limbs or exhale strongly to release stagnant energy." },
+      { id: 13, name: "新洞見", nameEn: "New Vision", code: "XII", element: "MAJOR", keyword: "超越重力與新生", keywordEn: "Higher Perspective", mirror: "你是否覺得某個難題翻來覆去解不開，卡在死胡同裡？", mirrorEn: "Are you stuck in circular thoughts trying to solve an old dilemma?", wisdom: "換一個視角看問題。當你跳出原本的地平線，你會發現原本的障礙只是路上微小的石子。", wisdomEn: "Rise above the flat plane. From bird's-eye view, the labyrinth turns into a clear path.", affirm: "我打開心靈的視野，看見生命為我開啟的全新通道與智慧。", affirmEn: "I open my mind to fresh heights; wisdom illuminates solutions effortlessly.", action: "換個坐姿或站到窗邊遠眺，問自己：『如果我是五年後的自己，我會怎麼做？』", actionEn: "Look out at the horizon and ask: 'What would my future self do right now?'" },
+      { id: 14, name: "轉化", nameEn: "Transformation", code: "XIII", element: "MAJOR", keyword: "毛蟲化蝶的重生", keywordEn: "Metamorphosis & Rebirth", mirror: "某個階段正在劃下句點，心中的不捨或焦慮讓你隱隱作痛。", mirrorEn: "A chapter is closing, stirring grief or fear of the unknown.", wisdom: "沒有落葉的枯萎，就沒有春天的嫩芽。你正在經歷最神聖的蛻變，準備迎接飛翔。", wisdomEn: "Autumn leaves fall so spring shoots may flourish. Honor the sacred alchemy of change.", affirm: "我感謝過去所有經歷的滋養，優雅且放心地迎接全新的蛻變。", affirmEn: "I release the past with gratitude and welcome my glorious renewal.", action: "丟掉或刪除一件代表過往負能量的舊物件或訊息，象徵心靈騰出空間。", actionEn: "Discard a stale object or delete an old message to clear spiritual space." },
+      { id: 15, name: "整合", nameEn: "Integration", code: "XIV", element: "MAJOR", keyword: "陰陽平衡與和諧", keywordEn: "Balance & Wholeness", mirror: "你可能在感性與理性、工作與休閒之間拉扯，感到撕裂分裂。", mirrorEn: "You feel torn between heart and mind, duties and inner yearnings.", wisdom: "黑夜與白天共同成就了一整天。接納你內在的每一面，它們不是敵人，而是協奏曲的音符。", wisdomEn: "Day and night compose a single day. Unite your opposites in harmonious wholeness.", affirm: "我擁抱自己內在的每一個面向，我在平衡與完整中安住。", affirmEn: "I embrace all facets of my being; I am centered in harmony and peace.", action: "閉上眼睛，右手放在左肩、左手放在右肩，給自己一個溫柔的擁抱。", actionEn: "Cross your arms over your shoulders and give yourself an appreciative hug." },
+      { id: 16, name: "制約", nameEn: "Conditioning", code: "XV", element: "MAJOR", keyword: "脫離羊群做獅子", keywordEn: "Awakening the Lion", mirror: "你是否一直在迎合世俗期待，像披著羊皮的獅子一樣壓抑自己的咆哮？", mirrorEn: "Have you been conforming to the herd, hiding your inner roar under sheep's skin?", wisdom: "認出那些不是你的信念！你不是溫馴盲從的羊，你是擁有自由意志與清明本性的雄獅。", wisdomEn: "Realize you were never a sheep. You are a noble lion of sovereign truth.", affirm: "我卸下外界強加的所有標籤，堂堂正正活出屬於我的王者風範。", affirmEn: "I shed societal conditioning and courageously live as my true sovereign self.", action: "寫下一句別人對你的批評或期待，然後在旁邊劃一個大大的叉，宣告解除！", actionEn: "Write down an external limitation placed on you and cross it out with conviction." },
+      { id: 17, name: "雷電", nameEn: "Thunderbolt", code: "XVI", element: "MAJOR", keyword: "震碎幻象的重生", keywordEn: "Lightning Awakening", mirror: "突如其來的突發事件可能震碎了你原本習以為常的安全感。", mirrorEn: "Sudden events may have shaken the foundations of your comfort zone.", wisdom: "雷電雖然驚人，卻能一瞬間劈開籠罩在頭頂的迷霧，讓你真正踩在堅實的土地上醒過來。", wisdomEn: "Lightning shatters illusions in an instant, waking you to unshakeable clarity.", affirm: "我信任震盪帶來的洗禮，舊的幻象瓦解，真理與平安長存。", affirmEn: "I trust the sudden awakening; illusions crumble, truth stands eternal.", action: "深吸一口氣，將注意力帶回到雙腳站立的觸感，告訴自己：『我現在很安全』。", actionEn: "Ground your feet firmly into the floor and whisper: 'I am safe in this very moment.'" },
+      { id: 18, name: "寂靜 (沉寂)", nameEn: "Silence", code: "XVII", element: "MAJOR", keyword: "深邃的空性與大美", keywordEn: "Profound Silence", mirror: "腦子裡吵吵鬧鬧，似乎永遠有解決不完的問題與規劃。", mirrorEn: "Mental chatter is running non-stop with endless planning and worries.", wisdom: "停下來。在沒有語言的沉寂裡，存在著最大的創造原力與無限深邃的平安。", wisdomEn: "Pause. In the wordless silence lives the primordial source of pure peace and power.", affirm: "我安住在無言的寂靜之中，生命正在寂靜裡為我編織最美的指引。", affirmEn: "I rest in timeless silence; grace guides me softly from within.", action: "找一個安靜的角落，靜靜注視窗外的天空或一棵樹 1 分鐘，什麼都不思考。", actionEn: "Gaze at the sky or a tree for one full minute without naming or analyzing." },
+      { id: 19, name: "前世", nameEn: "Past Lives", code: "XVIII", element: "MAJOR", keyword: "宿命循環的覺醒", keywordEn: "Breaking Karmic Loops", mirror: "你是否發現某種熟悉的困境或情緒模式又在生活中重演？", mirrorEn: "Notice a recurring pattern or old emotional knot showing up again?", wisdom: "看見模式的瞬間，就是自由的開始。過去的業力循環在清醒的覺知之光下一吹即散。", wisdomEn: "Seeing the karmic loop is the moment of liberation. Clear awareness dissolves it.", affirm: "我已看清過往思維的迴路，今天起我用全新的智慧選擇幸福。", affirmEn: "I release old cycles; today I choose wisdom, freedom, and joy.", action: "辨認出一個自己常說的負面口頭禪，今天試著把它改為一句感恩的話。", actionEn: "Identify a negative self-talk phrase and flip it into words of gratitude." },
+      { id: 20, name: "純真", nameEn: "Innocence", code: "XIX", element: "MAJOR", keyword: "回歸赤子無染本性", keywordEn: "Pure Innocence", mirror: "經歷世事沉浮，你是否開始用猜疑防備的心看待世界？", mirrorEn: "Having experienced disappointments, do you look at the world through cynical lenses?", wisdom: "純真不是天真無知，而是歷經千帆後依然選擇以乾淨澄澈的心凝視這個世界的大智慧。", wisdomEn: "Innocence is not ignorance, but seasoned wisdom choosing to behold life afresh.", affirm: "我重獲赤子般的純真，宇宙對我回以無限溫柔與豐盛。", affirmEn: "I regain my innocent heart; existence smiles warmly upon my journey.", action: "像第一次看見花朵或雲朵那樣，細細觀察身邊微小事物 1 分鐘。", actionEn: "Observe a simple flower or cloud with brand new childlike eyes for 1 minute." },
+      { id: 21, name: "超越幻象", nameEn: "Beyond Illusion", code: "XX", element: "MAJOR", keyword: "真我浮現超越迷霧", keywordEn: "Clarity Beyond Illusion", mirror: "你被外在的表象、他人的人設或自我的自卑感所困惑。", mirrorEn: "You are mesmerized by social appearances or self-doubt.", wisdom: "一切外在的評判都是鏡花水月。撥開欲望與恐懼的薄霧，真實的你神聖不可動搖。", wisdomEn: "All superficial judgments are mirages. Pierce the mist and know your divine spark.", affirm: "我看穿了幻相的捉弄，安住在真實、自性與無比的明澈之中。", affirmEn: "I see through all illusions and rest in crystal-clear self-knowing.", action: "對著鏡子笑一笑，提醒自己：『我不是外在物質的奴隸，我是自由的靈魂』。", actionEn: "Smile in the mirror and declare: 'I am a free and eternal soul.'" },
+      { id: 22, name: "完成 (圓滿)", nameEn: "Completion", code: "XXI", element: "MAJOR", keyword: "一幕結束大團圓", keywordEn: "Wholeness & Completion", mirror: "某個階段的任務、專案或關係已經告一段落，讓你有些失落。", mirrorEn: "A major project, relationship, or phase has culminated, leaving a tender pause.", wisdom: "拼圖的最後一片已經放上，慶祝這個偉大的里程碑！完成不是終點，而是進入更高維度的入口。", wisdomEn: "The final puzzle piece has clicked into place. Celebrate wholeness before the next cycle.", affirm: "我讚歎生命旅程的圓滿完成，懷抱感恩走向更恢弘的章節。", affirmEn: "I honor the completion of this cycle with gratitude and open wings.", action: "給自己送上一份小禮物或甜點，慶祝自己堅持走到現在的每一步。", actionEn: "Treat yourself to a small token or sweet to celebrate how far you have come." },
+      { id: 23, name: "大師 (師父)", nameEn: "The Master", code: "MASTER", element: "MAJOR", keyword: "喚醒自性導師", keywordEn: "Inner Masterhood", mirror: "你習慣向外尋求權威、導師或他人的認可，懷疑自己的判斷力。", mirrorEn: "You reflexively look outward for an authority or savior to guide you.", wisdom: "大師的存在不是為了讓你崇拜，而是提醒你：你的內心本就住著一位至高無上的自性大師。", wisdomEn: "The Master is a mirror reminding you that the ultimate guru lives in your own center.", affirm: "我信任自己內在的智慧導師，我是自己生命的引路人與主宰。", affirmEn: "I trust my inner master; I walk my path with sovereignty and illumination.", action: "在紙上寫下一道困擾你的難題，以『充滿智慧的智者身分』寫下一行指引給自己。", actionEn: "Write your question on paper, then write the answer as your highest wise self." },
+
+      // 24 - 37: Fire Suit (火之組 - 行動 / 熱情)
+      { id: 24, name: "火之源頭", nameEn: "Fire Source", code: "Fire-Ace", element: "FIRE", keyword: "原始生命火花", keywordEn: "Primal Spark of Life", mirror: "你感到體內有一股躍躍欲試的衝勁，但可能不知該往哪裡使力。", mirrorEn: "A passionate surge is welling up, but you wonder where to aim it.", wisdom: "這是一切行動的原力！別想太多，先讓純粹的熱情點燃你眼前最想做的一件小事。", wisdomEn: "This is pure primal ignite! Let spontaneous passion breathe life into one joyful endeavor.", affirm: "我連結無窮的熱情源泉，將生命力注入此刻每一個行動。", affirmEn: "I tap into inexhaustible vitality, infusing enthusiasm into every step.", action: "立刻拿起手機或筆記本，寫下你此刻最興奮的 3 個夢想！", actionEn: "Jot down the top 3 dreams that electrify your spirit right now." },
+      { id: 25, name: "可能性", nameEn: "Possibilities", code: "Fire-2", element: "FIRE", keyword: "鷹展高飛視界", keywordEn: "Boundless Horizons", mirror: "你把眼光局限在眼前的瑣碎與困難中，感到空間狹隘。", mirrorEn: "You have zoomed in too closely on mundane roadblocks, feeling boxed in.", wisdom: "像雄鷹般盤旋在萬米高空吧！生命有千百種可能性，答案往往在視野擴大時躍然紙上。", wisdomEn: "Soar like an eagle high above the canyon. Infinite possibilities emerge with vast sight.", affirm: "我張開雙翼超越局限，無限美好的可能性正在向我敞開。", affirmEn: "I spread my wings wide; infinite uplifting possibilities greet my vision.", action: "抬頭望向遠方天際線，想像自己飛越了一切微不足道的煩惱。", actionEn: "Look up at the open sky and imagine soaring effortless above petty worries." },
+      { id: 26, name: "體驗", nameEn: "Experiencing", code: "Fire-3", element: "FIRE", keyword: "全心投入當下", keywordEn: "Sensory Living", mirror: "你是否只是在『思考』生活，而忘記了『親身感受』大自然的溫度？", mirrorEn: "Are you over-analyzing life instead of drinking in raw sensory experience?", wisdom: "別只做人生的旁觀者，跳進去擁抱這棵大樹、感受這抹陽光！全然的經驗就是最高療癒。", wisdomEn: "Don't merely spectate. Hug the tree, feel the sun on your skin, and immerse yourself.", affirm: "我全心全意活在當下，品嚐生命賜予的每一口清甜體驗。", affirmEn: "I immerse fully in living experience, tasting the nectar of this moment.", action: "用心摸一摸身邊的植物、桌木或布料，專注感受指尖傳來的觸感與溫度。", actionEn: "Touch a leaf, wood, or fabric attentively, savoring textures with full presence." },
+      { id: 27, name: "參與", nameEn: "Participation", code: "Fire-4", element: "FIRE", keyword: "攜手曼陀羅共舞", keywordEn: "Co-Creative Dance", mirror: "你習慣躲在邊緣默默觀察，害怕融進群體或投入全心。", mirrorEn: "You might linger at the sidelines, hesitant to dance with the group.", wisdom: "每一片花瓣共同成就了美麗的花朵。拋開保留，全心參與生命的歡樂之舞吧！", wisdomEn: "Every petal completes the sacred blossom. Throw yourself into the dance of life.", affirm: "我全情投入生命的盛宴，我的參與讓世界更加精彩豐盛。", affirmEn: "I join the celebration of life wholeheartedly; my light enriches the whole.", action: "給身邊的朋友或群組發送一條真誠的讚美或感謝訊息。", actionEn: "Send a heartfelt message of gratitude or praise to a friend." },
+      { id: 28, name: "全心投入", nameEn: "Totality", code: "Fire-5", element: "FIRE", keyword: "燃燒殆盡的專注", keywordEn: "Total Immersion", mirror: "做事分心、左顧右盼，消耗了你大半的能量與效率。", mirrorEn: "Scattered multitasking is draining your momentum and joy.", wisdom: "像熊熊烈火般，把所有的熱量集中在一個焦點上！無保留的投入會創造令人驚豔的奇蹟。", wisdomEn: "Focus your flame like a magnifying glass. Totality turns action into magic.", affirm: "我將全副心力聚焦於當下的目標，在專注中成就卓越。", affirmEn: "I bring my whole undivided presence to the task before me.", action: "設定 25 分鐘番茄鐘，關掉社群通知，全神貫注只做好眼下一件事。", actionEn: "Set a 25-minute focus timer and give 100% devotion to one single task." },
+      { id: 29, name: "成功", nameEn: "Success", code: "Fire-6", element: "FIRE", keyword: "榮耀與謙卑前行", keywordEn: "Triumph & Humility", mirror: "你在追求外在的成就感，或在取得小成績後感到焦慮害怕失去。", mirrorEn: "You might be clinging to outer acclaim or nervous about losing momentum.", wisdom: "享受這份勝利的喜悅，如同騎在駿馬上的騎士，同時保持謙卑，騎著風繼續向前邁進。", wisdomEn: "Ride the tiger of success joyfully, yet stay humble as the wind that carries you.", affirm: "我欣然接受成功的榮光，並以謙卑感恩的心繼續探索更高峰。", affirmEn: "I celebrate my achievements with gratitude and humility on the endless path.", action: "對自己過去一週完成的一項挑戰說聲：『你太棒了，做得好！』", actionEn: "Congratulate yourself for a challenge you conquered this past week." },
+      { id: 30, name: "壓力", nameEn: "Stress", code: "Fire-7", element: "FIRE", keyword: "放下過載的戲碼", keywordEn: "Dropping Overload", mirror: "你背負了太多不屬於你的期待、日程與雜務，像雜耍小丑般喘不過氣。", mirrorEn: "Juggling too many obligations has pushed your mind into redline overdrive.", wisdom: "停下來！很多球根本不需要拋在空中。放下不必要的承諾，呼吸重新屬於你。", wisdomEn: "Stop juggling! Let unnecessary balls drop to the floor. Ease is your natural state.", affirm: "我允許自己放下過多的負荷，輕鬆才是生命本來的節奏。", affirmEn: "I release unnecessary burdens and return to effortless breathing.", action: "檢視今天的待辦清單，直接刪除或延後一件最不緊急的項目。", actionEn: "Review your task list and immediately cancel or postpone one non-urgent item." },
+      { id: 31, name: "旅行", nameEn: "Traveling", code: "Fire-8", element: "FIRE", keyword: "向外探索啟程", keywordEn: "Sacred Journey", mirror: "生活變得一成不變，你的心靈渴望新的刺激與風景。", mirrorEn: "Routine has dulled your curiosity; your soul longs for fresh vistas.", wisdom: "旅程本身就是目的地！背起行囊，哪怕只是在街角轉彎，都能發現奇蹟。", wisdomEn: "The voyage is itself the destination. Shift your route and discover wonders.", affirm: "我帶著冒險與期待的心，迎接生命旅途中每一個未知的驚喜。", affirmEn: "I embrace the journey with wonder; every bend brings an uplifting revelation.", action: "下班或放學時走一條和平時完全不同的街道回家，探索新的街景。", actionEn: "Walk home via an unfamiliar route to invite fresh scenery into your mind." },
+      { id: 32, name: "疲憊", nameEn: "Exhaustion", code: "Fire-9", element: "FIRE", keyword: "按下暫停休養", keywordEn: "Deep Restoration", mirror: "你的機器齒輪已經高速運轉太久，身心發出了警訊。", mirrorEn: "Your internal engine has overheated; your body is asking for deep rest.", wisdom: "休息不是偷懶，而是充電。連大地在冬季都需要休耕，給自己睡個好覺吧！", wisdomEn: "Rest is sacred renewal. Even fertile soil sleeps through winter. Surrender to rest.", affirm: "我完全接納自己需要休息的身體，在靜養中重新積蓄力量。", affirmEn: "I honor my body's need for replenishment; restorative peace rebuilds my light.", action: "今晚提早 30 分鐘上床睡覺，睡前不碰手機，讓身心徹底放鬆。", actionEn: "Head to bed 30 minutes early tonight without digital screens." },
+      { id: 33, name: "壓抑", nameEn: "Suppression", code: "Fire-10", element: "FIRE", keyword: "火山釋放真情", keywordEn: "Emotional Release", mirror: "你把太多的憤怒、委屈或熱情悶在肚子裡，壓抑成了沉重的火山石。", mirrorEn: "Bottling up grievances or raw passion has turned into internal pressure.", wisdom: "不要讓力量在體內發酵成毒素。找個安全的方式釋放它，讓生命能量重新流暢！", wisdomEn: "Do not let bottled fire turn corrosive. Release it constructively and let vital energy breathe.", affirm: "我安全且健康地釋放所有被壓抑的情緒，還給自己輕盈與自在。", affirmEn: "I safely release pent-up emotions, reclaiming my inner lightness.", action: "寫下所有憤怒或不滿的文字在一張廢紙上，然後痛快地撕碎丟進垃圾桶！", actionEn: "Vent raw thoughts onto scrap paper, then tear it to shreds with finality." },
+      { id: 34, name: "遊戲心 (火之小兵)", nameEn: "Playfulness", code: "Fire-Page", element: "FIRE", keyword: "生活本是場遊戲", keywordEn: "Lighthearted Play", mirror: "你把人生看得太嚴肅、太沉重了，一點小挫折就讓你如臨大敵。", mirrorEn: "You are taking matters way too grimly, magnifying minor hitches into dramas.", wisdom: "以小丑的遊戲之心看待一切吧！摔倒了拍拍灰塵笑一笑，這只是一場快樂的冒險遊戲。", wisdomEn: "Approach life with the clown's joyful grin. Dust off your knees and play!", affirm: "我用輕鬆幽默的心情遊玩人生，生活處處都是有趣的遊樂場。", affirmEn: "I treat life as a delightful playground; humor unlocks my natural grace.", action: "找一件今天好笑的傻事，對自己哈哈大笑三聲，別太嚴肅！", actionEn: "Laugh out loud at a silly mistake and let the heaviness evaporate." },
+      { id: 35, name: "強烈 (火之騎士)", nameEn: "Intensity", code: "Fire-Knight", element: "FIRE", keyword: "離弦之箭的威力", keywordEn: "Unstoppable Momentum", mirror: "你的體內充滿了一觸即發的能量，像拉滿弓的利箭。", mirrorEn: "Your spirit is wound like a drawn bow, primed for a quantum leap.", wisdom: "鎖定你的目標，不要回頭！這股強烈的熱能將衝破一切迷茫障礙。", wisdomEn: "Fix your gaze on the goal and release the arrow! Pure intensity cuts through fog.", affirm: "我全然信任我的熱情箭矢，毫無畏懼地朝向光明的目標前進。", affirmEn: "I ride my intense passion forward without hesitation or doubt.", action: "以毫不拖泥帶水的魄力，立刻搞定一封猶豫未決的郵件或決定。", actionEn: "Make that pending decision right now with resolute certainty." },
+      { id: 36, name: "分享 (火之后)", nameEn: "Sharing", code: "Fire-Queen", element: "FIRE", keyword: "無私豐潤的光芒", keywordEn: "Radiant Generosity", mirror: "你擔心自己擁有得不夠多，抓得太緊而無法給予。", mirrorEn: "Fear of scarcity may make you hold back your warmth or resources.", wisdom: "蠟燭點亮另一支蠟燭，自己的光芒絲毫無損，反而照亮了整間屋子。慷慨是富足的最高境界。", wisdomEn: "A candle loses nothing by lighting another. Sharing expands your wealth infinitely.", affirm: "我樂於分享我的愛、智慧與笑容，宇宙回饋我更充沛的豐盛。", affirmEn: "I share my warmth and gifts freely; abundance flows back multiplied.", action: "請朋友喝杯飲料，或是主動給陌生人一個溫暖的禮讓或微笑。", actionEn: "Treat someone to coffee or offer a heartfelt smile to a passerby." },
+      { id: 37, name: "創造者 (火之王)", nameEn: "The Creator", code: "Fire-King", element: "FIRE", keyword: "熱忱駕馭者", keywordEn: "Mastery of Creation", mirror: "你擁有許多好點子，但一直在等待『最完美的時機』才敢動手。", mirrorEn: "You sit on great visions while waiting for elusive 'ideal conditions.'", wisdom: "大師不是等待條件，而是用內在的火焰煉化一切阻礙。你就是這場創造的主人！", wisdomEn: "The Creator doesn't wait; they smelt raw moments into gold through sovereign will.", affirm: "我是生命之火的主宰，用智慧與行動將夢想轉化為現實。", affirmEn: "I am the master of creative fire, forging dreams into magnificent reality.", action: "立刻採取一個具體的小動作，把心裡的藍圖化為實際成果。", actionEn: "Take one concrete action today to bring a dormant project to life." },
+
+      // 38 - 51: Water Suit (水之組 - 情感 / 愛 / 接納)
+      { id: 38, name: "水之源頭 (順流)", nameEn: "Going with the Flow", code: "Water-Ace", element: "WATER", keyword: "無條件愛的湧泉", keywordEn: "Spring of Pure Love", mirror: "你的心靈是否感到乾涸，渴望被理解與撫慰？", mirrorEn: "Your heart may feel thirsty for tenderness, seeking hydration from outside.", wisdom: "深層的甘泉就在你的心室深處，你不需要向外索求。愛從你的自愛中汩汩湧出。", wisdomEn: "The sweetest spring wells in your inner chamber. Self-compassion quenches all thirst.", affirm: "我連結內在無盡的慈悲泉源，沉浸在愛的深情流動中。", affirmEn: "I tap into unconditional self-love; healing waters refresh my soul.", action: "喝一杯溫水，想像這股清泉正在滋養你身心每一個細胞。", actionEn: "Sip warm water mindfully, visualizing it hydrating every cell with love." },
+      { id: 39, name: "友誼", nameEn: "Friendliness", code: "Water-2", element: "WATER", keyword: "無索求的心靈相映", keywordEn: "Pure Companionship", mirror: "你在人際關係中感到孤立，或擔心他人對你的看法。", mirrorEn: "You might feel guarded in relationships, dreading judgment or rejection.", wisdom: "像兩棵並肩生長在陽光下的樹，樹枝交織卻各自站立。平等的友誼充滿了芬芳與自由。", wisdomEn: "Like two trees standing side-by-side in sunshine, true friendship shares roots in freedom.", affirm: "我吸引頻率相投的靈魂伴侶，在相互尊重中共享美好時光。", affirmEn: "I welcome soul connections rooted in mutual freedom, respect, and joy.", action: "給一位好久不見的摯友發一條簡訊問候：『想念你，祝你今天順心！』", actionEn: "Send a friendly greeting to an old friend wishing them pure joy today." },
+      { id: 40, name: "慶祝", nameEn: "Celebration", code: "Water-3", element: "WATER", keyword: "雨中歡唱起舞", keywordEn: "Dancing in the Rain", mirror: "你在等『升職』或『發財』才願意慶祝，忽略了當下小小的幸福。", mirrorEn: "Postponing celebration until a grand victory leaves today joyless.", wisdom: "何須等待？在雨中就能踩水起舞！每一朵花開、每一頓溫熱的晚餐都值得慶祝狂歡。", wisdomEn: "Dance in the puddles! Every breath, hot meal, and blooming flower is grounds for festival.", affirm: "我慶祝生命中的每一個呼吸，在尋常日子裡發現滿滿的奇蹟。", affirmEn: "I celebrate the miracle of life right here and now in everyday moments.", action: "放一首你最喜歡的輕快音樂，跟著節奏搖擺身體 2 分鐘！", actionEn: "Turn on an uplifting song and sway your body for 2 joyful minutes!" },
+      { id: 41, name: "轉向內在", nameEn: "Turning In", code: "Water-4", element: "WATER", keyword: "向內探尋平靜", keywordEn: "Inward Pilgrimage", mirror: "外在的八卦、訊息與熱鬧讓你心神不寧，感到空虛。", mirrorEn: "External noise and gossip have scattered your spiritual focus.", wisdom: "將眼睛閉上，目光從外在收回到內心。真正的安歇之所就在你胸膛之內。", wisdomEn: "Turn your sight inward. The tranquil harbor you seek is inside your own chest.", affirm: "我溫柔收回向外的渙散精力，回到內在深處的寧靜港灣。", affirmEn: "I gently recall my energy inward, resting in my tranquil core.", action: "閉目靜坐，輕輕將注意力放在心臟跳動的節奏上 1 分鐘。", actionEn: "Place hands over your heart and synchronize with its rhythmic pulse for 1 minute." },
+      { id: 42, name: "執著過去", nameEn: "Clinging to the Past", code: "Water-5", element: "WATER", keyword: "放手讓落葉飄零", keywordEn: "Releasing Nostalgia", mirror: "你抓著過去的甜蜜回憶或傷痕不放，眼前的風景都黯然失色。", mirrorEn: "Clutching yellowed memories or past slights eclipses today's sunshine.", wisdom: "過去只是一張發黃的舊照片。鬆開手，才能空出雙手去擁抱今天的微風與禮物。", wisdomEn: "The past is just a spent draft. Open clenched hands to receive today's fresh gifts.", affirm: "我感謝過去的每一課，並全然放手，迎向嶄新的當下。", affirmEn: "I release the past with peace; I open my hands to today's blessings.", action: "在心裡對那位過去的人或事說：『我祝福你，也放過我自己』。", actionEn: "Mentally declare to a past ghost: 'I bless you and set myself free.'" },
+      { id: 43, name: "夢", nameEn: "The Dream", code: "Water-6", element: "WATER", keyword: "幻夢與清醒一線", keywordEn: "Awaking from Dreams", mirror: "你沉浸在某種幻想中，希望別人為你的幸福負責。", mirrorEn: "Daydreaming about ideal saviors keeps you passive about your own joy.", wisdom: "不要沉睡在期望的幻夢裡。醒過來吧，親手在真實的土地上播種你的花朵。", wisdomEn: "Wake from projections. Plow real soil with your own hands to grow true blooms.", affirm: "我從虛妄的幻想中清醒，在真實的生活中創造確定的喜悅。", affirmEn: "I awaken from illusions to cultivate tangible joy in everyday reality.", action: "把一個不切實際的幻想拆解成一個『今天就能動手做』的實際小步驟。", actionEn: "Convert a vague daydream into one actionable real-world micro-step." },
+      { id: 44, name: "投射", nameEn: "Projection", code: "Water-7", element: "WATER", keyword: "看見鏡中的自己", keywordEn: "Mirror of Awareness", mirror: "你是否覺得某個人非常討厭或特別難相處，讓你火冒三丈？", mirrorEn: "Irritation with another person may be consuming your headspace.", wisdom: "他人只是面鏡子，反射出你內在未被接納的倒影。收回投射，寬恕他人就是寬恕自己。", wisdomEn: "Others are mirrors reflecting disowned shadows. Reclaiming projections dissolves anger.", affirm: "我看清外在投射的把戲，慈悲接納自己所有的面向。", affirmEn: "I withdraw my projections and embrace all facets of myself with love.", action: "當你想批評某人時，自問一句：『我是不是也在哪裡對自己這樣嚴格？』", actionEn: "When irritated, pause and ask: 'Where am I demanding this of myself?'" },
+      { id: 45, name: "放手", nameEn: "Letting Go", code: "Water-8", element: "WATER", keyword: "隨波逐流的智慧", keywordEn: "Floating in Grace", mirror: "你死死抓住某個局面，拼命逆水行舟，感到精疲力竭。", mirrorEn: "Rowing hard against the river's current is leaving you exhausted.", wisdom: "像一滴水融入大海一樣鬆開控制吧！順應生命的河流，它自然會帶你抵達豐盛之地。", wisdomEn: "Stop paddling upstream. Lie back and let the river carry you to the ocean of grace.", affirm: "我放棄無謂的掌控，順應神聖之流的指引，一切都被妥善安排。", affirmEn: "I surrender struggle; I trust life's divine flow to steer me rightly.", action: "深呼一口氣，雙手張開向上，宣告：『這件事，我交託給宇宙了！』", actionEn: "Open your palms upward and affirm: 'I entrust this outcome to grace.'" },
+      { id: 46, name: "懶惰", nameEn: "Laziness", code: "Water-9", element: "WATER", keyword: "打破沉悶的池塘", keywordEn: "Renewing Flow", mirror: "你感到有些無精打采、拖延怠惰，生活如一潭死水。", mirrorEn: "Stagnant apathy is making your days feel like an overgrown swamp.", wisdom: "死水容易發臭，活水才會清冽！站起來活動一下，重新注入微小的活水流動。", wisdomEn: "Still ponds stagnate, but fresh streams sparkle. Stir the water with light activity.", affirm: "我喚醒生命的流動活力，用清新的熱忱洗滌一切沉悶倦怠。", affirmEn: "I reawaken living enthusiasm, washing away dull lethargy.", action: "站起來伸個大大的懶腰，喝杯溫水，快速快走動動身體 3 分鐘。", actionEn: "Stretch your body fully and briskly walk in place for 3 minutes." },
+      { id: 47, name: "和諧", nameEn: "Harmony", code: "Water-10", element: "WATER", keyword: "如海豚般的共鳴", keywordEn: "Harmonic Resonance", mirror: "你感到人際或家庭有些緊繃，渴望深層的和解與溫柔。", mirrorEn: "Interpersonal static has left your heart yearning for soothing unity.", wisdom: "海豚在海中用愛與頻率互相呼應。發自心底的溫柔頻率，能融化最堅硬的冰川。", wisdomEn: "Dolphins navigate deep waters in songful harmony. Tune your heart to peace.", affirm: "我身心合一，並與周遭世界分享和諧、平靜與喜悅的頻率。", affirmEn: "I radiate harmony from within, melting friction into peaceful connection.", action: "給一個你需要和解的人，默默送去 10 秒鐘光與善意的祝福。", actionEn: "Send 10 seconds of silent compassionate light to someone who tested you." },
+      { id: 48, name: "了解 (水之小兵)", nameEn: "Understanding", code: "Water-Page", element: "WATER", keyword: "走出心靈的籠子", keywordEn: "Melting Defenses", mirror: "防備心讓你築起高牆，把自己冰封在孤傲堅硬的世界裡。", mirrorEn: "Defensive walls have frozen your heart behind a citadel of pride.", wisdom: "籠子的門其實大開著，看清這點就能飛向高空。卸下防備吧，軟化你的心胸，世界是友善的。", wisdomEn: "The bird's cage is open! Drop armor and let sweet warmth soften your walls.", affirm: "我放下緊繃的高牆防備，以柔軟開放的心擁抱生命。", affirmEn: "I release defensive armor and soften my heart to welcome life's warmth.", action: "放鬆你緊咬的牙關和皺著的眉頭，給身邊的人一個溫柔的微笑。", actionEn: "Soften your jaw and furrowed brow; share a soft, unhurried smile." },
+      { id: 49, name: "信任 (水之騎士)", nameEn: "Trust", code: "Water-Knight", element: "WATER", keyword: "縱身躍入深潭", keywordEn: "Leap of Faith", mirror: "你在懷疑人生的路途，深怕踏錯一步萬劫不復。", mirrorEn: "Paralyzing caution makes you fear stepping off the ledge of familiarity.", wisdom: "信任是跳入深潭前的那份坦然。沒有安全網，但整個深潭的柔水都會穩穩托住你。", wisdomEn: "Trust is leaping into deep crystal waters. There is no net, but water holds you.", affirm: "我全然信任生命的旅途，我走在通往最高福祉的路上。", affirmEn: "I leap with trust into life's hands; I am cradled in total safety.", action: "對你目前最擔憂的事，深呼吸後對自己說三次：『一切都是最好的安排』。", actionEn: "Breathe deeply and declare: 'Everything is unfolding for my highest good.'" },
+      { id: 50, name: "感受度 (水之后)", nameEn: "Receptivity", code: "Water-Queen", element: "WATER", keyword: "柔美直覺的百合", keywordEn: "Intuitive Openness", mirror: "你害怕自己的情緒太過敏感，試圖壓抑敏銳的直覺與感動。", mirrorEn: "You may view your sensitivity as a weakness and shut your heart.", wisdom: "細膩的感受力是神聖的禮物！像水中的蓮花般綻放，你的柔情足以滋養整個世界。", wisdomEn: "Sensitivity is a superpower. Open like a sacred lotus to receive guidance.", affirm: "我欣然接納自己細膩豐富的情感，敏銳的直覺是我最強大的指南針。", affirmEn: "My sensitivity is a divine gift; intuition guides me with utmost delicacy.", action: "允許自己看一部感動的短片或聽首好歌，讓眼淚或笑容自由流露。", actionEn: "Listen to a moving melody and allow genuine emotional resonance to flow." },
+      { id: 51, name: "治療 (水之王)", nameEn: "Healing", code: "Water-King", element: "WATER", keyword: "自癒與包容的光", keywordEn: "Deep Restoration", mirror: "舊傷口又在隱隱作痛，讓你感到委屈或是脆弱不堪。", mirrorEn: "A tender emotional wound feels raw under recent pressure.", wisdom: "撫平傷口的不是報復，而是接納。像陽光照耀水面，你的自我慈悲就是最高明的神醫。", wisdomEn: "Sunlight heals waters without force. Loving-kindness mends your tenderest ache.", affirm: "我的身心正處於強大的自我療癒之中，光與愛正充滿每一個創口。", affirmEn: "I am bathed in healing light; every wound transforms into compassion.", action: "洗一個舒服的熱水澡，想像水流洗滌乾淨所有的疲憊與傷痕。", actionEn: "Enjoy a warm wash, imagining pure water rinsing all hurt away." },
+
+      // 52 - 65: Clouds Suit (雲之組 - 思想 / 心智 / 轉念)
+      { id: 52, name: "意識 (雲之源頭)", nameEn: "Consciousness", code: "Clouds-Ace", element: "CLOUDS", keyword: "意識之光撥雲見日", keywordEn: "Clear Consciousness", mirror: "腦中思緒如亂麻，各種擔憂與規劃讓你難以入眠。", mirrorEn: "Tangled thoughts and worries are clouding your inner sky.", wisdom: "思維只是天空飄過的浮雲，你不是那些思緒，你是那片純淨無瑕的藍天。", wisdomEn: "Thoughts are merely floating clouds. You are the immensity of the blue sky behind them.", affirm: "我超越紛亂的頭腦雜音，安住在清澈光明的自性意識中。", affirmEn: "I rise above mental noise and rest in pure, luminous awareness.", action: "閉上眼，在心裡想像把每一串混亂的思緒打包進一朵雲裡，看它慢慢飄走。", actionEn: "Visualize chaotic thoughts packing into passing clouds, drifting harmlessly away." },
+      { id: 53, name: "精神分裂", nameEn: "Schizophrenia", code: "Clouds-2", element: "CLOUDS", keyword: "跳出左右為難的深淵", keywordEn: "Transcending Duality", mirror: "你卡在兩個選擇中進退維谷，左右為難，兩邊都怕後悔。", mirrorEn: "Torn between binary options, you fear choosing the wrong fork.", wisdom: "懸崖兩端都是頭腦製造的對立。跳下去！把兩邊都放下，聽從身體本能的直覺召喚。", wisdomEn: "Dilemmas are mind-made dualities. Drop both intellectual poles and listen to your gut.", affirm: "我跳出頭腦的二元對立，信任我的直覺為我指出第三條智慧之路。", affirmEn: "I transcend mental dualities; inner wisdom reveals the harmonious third path.", action: "拋一枚硬幣，當它在空中旋轉時，你心底最希望它落下的那一面就是答案！", actionEn: "Flip a coin; in mid-air your gut will reveal the outcome it truly wants." },
+      { id: 54, name: "孤立", nameEn: "Isolation", code: "Clouds-3", element: "CLOUDS", keyword: "走出冰封的牢籠", keywordEn: "Unlocking the Cage", mirror: "你把自己的心冰封起來，覺得世界上沒有人真正懂你。", mirrorEn: "You feel encased in a lonely glass cage, convinced no one understands.", wisdom: "籠子的門其實一直沒鎖！只要你願意伸出手推開它，溫暖的陽光立刻傾瀉而入。", wisdomEn: "The cage door is unlocked! Push it open and step into the warm sunshine.", affirm: "我解開畫地自限的枷鎖，主動走向世界，重新感受連結的溫暖。", affirmEn: "I step out of self-isolation and embrace the warmth of human connection.", action: "主動向一位朋友或家人打聲招呼，走出房間到戶外散散步。", actionEn: "Step outdoors into fresh air and say a friendly hello to someone." },
+      { id: 55, name: "延擱", nameEn: "Postponement", code: "Clouds-4", element: "CLOUDS", keyword: "終結拖延回到當下", keywordEn: "No More Postponing", mirror: "你總想著『明天再說』、『以後再做』，把美好的生命延遲到未來。", mirrorEn: "You push life's joy off to an elusive 'someday,' starving today.", wisdom: "明天永遠不會來，因為當它來的時候它叫『今天』。此時此刻就是唯一真實的時間！", wisdomEn: "Tomorrow never comes because it arrives as Today. The present is your only real canvas.", affirm: "我不再拖延我的幸福，現在就是最完美的行動時刻。", affirmEn: "I postpone joy no longer; now is the perfect moment to live fully.", action: "立刻花 5 分鐘，把你拖延最久的一件瑣事搞定它！", actionEn: "Spend 5 uninterrupted minutes tackling that small chore you put off." },
+      { id: 56, name: "比較", nameEn: "Comparison", code: "Clouds-5", element: "CLOUDS", keyword: "每朵花都有專屬芳香", keywordEn: "Unique Inherent Value", mirror: "你在看社交軟體時，忍不住比較別人的光鮮與自己的平凡。", mirrorEn: "Comparing your backstage to other people's curated highlight reels steals peace.", wisdom: "竹子不需要像橡樹那麼粗壯，玫瑰也不需要像荷花那樣浮水。你本就是世上獨一無二的奇蹟！", wisdomEn: "Bamboo does not envy the oak; rose does not compete with lotus. You are a unique wonder.", affirm: "我停止無意義的比較，深深欣賞自己獨特無雙的美麗與節奏。", affirmEn: "I stop comparison; I honor my own unique timeline and inherent beauty.", action: "放下手機社群軟體 1 小時，在筆記本寫下 3 個只有你擁有的獨特優點。", actionEn: "Stay off social media for 1 hour and write 3 things you love about your uniqueness." },
+      { id: 57, name: "重擔", nameEn: "Burdens", code: "Clouds-6", element: "CLOUDS", keyword: "卸下駱駝背上的公雞", keywordEn: "Unloading Burdens", mirror: "你背負了太多別人的問題、責任和評斷，壓得腰都彎了。", mirrorEn: "Carrying other people's emotional baggage has bowed your shoulders.", wisdom: "背上的公雞自作主張啼叫，你何必替牠背黑鍋？抖抖身子，把不屬於你的包袱甩掉！", wisdomEn: "Drop the unnecessary weight! You were not born to carry everyone else's luggage.", affirm: "我卸下不屬於我的所有負擔，輕裝上陣，找回輕快的步伐。", affirmEn: "I lay down all unassigned burdens; I walk forward light and unencumbered.", action: "做三個聳肩再放下的動作，每放下一口氣，想像甩掉一件別人的期望。", actionEn: "Do three strong shoulder shrugs and drops, exhaling others' expectations." },
+      { id: 58, name: "政治手腕", nameEn: "Politics", code: "Clouds-7", element: "CLOUDS", keyword: "撕下面具以真面目示人", keywordEn: "Dropping the Mask", mirror: "你戴著計算、偽裝的面具與人交往，心裡覺得虛偽且疲憊。", mirrorEn: "Wearing calculated masks to please others is exhausting your authentic spirit.", wisdom: "虛假的心計只能換來虛假的認同。摘下面具，真誠是最強大的魅力與保護傘。", wisdomEn: "Manipulation attracts shallow masks. Unvarnished authenticity is true protection.", affirm: "我有勇氣以真實面貌示人，真誠是我最堅定的盾牌與光芒。", affirmEn: "I have the courage to be real; truth is my greatest magnet and shield.", action: "在今天的談話中，少一句客套的假話，多一句發自內心的真誠誇獎。", actionEn: "Skip customary flattery and speak one genuinely heartfelt truth today." },
+      { id: 59, name: "罪惡感", nameEn: "Guilt", code: "Clouds-8", element: "CLOUDS", keyword: "原諒自己獲取重生", keywordEn: "Self-Forgiveness", mirror: "你對過去的錯誤自責不已，用自責的荊棘狠狠抽打自己。", mirrorEn: "Self-flagellating over past missteps keeps you imprisoned in shame.", wisdom: "過去的你受限於當時的認知，已經盡力了。罪惡感是頭腦的酷刑，現在就原諒自己吧！", wisdomEn: "Guilt is a mental torture rack. You did what you knew back then. Grant yourself grace.", affirm: "我完全原諒過去的自己，每一個經歷都是滋養未來的養分。", affirmEn: "I forgive myself completely; every lesson enriches my wisdom.", action: "摸著自己的心口溫柔地說：『親愛的，過去的事情過去了，我原諒你。』", actionEn: "Rest your hand on your heart and say softly: 'I forgive you; you are free.'" },
+      { id: 60, name: "悲傷", nameEn: "Sorrow", code: "Clouds-9", element: "CLOUDS", keyword: "痛苦過後的甘霖", keywordEn: "Sacred Rain of Healing", mirror: "你的心碎了，深深的失落或悲傷如陰雨般籠罩著你。", mirrorEn: "Grief or heavy disappointment weighs heavily like unbroken grey skies.", wisdom: "悲傷是大自然的清道夫，眼淚洗淨了靈魂的塵土，讓乾涸的心靈重新孕育新生。", wisdomEn: "Tears are nature's rain, washing soul-dust so tender green shoots can sprout again.", affirm: "我允許悲傷如春雨般流過，在脆弱中孕育出更深厚強韌的愛。", affirmEn: "I welcome healing tears; through vulnerability emerges profound strength.", action: "給自己一個痛快哭泣或抒發的空間，然後喝一杯溫熱的清茶暖胃。", actionEn: "Allow honest emotions to breathe, then drink warm herbal tea to settle." },
+      { id: 61, name: "再生", nameEn: "Rebirth", code: "Clouds-10", element: "CLOUDS", keyword: "從駱駝到獅子到孩童", keywordEn: "Spiritual Rebirth", mirror: "你歷經了壓抑與奮戰，渴望一個全然純真輕鬆的自己。", mirrorEn: "Having carried burdens and fought battles, you yearn for pure simplicity.", wisdom: "生命的蛻變經歷了駱駝的順從、獅子的叛逆，終於回歸孩童的無邪與歡樂。新生降臨了！", wisdomEn: "From burden to rebellion, you now evolve into the playful child. Rebirth is here!", affirm: "我完成了靈魂的進化，以無比清新的童心重新擁抱這個世界。", affirmEn: "I celebrate my rebirth, greeting each dawn with innocent wonder.", action: "找回一件小時候最愛玩的遊戲或玩具，重新體驗那份純粹的快樂。", actionEn: "Revisit a favorite childhood game or doodle to rekindle innocent joy." },
+      { id: 62, name: "心智 (雲之小兵)", nameEn: "Mind", code: "Clouds-Page", element: "CLOUDS", keyword: "辨識頭腦的捉弄", keywordEn: "Mastering the Mind", mirror: "你被自己的頭腦想法弄得團團轉，把想像當成了真實事實。", mirrorEn: "You are chasing runaway thoughts, mistaking mental movies for factual reality.", wisdom: "頭腦是個優秀的僕人，卻是個糟糕的主人。笑看頭腦的鬧劇，你才是幕後的真正主宰。", wisdomEn: "The mind is a helpful servant but a terrible master. Smile at its antics and remain sovereign.", affirm: "我是頭腦的主人而非奴隸，我選擇注入光明與平靜的念頭。", affirmEn: "I am the master of my thoughts; I curate peace, light, and clarity.", action: "每當發現自己在胡思亂想時，彈一下手指，對頭腦說：『謝謝你的提醒，我現在很平安。』", actionEn: "Snap your fingers when overthinking: 'Thank you mind, all is well right now.'" },
+      { id: 63, name: "戰鬥 (雲之騎士)", nameEn: "Fighting", code: "Clouds-Knight", element: "CLOUDS", keyword: "放下手中的武器", keywordEn: "Disarming the Mind", mirror: "你整天像全副武裝的武士，把周圍的人都當作假想敵在防備戰鬥。", mirrorEn: "You walk in heavy psychological armor, seeing rivals around every bend.", wisdom: "頭腦創造了敵人！當你卸下盔甲，你會發現四周並沒有人在攻擊你。平安在於止戰。", wisdomEn: "The aggressive mind hallucinates enemies. Lower the blade; peace begins with disarmament.", affirm: "我放下心中所有的防禦與攻擊，以開放坦蕩的胸懷迎向世界。", affirmEn: "I disarm my mind; I welcome peace and walk with open, unarmed grace.", action: "在今天與人的溝通中，主動退一步，不爭是非長短，選擇和諧。", actionEn: "Concede petty arguments today; choose harmony over proving yourself right." },
+      { id: 64, name: "道德律 (雲之后)", nameEn: "Morality", code: "Clouds-Queen", element: "CLOUDS", keyword: "打破教條做真實的好人", keywordEn: "Living Virtue", mirror: "你被教條、道德標準鎖得死死的，整天自我審查是否『夠好』。", mirrorEn: "Rigid dogmas and hyper-critical self-policing are choking your warmth.", wisdom: "真正的美德不是刻板的守則，而是內在清明的慈悲。放下嚴苛，擁抱靈動的善意。", wisdomEn: "True goodness is living compassion, not rigid dogma. Let warm kindness guide you.", affirm: "我打破外在僵化的教條，以內在自性的清明慈悲行事。", affirmEn: "I transcend rigid dogmas; spontaneous compassion directs my actions.", action: "今天不要用『應該』或『必須』來要求自己或別人，改用『我選擇』。", actionEn: "Replace 'I should' or 'You must' with 'I choose' in today's self-talk." },
+      { id: 65, name: "控制 (雲之王)", nameEn: "Control", code: "Clouds-King", element: "CLOUDS", keyword: "鬆開緊握的手指", keywordEn: "Surrendering Control", mirror: "你試圖控制周遭的每個人、每個細節，稍有失控就焦慮萬分。", mirrorEn: "Micromanaging every detail and person creates constant underlying anxiety.", wisdom: "生命就像細沙，你抓得越緊，流失得越快。張開雙手，整片海灘都屬於你。", wisdomEn: "Life is like fine sand: squeeze tight and it slips away. Open palms hold the beach.", affirm: "我鬆開控制的執念，允許生命以最和諧自然的韻律展開。", affirmEn: "I release the illusion of control; life unfolds with effortless rhythm.", action: "張開緊握的雙手，甩甩手腕，感受手指放鬆時微風拂過的美妙。", actionEn: "Open clenched fists, shake your wrists, and feel the breeze through relaxed fingers." },
+
+      // 66 - 79: Rainbow Suit (彩虹之組 - 實踐 / 物質 / 豐盛)
+      { id: 66, name: "彩虹之源頭", nameEn: "Rainbow Source", code: "Rainbow-Ace", element: "RAINBOW", keyword: "落實於大地的豐饒", keywordEn: "Earthed Abundance", mirror: "你的想法很多很豐滿，但往往浮在空中，難以在物質世界生根。", mirrorEn: "Great ideas float in the clouds without sinking roots into practical reality.", wisdom: "把腳深深扎進肥沃的泥土中！大地擁有無盡的養分，等待你的種子發芽結果。", wisdomEn: "Ground your feet in rich earth. Manifestation requires soil, roots, and patient moisture.", affirm: "我的身心深深扎根於大地，我的夢想在日常生活中豐盛結果。", affirmEn: "I am firmly rooted in the earth; my dreams bear magnificent fruit in reality.", action: "整理書桌或房間角落，透過整理實體空間來穩固內在能量。", actionEn: "Tidy a physical desk corner to anchor grounding energy into the material realm." },
+      { id: 67, name: "當下此刻", nameEn: "Moment to Moment", code: "Rainbow-2", element: "RAINBOW", keyword: "在微風中享受此時", keywordEn: "Present Step by Step", mirror: "你總是匆匆忙忙，人在吃飯心在工作，人在休假心在操心。", mirrorEn: "You rush through moments, mentally elsewhere while physically here.", wisdom: "享受當下那一口咖啡的醇香、那一抹落日的餘暉。此刻就是天堂的所在地。", wisdomEn: "Savor the rich aroma of this cup, the warmth of this beam. Eternity is right here.", affirm: "我就在當下此刻，品味生命為我準備的豐盛盛宴。", affirmEn: "I am anchored in the holy present, savoring every droplet of now.", action: "吃今天下一頓飯時，第一口先細嚼慢咽 20 秒，專注品嚐味道。", actionEn: "Chew your next bite of food slowly for 20 seconds, fully tasting life." },
+      { id: 68, name: "引導", nameEn: "Guidance", code: "Rainbow-3", element: "RAINBOW", keyword: "內在彩虹天使指路", keywordEn: "Inner Angelic Guidance", mirror: "你感到前路有些模糊，渴望有一盞明燈指引你的方向。", mirrorEn: "The road ahead looks misty, stirring a craving for an external signpost.", wisdom: "看！彩虹的天使正牽著你的手。信任你心中微小的直覺靈光，它正是至高的嚮導。", wisdomEn: "The angel of guidance holds your hand. Trust subtle intuition; it is your truest beacon.", affirm: "我被神聖的智慧之光溫柔引導，每一步都踏在正途之上。", affirmEn: "I am guided by divine grace; every step falls upon right and fertile ground.", action: "閉上眼默想心中的問題，記錄下腦海中浮現的第一個直覺字眼。", actionEn: "Close your eyes, breathe, and write down the very first intuitive word that arises." },
+      { id: 69, name: "守財奴", nameEn: "The Miser", code: "Rainbow-4", element: "RAINBOW", keyword: "打開緊閉的百寶箱", keywordEn: "Circulating Wealth", mirror: "你擔心金錢不夠、愛不夠、時間不夠，把所有東西都囤積抓牢。", mirrorEn: "Scarcity panic induces clinging to money, affection, and energy.", wisdom: "緊閉的箱子只會積灰塵，流通的金錢與愛才能創造更大的豐饒。大方點，世界是富饒的！", wisdomEn: "Hoarded chests gather cobwebs. Circulating love and resources multiplies real wealth.", affirm: "我相信宇宙取之不盡的富足，我慷慨地付出與享受生命。", affirmEn: "I trust in boundless cosmic abundance; I give and receive with joyous freedom.", action: "捐出一筆小額善款，或者把一件用不到的好東西送給需要的人。", actionEn: "Give a small generous tip or gift a good unneeded item to someone." },
+      { id: 70, name: "外在者", nameEn: "The Outsider", code: "Rainbow-5", element: "RAINBOW", keyword: "門本開著回家吧", keywordEn: "Stepping Inside", mirror: "你覺得自己被排擠在外，像個站在鐵門外孤單張望的孩子。", mirrorEn: "You feel like an outsider peering through closed gates, left in the chill.", wisdom: "門根本沒有鎖，只是一推即開！沒有人把你關在外面，是你自己忘了跨進溫暖的客廳。", wisdomEn: "The latch is unhooked! Push gently. No one locked you out—welcome yourself home.", affirm: "我跨過自我隔離的門檻，回到充滿愛、歡笑與接納的歸屬。", affirmEn: "I cross the threshold into warmth; I belong deeply and am welcomed.", action: "主動給身邊的人送上一聲問候，主動融入大家的話題中。", actionEn: "Initiate warm conversation with someone nearby and rejoin the circle." },
+      { id: 71, name: "妥協", nameEn: "Compromise", code: "Rainbow-6", element: "RAINBOW", keyword: "拒絕廉價的金箔包裝", keywordEn: "Uncompromising Integrity", mirror: "為了利益或別人的認同，你正在出賣自己的核心原則？", mirrorEn: "Are you peddling away core values just to keep expedient approval?", wisdom: "真正的黃金不需要貼金箔！不要為了短期的便宜妥協了你崇高的尊嚴與靈魂價值。", wisdomEn: "Solid gold needs no cheap gilt. Never trade your soul's sovereign dignity for convenience.", affirm: "我堅守靈魂的尊嚴與真理，不為世俗浮華妥協我的核心價值。", affirmEn: "I stand tall in sovereign integrity; I do not compromise my soul's value.", action: "檢視一項合作或協議，確保它是完全符合你內在價值觀的雙贏選擇。", actionEn: "Check your commitments to ensure they align with your highest inner standards." },
+      { id: 72, name: "耐心", nameEn: "Patience", code: "Rainbow-7", element: "RAINBOW", keyword: "如孕育新生的等待", keywordEn: "Sweet Gestation", mirror: "你迫不及待想看到成果，急躁地想拔苗助長。", mirrorEn: "Feverish impatience tempts you to pull at shoots to hasten their growth.", wisdom: "孕育生命需要十月懷胎，春天開花需要冬雪滋養。安靜地等待，果實在最適當的時機自會成熟甘甜。", wisdomEn: "Fruit sweetens in its due season. Rest in patient gestation; miracles take root in quiet.", affirm: "我帶著甜美的耐心等待，宇宙正在最適當的時間點成就美好。", affirmEn: "I rest in sweet patience; existence orchestrates perfection in divine timing.", action: "對一件你急著要結果的事情說：『我願意給它足夠的時間自然成熟』。", actionEn: "Take a deep breath over a delayed outcome: 'I allow this to ripen naturally.'" },
+      { id: 73, name: "平凡", nameEn: "Ordinariness", code: "Rainbow-8", element: "RAINBOW", keyword: "在日常瑣事中遇見神", keywordEn: "Sacred in Ordinary", mirror: "你覺得洗碗、掃地、上班很枯燥，渴望追尋轟轟烈烈的崇高偉業。", mirrorEn: "Mundane chores feel dry, making you dream of heroic escapes.", wisdom: "在砍柴挑水中見道，在微風拂葉中見神。當你帶著全然的愛做每一件小事，平凡即是不凡。", wisdomEn: "Chopping wood, carrying water—the sacred dwells in everyday simplicity performed with love.", affirm: "我把全部的愛注入每一件平凡小事，在平凡中活出神聖的光彩。", affirmEn: "I infuse love into simple daily tasks; ordinariness radiates divine grace.", action: "今天帶著極致的感恩與專注，把一項家事（如洗碗或摺衣服）做得如同儀式般優雅。", actionEn: "Wash dishes or fold clothes with total tender presence, like a sacred tea ceremony." },
+      { id: 74, name: "成熟", nameEn: "Ripeness", code: "Rainbow-9", element: "RAINBOW", keyword: "滿溢的金黃果實", keywordEn: "Golden Harvest", mirror: "你經歷了風雨與歷練，但可能還低估了自己已積累的智慧與厚度。", mirrorEn: "You may underestimate the profound reservoir of wisdom you have harvested.", wisdom: "瞧！你的枝頭掛滿了金黃沉甸的果實。此時此刻正是分享這份成熟、品味豐收的黃金季節。", wisdomEn: "Your branches bend with ripe, golden fruit. Step forward and share your harvest.", affirm: "我接納我已累積的智慧與成熟，帶著豐沛的滋養造福世界。", affirmEn: "I celebrate my seasoned wisdom; my harvest nourishes myself and the world.", action: "主動去指導或鼓勵一個比你年輕、或是正處於低谷的朋友。", actionEn: "Offer a word of heartfelt wisdom to someone navigating rough waters." },
+      { id: 75, name: "我們就是世界", nameEn: "We Are The World", code: "Rainbow-10", element: "RAINBOW", keyword: "環球攜手大慶典", keywordEn: "Global Oneness", mirror: "你感覺到群體的分裂或對立，心裡有些悲觀無奈。", mirrorEn: "Perceiving societal division has cast a shadow of cynical isolation.", wisdom: "每個人都是同一棵生命樹上的葉子。攜起手來，多元的光芒將照亮最黑的夜空！", wisdomEn: "All beings are leaves of the single Tree of Life. Joined hand in hand, we illuminate darkness.", affirm: "我與萬物共生共榮，用包容與慶祝的心擁抱這個多元的世界。", affirmEn: "I am interwoven with all beings; together we weave a tapestry of light.", action: "欣賞一位與你政治、文化或觀點不同的人身上的閃光點。", actionEn: "Silently appreciate one admirable quality in someone whose views differ from yours." },
+      { id: 76, name: "冒險 (彩虹之小兵)", nameEn: "Adventure", code: "Rainbow-Page", element: "RAINBOW", keyword: "邁向彩虹森林的旅人", keywordEn: "Rainbow Explorer", mirror: "你覺得生活平淡無奇，喪失了對探索世界的興奮與熱忱。", mirrorEn: "Predictability has dimmed your appetite for joyful discovery.", wisdom: "彩虹就在前方的奇幻森林裡！帶上你的好奇心出發吧，生活是一場永無止境的奇妙探險！", wisdomEn: "The rainbow awaits in the enchanted forest. Put on explorer shoes—life is an endless quest!", affirm: "我懷抱滿滿的好奇心走向未來，生活處處都有神聖的寶藏等待我去發現。", affirmEn: "I step forward with adventurer's zest; wondrous discoveries await me at every turn.", action: "今天為自己規劃一個下週末的小型微旅行或探索未曾去過的展覽/咖啡店。", actionEn: "Plan a tiny micro-excursion to an unfamiliar neighborhood or park next weekend." },
+      { id: 77, name: "慢下來 (彩虹之騎士)", nameEn: "Slowing Down", code: "Rainbow-Knight", element: "RAINBOW", keyword: "扎實踏實的每一步", keywordEn: "Grounded Mastery", mirror: "好高騖遠讓你常常踩空，缺乏持之以恆的毅力。", mirrorEn: "Haste and restless ambition cause stumbles on the rocky slope.", wisdom: "像大象般踏實穩健地邁步！不在於跑得多快，而在於每一步都穩穩落在大地上，必能抵達終點。", wisdomEn: "Walk with the slow, unshakeable step of the elephant. Grounded consistency climbs any mountain.", affirm: "我帶著耐心與定力邁出每一個紮實的步伐，腳踏實地成就大業。", affirmEn: "I move with grounded steadiness; each patient step secures my summit.", action: "把一個宏大的年度目標，拆解成明天早上只需要 10 分鐘完成的第一步。", actionEn: "Break a massive goal into a simple 10-minute micro-action for tomorrow morning." },
+      { id: 78, name: "開花 (彩虹之后)", nameEn: "Flowering", code: "Rainbow-Queen", element: "RAINBOW", keyword: "百花齊放的盛宴", keywordEn: "Radiant Flowering", mirror: "你一直在忍耐與壓抑，忘記了自己本該燦爛綻放的模樣。", mirrorEn: "Prolonged restraint has made you forget how glorious you look in full bloom.", wisdom: "綻放吧！別再躲在花苞裡害羞了。你的芬芳與色彩注定要為這個世界添上一抹絕美！", wisdomEn: "Unfurl your petals without apology! Your fragrance is meant to grace the cosmos.", affirm: "我允許自己全然綻放，我的美麗與才華為世界帶來芬芳與喜悅。", affirmEn: "I permit my spirit to bloom in full splendor; my radiance enriches creation.", action: "今天穿一件最讓你感覺光鮮亮麗的衣服，自信地走在陽光下。", actionEn: "Wear an outfit that makes you feel vibrant and walk in the sun with pride." },
+      { id: 79, name: "富裕 (彩虹之王)", nameEn: "Abundance", code: "Rainbow-King", element: "RAINBOW", keyword: "內外兼具的富足", keywordEn: "Sovereign Abundance", mirror: "你認為靈修與物質不能共存，或者在追求物質時忘記了靈魂。", mirrorEn: "Believing spirituality and wealth are enemies restricts your full flow.", wisdom: "真正的佛陀左手持法器，右手掌珍寶。靈性與世俗可以在你的身上完美交融，活出全然的豐盛！", wisdomEn: "Zorba the Buddha! Hold the jewel of matter in one hand and transcendent spirit in the other.", affirm: "我內在安詳且物質豐饒，我值得擁有世間一切美好的贈禮。", affirmEn: "I am rich in spirit and rich in life; abundance flows to and through me freely.", action: "心懷感恩地清點自己的錢包與帳戶，謝謝每一塊錢為你帶來的服務與便利。", actionEn: "Open your wallet or account with gratitude, thanking each coin for its blessings." }
+    ];
+
+    /* =========================================================================
+       5. 核心運算：1-99 號碼對應與螺旋昇華
+       ========================================================================= */
+    function resolveZenCard(number) {
+      const num = parseInt(number, 10);
+      if (isNaN(num) || num < 1 || num > 99) return null;
+      const t = I18N[currentLang];
+
+      if (num <= 79) {
+        const card = ZEN_CARDS_DATA.find(c => c.id === num);
+        return {
+          userNum: num,
+          card: card,
+          isSpiral: false,
+          spiralText: t.spiralSimple(num)
+        };
+      } else {
+        const mappedId = num - 79;
+        const card = ZEN_CARDS_DATA.find(c => c.id === mappedId) || ZEN_CARDS_DATA[0];
+        const cardName = currentLang === 'en' ? (card.nameEn || card.name) : card.name;
+        return {
+          userNum: num,
+          card: card,
+          isSpiral: true,
+          spiralText: t.spiralNotice(num, mappedId, cardName)
+        };
+      }
+    }
+
+    /* =========================================================================
+       6. UI 互動與狀態變數
+       ========================================================================= */
+    let currentCardResult = null;
+    let isFlipped = false;
+    let breathRunning = false;
+    let breathTimer = null;
+
+    // DOM 元素引用
+    const langToggleBtn = document.getElementById('langToggleBtn');
+    const langBtnText = document.getElementById('langBtnText');
+    const soundToggleBtn = document.getElementById('soundToggleBtn');
+    const soundText = document.getElementById('soundText');
+    const soundIconOn = document.getElementById('soundIconOn');
+    const openCatalogBtn = document.getElementById('openCatalogBtn');
+    const closeCatalogBtn = document.getElementById('closeCatalogBtn');
+    const catalogModal = document.getElementById('catalogModal');
+    const catalogSearch = document.getElementById('catalogSearch');
+    const catalogList = document.getElementById('catalogList');
+
+    const numInput = document.getElementById('numInput');
+    const revealBtn = document.getElementById('revealBtn');
+    const quickChips = document.getElementById('quickChips');
+    const quickRandomBtn = document.getElementById('quickRandomBtn');
+    const numberGrid = document.getElementById('numberGrid');
+
+    const tabInput = document.getElementById('tabInput');
+    const tabGrid = document.getElementById('tabGrid');
+    const tabBreath = document.getElementById('tabBreath');
+    const panelInput = document.getElementById('panelInput');
+    const panelGrid = document.getElementById('panelGrid');
+    const panelBreath = document.getElementById('panelBreath');
+
+    const resultContainer = document.getElementById('resultContainer');
+    const cardInner = document.getElementById('cardInner');
+    const cardFace = document.getElementById('cardFace');
+    const cardElementBadge = document.getElementById('cardElementBadge');
+    const userChosenNumBadge = document.getElementById('userChosenNumBadge');
+    const cardRealImageWrapper = document.getElementById('cardRealImageWrapper');
+    const cardRealImage = document.getElementById('cardRealImage');
+    const cardArtContainer = document.getElementById('cardArtContainer');
+    const cardTitle = document.getElementById('cardTitle');
+    const cardSubtitle = document.getElementById('cardSubtitle');
+    const cardCoreKeyword = document.getElementById('cardCoreKeyword');
+    const cardGlowOverlay = document.getElementById('cardGlowOverlay');
+
+    const reflipBtn = document.getElementById('reflipBtn');
+    const copyGuidanceBtn = document.getElementById('copyGuidanceBtn');
+    const spiralLogicBox = document.getElementById('spiralLogicBox');
+    const spiralAscensionTag = document.getElementById('spiralAscensionTag');
+
+    const reportCardName = document.getElementById('reportCardName');
+    const reportCardOrigin = document.getElementById('reportCardOrigin');
+    const descMirror = document.getElementById('descMirror');
+    const descWisdom = document.getElementById('descWisdom');
+    const descAffirmation = document.getElementById('descAffirmation');
+    const descAction = document.getElementById('descAction');
+
+    const breathStartBtn = document.getElementById('breathStartBtn');
+    const breathCircle = document.getElementById('breathCircle');
+    const breathCore = document.getElementById('breathCore');
+    const breathPhaseText = document.getElementById('breathPhaseText');
+    const breathCounter = document.getElementById('breathCounter');
+
+    const openUploadBtn = document.getElementById('openUploadBtn');
+    const uploadBtnText = document.getElementById('uploadBtnText');
+    const closeUploadBtn = document.getElementById('closeUploadBtn');
+    const uploadModal = document.getElementById('uploadModal');
+    const uploadCardGrid = document.getElementById('uploadCardGrid');
+    const batchFileInput = document.getElementById('batchFileInput');
+    const clearAllImagesBtn = document.getElementById('clearAllImagesBtn');
+    const customImageCount = document.getElementById('customImageCount');
+    const exportGameBtn = document.getElementById('exportGameBtn');
+
+    const toastBox = document.getElementById('toastBox');
+    const toastMsg = document.getElementById('toastMsg');
+
+    // 氣泡提示
+    function showToast(msg) {
+      toastMsg.textContent = msg;
+      toastBox.classList.remove('translate-y-20', 'opacity-0');
+      toastBox.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toastBox.classList.remove('translate-y-0', 'opacity-100');
+        toastBox.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    // 依元素產生禪意 SVG 插圖
+    function getElementSvg(element) {
+      switch (element) {
+        case 'FIRE':
+          return `<svg class="w-12 h-12 text-rose-500 animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2c-.5 2-2 3.5-3 5.5-1.5 3-1 6.5 1 8.5-1-1-1.5-2.5-1-4 .5-1.5 2-3 2.5-5 1 2 2.5 3.5 2.5 6 0 2-1 3.5-2 4.5 3.5-1 5-4.5 4.5-8-.5-3.5-3-5.5-4.5-7.5z"/>
+                  </svg>`;
+        case 'WATER':
+          return `<svg class="w-12 h-12 text-sky-400" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                  </svg>`;
+        case 'CLOUDS':
+          return `<svg class="w-12 h-12 text-purple-400" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
+                  </svg>`;
+        case 'RAINBOW':
+          return `<svg class="w-12 h-12 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 18a8 8 0 0 1 16 0"/>
+                    <path d="M7 18a5 5 0 0 1 10 0"/>
+                    <circle cx="12" cy="18" r="2" fill="currentColor"/>
+                  </svg>`;
+        default: // MAJOR
+          return `<svg class="w-12 h-12 text-amber-400 animate-spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/>
+                  </svg>`;
+      }
+    }
+
+    // 分頁切換
+    function switchTab(mode) {
+      const tabs = [
+        { key: 'input', btn: tabInput, panel: panelInput },
+        { key: 'grid', btn: tabGrid, panel: panelGrid },
+        { key: 'breath', btn: tabBreath, panel: panelBreath }
+      ];
+
+      tabs.forEach(t => {
+        if (t.key === mode) {
+          t.panel.classList.remove('hidden');
+          t.panel.classList.add('flex');
+          t.btn.className = 'tab-btn px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 flex items-center gap-2 bg-gradient-to-r from-amber-500/20 to-amber-600/30 text-amber-200 border border-amber-500/40 shadow cursor-pointer';
+        } else {
+          t.panel.classList.add('hidden');
+          t.panel.classList.remove('flex');
+          t.btn.className = 'tab-btn px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-400 hover:text-slate-200 transition-all duration-200 flex items-center gap-2 cursor-pointer';
+        }
+      });
+    }
+
+    // 更新介面語言
+    function updateUILanguage() {
+      const t = I18N[currentLang];
+      
+      langBtnText.textContent = t.langBtn;
+      document.getElementById('brandSubtitle').textContent = t.brandSubtitle;
+      soundText.textContent = zenAudio.soundEnabled ? t.soundOn : t.soundOff;
+      document.getElementById('catalogBtnText').textContent = t.catalogBtn;
+      document.getElementById('tabInputText').textContent = t.tabInput;
+      document.getElementById('tabGridText').textContent = t.tabGrid;
+      document.getElementById('tabBreathText').textContent = t.tabBreath;
+
+      document.getElementById('panelInputPre').textContent = t.panelInputPre;
+      document.getElementById('panelInputTitle').textContent = t.panelInputTitle;
+      document.getElementById('panelInputDesc').textContent = t.panelInputDesc;
+      numInput.placeholder = t.numPlaceholder;
+      document.getElementById('revealBtnText').textContent = t.revealBtn;
+      document.getElementById('quickChipsLabel').textContent = t.quickChipsLabel;
+      document.getElementById('quickRandomText').textContent = t.quickRandom;
+
+      document.getElementById('panelGridPre').textContent = t.panelGridPre;
+      document.getElementById('panelGridTitle').textContent = t.panelGridTitle;
+      document.getElementById('panelGridDesc').textContent = t.panelGridDesc;
+      document.getElementById('gridTipText').textContent = t.gridTip;
+      document.getElementById('legMajor').textContent = t.legMajor;
+      document.getElementById('legFire').textContent = t.legFire;
+      document.getElementById('legWater').textContent = t.legWater;
+      document.getElementById('legClouds').textContent = t.legClouds;
+      document.getElementById('legRainbow').textContent = t.legRainbow;
+      document.getElementById('legAscend').textContent = t.legAscend;
+
+      document.getElementById('panelBreathPre').textContent = t.panelBreathPre;
+      document.getElementById('panelBreathTitle').textContent = t.panelBreathTitle;
+      document.getElementById('panelBreathDesc').textContent = t.panelBreathDesc;
+      document.getElementById('breathStartBtnText').textContent = t.breathStartBtn;
+      if (!breathRunning) {
+        breathPhaseText.textContent = currentLang === 'zh' ? '請深吸一口氣...' : 'Please take a deep breath...';
+        breathCounter.textContent = currentLang === 'zh' ? '放鬆雙肩' : 'Relax your shoulders';
+      }
+
+      document.getElementById('cardBackTouchHint').textContent = t.cardBackHint;
+      document.getElementById('reflipBtnText').textContent = t.reflipBtn;
+      document.getElementById('copyGuidanceBtnText').textContent = t.copyGuidanceBtn;
+      spiralAscensionTag.textContent = t.spiralTag;
+
+      document.getElementById('titleMirror').textContent = t.titleMirror;
+      document.getElementById('titleWisdom').textContent = t.titleWisdom;
+      document.getElementById('titleRadiance').textContent = t.titleRadiance;
+      document.getElementById('labelAffirmation').textContent = t.labelAffirmation;
+      document.getElementById('badgeAction').textContent = t.badgeAction;
+      document.getElementById('footerText').textContent = t.footer;
+
+      document.getElementById('catalogModalTitle').textContent = t.catalogTitle;
+      document.getElementById('catalogModalSub').textContent = t.catalogSub;
+      catalogSearch.placeholder = t.catalogSearchPlaceholder;
+
+      document.getElementById('uploadModalTitle').textContent = t.uploadModalTitle;
+      document.getElementById('uploadModalSub').textContent = t.uploadModalSub;
+      document.getElementById('batchUploadLabel').textContent = t.batchUploadLabel;
+      document.getElementById('exportBtnText').textContent = t.exportGameBtn;
+
+      updateCustomCardsBadge();
+
+      if (currentCardResult) {
+        executeReveal(currentCardResult.userNum, false);
+      }
+
+      renderNumberGrid();
+      if (!catalogModal.classList.contains('hidden')) {
+        renderCatalogList(catalogSearch.value);
+      }
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'zh' ? 'en' : 'zh';
+      updateUILanguage();
+      showToast(currentLang === 'zh' ? '已切換為繁體中文' : 'Switched to English');
+    }
+
+    // 產生靈感氣泡
+    function renderQuickChips() {
+      const picks = new Set();
+      while (picks.size < 6) {
+        picks.add(Math.floor(Math.random() * 99) + 1);
+      }
+      quickChips.innerHTML = '';
+      picks.forEach(n => {
+        const btn = document.createElement('button');
+        btn.className = 'px-3 py-1 bg-slate-800/80 hover:bg-amber-500/20 text-slate-300 hover:text-amber-200 border border-slate-700 hover:border-amber-500/40 rounded-xl text-xs font-mono transition-all transform hover:scale-105 cursor-pointer';
+        btn.textContent = `#${n}`;
+        btn.onclick = () => {
+          numInput.value = n;
+          executeReveal(n);
+        };
+        quickChips.appendChild(btn);
+      });
+    }
+
+    // 渲染 1-99 心靈網格
+    function renderNumberGrid() {
+      numberGrid.innerHTML = '';
+      const isEn = currentLang === 'en';
+      for (let i = 1; i <= 99; i++) {
+        const item = resolveZenCard(i);
+        const card = item.card;
+        const btn = document.createElement('button');
+        
+        let colorDot = 'bg-amber-400';
+        if (i > 79) colorDot = 'bg-gradient-to-r from-amber-300 to-purple-400 ring-1 ring-white/50';
+        else if (card.element === 'FIRE') colorDot = 'bg-rose-500';
+        else if (card.element === 'WATER') colorDot = 'bg-sky-500';
+        else if (card.element === 'CLOUDS') colorDot = 'bg-purple-500';
+        else if (card.element === 'RAINBOW') colorDot = 'bg-emerald-500';
+
+        const name = isEn ? (card.nameEn || card.name) : card.name;
+        const kw = isEn ? (card.keywordEn || card.keyword) : card.keyword;
+
+        btn.className = 'group relative py-2 px-1 bg-slate-950/80 hover:bg-slate-800 border border-white/5 hover:border-amber-400/50 rounded-xl flex flex-col items-center justify-center transition-all duration-200 hover:-translate-y-0.5 shadow-sm cursor-pointer';
+        btn.innerHTML = `
+          <span class="text-xs font-mono font-bold text-slate-300 group-hover:text-amber-300">${i}</span>
+          <span class="w-1.5 h-1.5 rounded-full ${colorDot} mt-1"></span>
+        `;
+        btn.title = `#${i} ${name} (${kw})`;
+        btn.onclick = () => {
+          numInput.value = i;
+          switchTab('input');
+          executeReveal(i);
+        };
+        numberGrid.appendChild(btn);
+      }
+    }
+
+    // 渲染 99 目錄總覽清單
+    function renderCatalogList(filterText = '') {
+      catalogList.innerHTML = '';
+      const query = (filterText || '').trim().toLowerCase();
+      const isEn = currentLang === 'en';
+      const t = I18N[currentLang];
+
+      let matchCount = 0;
+      for (let i = 1; i <= 99; i++) {
+        const item = resolveZenCard(i);
+        const c = item.card;
+        const elemMeta = ELEMENT_TYPES[c.element];
+
+        const cardName = isEn ? (c.nameEn || c.name) : c.name;
+        const cardKw = isEn ? (c.keywordEn || c.keyword) : c.keyword;
+        const elemName = isEn ? elemMeta.nameEn : elemMeta.name;
+        const affirmText = isEn ? (c.affirmEn || c.affirm) : c.affirm;
+
+        const matches = 
+          i.toString().includes(query) ||
+          c.name.toLowerCase().includes(query) ||
+          (c.nameEn && c.nameEn.toLowerCase().includes(query)) ||
+          cardKw.toLowerCase().includes(query) ||
+          elemName.toLowerCase().includes(query);
+
+        if (!matches) continue;
+        matchCount++;
+
+        const row = document.createElement('div');
+        row.className = 'p-3 rounded-2xl bg-slate-950/60 border border-slate-800 hover:border-amber-500/40 hover:bg-slate-900/80 transition-all flex items-center justify-between cursor-pointer group';
+        row.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center font-mono font-bold text-xs text-amber-300 group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors">
+              ${i}
+            </span>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-serif font-bold text-sm text-slate-100 group-hover:text-amber-200">${cardName}</span>
+                <span class="text-[10px] px-1.5 py-0.2 rounded border ${elemMeta.bgClass}">${elemName}</span>
+                ${i > 79 ? `<span class="text-[10px] text-amber-300 font-sans">${t.spiralTag}</span>` : ''}
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5">${cardKw} · "${affirmText.slice(0, 24)}..."</p>
+            </div>
+          </div>
+          <button class="text-xs text-slate-400 group-hover:text-amber-300 px-3 py-1 rounded-lg border border-transparent group-hover:border-amber-500/30">
+            ${t.catalogReadBtn}
+          </button>
+        `;
+        row.onclick = () => {
+          catalogModal.classList.add('hidden');
+          catalogModal.classList.remove('flex');
+          numInput.value = i;
+          switchTab('input');
+          executeReveal(i);
+        };
+        catalogList.appendChild(row);
+      }
+
+      if (matchCount === 0) {
+        catalogList.innerHTML = `<div class="text-center py-8 text-xs text-slate-500">${t.catalogEmpty}</div>`;
+      }
+    }
+
+    // 揭牌核心邏輯
+    function executeReveal(chosenNum, playSound = true) {
+      const result = resolveZenCard(chosenNum);
+      const t = I18N[currentLang];
+      if (!result) {
+        showToast(t.inputWarning);
+        return;
+      }
+
+      currentCardResult = result;
+      const { userNum, card, isSpiral, spiralText } = result;
+      const elemMeta = ELEMENT_TYPES[card.element];
+      const isEn = currentLang === 'en';
+
+      const cardName = isEn ? (card.nameEn || card.name) : card.name;
+      const cardKw = isEn ? (card.keywordEn || card.keyword) : card.keyword;
+      const elemName = isEn ? elemMeta.nameEn : elemMeta.name;
+
+      if (playSound) {
+        zenAudio.playSingingBowl();
+      }
+
+      // 牌卡面板數據
+      userChosenNumBadge.textContent = `#${userNum}`;
+      cardElementBadge.textContent = elemName;
+      cardElementBadge.className = `px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase border ${elemMeta.bgClass}`;
+      
+      cardTitle.textContent = cardName;
+      cardSubtitle.textContent = `${card.code} · ${cardKw}`;
+      cardCoreKeyword.textContent = `✦ ${cardKw} ✦`;
+
+      // 判斷是否有實體照片（優先自訂上傳，預設讀取 ./images/{id}.jpg）
+      const customImgSrc = customCardImages[card.id] || `./images/${card.id}.jpg`;
+      cardRealImage.onerror = () => {
+        cardRealImageWrapper.classList.add('hidden');
+        cardArtContainer.classList.remove('hidden');
+        cardArtContainer.innerHTML = getElementSvg(card.element);
+      };
+      cardRealImage.onload = () => {
+        cardRealImageWrapper.classList.remove('hidden');
+        cardArtContainer.classList.add('hidden');
+      };
+      cardRealImage.src = customImgSrc;
+
+      cardFace.style.borderColor = elemMeta.color;
+      cardGlowOverlay.style.background = `radial-gradient(circle at center, ${elemMeta.color} 0%, transparent 70%)`;
+
+      // 解讀報告填充
+      reportCardName.textContent = cardName;
+      reportCardOrigin.textContent = t.originCard(card.id, card.code);
+      descMirror.textContent = isEn ? (card.mirrorEn || card.mirror) : card.mirror;
+      descWisdom.textContent = isEn ? (card.wisdomEn || card.wisdom) : card.wisdom;
+      descAffirmation.textContent = isEn ? (card.affirmEn || card.affirm) : card.affirm;
+      descAction.textContent = isEn ? (card.actionEn || card.action) : card.action;
+
+      if (isSpiral) {
+        spiralLogicBox.classList.remove('hidden');
+        spiralLogicBox.innerHTML = spiralText;
+        spiralAscensionTag.classList.remove('hidden');
+      } else {
+        spiralLogicBox.classList.add('hidden');
+        spiralAscensionTag.classList.add('hidden');
+      }
+
+      resultContainer.classList.remove('hidden');
+
+      if (playSound) {
+        cardInner.classList.remove('rotate-y-180');
+        isFlipped = false;
+
+        setTimeout(() => {
+          cardInner.classList.add('rotate-y-180');
+          isFlipped = true;
+          zenAudio.playRevealBell();
+        }, 350);
+
+        setTimeout(() => {
+          resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 250);
+      }
+    }
+
+    // 翻轉卡片
+    function toggleCardFlip() {
+      isFlipped = !isFlipped;
+      if (isFlipped) {
+        cardInner.classList.add('rotate-y-180');
+        zenAudio.playRevealBell();
+      } else {
+        cardInner.classList.remove('rotate-y-180');
+      }
+    }
+
+    // 複製今日賦能卡文本
+    function copyCardEmpowerment() {
+      if (!currentCardResult) return;
+      const { userNum, card, isSpiral } = currentCardResult;
+      const isEn = currentLang === 'en';
+      const t = I18N[currentLang];
+
+      const name = isEn ? (card.nameEn || card.name) : card.name;
+      const kw = isEn ? (card.keywordEn || card.keyword) : card.keyword;
+      const mirror = isEn ? (card.mirrorEn || card.mirror) : card.mirror;
+      const wisdom = isEn ? (card.wisdomEn || card.wisdom) : card.wisdom;
+      const affirm = isEn ? (card.affirmEn || card.affirm) : card.affirm;
+      const action = isEn ? (card.actionEn || card.action) : card.action;
+
+      const text = `【奧修禪卡 1-99 心靈靈數指引】
+靈數號碼：#${userNum} ${isSpiral ? `(${t.spiralTag})` : ''}
+對應牌卡：${name} (${card.code}) - ${kw}
+
+${t.titleMirror}
+${mirror}
+
+${t.titleWisdom}
+${wisdom}
+
+${t.titleRadiance}
+✦ 肯定語：${affirm}
+✦ 微行動：${action}
+
+願當下的覺察為你帶來無窮力量與喜悅 ✦`;
+
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast(t.copySuccess);
+      } catch (e) {
+        showToast('複製失敗，請手動選取文字');
+      }
+      document.body.removeChild(textarea);
+    }
+
+    // 呼吸冥想模式邏輯
+    function startBreathingSession() {
+      if (breathRunning) return;
+      breathRunning = true;
+      breathStartBtn.disabled = true;
+      breathStartBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+      const totalCycles = 3;
+      let currentCycle = 1;
+      const t = I18N[currentLang];
+
+      zenAudio.playSingingBowl();
+
+      function runCycle() {
+        if (currentCycle > totalCycles) {
+          breathPhaseText.textContent = t.breathDone;
+          breathCounter.textContent = '✦';
+          breathCircle.classList.remove('scale-125', 'border-amber-400');
+          breathCore.classList.remove('scale-150');
+
+          setTimeout(() => {
+            breathRunning = false;
+            breathStartBtn.disabled = false;
+            breathStartBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            // 隨機產生 1-99 靈數揭卡
+            const luckyNum = Math.floor(Math.random() * 99) + 1;
+            numInput.value = luckyNum;
+            executeReveal(luckyNum);
+          }, 1200);
+          return;
+        }
+
+        // 吸氣 (4 秒)
+        breathPhaseText.textContent = t.breathInhale;
+        breathCounter.textContent = t.breathInhaleCount(currentCycle, totalCycles);
+        breathCircle.classList.add('scale-125', 'border-amber-400');
+        breathCore.classList.add('scale-150');
+
+        setTimeout(() => {
+          // 吐氣 (4 秒)
+          breathPhaseText.textContent = t.breathExhale;
+          breathCounter.textContent = t.breathExhaleCount;
+          breathCircle.classList.remove('scale-125', 'border-amber-400');
+          breathCore.classList.remove('scale-150');
+
+          setTimeout(() => {
+            currentCycle++;
+            runCycle();
+          }, 4000);
+
+        }, 4000);
+      }
+
+      runCycle();
+    }
+
+    // 更新上傳徽章
+    function updateCustomCardsBadge() {
+      const count = Object.keys(customCardImages).length;
+      customImageCount.textContent = count;
+      const t = I18N[currentLang];
+      uploadBtnText.textContent = t.customCardsBadge(count);
+    }
+
+    // 渲染自訂 79 張牌卡管理網格
+    function renderUploadCardGrid() {
+      uploadCardGrid.innerHTML = '';
+      const isEn = currentLang === 'en';
+
+      ZEN_CARDS_DATA.forEach(c => {
+        const hasImg = !!customCardImages[c.id];
+        const name = isEn ? (c.nameEn || c.name) : c.name;
+
+        const cell = document.createElement('div');
+        cell.className = 'p-2.5 rounded-xl bg-slate-950/70 border ' + (hasImg ? 'border-emerald-500/60 bg-emerald-950/20' : 'border-slate-800') + ' flex flex-col items-center justify-between text-center relative';
+        
+        cell.innerHTML = `
+          <div class="w-full flex items-center justify-between text-[11px] font-mono text-slate-400 mb-1.5">
+            <span class="font-bold text-amber-300">#${c.id}</span>
+            <span class="text-[10px]">${c.code}</span>
+          </div>
+
+          <div class="w-20 h-28 rounded-lg overflow-hidden border border-white/10 bg-slate-900 flex items-center justify-center my-1 relative">
+            ${hasImg 
+              ? `<img src="${customCardImages[c.id]}" class="w-full h-full object-cover">` 
+              : `<img src="./images/${c.id}.jpg" class="w-full h-full object-cover" onerror="this.outerHTML='<div class=\\'text-[10px] text-slate-500 p-1\\'>暫無自訂圖片</div>'">`}
+          </div>
+
+          <div class="text-xs font-serif text-slate-200 truncate w-full mt-1">${name}</div>
+
+          <label class="mt-2 w-full py-1 text-[11px] rounded-lg border border-amber-500/40 bg-amber-500/10 text-amber-300 hover:bg-amber-500/20 cursor-pointer block transition-all">
+            ${hasImg ? '更換圖片' : '單張上傳'}
+            <input type="file" accept="image/*" class="hidden single-card-upload" data-card-id="${c.id}">
+          </label>
+        `;
+
+        const fileInput = cell.querySelector('.single-card-upload');
+        fileInput.addEventListener('change', async (e) => {
+          const file = e.target.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = async (evt) => {
+            const base64 = evt.target.result;
+            customCardImages[c.id] = base64;
+            await cardImgDB.saveImage(c.id, base64);
+            updateCustomCardsBadge();
+            renderUploadCardGrid();
+            if (currentCardResult && currentCardResult.card.id === c.id) {
+              executeReveal(currentCardResult.userNum, false);
+            }
+          };
+          reader.readAsDataURL(file);
+        });
+
+        uploadCardGrid.appendChild(cell);
+      });
+    }
+
+    // 批次上傳處理
+    async function handleBatchFileUpload(e) {
+      const files = Array.from(e.target.files || []);
+      if (!files.length) return;
+
+      let imported = 0;
+      for (const file of files) {
+        const match = file.name.match(/(\d+)/);
+        if (match) {
+          const num = parseInt(match[1], 10);
+          if (num >= 1 && num <= 79) {
+            const base64 = await new Promise((res) => {
+              const r = new FileReader();
+              r.onload = (evt) => res(evt.target.result);
+              r.readAsDataURL(file);
+            });
+            customCardImages[num] = base64;
+            await cardImgDB.saveImage(num, base64);
+            imported++;
+          }
+        }
+      }
+
+      updateCustomCardsBadge();
+      renderUploadCardGrid();
+      showToast(I18N[currentLang].batchDone(imported));
+      if (currentCardResult) {
+        executeReveal(currentCardResult.userNum, false);
+      }
+    }
+
+    // 匯出/轉贈遊戲檔案
+    function exportGameHtmlFile() {
+      const currentDocHtml = document.documentElement.outerHTML;
+      const injectedPayload = `<script>
+        window.__PRELOADED_CARD_IMAGES__ = ${JSON.stringify(customCardImages)};
+      <\/script>`;
+
+      let finalHtml = currentDocHtml.replace('</head>', `${injectedPayload}\n</head>`);
+
+      const blob = new Blob([finalHtml], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '奧修禪卡心靈靈數遊戲_客製化轉贈版.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      showToast(I18N[currentLang].exportSuccess);
+    }
+
+    // 初始化事件掛載
+    window.onload = async function() {
+      try {
+        await cardImgDB.init();
+        customCardImages = await cardImgDB.getAllImages();
+        
+        // 如果為預先注入之轉贈版本，同步讀取圖片
+        if (window.__PRELOADED_CARD_IMAGES__) {
+          for (const [id, data] of Object.entries(window.__PRELOADED_CARD_IMAGES__)) {
+            if (!customCardImages[id]) {
+              customCardImages[id] = data;
+              await cardImgDB.saveImage(parseInt(id, 10), data);
+            }
+          }
+        }
+      } catch (e) {
+        console.warn('IndexedDB unavailable:', e);
+      }
+
+      updateCustomCardsBadge();
+
+      // 語言切換
+      langToggleBtn.addEventListener('click', toggleLanguage);
+
+      // 聲音開關
+      soundToggleBtn.addEventListener('click', () => {
+        zenAudio.soundEnabled = !zenAudio.soundEnabled;
+        const t = I18N[currentLang];
+        if (zenAudio.soundEnabled) {
+          soundText.textContent = t.soundOn;
+          soundIconOn.classList.remove('text-slate-500');
+          soundIconOn.classList.add('text-amber-400');
+          zenAudio.playRevealBell();
+        } else {
+          soundText.textContent = t.soundOff;
+          soundIconOn.classList.remove('text-amber-400');
+          soundIconOn.classList.add('text-slate-500');
+        }
+      });
+
+      // 目錄彈窗
+      openCatalogBtn.addEventListener('click', () => {
+        renderCatalogList(catalogSearch.value);
+        catalogModal.classList.remove('hidden');
+        catalogModal.classList.add('flex');
+      });
+      closeCatalogBtn.addEventListener('click', () => {
+        catalogModal.classList.add('hidden');
+        catalogModal.classList.remove('flex');
+      });
+      catalogModal.addEventListener('click', (e) => {
+        if (e.target === catalogModal) {
+          catalogModal.classList.add('hidden');
+          catalogModal.classList.remove('flex');
+        }
+      });
+      catalogSearch.addEventListener('input', (e) => {
+        renderCatalogList(e.target.value);
+      });
+
+      // 自訂圖片彈窗
+      openUploadBtn.addEventListener('click', () => {
+        renderUploadCardGrid();
+        uploadModal.classList.remove('hidden');
+        uploadModal.classList.add('flex');
+      });
+      closeUploadBtn.addEventListener('click', () => {
+        uploadModal.classList.add('hidden');
+        uploadModal.classList.remove('flex');
+      });
+      uploadModal.addEventListener('click', (e) => {
+        if (e.target === uploadModal) {
+          uploadModal.classList.add('hidden');
+          uploadModal.classList.remove('flex');
+        }
+      });
+      batchFileInput.addEventListener('change', handleBatchFileUpload);
+      clearAllImagesBtn.addEventListener('click', async () => {
+        if (confirm(I18N[currentLang].clearAllImagesConfirm)) {
+          customCardImages = {};
+          await cardImgDB.clearAll();
+          updateCustomCardsBadge();
+          renderUploadCardGrid();
+          if (currentCardResult) executeReveal(currentCardResult.userNum, false);
+          showToast(I18N[currentLang].allImagesCleared);
+        }
+      });
+
+      // 轉贈匯出
+      exportGameBtn.addEventListener('click', exportGameHtmlFile);
+
+      // 選號與揭牌
+      revealBtn.addEventListener('click', () => {
+        const val = numInput.value;
+        if (!val) {
+          showToast(I18N[currentLang].inputWarning);
+          return;
+        }
+        executeReveal(val);
+      });
+
+      numInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          revealBtn.click();
+        }
+      });
+
+      // 推薦氣泡
+      quickRandomBtn.addEventListener('click', renderQuickChips);
+      renderQuickChips();
+
+      // 分頁標籤
+      tabInput.addEventListener('click', () => switchTab('input'));
+      tabGrid.addEventListener('click', () => switchTab('grid'));
+      tabBreath.addEventListener('click', () => switchTab('breath'));
+
+      // 翻牌與複製
+      document.getElementById('cardFlipWrapper').addEventListener('click', toggleCardFlip);
+      reflipBtn.addEventListener('click', toggleCardFlip);
+      copyGuidanceBtn.addEventListener('click', copyCardEmpowerment);
+
+      // 呼吸模式
+      breathStartBtn.addEventListener('click', startBreathingSession);
+
+      // 星盤網格初始化
+      renderNumberGrid();
+
+      // 預設示範號碼 88 (高維螺旋躍遷示例)
+      numInput.value = 88;
+    };
+  </script>
+</body>
+</html>
