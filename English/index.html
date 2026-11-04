@@ -1,407 +1,1672 @@
+```html
 <!DOCTYPE html>
-<html lang="zh-TW" class="dark">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="theme-color" content="#020617">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="LinguaFlow">
-  <title>LinguaFlow AI - 沉浸式英語學習與複習 App</title>
-  <!-- 動態注入 PWA Manifest 讓手機 GitHub Pages 可安裝為 100% 無網址列全螢幕 App -->
-  <link rel="manifest" href='data:application/manifest+json,{"name":"LinguaFlow AI 英語學習","short_name":"LinguaFlow","start_url":".","display":"standalone","background_color":"#020617","theme_color":"#4f46e5","icons":[{"src":"https://cdn-icons-png.flaticon.com/512/3898/3898082.png","sizes":"512x512","type":"image/png"}]}' />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { background-color: #020617; color: #f1f5f9; -webkit-tap-highlight-color: transparent; user-select: none; }
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英語會話微練習 & 生字備份系統</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background-color: #f8fafc;
+        }
+        .tab-active {
+            border-bottom: 3px solid #0284c7;
+            color: #0284c7;
+            font-weight: 600;
+        }
+        .word-highlight {
+            border-bottom: 2px dashed #0284c7;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .word-highlight:hover {
+            background-color: #e0f2fe;
+            color: #0369a1;
+        }
+    </style>
 </head>
-<body class="h-[100dvh] w-screen overflow-hidden flex flex-col bg-slate-950 font-sans">
+<body class="text-slate-800 min-h-screen flex flex-col">
 
-  <!-- 頂部導覽列 -->
-  <header id="appHeader" class="flex-none bg-slate-900/95 border-b border-slate-800 px-4 py-2.5 flex items-center justify-between z-20">
-    <div class="flex items-center gap-2">
-      <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center font-bold text-white shadow">LF</div>
-      <div>
-        <h1 class="text-sm font-bold text-white leading-tight">LinguaFlow AI</h1>
-        <p class="text-[10px] text-emerald-400">GitHub Pages 獨立全螢幕版</p>
-      </div>
-    </div>
-    <div class="flex items-center gap-1.5">
-      <button onclick="toggleFull()" class="px-2.5 py-1.5 rounded-lg bg-emerald-600 text-white text-xs font-bold shadow">📱 全螢幕</button>
-      <button onclick="openAddModal()" class="px-2.5 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-bold shadow">＋ 新增</button>
-      <button onclick="setApiKey()" class="p-1.5 rounded-lg bg-slate-800 text-slate-300 text-xs" title="設定 Gemini API Key">⚙️</button>
-    </div>
-  </header>
-
-  <!-- 主內容容器 -->
-  <main class="flex-1 overflow-y-auto p-4 max-w-xl mx-auto w-full relative">
-    <!-- 頁籤 1: AI 對話 -->
-    <section id="tab-chat" class="h-full flex flex-col justify-between">
-      <div id="chatBox" class="flex-1 overflow-y-auto space-y-3 pb-4 pr-1"></div>
-      <form onsubmit="sendChat(event)" class="flex gap-2 pt-2 border-t border-slate-800">
-        <input id="chatInput" type="text" placeholder="用英文與 AI 對話 (點單字可收錄)..." class="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500" />
-        <button type="submit" class="px-4 py-2.5 bg-indigo-600 rounded-xl text-white font-bold text-sm">發送</button>
-      </form>
-    </section>
-
-    <!-- 頁籤 2: 單字翻卡 -->
-    <section id="tab-vocab" class="hidden h-full flex flex-col justify-between">
-      <div class="flex justify-between items-center text-xs text-slate-400 mb-2">
-        <span id="vocabProgress">第 1 / 1 個</span>
-        <span id="vocabStars" class="text-amber-400 font-bold"></span>
-      </div>
-      <div onclick="flipCard()" class="flex-1 min-h-[280px] bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-3xl p-6 shadow-2xl flex flex-col justify-between cursor-pointer">
-        <div class="flex justify-between items-center">
-          <span id="vPos" class="px-2.5 py-0.5 rounded-full text-xs bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">n.</span>
-          <button onclick="event.stopPropagation(); speakCurrentWord();" class="p-2 rounded-full bg-slate-700/60 text-white text-xs">🔊 發音</button>
-        </div>
-        <div class="my-auto text-center py-6">
-          <h2 id="vWord" class="text-3xl font-extrabold text-white mb-2"></h2>
-          <p id="vPhonetic" class="text-sm font-mono text-slate-400"></p>
-          <div id="vBack" class="hidden mt-4 space-y-3 border-t border-slate-700/70 pt-4">
-            <h3 id="vTrans" class="text-2xl font-bold text-emerald-400"></h3>
-            <p id="vEx" class="text-xs text-slate-200 bg-slate-950/70 p-3 rounded-xl text-left leading-relaxed"></p>
-          </div>
-        </div>
-        <p class="text-center text-[11px] text-indigo-400">點擊卡片翻面</p>
-      </div>
-      <div class="grid grid-cols-2 gap-2 mt-4">
-        <button onclick="rateWord(-1)" class="py-3 rounded-2xl bg-rose-950/60 border border-rose-800/50 text-rose-300 font-bold text-xs">還不熟 (-1★)</button>
-        <button onclick="rateWord(1)" class="py-3 rounded-2xl bg-emerald-950/60 border border-emerald-800/50 text-emerald-300 font-bold text-xs">記住了 (+1★)</button>
-      </div>
-    </section>
-
-    <!-- 頁籤 3: 句子重組練習 -->
-    <section id="tab-sentences" class="hidden h-full flex flex-col justify-between space-y-4">
-      <div class="p-4 rounded-2xl bg-slate-800/90 border border-slate-700">
-        <span id="sCount" class="text-xs text-indigo-400 font-bold">句子重組練習</span>
-        <h3 id="sTrans" class="text-base font-bold text-white mt-1"></h3>
-      </div>
-      <div id="sSelected" class="min-h-[100px] p-4 rounded-2xl bg-slate-900 border-2 border-dashed border-slate-700 flex flex-wrap gap-2 items-center"></div>
-      <div id="sPool" class="min-h-[90px] p-3 rounded-2xl bg-slate-800/50 border border-slate-700 flex flex-wrap gap-2"></div>
-      <div class="flex gap-2">
-        <button onclick="initScramble()" class="px-4 py-3 rounded-xl bg-slate-800 text-slate-300 text-xs font-bold">重排</button>
-        <button onclick="checkScramble()" class="flex-1 py-3 rounded-xl bg-indigo-600 text-white font-bold text-sm shadow">檢查答案</button>
-        <button onclick="nextSentence()" class="px-4 py-3 rounded-xl bg-emerald-600 text-white text-xs font-bold">下一題 →</button>
-      </div>
-    </section>
-  </main>
-
-  <!-- 底部選單 -->
-  <nav class="flex-none bg-slate-900 border-t border-slate-800 px-2 py-2 flex justify-around z-20 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
-    <button onclick="switchTab('chat')" id="nav-chat" class="text-indigo-400 font-bold text-xs flex flex-col items-center">💬 AI 對話</button>
-    <button onclick="switchTab('vocab')" id="nav-vocab" class="text-slate-400 text-xs flex flex-col items-center">🗂️ 單字翻卡</button>
-    <button onclick="switchTab('sentences')" id="nav-sentences" class="text-slate-400 text-xs flex flex-col items-center">🧩 拼句練習</button>
-  </nav>
-
-  <!-- 快速新增單字/句子彈窗 -->
-  <div id="addModal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50">
-    <div class="bg-slate-900 border border-slate-700 w-full max-w-sm rounded-3xl p-5 space-y-3">
-      <h3 class="font-bold text-sm text-white">快速收錄單字或句子</h3>
-      <input id="newWordInput" type="text" placeholder="輸入英文單字或完整句子" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-2.5 text-sm text-white" />
-      <input id="newTransInput" type="text" placeholder="輸入繁體中文翻譯" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-2.5 text-sm text-white" />
-      <input id="newExInput" type="text" placeholder="英文例句 (若收錄句子可不填)" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-2.5 text-xs text-white" />
-      <div class="flex gap-2 pt-2">
-        <button onclick="saveNewItem('vocab')" class="flex-1 py-2.5 bg-indigo-600 rounded-xl text-xs font-bold text-white">+ 存為單字</button>
-        <button onclick="saveNewItem('sentence')" class="flex-1 py-2.5 bg-purple-600 rounded-xl text-xs font-bold text-white">+ 存為拼句</button>
-        <button onclick="closeAddModal()" class="px-3 py-2.5 bg-slate-800 rounded-xl text-xs text-slate-300">取消</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    let vocabList = JSON.parse(localStorage.getItem('lf_vocab')) || [
-  {
-    "id": "v1",
-    "word": "resilient",
-    "phonetic": "/rɪˈzɪl.jənt/",
-    "partOfSpeech": "adj.",
-    "translation": "有韌性的；適應力強的",
-    "example": "She is resilient and always recovers quickly from setbacks.",
-    "exampleTranslation": "她很有韌性，總是能迅速從挫折中恢復過來。",
-    "mastery": 2,
-    "lastReviewed": "2026-11-04T01:55:54.777Z"
-  },
-  {
-    "id": "v2",
-    "word": "spontaneous",
-    "phonetic": "/spɑːnˈteɪ.ni.əs/",
-    "partOfSpeech": "adj.",
-    "translation": "自發的；率性的；臨時起意的",
-    "example": "We took a spontaneous road trip along the coast last weekend.",
-    "exampleTranslation": "我們上週末臨時起意沿著海岸展開了一場公路旅行。",
-    "mastery": 1,
-    "lastReviewed": "2026-11-04T01:55:54.777Z"
-  },
-  {
-    "id": "v3",
-    "word": "articulate",
-    "phonetic": "/ɑːrˈtɪk.jə.lət/",
-    "partOfSpeech": "v. / adj.",
-    "translation": "清楚表達；善於言辭的",
-    "example": "He struggled to articulate his thoughts during the tense meeting.",
-    "exampleTranslation": "在那場緊張的會議中，他極力想要清楚表達自己的想法。",
-    "mastery": 3,
-    "lastReviewed": "2026-11-04T01:55:54.777Z"
-  }
-];
-    let sentenceList = JSON.parse(localStorage.getItem('lf_sentences')) || [
-  {
-    "id": "s1",
-    "sentence": "Could you give me a rundown of the project timeline?",
-    "translation": "你能簡要向我說明一下專案的時間表嗎？",
-    "words": [
-      "Could",
-      "you",
-      "give",
-      "me",
-      "a",
-      "rundown",
-      "of",
-      "the",
-      "project",
-      "timeline?"
-    ],
-    "source": "職場工作溝通",
-    "mastered": false
-  },
-  {
-    "id": "s2",
-    "sentence": "I would appreciate it if you could get back to me at your earliest convenience.",
-    "translation": "如果您能在方便時儘早回覆我，我將不勝感激。",
-    "words": [
-      "I",
-      "would",
-      "appreciate",
-      "it",
-      "if",
-      "you",
-      "could",
-      "get",
-      "back",
-      "to",
-      "me",
-      "at",
-      "your",
-      "earliest",
-      "convenience."
-    ],
-    "source": "商務信件",
-    "mastered": false
-  },
-  {
-    "id": "s3",
-    "sentence": "It slipped my mind completely that we had a meeting scheduled today.",
-    "translation": "我完全忘記了我們今天有安排一場會議。",
-    "words": [
-      "It",
-      "slipped",
-      "my",
-      "mind",
-      "completely",
-      "that",
-      "we",
-      "had",
-      "a",
-      "meeting",
-      "scheduled",
-      "today."
-    ],
-    "source": "日常生活口語",
-    "mastered": true
-  }
-];
-    let chatMessages = [
-      { role: 'ai', text: "Welcome! Feel free to chat with me in English. Tap any word or phrase to save it!", trans: "歡迎！隨時用英文跟我聊天，點擊或輸入任何單字即可收錄練習！" }
-    ];
-    let vIdx = 0, vFlipped = false;
-    let sIdx = 0, sPoolArr = [], sSelArr = [];
-
-    function saveStorage() {
-      localStorage.setItem('lf_vocab', JSON.stringify(vocabList));
-      localStorage.setItem('lf_sentences', JSON.stringify(sentenceList));
-    }
-
-    function speak(text) {
-      if (!('speechSynthesis' in window)) return;
-      window.speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(text);
-      u.lang = 'en-US';
-      u.rate = 0.92;
-      window.speechSynthesis.speak(u);
-    }
-
-    function toggleFull() {
-      const el = document.documentElement;
-      if (!document.fullscreenElement) {
-        if (el.requestFullscreen) el.requestFullscreen({ navigationUI: 'hide' }).catch(()=>{});
-        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-      } else {
-        if (document.exitFullscreen) document.exitFullscreen();
-      }
-    }
-
-    function switchTab(tab) {
-      ['chat', 'vocab', 'sentences'].forEach(t => {
-        document.getElementById('tab-' + t).classList.toggle('hidden', t !== tab);
-        document.getElementById('nav-' + t).className = t === tab ? 'text-indigo-400 font-bold text-xs flex flex-col items-center' : 'text-slate-400 text-xs flex flex-col items-center';
-      });
-      if (tab === 'vocab') renderVocab();
-      if (tab === 'sentences') initScramble();
-    }
-
-    function renderChat() {
-      const box = document.getElementById('chatBox');
-      box.innerHTML = chatMessages.map((m, idx) => `
-        <div class="flex flex-col ${m.role === 'user' ? 'items-end' : 'items-start'}">
-          <div class="max-w-[85%] rounded-2xl p-3.5 ${m.role === 'user' ? 'bg-indigo-600 text-white' : 'bg-slate-800 border border-slate-700 text-slate-100'}">
-            <div class="flex items-center justify-between gap-2">
-              <p class="text-sm select-text">${m.text}</p>
-              <button onclick="speak(\`${m.text.replace(/'/g, "\\'")}\`)" class="text-xs opacity-75 hover:opacity-100">🔊</button>
+    <!-- 頂部導覽列 -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-20 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap justify-between items-center gap-3">
+            <div class="flex items-center gap-2.5">
+                <div class="w-10 h-10 rounded-xl bg-sky-600 flex items-center justify-center text-white shadow-sm">
+                    <i class="ph ph-chats-circle text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-bold text-slate-900 leading-tight">英語會話微練習 & 生字庫</h1>
+                    <p class="text-xs text-slate-500">每日輕鬆開口說・生字一鍵備份至試算表與檔案</p>
+                </div>
             </div>
-            ${m.trans ? `<p class="text-xs text-slate-400 mt-1.5 border-t border-slate-700 pt-1">${m.trans}</p>` : ''}
-            ${m.role === 'ai' ? `<button onclick="quickCollectSentence(${idx})" class="mt-2 text-[11px] text-indigo-300 underline block">+ 收錄整句到拼句練習</button>` : ''}
-          </div>
+
+            <div class="flex items-center gap-2">
+                <span id="cloudSyncBadge" class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold px-2.5 py-1.5 rounded-full flex items-center gap-1">
+                    <i id="cloudSyncIcon" class="ph ph-cloud-check text-sm"></i>
+                    <span id="cloudSyncText">準備就緒</span>
+                </span>
+                <span id="vocabCountBadge" class="bg-sky-50 text-sky-700 border border-sky-200 text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                    <i class="ph ph-bookmarks text-sm"></i>
+                    已收錄 <span id="totalVocabCount">0</span> 個生字
+                </span>
+                <button onclick="switchTab('backup')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-medium px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+                    <i class="ph ph-cloud-arrow-down text-base"></i>
+                    備份與還原
+                </button>
+            </div>
         </div>
-      `).join('');
-      box.scrollTop = box.scrollHeight;
-    }
 
-    async function sendChat(e) {
-      e.preventDefault();
-      const input = document.getElementById('chatInput');
-      const txt = input.value.trim();
-      if (!txt) return;
-      chatMessages.push({ role: 'user', text: txt });
-      input.value = '';
-      renderChat();
+        <!-- 分頁切換列 -->
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 flex gap-6 text-sm border-t border-slate-100">
+            <button id="tabBtn-practice" onclick="switchTab('practice')" class="py-3 px-1 flex items-center gap-1.5 tab-active transition">
+                <i class="ph ph-microphone-stage text-lg"></i>
+                1. 情境會話練習
+            </button>
+            <button id="tabBtn-vocab" onclick="switchTab('vocab')" class="py-3 px-1 flex items-center gap-1.5 text-slate-500 hover:text-slate-800 transition">
+                <i class="ph ph-notebook text-lg"></i>
+                2. 我的生字本
+            </button>
+            <button id="tabBtn-backup" onclick="switchTab('backup')" class="py-3 px-1 flex items-center gap-1.5 text-slate-500 hover:text-slate-800 transition">
+                <i class="ph ph-database text-lg"></i>
+                3. 資料備份與還原
+            </button>
+        </div>
+    </header>
 
-      const key = localStorage.getItem('gemini_api_key') || '';
-      if (key) {
+    <!-- 主內容區 -->
+    <main class="max-w-5xl w-full mx-auto px-4 sm:px-6 py-6 flex-1">
+
+        <!-- ==================== 分頁 1：情境會話練習 ==================== -->
+        <section id="tab-practice" class="space-y-6">
+            
+            <!-- 主題選擇與 AI 自訂主題 -->
+            <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold uppercase tracking-wider text-slate-400">選擇今日微練習主題</label>
+                        <div class="flex flex-wrap gap-2 pt-1" id="scenarioButtons">
+                            <!-- 動態產生主題按鈕 -->
+                        </div>
+                    </div>
+                    <!-- AI 產生新情境 -->
+                    <div class="flex items-center gap-2 border-t sm:border-t-0 pt-3 sm:pt-0 border-slate-100">
+                        <input id="customTopicInput" type="text" placeholder="輸入自訂主題 (如：看海、修吉他)..." 
+                            class="text-sm border border-slate-300 rounded-xl px-3 py-2 w-full sm:w-52 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <button id="generateTopicBtn" onclick="generateCustomScenario()" 
+                            class="bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 whitespace-nowrap shadow-sm">
+                            <i class="ph ph-sparkle text-amber-400"></i>
+                            AI 產生
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- 左欄：今日核心生字 (5 cols) -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-6 bg-sky-500 rounded-full"></span>
+                                <h2 class="font-bold text-slate-900">本課核心生字</h2>
+                            </div>
+                            <button onclick="saveAllCurrentWords()" class="text-xs font-medium text-sky-600 hover:text-sky-800 bg-sky-50 hover:bg-sky-100 px-3 py-1.5 rounded-lg transition flex items-center gap-1">
+                                <i class="ph ph-plus-circle"></i> 全部存入生字庫
+                            </button>
+                        </div>
+
+                        <div id="scenarioWordsList" class="space-y-3">
+                            <!-- 動態渲染核心生字卡 -->
+                        </div>
+                    </div>
+
+                    <!-- 快速新增自訂生字 -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-sm font-bold text-slate-800 flex items-center gap-1.5">
+                                <i class="ph ph-magic-wand text-sky-600 text-lg"></i>
+                                輸入中文自動轉英文生字
+                            </h3>
+                            <span class="text-[11px] bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5 rounded-full font-medium">AI 自動翻譯補全</span>
+                        </div>
+                        <div class="space-y-2.5 text-sm">
+                            <!-- 步驟1：輸入中文自動轉英文 -->
+                            <div class="flex gap-2">
+                                <input id="newMeaningInput" type="text" placeholder="1. 輸入中文意思 (如：海浪、彈吉他) *" 
+                                    onkeydown="if(event.key==='Enter') autoTranslateChineseToEnglish()"
+                                    class="flex-1 border border-slate-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                                <button id="autoTransBtn" onclick="autoTranslateChineseToEnglish()" type="button"
+                                    class="bg-amber-500 hover:bg-amber-600 text-white text-xs sm:text-sm font-medium px-3 py-2 rounded-xl transition flex items-center gap-1 shrink-0 shadow-sm">
+                                    <i class="ph ph-translate text-base"></i>
+                                    自動轉英文
+                                </button>
+                            </div>
+                            <!-- 步驟2：自動帶出英文、詞性與例句 (亦可手動微調) -->
+                            <div class="grid grid-cols-3 gap-2">
+                                <input id="newWordInput" type="text" placeholder="2. 英文單字 (自動帶出)" class="col-span-2 border border-slate-300 bg-slate-50/70 rounded-xl px-3 py-2 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-500 font-semibold text-sky-900">
+                                <select id="newPosInput" class="border border-slate-300 rounded-xl px-2 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-sky-500">
+                                    <option value="n.">n. 名詞</option>
+                                    <option value="v.">v. 動詞</option>
+                                    <option value="adj.">adj. 形容詞</option>
+                                    <option value="adv.">adv. 副詞</option>
+                                    <option value="phr.">phr. 片語</option>
+                                </select>
+                            </div>
+                            <input id="newCategoryInput" type="text" placeholder="分類 (如：自然散步，可自動帶出)" class="w-full border border-slate-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                            <input id="newSentenceInput" type="text" placeholder="實用會話例句 (自動產生，亦可自行修改)" class="w-full border border-slate-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                            <div class="flex gap-2 pt-1">
+                                <button onclick="previewNewWordAudio()" type="button" title="試聽英文發音"
+                                    class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-3.5 py-2 rounded-xl transition flex items-center justify-center gap-1">
+                                    <i class="ph ph-speaker-high text-sky-600 text-lg"></i>
+                                    試聽
+                                </button>
+                                <button onclick="addManualWord()" type="button" class="flex-1 bg-sky-600 hover:bg-sky-700 text-white font-medium py-2 rounded-xl transition flex items-center justify-center gap-1.5 shadow-sm">
+                                    <i class="ph ph-bookmark-simple"></i> 加入我的生字本
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右欄：雙向情境會話練習 (7 cols) -->
+                <div class="lg:col-span-7 flex flex-col">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex-1 flex flex-col justify-between">
+                        
+                        <div>
+                            <!-- 情境標題與朗讀 -->
+                            <div class="flex items-center justify-between border-b border-slate-100 pb-3.5 mb-4">
+                                <div>
+                                    <span id="currentScenarioCategory" class="text-xs font-semibold text-sky-600 bg-sky-50 px-2.5 py-0.5 rounded-md">自然與散步</span>
+                                    <h2 id="currentScenarioTitle" class="text-lg font-bold text-slate-900 mt-1">晨間散步與微風 (Morning Walk)</h2>
+                                </div>
+                                <button onclick="playFullDialogue()" class="text-xs sm:text-sm bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-3 py-2 rounded-xl transition flex items-center gap-1.5">
+                                    <i class="ph ph-speaker-high text-base text-sky-600"></i>
+                                    朗讀整段對話
+                                </button>
+                            </div>
+
+                            <!-- 範例對話列表 -->
+                            <div id="dialogueContainer" class="space-y-4 mb-6">
+                                <!-- 動態渲染對話氣泡 -->
+                            </div>
+                        </div>
+
+                        <!-- 換您試試看：互動問答區 -->
+                        <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 space-y-3">
+                            <div class="flex items-start justify-between gap-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-amber-500 text-white text-xs font-bold px-2 py-0.5 rounded-md">YOUR TURN</span>
+                                    <h3 class="text-sm font-bold text-slate-800">換您開口說 / 回答問題</h3>
+                                </div>
+                                <button onclick="speakText(currentScenario.promptEn)" class="text-xs text-slate-500 hover:text-sky-600 flex items-center gap-1">
+                                    <i class="ph ph-speaker-simple-high"></i> 聽問題
+                                </button>
+                            </div>
+
+                            <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                <p id="promptQuestionEn" class="font-semibold text-slate-900 text-sm sm:text-base"></p>
+                                <p id="promptQuestionZh" class="text-xs text-slate-500 mt-0.5"></p>
+                                <p id="promptHint" class="text-xs text-sky-700 bg-sky-50 px-2.5 py-1.5 rounded-lg mt-2 inline-block"></p>
+                            </div>
+
+                            <!-- 使用者輸入與語音辨識 -->
+                            <div class="flex gap-2">
+                                <input id="userReplyInput" type="text" placeholder="用英文輸入您的回答，或點擊麥克風開口說..." 
+                                    class="flex-1 text-sm bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                                <button id="voiceInputBtn" onclick="startSpeechRecognition()" title="語音輸入"
+                                    class="bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 px-3 py-2.5 rounded-xl transition flex items-center justify-center">
+                                    <i class="ph ph-microphone text-lg text-rose-500"></i>
+                                </button>
+                                <button id="checkReplyBtn" onclick="evaluateUserReply()" 
+                                    class="bg-sky-600 hover:bg-sky-700 text-white text-sm font-medium px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 whitespace-nowrap shadow-sm">
+                                    <i class="ph ph-paper-plane-right"></i> 送出練習
+                                </button>
+                            </div>
+
+                            <!-- AI 回饋顯示區 -->
+                            <div id="aiFeedbackBox" class="hidden bg-emerald-50 border border-emerald-200 rounded-xl p-3.5 text-sm space-y-1.5">
+                                <div class="font-semibold text-emerald-900 flex items-center gap-1.5">
+                                    <i class="ph ph-sparkle text-emerald-600"></i>
+                                    <span>練習回饋與建議：</span>
+                                </div>
+                                <div id="aiFeedbackContent" class="text-slate-700 leading-relaxed text-xs sm:text-sm"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== 分頁 2：我的生字本 ==================== -->
+        <section id="tab-vocab" class="hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">我的英語會話生字庫</h2>
+                        <p class="text-xs text-slate-500">點擊單字可聽發音，可隨時調整熟練度或匯出備份</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <div class="relative">
+                            <i class="ph ph-magnifying-glass absolute left-3 top-2.5 text-slate-400"></i>
+                            <input id="searchVocabInput" oninput="renderVocabTable()" type="text" placeholder="搜尋單字、中文或分類..." 
+                                class="text-sm border border-slate-300 rounded-xl pl-8 pr-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        </div>
+                        <select id="filterMasterySelect" onchange="renderVocabTable()" class="text-sm border border-slate-300 rounded-xl px-3 py-1.5 bg-white">
+                            <option value="all">所有熟練度</option>
+                            <option value="⭐ 初學">⭐ 初學</option>
+                            <option value="⭐⭐ 熟悉">⭐⭐ 熟悉</option>
+                            <option value="⭐⭐⭐ 精通">⭐⭐⭐ 精通</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 生字列表表格 -->
+                <div class="overflow-x-auto mt-4">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase bg-slate-50">
+                                <th class="py-3 px-3 rounded-tl-xl">日期</th>
+                                <th class="py-3 px-3">分類</th>
+                                <th class="py-3 px-3">英文生字</th>
+                                <th class="py-3 px-3">詞性</th>
+                                <th class="py-3 px-3">中文意思</th>
+                                <th class="py-3 px-3">實用會話例句</th>
+                                <th class="py-3 px-3">熟練度</th>
+                                <th class="py-3 px-3 rounded-tr-xl text-right">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="vocabTableBody" class="divide-y divide-slate-100 text-sm">
+                            <!-- 動態渲染生字列 -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="emptyVocabState" class="hidden text-center py-12 text-slate-400">
+                    <i class="ph ph-books text-4xl mb-2 block"></i>
+                    <p class="text-sm">找不到符合條件的生字，快去「情境會話練習」加入新單字吧！</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 分頁 3：資料備份與還原 ==================== -->
+        <section id="tab-backup" class="hidden space-y-6">
+
+            <!-- 備份狀態橫幅 (解答「是否備份成功、檔案在哪裡」) -->
+            <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="flex items-start gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                        <i class="ph ph-shield-check text-2xl"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h2 class="text-base font-bold text-emerald-950">生字備份狀態：系統已自動為您保護資料</h2>
+                            <span id="lastBackupTimeBadge" class="text-xs bg-white text-emerald-700 border border-emerald-300 px-2.5 py-0.5 rounded-full font-medium">尚未觸發手動備份</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-emerald-800 mt-1 leading-relaxed">
+                            💡 <strong>為什麼在手機找不到 JSON / CSV 檔？</strong> 因為預覽環境為了安全有時會攔截下載，或存放在手機「檔案 (Files) ➔ 下載項目 (Downloads)」中。建議您直接使用下方<strong>「一鍵複製備份碼」</strong>貼到 Google Keep / 記事本，或直接貼上文字還原，100% 保證看得到且不會遺失！
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 方式 A：一鍵複製貼入 Google 試算表 / 直接貼上文字還原 -->
+            <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                            <i class="ph ph-table text-2xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-base sm:text-lg font-bold text-slate-900">方式一：最穩定的文字備份法（免找檔案・支援試算表 / CSV / JSON）</h2>
+                            <p class="text-xs sm:text-sm text-slate-500">可將下方備份內容直接複製貼到 <strong>Google 試算表</strong> 或 <strong>記事本 (Keep/LINE)</strong>；要還原時直接貼回下方框內按「從文字直接還原」即可！</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <select id="textBackupFormatSelect" onchange="updateBackupPreview()" class="text-xs sm:text-sm border border-slate-300 rounded-xl px-2.5 py-2 bg-slate-50 font-medium text-slate-700">
+                            <option value="tsv">試算表格式 (TSV 分欄)</option>
+                            <option value="csv">CSV 逗號格式</option>
+                            <option value="json">JSON 完整備份格式</option>
+                        </select>
+                        <label class="flex items-center gap-1.5 text-xs text-slate-600 cursor-pointer mr-1">
+                            <input type="checkbox" id="includeHeaderCheckbox" onchange="updateBackupPreview()" checked class="rounded text-sky-600">
+                            含標題列
+                        </label>
+                        <button onclick="copyTsvToClipboard()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-medium px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+                            <i class="ph ph-copy text-base"></i>
+                            一鍵複製備份內容
+                        </button>
+                    </div>
+                </div>
+
+                <textarea id="tsvBackupTextarea" rows="6" placeholder="您也可以將先前複製的 CSV、Google 試算表內容或 JSON 文字直接貼在這裡，然後點擊下方「從上方文字直接還原」按鈕..."
+                    class="w-full font-mono text-xs bg-slate-900 text-emerald-300 p-4 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 overflow-x-auto whitespace-pre"></textarea>
+
+                <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
+                    <span class="text-xs text-slate-500">👆 提示：您可以直接在上方黑框貼上 CSV、試算表或 JSON 文字來還原資料</span>
+                    <div class="flex items-center gap-2">
+                        <button onclick="updateBackupPreview()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-3 py-2 rounded-xl transition">
+                            重新顯示目前生字備份碼
+                        </button>
+                        <button onclick="restoreFromTextarea()" class="bg-amber-500 hover:bg-amber-600 text-white text-xs sm:text-sm font-medium px-4 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+                            <i class="ph ph-arrow-counter-clockwise text-base"></i>
+                            從上方文字直接還原 (CSV / JSON)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 方式 B：檔案匯出與匯入還原 (CSV / JSON) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- 下載或分享備份檔 -->
+                <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-9 h-9 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center">
+                                <i class="ph ph-download-simple text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900">方式二：匯出或分享備份檔至手機 / 電腦</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                            點擊下方按鈕可下載檔案；若在手機上找不到下載位置，會自動開啟手機分享選單，讓您直接傳送到 Google 雲端硬碟、Keep 或 LINE 保存。
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <button onclick="exportFile('csv')" class="flex-1 bg-sky-600 hover:bg-sky-700 text-white text-sm font-medium py-2.5 px-4 rounded-xl transition flex items-center justify-center gap-2 shadow-sm">
+                            <i class="ph ph-file-csv text-lg"></i>
+                            下載 / 分享 CSV 檔
+                        </button>
+                        <button onclick="exportFile('json')" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium py-2.5 px-4 rounded-xl transition flex items-center justify-center gap-2 shadow-sm">
+                            <i class="ph ph-brackets-curly text-lg"></i>
+                            下載 / 分享 JSON 檔
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 匯入還原資料 -->
+                <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center">
+                                <i class="ph ph-upload-simple text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900">方式三：從 CSV 或 JSON 檔案還原</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                            已修復 CSV 解析問題！現在不論是 Google 試算表匯出的 <code class="bg-slate-100 px-1 rounded">.csv</code>、Excel 儲存的 CSV 或 <code class="bg-slate-100 px-1 rounded">.json</code> 備份檔，都能完整讀取並更新您的生字本。
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-2 pt-2">
+                        <label class="w-full cursor-pointer bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 text-sm font-medium py-2.5 px-4 rounded-xl transition flex items-center justify-center gap-2 shadow-sm">
+                            <i class="ph ph-folder-open text-lg"></i>
+                            <span>選擇手機 / 電腦中的 CSV 或 JSON 檔還原</span>
+                            <input type="file" id="importFileInput" accept=".json,.csv,.tsv,.txt,text/csv,application/json,text/plain" onchange="importBackupFile(event)" class="hidden">
+                        </label>
+                        <div id="importResultStatus" class="hidden text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-2 rounded-lg"></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 浮動通知 Toast -->
+    <div id="toastNotification" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-slate-900 text-white text-sm font-medium px-4 py-3 rounded-xl shadow-lg flex items-center gap-2.5 border border-slate-700">
+            <i id="toastIcon" class="ph ph-check-circle text-emerald-400 text-lg"></i>
+            <span id="toastMessage">已成功加入生字庫！</span>
+        </div>
+    </div>
+
+    <script>
+        // ==================== 1. 預設情境與生字資料庫 ====================
+        const defaultScenarios = [
+            {
+                id: "walk",
+                category: "自然與散步",
+                title: "晨間散步與微風 (Morning Walk)",
+                words: [
+                    { word: "breeze", phonetic: "[briz]", pos: "n.", meaning: "微風", sentence: "The morning breeze feels very fresh." },
+                    { word: "peaceful", phonetic: "[ˈpisfəl]", pos: "adj.", meaning: "寧靜的、平靜的", sentence: "Walking along the coast is peaceful." },
+                    { word: "path", phonetic: "[pæθ]", pos: "n.", meaning: "小徑、步道", sentence: "We walked along the country path." }
+                ],
+                dialogue: [
+                    { speaker: "AI Partner", en: "Good morning! How was your walk along the path today?", zh: "早安！今天沿著步道散步覺得如何呢？" },
+                    { speaker: "You", en: "It was very peaceful. I really enjoyed the cool breeze.", zh: "非常寧靜。我很享受涼爽的微風。" },
+                    { speaker: "AI Partner", en: "That sounds wonderful! Mornings are the best time to go outside.", zh: "聽起來真棒！早晨是出門走走的最佳時刻。" }
+                ],
+                promptEn: "What did you see or feel on your walk today?",
+                promptZh: "您今天散步時看到了什麼，或感覺如何呢？",
+                promptHint: "提示句型：I saw trees and birds. / It felt very peaceful."
+            },
+            {
+                id: "music",
+                category: "音樂與興趣",
+                title: "日常樂器與音樂練習 (Playing Music)",
+                words: [
+                    { word: "melody", phonetic: "[ˈmɛlədi]", pos: "n.", meaning: "旋律", sentence: "This song has a very warm melody." },
+                    { word: "practice", phonetic: "[ˈpræktɪs]", pos: "v.", meaning: "練習", sentence: "I practice the guitar for twenty minutes every day." },
+                    { word: "relaxing", phonetic: "[rɪˈlæksɪŋ]", pos: "adj.", meaning: "令人放鬆的", sentence: "Listening to acoustic music is very relaxing." }
+                ],
+                dialogue: [
+                    { speaker: "AI Partner", en: "What do you usually do to unwind in the afternoon?", zh: "您下午通常做什麼來放鬆心情呢？" },
+                    { speaker: "You", en: "I like to practice my guitar. Playing a simple melody is very relaxing.", zh: "我喜歡練習吉他。彈奏簡單的旋律非常令人放鬆。" },
+                    { speaker: "AI Partner", en: "Keeping a daily music habit is truly rewarding!", zh: "保持每天接觸音樂的習慣真的很棒！" }
+                ],
+                promptEn: "What kind of music or song do you like to play or listen to?",
+                promptZh: "您喜歡彈奏或聆聽什麼樣的音樂或歌曲呢？",
+                promptHint: "提示句型：I like folk music. / Playing the guitar makes me happy."
+            },
+            {
+                id: "cafe",
+                category: "生活與餐飲",
+                title: "午後咖啡與日常閒聊 (Afternoon Coffee)",
+                words: [
+                    { word: "aroma", phonetic: "[əˈromə]", pos: "n.", meaning: "香氣、芬芳", sentence: "I love the rich aroma of freshly brewed coffee." },
+                    { word: "cozy", phonetic: "[ˈkozi]", pos: "adj.", meaning: "溫馨舒適的", sentence: "This little coffee shop has a cozy atmosphere." },
+                    { word: "sip", phonetic: "[sɪp]", pos: "v.", meaning: "小口品嚐、啜飲", sentence: "She likes to sip hot tea while reading." }
+                ],
+                dialogue: [
+                    { speaker: "AI Partner", en: "This corner table is so cozy. What would you like to drink today?", zh: "這個角落的座位真舒適。今天想喝點什麼呢？" },
+                    { speaker: "You", en: "Just a hot black coffee, please. I love its rich aroma.", zh: "請給我一杯熱黑咖啡就好。我喜歡它濃郁的香氣。" },
+                    { speaker: "AI Partner", en: "Great choice! Take your time and sip it slowly.", zh: "很棒的選擇！請慢慢品嚐享受。" }
+                ],
+                promptEn: "Do you prefer coffee or tea in the afternoon, and why?",
+                promptZh: "下午時光您比較喜歡喝咖啡還是茶呢？為什麼？",
+                promptHint: "提示句型：I prefer hot coffee because I love the aroma."
+            },
+            {
+                id: "plants",
+                category: "園藝與植物",
+                title: "照顧植物與觀察自然 (Gardening & Plants)",
+                words: [
+                    { word: "sprout", phonetic: "[spraʊt]", pos: "v./n.", meaning: "發芽、新芽", sentence: "Look! New green leaves are starting to sprout." },
+                    { word: "soil", phonetic: "[sɔɪl]", pos: "n.", meaning: "土壤、泥土", sentence: "Keep the soil slightly moist in the summer." },
+                    { word: "thrive", phonetic: "[θraɪv]", pos: "v.", meaning: "茁壯成長、繁茂", sentence: "These plants thrive in warm sunlight." }
+                ],
+                dialogue: [
+                    { speaker: "AI Partner", en: "Your garden looks so green! How do you take care of your plants?", zh: "您的植物看起來綠意盎然！您都怎麼照顧它們呢？" },
+                    { speaker: "You", en: "I check the soil every morning. With enough sunlight, they thrive naturally.", zh: "我每天早上檢查土壤。只要陽光充足，它們就會自然茁壯。" },
+                    { speaker: "AI Partner", en: "It's always exciting to see new leaves sprout!", zh: "看到新芽冒出來總是讓人充滿喜悅！" }
+                ],
+                promptEn: "How is the weather today for your plants or outdoor activities?",
+                promptZh: "今天的ही天氣對您的植物或戶外活動來說如何呢？",
+                promptHint: "提示句型：Today is sunny and warm. It is good for my plants."
+            }
+        ];
+
+        // 預設已收錄於生字庫的初始資料
+        let savedVocabList = [
+            {
+                id: "v1",
+                date: getTodayDateString(),
+                category: "自然與散步",
+                word: "breeze",
+                pos: "n.",
+                meaning: "微風",
+                sentence: "The morning breeze feels very fresh.",
+                mastery: "⭐ 初學"
+            },
+            {
+                id: "v2",
+                date: getTodayDateString(),
+                category: "日常感受",
+                word: "peaceful",
+                pos: "adj.",
+                meaning: "寧靜的、平靜的",
+                sentence: "Walking along the coast is peaceful.",
+                mastery: "⭐⭐ 熟悉"
+            },
+            {
+                id: "v3",
+                date: getTodayDateString(),
+                category: "音樂與興趣",
+                word: "practice",
+                pos: "v.",
+                meaning: "練習",
+                sentence: "I practice the guitar every day.",
+                mastery: "⭐⭐ 熟悉"
+            }
+        ];
+
+        let scenarios = [...defaultScenarios];
+        let currentScenario = scenarios[0];
+
+        // ==================== 2. 工具函式 ====================
+        function getTodayDateString() {
+            const now = new Date();
+            const yyyy = now.getFullYear();
+            const mm = String(now.getMonth() + 1).padStart(2, '0');
+            const dd = String(now.getDate()).padStart(2, '0');
+            return `${yyyy}-${mm}-${dd}`;
+        }
+
+        function showToast(message, isSuccess = true) {
+            const toast = document.getElementById('toastNotification');
+            const msgEl = document.getElementById('toastMessage');
+            const iconEl = document.getElementById('toastIcon');
+
+            msgEl.textContent = message;
+            iconEl.className = isSuccess 
+                ? 'ph ph-check-circle text-emerald-400 text-lg' 
+                : 'ph ph-info text-amber-400 text-lg';
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2600);
+        }
+
+        // ==================== 手機相容雙重語音朗讀引擎 (Web Speech + Gemini TTS 備援) ====================
+        let currentAudioPlayer = null;
+        const ttsAudioCache = new Map();
+
+        // 將 Base64 PCM16 轉換為手機瀏覽器可直接播放的 WAV Blob
+        function base64ToArrayBuffer(base64) {
+            const binaryString = window.atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+        function pcmToWavBlob(pcm16, sampleRate = 24000) {
+            const numChannels = 1;
+            const byteRate = sampleRate * numChannels * 2;
+            const blockAlign = numChannels * 2;
+            const dataSize = pcm16.length * 2;
+            const buffer = new ArrayBuffer(44 + dataSize);
+            const view = new DataView(buffer);
+
+            const writeStr = (offset, str) => {
+                for (let i = 0; i < str.length; i++) {
+                    view.setUint8(offset + i, str.charCodeAt(i));
+                }
+            };
+
+            writeStr(0, 'RIFF');
+            view.setUint32(4, 36 + dataSize, true);
+            writeStr(8, 'WAVE');
+            writeStr(12, 'fmt ');
+            view.setUint32(16, 16, true);
+            view.setUint16(20, 1, true);
+            view.setUint16(22, numChannels, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, byteRate, true);
+            view.setUint16(32, blockAlign, true);
+            view.setUint16(34, 16, true);
+            writeStr(36, 'data');
+            view.setUint32(40, dataSize, true);
+
+            let offset = 44;
+            for (let i = 0; i < pcm16.length; i++, offset += 2) {
+                view.setInt16(offset, pcm16[i], true);
+            }
+            return new Blob([buffer], { type: 'audio/wav' });
+        }
+
+        // 使用 Gemini TTS 產生高品質真人發音 (解決手機 WebView 無內建 TTS 問題)
+        async function playWithCloudTTS(text) {
+            try {
+                if (ttsAudioCache.has(text)) {
+                    const cachedUrl = ttsAudioCache.get(text);
+                    if (currentAudioPlayer) currentAudioPlayer.pause();
+                    currentAudioPlayer = new Audio(cachedUrl);
+                    await currentAudioPlayer.play();
+                    return true;
+                }
+
+                showToast("正在載入清晰英語發音...", true);
+                const ttsUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+                const payload = {
+                    contents: [{ parts: [{ text: `Read clearly in English: ${text}` }] }],
+                    generationConfig: {
+                        responseModalities: ["AUDIO"],
+                        speechConfig: {
+                            voiceConfig: {
+                                prebuiltVoiceConfig: { voiceName: "Aoede" }
+                            }
+                        }
+                    }
+                };
+
+                const response = await fetch(ttsUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+                const part = result?.candidates?.[0]?.content?.parts?.[0];
+                const audioData = part?.inlineData?.data;
+                const mimeType = part?.inlineData?.mimeType || "audio/L16;rate=24000";
+
+                if (audioData) {
+                    const rateMatch = mimeType.match(/rate=(\d+)/);
+                    const sampleRate = rateMatch ? parseInt(rateMatch[1], 10) : 24000;
+                    const pcmBuffer = base64ToArrayBuffer(audioData);
+                    const pcm16 = new Int16Array(pcmBuffer);
+                    const wavBlob = pcmToWavBlob(pcm16, sampleRate);
+                    const audioUrl = URL.createObjectURL(wavBlob);
+                    ttsAudioCache.set(text, audioUrl);
+
+                    if (currentAudioPlayer) currentAudioPlayer.pause();
+                    currentAudioPlayer = new Audio(audioUrl);
+                    await currentAudioPlayer.play();
+                    return true;
+                }
+            } catch (e) {}
+            return false;
+        }
+
+        // 手機與電腦通用語音朗讀函式
+        async function speakText(text) {
+            if (!text) return;
+            if (currentAudioPlayer) {
+                currentAudioPlayer.pause();
+            }
+
+            // 優先嘗試手機/瀏覽器原生語音，並偵測是否在 600ms 內成功發聲，若無則自動切換雲端真人發音
+            if ('speechSynthesis' in window) {
+                try {
+                    window.speechSynthesis.cancel();
+                    window.speechSynthesis.resume(); // 解決 Android / iOS 語音佇列卡住問題
+
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'en-US';
+                    utterance.rate = 0.9;
+
+                    const voices = window.speechSynthesis.getVoices();
+                    const enVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('en'));
+                    if (enVoice) utterance.voice = enVoice;
+
+                    let hasStarted = false;
+                    utterance.onstart = () => { hasStarted = true; };
+                    utterance.onerror = () => {
+                        if (!hasStarted) playWithCloudTTS(text);
+                    };
+
+                    window.speechSynthesis.speak(utterance);
+
+                    setTimeout(() => {
+                        if (!hasStarted && !window.speechSynthesis.speaking) {
+                            playWithCloudTTS(text);
+                        }
+                    }, 650);
+                    return;
+                } catch (err) {
+                    await playWithCloudTTS(text);
+                }
+            } else {
+                await playWithCloudTTS(text);
+            }
+        }
+
+        function playFullDialogue() {
+            const fullText = currentScenario.dialogue.map(line => line.en).join('. ');
+            speakText(fullText);
+        }
+
+        function previewNewWordAudio() {
+            const word = document.getElementById('newWordInput').value.trim();
+            const sentence = document.getElementById('newSentenceInput').value.trim();
+            if (!word) {
+                showToast("請先輸入中文並轉換為英文單字後再試聽喔！", false);
+                return;
+            }
+            speakText(sentence ? `${word}. ${sentence}` : word);
+        }
+
+        // 常用離線中翻英字典 (秒速回應 + 網路異常時備援)
+        const quickZhToEnDict = {
+            "微風": { word: "breeze", pos: "n.", category: "自然與散步", sentence: "I really enjoy the cool morning breeze." },
+            "散步": { word: "stroll", pos: "n.", category: "自然與散步", sentence: "Let's take a relaxing stroll along the path." },
+            "海浪": { word: "ocean wave", pos: "n.", category: "自然與散步", sentence: "Listening to the ocean waves is very peaceful." },
+            "看海": { word: "watch the sea", pos: "phr.", category: "自然與散步", sentence: "I like to sit quietly and watch the sea." },
+            "海岸": { word: "coastline", pos: "n.", category: "自然與散步", sentence: "Taitung has a very beautiful coastline." },
+            "吉他": { word: "guitar", pos: "n.", category: "音樂與興趣", sentence: "I practice playing the acoustic guitar every day." },
+            "彈吉他": { word: "play the guitar", pos: "phr.", category: "音樂與興趣", sentence: "Playing the guitar in the evening is relaxing." },
+            "澆花": { word: "water the plants", pos: "phr.", category: "園藝與植物", sentence: "I water the plants on the balcony every morning." },
+            "陽光": { word: "sunshine", pos: "n.", category: "自然與散步", sentence: "The warm morning sunshine makes me feel energetic." },
+            "咖啡": { word: "coffee", pos: "n.", category: "生活與餐飲", sentence: "I love the aroma of freshly brewed coffee." },
+            "放鬆": { word: "unwind", pos: "v.", category: "日常感受", sentence: "Listening to music helps me unwind." }
+        };
+
+        // 輸入中文自動轉換成英文單字、詞性、分類與例句
+        async function autoTranslateChineseToEnglish() {
+            const meaningInput = document.getElementById('newMeaningInput');
+            const zhText = meaningInput.value.trim();
+            if (!zhText) {
+                showToast("請先在第一欄輸入中文意思（例如：海浪、澆花）", false);
+                meaningInput.focus();
+                return;
+            }
+
+            const btn = document.getElementById('autoTransBtn');
+            btn.disabled = true;
+            btn.innerHTML = `<i class="ph ph-spinner animate-spin"></i> 轉換中...`;
+
+            // 1. 先檢查快速字典
+            if (quickZhToEnDict[zhText]) {
+                const match = quickZhToEnDict[zhText];
+                document.getElementById('newWordInput').value = match.word;
+                document.getElementById('newPosInput').value = match.pos;
+                document.getElementById('newCategoryInput').value = match.category;
+                document.getElementById('newSentenceInput').value = match.sentence;
+                btn.disabled = false;
+                btn.innerHTML = `<i class="ph ph-translate text-base"></i> 自動轉英文`;
+                showToast(`已自動轉換：「${zhText}」→ ${match.word}`);
+                speakText(match.word);
+                return;
+            }
+
+            // 2. 呼叫 Gemini AI 智慧中翻英並造出簡單生活例句
+            const payload = {
+                contents: [{
+                    parts: [{
+                        text: `使用者輸入了中文詞彙：「${zhText}」。請將它轉換為最自然、最常用於日常英語會話的英文單字或短片語，並附上詞性（僅限 n. / v. / adj. / adv. / phr. 其中之一）、分類（如：自然與散步、音樂與興趣、日常感受、生活與餐飲）以及一句簡單好唸的英文口語例句。`
+                    }]
+                }],
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "OBJECT",
+                        properties: {
+                            word: { type: "STRING" },
+                            pos: { type: "STRING" },
+                            meaning: { type: "STRING" },
+                            category: { type: "STRING" },
+                            sentence: { type: "STRING" }
+                        },
+                        required: ["word", "pos", "meaning", "category", "sentence"]
+                    }
+                }
+            };
+
+            try {
+                const result = await fetchGeminiWithRetry(payload);
+                const jsonText = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                const parsed = JSON.parse(jsonText);
+
+                document.getElementById('newWordInput').value = parsed.word || "";
+                const validPos = ["n.", "v.", "adj.", "adv.", "phr."];
+                document.getElementById('newPosInput').value = validPos.includes(parsed.pos) ? parsed.pos : "n.";
+                document.getElementById('newCategoryInput').value = parsed.category || currentScenario.category;
+                document.getElementById('newSentenceInput').value = parsed.sentence || "";
+
+                showToast(`已轉換：「${zhText}」→ ${parsed.word}`);
+                speakText(parsed.word);
+            } catch (e) {
+                showToast("自動轉換連線忙碌中，您也可以直接輸入英文單字", false);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<i class="ph ph-translate text-base"></i> 自動轉英文`;
+            }
+        }
+
+        // 語音辨識輸入 (Web Speech API)
+        function startSpeechRecognition() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognition) {
+                showToast("此瀏覽器環境不支援直接麥克風辨識，建議使用鍵盤上的語音輸入鍵！", false);
+                return;
+            }
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+
+            const btn = document.getElementById('voiceInputBtn');
+            btn.classList.add('bg-rose-50', 'border-rose-400');
+            showToast("請開始說英文...", true);
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                document.getElementById('userReplyInput').value = transcript;
+            };
+            recognition.onerror = () => {
+                showToast("語音辨識未偵測到聲音，請再試一次或使用打字輸入", false);
+            };
+            recognition.onend = () => {
+                btn.classList.remove('bg-rose-50', 'border-rose-400');
+            };
+            recognition.start();
+        }
+
+        // ==================== 3. 畫面渲染與分頁控制 ====================
+        function switchTab(tabName) {
+            ['practice', 'vocab', 'backup'].forEach(t => {
+                document.getElementById(`tab-${t}`).classList.add('hidden');
+                const btn = document.getElementById(`tabBtn-${t}`);
+                btn.classList.remove('tab-active');
+                btn.classList.add('text-slate-500');
+            });
+
+            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tabBtn-${tabName}`);
+            activeBtn.classList.add('tab-active');
+            activeBtn.classList.remove('text-slate-500');
+
+            if (tabName === 'vocab') renderVocabTable();
+            if (tabName === 'backup') updateBackupPreview();
+        }
+
+        function renderScenarioButtons() {
+            const container = document.getElementById('scenarioButtons');
+            container.innerHTML = scenarios.map(sc => {
+                const isSelected = sc.id === currentScenario.id;
+                return `
+                    <button onclick="selectScenario('${sc.id}')" 
+                        class="text-xs sm:text-sm px-3.5 py-1.5 rounded-xl font-medium transition flex items-center gap-1.5 ${
+                            isSelected 
+                                ? 'bg-sky-600 text-white shadow-sm' 
+                                : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+                        }">
+                        <span>${sc.category}</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function selectScenario(id) {
+            const found = scenarios.find(s => s.id === id);
+            if (found) {
+                currentScenario = found;
+                document.getElementById('aiFeedbackBox').classList.add('hidden');
+                document.getElementById('userReplyInput').value = '';
+                renderScenarioButtons();
+                renderCurrentScenario();
+            }
+        }
+
+        function renderCurrentScenario() {
+            document.getElementById('currentScenarioCategory').textContent = currentScenario.category;
+            document.getElementById('currentScenarioTitle').textContent = currentScenario.title;
+
+            // 渲染核心生字列表
+            const wordsContainer = document.getElementById('scenarioWordsList');
+            wordsContainer.innerHTML = currentScenario.words.map((w, idx) => {
+                const isSaved = savedVocabList.some(item => item.word.toLowerCase() === w.word.toLowerCase());
+                return `
+                    <div class="p-3.5 rounded-xl border border-slate-200 hover:border-sky-300 bg-slate-50/60 transition flex items-start justify-between gap-2">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <button onclick="speakText('${w.word.replace(/'/g, "\\'")}')" class="font-bold text-base text-slate-900 hover:text-sky-600 flex items-center gap-1">
+                                    <span>${w.word}</span>
+                                    <i class="ph ph-speaker-simple-high text-sky-600 text-sm"></i>
+                                </button>
+                                <span class="text-xs text-slate-400">${w.phonetic || ''}</span>
+                                <span class="text-xs font-mono bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded">${w.pos}</span>
+                                <span class="text-sm font-medium text-slate-800">${w.meaning}</span>
+                            </div>
+                            <p class="text-xs text-slate-600 italic">"${w.sentence}"</p>
+                        </div>
+                        <button onclick="saveWordFromScenario(${idx})" 
+                            class="shrink-0 text-xs font-medium px-2.5 py-1.5 rounded-lg transition flex items-center gap-1 ${
+                                isSaved 
+                                    ? 'bg-emerald-100 text-emerald-700' 
+                                    : 'bg-white border border-slate-300 hover:border-sky-500 text-slate-700 hover:text-sky-600'
+                            }">
+                            <i class="ph ${isSaved ? 'ph-check' : 'ph-bookmark-simple'}"></i>
+                            ${isSaved ? '已收錄' : '收錄'}
+                        </button>
+                    </div>
+                `;
+            }).join('');
+
+            // 渲染情境對話
+            const dialogueContainer = document.getElementById('dialogueContainer');
+            dialogueContainer.innerHTML = currentScenario.dialogue.map((d) => {
+                const isUser = d.speaker === 'You';
+                return `
+                    <div class="flex flex-col ${isUser ? 'items-end' : 'items-start'}">
+                        <span class="text-xs font-semibold text-slate-400 mb-1 px-1">${isUser ? 'You (建議開口跟著讀一遍)' : d.speaker}</span>
+                        <div class="max-w-xl rounded-2xl p-3.5 ${
+                            isUser 
+                                ? 'bg-sky-600 text-white rounded-br-none shadow-sm' 
+                                : 'bg-slate-100 text-slate-800 rounded-bl-none border border-slate-200'
+                        }">
+                            <div class="flex items-start justify-between gap-3">
+                                <p class="text-sm sm:text-base font-medium leading-relaxed">${d.en}</p>
+                                <button onclick="speakText('${d.en.replace(/'/g, "\\'")}')" title="聆聽發音"
+                                    class="shrink-0 mt-0.5 ${isUser ? 'text-sky-100 hover:text-white' : 'text-slate-500 hover:text-sky-600'}">
+                                    <i class="ph ph-speaker-high text-lg"></i>
+                                </button>
+                            </div>
+                            <p class="text-xs mt-1.5 ${isUser ? 'text-sky-100' : 'text-slate-500'}">${d.zh}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // 渲染互動提問
+            document.getElementById('promptQuestionEn').textContent = currentScenario.promptEn;
+            document.getElementById('promptQuestionZh').textContent = currentScenario.promptZh;
+            document.getElementById('promptHint').textContent = currentScenario.promptHint;
+
+            updateVocabCounter();
+        }
+
+        // ==================== 4. 生字庫增刪改查操作 ====================
+        function updateVocabCounter() {
+            document.getElementById('totalVocabCount').textContent = savedVocabList.length;
+            if (typeof window.syncVocabToCloud === 'function') {
+                window.syncVocabToCloud();
+            }
+        }
+
+        function saveWordFromScenario(idx) {
+            const w = currentScenario.words[idx];
+            const exists = savedVocabList.some(item => item.word.toLowerCase() === w.word.toLowerCase());
+            if (exists) {
+                showToast(`「${w.word}」已經在您的生字庫中囉！`, false);
+                return;
+            }
+            savedVocabList.unshift({
+                id: 'v_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6),
+                date: getTodayDateString(),
+                category: currentScenario.category,
+                word: w.word,
+                pos: w.pos,
+                meaning: w.meaning,
+                sentence: w.sentence,
+                mastery: "⭐ 初學"
+            });
+            renderCurrentScenario();
+            showToast(`已收錄生字：${w.word}`);
+        }
+
+        function saveAllCurrentWords() {
+            let addedCount = 0;
+            currentScenario.words.forEach(w => {
+                const exists = savedVocabList.some(item => item.word.toLowerCase() === w.word.toLowerCase());
+                if (!exists) {
+                    savedVocabList.unshift({
+                        id: 'v_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6),
+                        date: getTodayDateString(),
+                        category: currentScenario.category,
+                        word: w.word,
+                        pos: w.pos,
+                        meaning: w.meaning,
+                        sentence: w.sentence,
+                        mastery: "⭐ 初學"
+                    });
+                    addedCount++;
+                }
+            });
+            renderCurrentScenario();
+            if (addedCount > 0) {
+                showToast(`已將 ${addedCount} 個新單字存入生字庫！`);
+            } else {
+                showToast("本課單字皆已收錄過囉！", false);
+            }
+        }
+
+        async function addManualWord() {
+            let word = document.getElementById('newWordInput').value.trim();
+            const meaning = document.getElementById('newMeaningInput').value.trim();
+
+            if (!meaning && !word) {
+                showToast("請先輸入「中文意思」，系統會自動幫您轉成英文！", false);
+                return;
+            }
+
+            // 若使用者只輸入了中文、還沒按轉換就直接按「加入生字本」，自動幫他轉換！
+            if (meaning && !word) {
+                await autoTranslateChineseToEnglish();
+                word = document.getElementById('newWordInput').value.trim();
+            }
+
+            const pos = document.getElementById('newPosInput').value;
+            const category = document.getElementById('newCategoryInput').value.trim() || currentScenario.category;
+            const sentence = document.getElementById('newSentenceInput').value.trim() || `I learned the word "${word}" today.`;
+
+            if (!word || !meaning) {
+                showToast("請確認中文意思與英文單字欄位皆已填寫", false);
+                return;
+            }
+
+            savedVocabList.unshift({
+                id: 'v_' + Date.now(),
+                date: getTodayDateString(),
+                category,
+                word,
+                pos,
+                meaning,
+                sentence,
+                mastery: "⭐ 初學"
+            });
+
+            document.getElementById('newWordInput').value = '';
+            document.getElementById('newMeaningInput').value = '';
+            document.getElementById('newSentenceInput').value = '';
+
+            updateVocabCounter();
+            renderCurrentScenario();
+            showToast(`已新增「${word} (${meaning})」至生字本！`);
+        }
+
+        function renderVocabTable() {
+            const searchQuery = document.getElementById('searchVocabInput').value.trim().toLowerCase();
+            const masteryFilter = document.getElementById('filterMasterySelect').value;
+
+            const filtered = savedVocabList.filter(item => {
+                const matchText = !searchQuery || 
+                    item.word.toLowerCase().includes(searchQuery) ||
+                    item.meaning.toLowerCase().includes(searchQuery) ||
+                    item.category.toLowerCase().includes(searchQuery) ||
+                    item.sentence.toLowerCase().includes(searchQuery);
+                const matchMastery = masteryFilter === 'all' || item.mastery === masteryFilter;
+                return matchText && matchMastery;
+            });
+
+            const tbody = document.getElementById('vocabTableBody');
+            const emptyState = document.getElementById('emptyVocabState');
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            tbody.innerHTML = filtered.map(item => `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="py-3 px-3 text-xs text-slate-500 whitespace-nowrap">${item.date}</td>
+                    <td class="py-3 px-3 whitespace-nowrap">
+                        <span class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md">${item.category}</span>
+                    </td>
+                    <td class="py-3 px-3 font-bold text-slate-900 whitespace-nowrap">
+                        <button onclick="speakText('${item.word.replace(/'/g, "\\'")}')" class="hover:text-sky-600 flex items-center gap-1.5">
+                            <span>${item.word}</span>
+                            <i class="ph ph-speaker-simple-high text-sky-600 text-sm"></i>
+                        </button>
+                    </td>
+                    <td class="py-3 px-3 text-xs font-mono text-slate-500 whitespace-nowrap">${item.pos}</td>
+                    <td class="py-3 px-3 font-medium text-slate-800 whitespace-nowrap">${item.meaning}</td>
+                    <td class="py-3 px-3 text-slate-600 text-xs sm:text-sm min-w-[220px]">
+                        <button onclick="speakText('${item.sentence.replace(/'/g, "\\'")}')" class="text-left hover:text-sky-700">
+                            ${item.sentence}
+                        </button>
+                    </td>
+                    <td class="py-3 px-3 whitespace-nowrap">
+                        <select onchange="updateWordMastery('${item.id}', this.value)" class="text-xs border border-slate-200 rounded-lg px-2 py-1 bg-white">
+                            <option value="⭐ 初學" ${item.mastery === '⭐ 初學' ? 'selected' : ''}>⭐ 初學</option>
+                            <option value="⭐⭐ 熟悉" ${item.mastery === '⭐⭐ 熟悉' ? 'selected' : ''}>⭐⭐ 熟悉</option>
+                            <option value="⭐⭐⭐ 精通" ${item.mastery === '⭐⭐⭐ 精通' ? 'selected' : ''}>⭐⭐⭐ 精通</option>
+                        </select>
+                    </td>
+                    <td class="py-3 px-3 text-right whitespace-nowrap">
+                        <button onclick="deleteVocabItem('${item.id}')" title="刪除" class="text-slate-400 hover:text-rose-600 p-1">
+                            <i class="ph ph-trash text-base"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function updateWordMastery(id, newMastery) {
+            const item = savedVocabList.find(v => v.id === id);
+            if (item) {
+                item.mastery = newMastery;
+                showToast(`已更新「${item.word}」熟練度為 ${newMastery}`);
+            }
+        }
+
+        function deleteVocabItem(id) {
+            savedVocabList = savedVocabList.filter(v => v.id !== id);
+            renderVocabTable();
+            renderCurrentScenario();
+            showToast("已從生字庫移除該單字", false);
+        }
+
+        // ==================== 5. 備份與匯出 / 匯入功能 (修復 CSV 還原與手機檔案尋找問題) ====================
+        function markBackupSuccess(methodName) {
+            const now = new Date();
+            const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+            const badge = document.getElementById('lastBackupTimeBadge');
+            if (badge) {
+                badge.textContent = `✅ 最近備份成功：${timeStr} (${methodName}・共 ${savedVocabList.length} 筆)`;
+                badge.className = "text-xs bg-emerald-600 text-white px-2.5 py-0.5 rounded-full font-medium shadow-sm";
+            }
+        }
+
+        function buildBackupText(format, includeHeader = true) {
+            const headers = ["日期", "分類", "英文生字", "詞性", "中文意思", "實用會話例句", "熟練度"];
+            if (format === 'json') {
+                return JSON.stringify(savedVocabList, null, 2);
+            } else if (format === 'csv') {
+                const escapeCsv = (str) => `"${String(str ?? '').replace(/"/g, '""')}"`;
+                const rows = savedVocabList.map(v => [
+                    v.date, v.category, v.word, v.pos, v.meaning, v.sentence, v.mastery
+                ].map(escapeCsv).join(','));
+                return includeHeader ? [headers.map(escapeCsv).join(','), ...rows].join('\n') : rows.join('\n');
+            } else {
+                const rows = savedVocabList.map(v => [
+                    v.date, v.category, v.word, v.pos, v.meaning, v.sentence, v.mastery
+                ].map(s => String(s ?? '').replace(/[\t\r\n]+/g, ' ')).join('\t'));
+                return includeHeader ? [headers.join('\t'), ...rows].join('\n') : rows.join('\n');
+            }
+        }
+
+        function updateBackupPreview() {
+            const includeHeaderEl = document.getElementById('includeHeaderCheckbox');
+            const formatSelectEl = document.getElementById('textBackupFormatSelect');
+            const includeHeader = includeHeaderEl ? includeHeaderEl.checked : true;
+            const format = formatSelectEl ? formatSelectEl.value : 'tsv';
+            
+            const content = buildBackupText(format, includeHeader);
+            const textarea = document.getElementById('tsvBackupTextarea');
+            if (textarea) textarea.value = content;
+        }
+
+        function copyTsvToClipboard() {
+            const textarea = document.getElementById('tsvBackupTextarea');
+            if (!textarea.value.trim()) {
+                updateBackupPreview();
+            }
+            textarea.select();
+            textarea.setSelectionRange(0, 999999);
+            document.execCommand('copy');
+            const formatSelectEl = document.getElementById('textBackupFormatSelect');
+            const formatName = formatSelectEl ? formatSelectEl.options[formatSelectEl.selectedIndex].text : "試算表格式";
+            markBackupSuccess(`複製${formatName}`);
+            showToast(`已成功複製 ${savedVocabList.length} 筆生字！可直接貼到 Google 試算表或記事本保存`);
+        }
+
+        async function exportFile(format) {
+            const dateStr = getTodayDateString();
+            const formatSelectEl = document.getElementById('textBackupFormatSelect');
+            if (formatSelectEl) {
+                formatSelectEl.value = format;
+                updateBackupPreview();
+            }
+
+            let content = "";
+            let filename = "";
+            let mimeType = "";
+
+            if (format === 'json') {
+                content = buildBackupText('json', true);
+                filename = `english_vocab_backup_${dateStr}.json`;
+                mimeType = "application/json;charset=utf-8";
+            } else {
+                // 加入 UTF-8 BOM 確保 Excel 與手機開啟中文絕不亂碼
+                content = '\uFEFF' + buildBackupText('csv', true);
+                filename = `english_vocab_sheet_${dateStr}.csv`;
+                mimeType = "text/csv;charset=utf-8";
+            }
+
+            // 同時把內容複製到剪貼簿，就算手機找不到下載檔案，剪貼簿也已經有一份備份！
+            const textarea = document.getElementById('tsvBackupTextarea');
+            if (textarea) {
+                textarea.value = content.replace(/^\uFEFF/, '');
+                textarea.select();
+                document.execCommand('copy');
+            }
+
+            const blob = new Blob([content], { type: mimeType });
+
+            // 若在手機上且支援 Web Share API 檔案分享，提供系統分享選單 (可直接存到雲端硬碟或 Keep)
+            try {
+                const fileObj = new File([blob], filename, { type: mimeType });
+                if (navigator.canShare && navigator.canShare({ files: [fileObj] })) {
+                    await navigator.share({
+                        title: '英語會話生字庫備份',
+                        text: `包含 ${savedVocabList.length} 個英語生字備份`,
+                        files: [fileObj]
+                    });
+                    markBackupSuccess(`${format.toUpperCase()} 分享儲存`);
+                    showToast(`已完成 ${format.toUpperCase()} 備份分享！`);
+                    return;
+                }
+            } catch (shareErr) {
+                // 若使用者取消分享或不支援，繼續走標準下載流程
+            }
+
+            triggerDownload(blob, filename);
+            markBackupSuccess(`下載 ${format.toUpperCase()} 檔 + 複製備份碼`);
+            showToast(`已觸發 ${filename} 下載，並同步顯示與複製於上方黑色備份框中！`);
+        }
+
+        function triggerDownload(blob, filename) {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => URL.revokeObjectURL(url), 3000);
+        }
+
+        // 健全的單行 CSV 解析器 (支援雙引號內含逗號、轉義雙引號、分號或 Tab 分隔)
+        function parseCsvRow(line, delimiter = ',') {
+            const result = [];
+            let current = '';
+            let inQuotes = false;
+
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                const nextChar = line[i + 1];
+
+                if (char === '"') {
+                    if (inQuotes && nextChar === '"') {
+                        current += '"';
+                        i++;
+                    } else {
+                        inQuotes = !inQuotes;
+                    }
+                } else if (char === delimiter && !inQuotes) {
+                    result.push(current.trim());
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            result.push(current.trim());
+            return result.map(col => col.replace(/^"|"$/g, '').trim());
+        }
+
+        // 統一處理文字還原 (支援 JSON / CSV / TSV，並支援更新已存在的單字，解決「已存在單字導致顯示匯入 0 筆」的問題)
+        function parseAndRestoreContent(rawContent, sourceLabel = "備份資料") {
+            const cleanText = String(rawContent || '').replace(/^\uFEFF/, '').trim();
+            if (!cleanText) {
+                showToast("內容為空，請先貼上或選擇有效的 CSV / JSON 備份內容", false);
+                return;
+            }
+
+            let addedCount = 0;
+            let updatedCount = 0;
+
+            try {
+                // 判斷是否為 JSON 格式
+                if (cleanText.startsWith('[') || cleanText.startsWith('{')) {
+                    const parsed = JSON.parse(cleanText);
+                    const arr = Array.isArray(parsed) ? parsed : (parsed.vocabList || [parsed]);
+
+                    arr.forEach(item => {
+                        const wordStr = String(item.word || item['英文生字'] || '').trim();
+                        if (!wordStr) return;
+
+                        const newEntry = {
+                            id: item.id || ('v_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6)),
+                            date: item.date || item['日期'] || getTodayDateString(),
+                            category: item.category || item['分類'] || "匯入生字",
+                            word: wordStr,
+                            pos: item.pos || item['詞性'] || "n.",
+                            meaning: item.meaning || item['中文意思'] || "",
+                            sentence: item.sentence || item['實用會話例句'] || "",
+                            mastery: item.mastery || item['熟練度'] || "⭐ 初學"
+                        };
+
+                        const existingIdx = savedVocabList.findIndex(v => v.word.toLowerCase() === wordStr.toLowerCase());
+                        if (existingIdx >= 0) {
+                            savedVocabList[existingIdx] = { ...savedVocabList[existingIdx], ...newEntry };
+                            updatedCount++;
+                        } else {
+                            savedVocabList.unshift(newEntry);
+                            addedCount++;
+                        }
+                    });
+                } else {
+                    // 解析 CSV 或 TSV 多行文字
+                    const lines = cleanText.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+                    if (lines.length === 0) throw new Error("無有效行");
+
+                    // 自動偵測分隔符號 (\t, 逗號, 或分號)
+                    const firstLine = lines[0];
+                    let delimiter = ',';
+                    if (firstLine.includes('\t')) delimiter = '\t';
+                    else if (!firstLine.includes(',') && firstLine.includes(';')) delimiter = ';';
+
+                    // 預設欄位對應 (日期, 分類, 英文生字, 詞性, 中文意思, 實用會話例句, 熟練度)
+                    let colMap = { date: 0, category: 1, word: 2, pos: 3, meaning: 4, sentence: 5, mastery: 6 };
+                    let startRow = 0;
+
+                    const headerCols = parseCsvRow(firstLine, delimiter).map(h => h.toLowerCase());
+                    const isHeader = headerCols.some(h => 
+                        h.includes('英文') || h.includes('生字') || h.includes('單字') || h.includes('word') || h.includes('meaning') || h.includes('日期')
+                    );
+
+                    if (isHeader) {
+                        startRow = 1;
+                        headerCols.forEach((h, idx) => {
+                            if (h.includes('日期') || h.includes('date')) colMap.date = idx;
+                            else if (h.includes('分類') || h.includes('category')) colMap.category = idx;
+                            else if (h.includes('英文') || h.includes('生字') || h.includes('單字') || h.includes('word')) colMap.word = idx;
+                            else if (h.includes('詞性') || h.includes('pos')) colMap.pos = idx;
+                            else if (h.includes('中文') || h.includes('意思') || h.includes('meaning')) colMap.meaning = idx;
+                            else if (h.includes('例句') || h.includes('sentence')) colMap.sentence = idx;
+                            else if (h.includes('熟練') || h.includes('mastery')) colMap.mastery = idx;
+                        });
+                    }
+
+                    for (let i = startRow; i < lines.length; i++) {
+                        const cols = parseCsvRow(lines[i], delimiter);
+                        if (cols.length === 0) continue;
+
+                        // 若只有 2~3 欄 (例如使用者自己建立的簡易 CSV: 英文, 中文, 例句)
+                        let newEntry = null;
+                        if (!isHeader && cols.length >= 2 && cols.length <= 4 && !/^\d{4}[-/.]\d{1,2}/.test(cols[0])) {
+                            const wordStr = cols[0];
+                            if (!wordStr) continue;
+                            newEntry = {
+                                id: 'v_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6),
+                                date: getTodayDateString(),
+                                category: "CSV 匯入",
+                                word: wordStr,
+                                pos: "n.",
+                                meaning: cols[1] || "",
+                                sentence: cols[2] || "",
+                                mastery: "⭐ 初學"
+                            };
+                        } else {
+                            const wordStr = cols[colMap.word] || '';
+                            if (!wordStr) continue;
+                            newEntry = {
+                                id: 'v_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6),
+                                date: cols[colMap.date] || getTodayDateString(),
+                                category: cols[colMap.category] || "匯入生字",
+                                word: wordStr,
+                                pos: cols[colMap.pos] || "n.",
+                                meaning: cols[colMap.meaning] || "",
+                                sentence: cols[colMap.sentence] || "",
+                                mastery: cols[colMap.mastery] || "⭐ 初學"
+                            };
+                        }
+
+                        const existingIdx = savedVocabList.findIndex(v => v.word.toLowerCase() === newEntry.word.toLowerCase());
+                        if (existingIdx >= 0) {
+                            savedVocabList[existingIdx] = { ...savedVocabList[existingIdx], ...newEntry };
+                            updatedCount++;
+                        } else {
+                            savedVocabList.unshift(newEntry);
+                            addedCount++;
+                        }
+                    }
+                }
+
+                updateVocabCounter();
+                renderVocabTable();
+                renderCurrentScenario();
+                updateBackupPreview();
+
+                const statusBox = document.getElementById('importResultStatus');
+                const msg = `✅ 從${sourceLabel}還原成功！新增 ${addedCount} 個生字、同步更新 ${updatedCount} 個現有生字（目前共 ${savedVocabList.length} 筆）。`;
+                if (statusBox) {
+                    statusBox.textContent = msg;
+                    statusBox.classList.remove('hidden');
+                }
+                markBackupSuccess(`${sourceLabel}還原`);
+                showToast(`還原成功！新增 ${addedCount} 筆、更新 ${updatedCount} 筆生字`);
+            } catch (err) {
+                showToast("解析失敗，請確認 CSV 或 JSON 內容格式是否完整", false);
+            }
+        }
+
+        function restoreFromTextarea() {
+            const textarea = document.getElementById('tsvBackupTextarea');
+            parseAndRestoreContent(textarea.value, "文字框");
+        }
+
+        function importBackupFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                parseAndRestoreContent(e.target.result, `檔案 (${file.name})`);
+                event.target.value = '';
+            };
+            reader.readAsText(file, 'UTF-8');
+        }
+
+        // ==================== 6. Gemini AI 整合：會話回饋與自訂主題產生 ====================
+        const apiKey = "";
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+        async function fetchGeminiWithRetry(payload, retries = 3) {
+            let delay = 1000;
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const res = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (res.ok) return await res.json();
+                } catch (e) {}
+                await new Promise(r => setTimeout(r, delay));
+                delay *= 2;
+            }
+            throw new Error("API request failed");
+        }
+
+        // 評估使用者的英文回答並給予溫暖鼓勵
+        async function evaluateUserReply() {
+            const reply = document.getElementById('userReplyInput').value.trim();
+            if (!reply) {
+                showToast("請先輸入或說出您的英文回答喔！", false);
+                return;
+            }
+
+            const btn = document.getElementById('checkReplyBtn');
+            const feedbackBox = document.getElementById('aiFeedbackBox');
+            const feedbackContent = document.getElementById('aiFeedbackContent');
+
+            btn.disabled = true;
+            btn.innerHTML = `<i class="ph ph-spinner animate-spin"></i> 分析中...`;
+            feedbackBox.classList.remove('hidden');
+            feedbackContent.textContent = "正在聆聽並整理給您的會話回饋...";
+
+            const systemPrompt = "你是一位溫暖、善於鼓勵學員的英語會話教練。使用者正在回答問題。請用繁體中文給予簡短溫暖的肯定（1句話），並提供1個更自然道地的英文修飾句或延伸回答範例（附中文翻譯）。控制在80字以內。";
+            const userQuery = `問題：「${currentScenario.promptEn}」\n使用者的英文回答：「${reply}」`;
+
+            try {
+                const result = await fetchGeminiWithRetry({
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] }
+                });
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (text) {
+                    feedbackContent.innerHTML = text.replace(/\n/g, '<br>');
+                } else {
+                    throw new Error("No response");
+                }
+            } catch (e) {
+                // 離線或備援回饋
+                feedbackContent.innerHTML = `🌟 <strong>太棒了！您成功開口表達了：</strong> "${reply}"<br>💡 <strong>延伸練習句：</strong> You can also say: <em>"${reply} It really made my day!"</em> (這真的讓我今天心情很好！)`;
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<i class="ph ph-paper-plane-right"></i> 送出練習`;
+            }
+        }
+
+        // AI 動態產生自訂生活情境
+        async function generateCustomScenario() {
+            const topic = document.getElementById('customTopicInput').value.trim();
+            if (!topic) {
+                showToast("請先輸入想練習的主題（例如：去海邊散步、沖咖啡）", false);
+                return;
+            }
+
+            const btn = document.getElementById('generateTopicBtn');
+            btn.disabled = true;
+            btn.innerHTML = `<i class="ph ph-spinner animate-spin"></i> 產生中...`;
+
+            const payload = {
+                contents: [{
+                    parts: [{ text: `請根據主題「${topic}」設計一個簡單實用的英語微練習情境。` }]
+                }],
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "OBJECT",
+                        properties: {
+                            category: { type: "STRING" },
+                            title: { type: "STRING" },
+                            words: {
+                                type: "ARRAY",
+                                items: {
+                                    type: "OBJECT",
+                                    properties: {
+                                        word: { type: "STRING" },
+                                        phonetic: { type: "STRING" },
+                                        pos: { type: "STRING" },
+                                        meaning: { type: "STRING" },
+                                        sentence: { type: "STRING" }
+                                    },
+                                    required: ["word", "pos", "meaning", "sentence"]
+                                }
+                            },
+                            dialogue: {
+                                type: "ARRAY",
+                                items: {
+                                    type: "OBJECT",
+                                    properties: {
+                                        speaker: { type: "STRING" },
+                                        en: { type: "STRING" },
+                                        zh: { type: "STRING" }
+                                    },
+                                    required: ["speaker", "en", "zh"]
+                                }
+                            },
+                            promptEn: { type: "STRING" },
+                            promptZh: { type: "STRING" },
+                            promptHint: { type: "STRING" }
+                        },
+                        required: ["category", "title", "words", "dialogue", "promptEn", "promptZh", "promptHint"]
+                    }
+                }
+            };
+
+            try {
+                const result = await fetchGeminiWithRetry(payload);
+                const jsonText = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                const parsed = JSON.parse(jsonText);
+                const newScenario = {
+                    id: 'custom_' + Date.now(),
+                    ...parsed
+                };
+                scenarios.push(newScenario);
+                currentScenario = newScenario;
+                document.getElementById('customTopicInput').value = '';
+                renderScenarioButtons();
+                renderCurrentScenario();
+                showToast(`已為您建立「${parsed.category}」專屬練習！`);
+            } catch (e) {
+                showToast("自訂主題產生忙碌中，請稍後再試或先選擇預設主題", false);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<i class="ph ph-sparkle text-amber-400"></i> AI 產生`;
+            }
+        }
+
+        // 初始化載入
+        window.onload = function() {
+            renderScenarioButtons();
+            renderCurrentScenario();
+            updateBackupPreview();
+        };
+    </script>
+
+    <!-- 雲端自動備份模組 (Firestore 即時同步，免找檔案自動保存) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const badgeText = document.getElementById('cloudSyncText');
+        const badgeIcon = document.getElementById('cloudSyncIcon');
+
+        function setCloudStatus(text, isSynced = true) {
+            if (badgeText) badgeText.textContent = text;
+            if (badgeIcon) {
+                badgeIcon.className = isSynced ? "ph ph-cloud-check text-sm" : "ph ph-arrows-clockwise animate-spin text-sm";
+            }
+        }
+
         try {
-          const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              contents: [{ parts: [{ text: `Reply naturally in 1-2 English sentences to: "${txt}". Also provide Traditional Chinese translation separated by |||. Format: English|||繁體中文` }] }]
-            })
-          });
-          const data = await res.json();
-          const raw = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-          const [eng, zh] = raw.split('|||');
-          chatMessages.push({ role: 'ai', text: (eng || raw).trim(), trans: (zh || '').trim() });
-          renderChat();
-          return;
-        } catch (err) {}
-      }
-      setTimeout(() => {
-        chatMessages.push({
-          role: 'ai',
-          text: "That's a great point! Could you tell me more about your experience with that?",
-          trans: "這是一個很棒的觀點！你能多跟我分享一些你的相關經驗嗎？（點右上角⚙️可設定 API Key 啟用無限 AI 對答）"
-        });
-        renderChat();
-      }, 500);
-    }
+            if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+                const firebaseConfig = JSON.parse(__firebase_config);
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'english-vocab-app';
+                const app = initializeApp(firebaseConfig);
+                const auth = getAuth(app);
+                const db = getFirestore(app);
 
-    function setApiKey() {
-      const cur = localStorage.getItem('gemini_api_key') || '';
-      const k = prompt('請輸入您的 Google Gemini API Key (留空則使用內建模擬對話):', cur);
-      if (k !== null) localStorage.setItem('gemini_api_key', k.trim());
-    }
+                let currentUser = null;
+                let isApplyingRemote = false;
 
-    function quickCollectSentence(idx) {
-      const m = chatMessages[idx];
-      if (!m) return;
-      sentenceList.unshift({
-        id: 's_' + Date.now(),
-        sentence: m.text,
-        translation: m.trans || 'AI 對話收錄句',
-        words: m.text.split(' ')
-      });
-      saveStorage();
-      alert('已加入拼句練習庫！');
-    }
+                const initAuth = async () => {
+                    setCloudStatus("雲端連線中...", false);
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                };
 
-    function renderVocab() {
-      if (!vocabList.length) return;
-      const cur = vocabList[vIdx];
-      document.getElementById('vocabProgress').innerText = `第 ${vIdx + 1} / ${vocabList.length} 個`;
-      document.getElementById('vocabStars').innerText = '★'.repeat(cur.mastery || 0) + '☆'.repeat(5 - (cur.mastery || 0));
-      document.getElementById('vPos').innerText = cur.partOfSpeech || 'word';
-      document.getElementById('vWord').innerText = cur.word;
-      document.getElementById('vPhonetic').innerText = cur.phonetic || '';
-      document.getElementById('vTrans').innerText = cur.translation || '';
-      document.getElementById('vEx').innerText = cur.example || '';
-      document.getElementById('vBack').classList.toggle('hidden', !vFlipped);
-    }
+                onAuthStateChanged(auth, (user) => {
+                    currentUser = user;
+                    if (!user) return;
 
-    function flipCard() { vFlipped = !vFlipped; renderVocab(); }
-    function speakCurrentWord() { if (vocabList[vIdx]) speak(vocabList[vIdx].word); }
-    function rateWord(delta) {
-      if (!vocabList[vIdx]) return;
-      vocabList[vIdx].mastery = Math.max(0, Math.min(5, (vocabList[vIdx].mastery || 0) + delta));
-      saveStorage();
-      vFlipped = false;
-      vIdx = (vIdx + 1) % vocabList.length;
-      renderVocab();
-    }
+                    const vocabDocRef = doc(db, 'artifacts', appId, 'users', user.uid, 'vocabBackup', 'mainList');
 
-    function initScramble() {
-      if (!sentenceList.length) return;
-      const cur = sentenceList[sIdx];
-      document.getElementById('sCount').innerText = `第 ${sIdx + 1} / ${sentenceList.length} 題`;
-      document.getElementById('sTrans').innerText = cur.translation;
-      const words = cur.words || cur.sentence.split(' ');
-      sPoolArr = words.map((w, i) => ({ id: i, text: w })).sort(() => Math.random() - 0.5);
-      sSelArr = [];
-      renderScrambleUI();
-    }
+                    // 監聽雲端備份並在開啟時自動還原
+                    onSnapshot(vocabDocRef, (snapshot) => {
+                        if (snapshot.exists()) {
+                            const data = snapshot.data();
+                            if (Array.isArray(data.items) && data.items.length > 0) {
+                                isApplyingRemote = true;
+                                savedVocabList = data.items;
+                                document.getElementById('totalVocabCount').textContent = savedVocabList.length;
+                                renderCurrentScenario();
+                                renderVocabTable();
+                                updateBackupPreview();
+                                markBackupSuccess("雲端自動同步");
+                                isApplyingRemote = false;
+                            }
+                        } else {
+                            // 首次建立雲端備份
+                            window.syncVocabToCloud();
+                        }
+                        setCloudStatus("雲端已自動備份", true);
+                    }, () => {
+                        setCloudStatus("本機備份模式", true);
+                    });
 
-    function renderScrambleUI() {
-      document.getElementById('sSelected').innerHTML = sSelArr.map((t, i) => `<button onclick="unselectToken(${i})" class="px-3 py-1.5 rounded-xl bg-indigo-600 text-white text-sm font-bold">${t.text}</button>`).join('');
-      document.getElementById('sPool').innerHTML = sPoolArr.map((t, i) => `<button onclick="selectToken(${i})" class="px-3 py-1.5 rounded-xl bg-slate-700 text-slate-100 text-sm">${t.text}</button>`).join('');
-    }
+                    // 掛載全域自動同步函式
+                    window.syncVocabToCloud = async () => {
+                        if (!currentUser || isApplyingRemote) return;
+                        try {
+                            setCloudStatus("正在備份...", false);
+                            await setDoc(vocabDocRef, {
+                                items: savedVocabList,
+                                updatedAt: new Date().toISOString()
+                            });
+                            setCloudStatus("雲端已自動備份", true);
+                            markBackupSuccess("雲端自動備份");
+                        } catch (e) {
+                            setCloudStatus("已存於頁面", true);
+                        }
+                    };
+                });
 
-    function selectToken(i) { sSelArr.push(sPoolArr.splice(i, 1)[0]); renderScrambleUI(); }
-    function unselectToken(i) { sPoolArr.push(sSelArr.splice(i, 1)[0]); renderScrambleUI(); }
-    function checkScramble() {
-      const cur = sentenceList[sIdx];
-      const ans = sSelArr.map(t => t.text).join(' ').replace(/[.,!?]/g, '').toLowerCase().trim();
-      const target = cur.sentence.replace(/[.,!?]/g, '').toLowerCase().trim();
-      if (ans === target) {
-        speak(cur.sentence);
-        alert('🎉 拼句完全正確！');
-      } else {
-        alert('順序還差一點點，再試一次！');
-      }
-    }
-    function nextSentence() { sIdx = (sIdx + 1) % sentenceList.length; initScramble(); }
-
-    function openAddModal() { document.getElementById('addModal').classList.remove('hidden'); }
-    function closeAddModal() { document.getElementById('addModal').classList.add('hidden'); }
-    function saveNewItem(type) {
-      const w = document.getElementById('newWordInput').value.trim();
-      const t = document.getElementById('newTransInput').value.trim() || '自訂收錄';
-      const ex = document.getElementById('newExInput').value.trim();
-      if (!w) return;
-      if (type === 'vocab') {
-        vocabList.unshift({ id: 'v_' + Date.now(), word: w, translation: t, example: ex || w, mastery: 0 });
-      } else {
-        sentenceList.unshift({ id: 's_' + Date.now(), sentence: w, translation: t, words: w.split(' ') });
-      }
-      saveStorage();
-      document.getElementById('newWordInput').value = '';
-      document.getElementById('newTransInput').value = '';
-      document.getElementById('newExInput').value = '';
-      closeAddModal();
-      renderVocab();
-    }
-
-    window.onload = () => { renderChat(); renderVocab(); initScramble(); };
-  </script>
+                initAuth();
+            }
+        } catch (e) {
+            setCloudStatus("就緒", true);
+        }
+    </script>
 </body>
 </html>
+```
