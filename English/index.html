@@ -1,11 +1,733 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
-<head>
+<html lang="zh-TW" data-immersive-translate-page-theme="light"><head><script data-bard-client-injected="true">(function(firebaseConfig, initialAuthToken, appId) {
+        window.__firebase_config = firebaseConfig;
+        window.__initial_auth_token = initialAuthToken;
+        window.__app_id = appId;
+            })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","eyJhbGciOiJSUzI1NiIsImtpZCI6IjExNjRiNzdiNDMzZDdhMDAyMWI4NjE4YjhjYTU3ZTMyZGI5MWUxMTMiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1mYnN2Y0BiYXJkLWZyb250ZW5kLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoiaHR0cHM6Ly9pZGVudGl0eXRvb2xraXQuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJ1aWQiOiIxNzMzNzQ5MTc3MzUxNTk2MTU5MSIsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLWZic3ZjQGJhcmQtZnJvbnRlbmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJjbGFpbXMiOnsiYXBwSWQiOiJjXzVlZmQ0NGNkNzg2MTRkYTZfZW5nbGlzaF9jb252ZXJzYXRpb25fdm9jYWJfYXBwLmh0bWwtNTg3In0sImV4cCI6MTc5Mzk0OTA5MywiaWF0IjoxNzkzOTQ1NDkzLCJhbGciOiJSUzI1NiJ9.gEYF4xM1MAYZ90XG_2i3YkSpEOFPWRg8Hk6iQbACi8japCPKuz9b7JBc5ydOHKH4As37-Tu0G5O955ClrFvdovXtoA-qTD8USWGFWQLf0cLHn8Q4XpWtq3UG_sl-RfUbrbQd8-m3wcFXXWbD1pct3Kc9EmGBjZdxW0D-zfV0AenYH-Y7qPm3U6LHHrYIsmijgfo_ITcU_eTdL35VaEpSLUhjK5PNpILpuAl91PsHtxJlIBZal0uSNhp6MIluoM1O978JU9y30UPB9mPjau4E5cICP4COm7P3dgJTZR1d4r1HJJddwl8GJNadd_GgGByHzFRlEaj4dgW9-QyIss0pMA","c_5efd44cd78614da6_english_conversation_vocab_app.html-587")</script><script data-bard-client-injected="true">
+  document.addEventListener('input', (event) => {
+    if (event.target && (event.target.isContentEditable || event.target.hasAttribute('contenteditable'))) {
+      const clonedDoc = document.cloneNode(true);
+      const injectedScripts = clonedDoc.querySelectorAll('[data-bard-client-injected="true"]');
+      injectedScripts.forEach(el => el.remove());
+      window.parent.postMessage({
+        type: 'inlineEdit',
+        html: '<!DOCTYPE html>\n' + clonedDoc.documentElement.outerHTML
+      }, '*');
+    }
+  });
+</script><script data-bard-client-injected="true">(function(){'use strict';window.addEventListener("message",a=>{a.data&&a.data.type==="SUPPLEMENTAL_DATA_UPDATE"&&window.dispatchEvent(new CustomEvent("supplementaldataupdate",{detail:a.data.data}))});}).call(this);
+</script><script data-bard-client-injected="true">(function() {
+  const SCROLL_KEYS = new Set([
+    'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight',
+    ' ', 'Spacebar', 'PageUp', 'PageDown', 'Home', 'End',
+  ]);
+  const HORIZONTAL_KEYS = new Set(['ArrowLeft', 'ArrowRight']);
+
+  function isTextEntryTarget(target) {
+    if (!target) return false;
+    const tagName = target.tagName;
+    return tagName === 'INPUT' || tagName === 'TEXTAREA' ||
+        tagName === 'SELECT' || target.isContentEditable === true;
+  }
+
+  // An element absorbs the key only if it both overflows on the axis being
+  // scrolled and is configured to scroll on that axis. The cheap dimension
+  // test runs first because getComputedStyle forces a style recalc, and this
+  // runs on every keypress. Each axis is read from its own longhand: the
+  // 'overflow' shorthand serializes as two values when the axes differ, which
+  // is the common 'overflow-x: hidden; overflow-y: auto' pane.
+  function canScroll(node, horizontal) {
+    const overflows = horizontal ? node.scrollWidth > node.clientWidth
+                                 : node.scrollHeight > node.clientHeight;
+    if (!overflows) return false;
+    const style = window.getComputedStyle(node);
+    const overflow = horizontal ? style.overflowX : style.overflowY;
+    return overflow === 'auto' || overflow === 'scroll';
+  }
+
+  // Walks up from the event target so nested scrollers keep their behavior.
+  // <body> is included because pages that pin the root height make it the
+  // scroll container.
+  function hasScrollableAncestor(target, horizontal) {
+    let node = target;
+    while (node && node !== document.documentElement) {
+      if (canScroll(node, horizontal)) return true;
+      node = node.parentElement;
+    }
+    return false;
+  }
+
+  function rootCanScroll(horizontal) {
+    const scroller = document.scrollingElement || document.documentElement;
+    if (!scroller) return false;
+    // Tolerate a pixel of rounding so subpixel layouts do not look scrollable.
+    return horizontal ? scroller.scrollWidth > window.innerWidth + 1
+                      : scroller.scrollHeight > window.innerHeight + 1;
+  }
+
+  window.addEventListener('keydown', function(event) {
+    if (!SCROLL_KEYS.has(event.key)) return;
+    if (event.defaultPrevented) return;
+    // Alt and Meta turn arrows into browser history navigation, and Ctrl is
+    // reserved for shortcuts, so none of them are scroll intent.
+    if (event.altKey || event.metaKey || event.ctrlKey) return;
+
+    const target = event.target;
+    if (isTextEntryTarget(target)) return;
+
+    // Anything that can still absorb the scroll gets to keep it.
+    const horizontal = HORIZONTAL_KEYS.has(event.key);
+    if (rootCanScroll(horizontal)) return;
+    if (hasScrollableAncestor(target, horizontal)) return;
+
+    event.preventDefault();
+  }, {capture: true, passive: false});
+})();</script><script data-bard-client-injected="true">(function() {
+  // Ensure this script is executed only once
+  if (window.firebaseAuthBridgeScriptLoaded) {
+    return;
+  }
+  window.firebaseAuthBridgeScriptLoaded = true;
+
+  let nextTokenPromiseId = 0;
+
+  // Stores { resolve, reject } for ongoing token requests
+  const pendingTokenPromises = {};
+
+  // Listen for messages from the Host Application
+  window.addEventListener('message', function(event) {
+
+    const messageData = event.data;
+
+  if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
+      const { success, token, error, promiseId } = messageData ?? {};
+      if (pendingTokenPromises[promiseId]) {
+        if (success) {
+          pendingTokenPromises[promiseId].resolve(token);
+        } else {
+          pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
+        }
+        delete pendingTokenPromises[promiseId];
+      }
+    }
+  });
+
+  // Expose a function for the Generated App to request a new Firebase token
+  window.requestNewFirebaseToken = function() {
+    const currentPromiseId = nextTokenPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingTokenPromises[currentPromiseId] = { resolve, reject };
+    });
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'REQUEST_NEW_FIREBASE_TOKEN',
+        promiseId: currentPromiseId
+      }, '*');
+    } else {
+      pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
+      delete pendingTokenPromises[currentPromiseId];
+    }
+    return promise;
+  };
+})();</script><script data-bard-client-injected="true">
+let realOriginalGetUserMedia = null;
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+}
+
+(function() {
+  if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
+    try {
+      Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
+        get: function() {
+          return undefined; // Or throw an error
+        },
+        configurable: false
+      });
+    } catch (error) {
+      console.error("Error defining prototype getter:", error);
+    }
+  }
+})();
+
+(function() {
+  const pendingMediaResolvers = {};
+  let nextMediaPromiseId = 0;
+
+  function requestMediaPermissions(constraints) {
+    const mediaPromiseId = nextMediaPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingMediaResolvers[mediaPromiseId] = (granted) => {
+        delete pendingMediaResolvers[mediaPromiseId];
+        resolve(granted);
+      };
+    });
+
+    window.parent.postMessage({
+      type: 'requestMediaPermission',
+      constraints: constraints,
+      promiseId: mediaPromiseId,
+    }, '*');
+
+    return promise;
+  }
+
+  let originalGetUserMedia = realOriginalGetUserMedia;
+
+  function interceptGetUserMedia() {
+    if (navigator.mediaDevices) {
+      Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+        value: function(constraints) {
+          return requestMediaPermissions(constraints).then((granted) => {
+            if (granted) {
+              if (originalGetUserMedia) {
+                return originalGetUserMedia(constraints);
+              } else {
+                throw new Error("Original getUserMedia not available.");
+              }
+            } else {
+              throw new DOMException('Permission denied', 'NotAllowedError');
+            }
+          });
+        },
+        writable: false,
+        configurable: false
+      });
+    }
+  }
+
+  interceptGetUserMedia();
+
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'childList' && mutation.addedNodes) {
+        mutation.addedNodes.forEach(node => {
+          if (node === navigator.mediaDevices) {
+            interceptGetUserMedia();
+          }
+        });
+      }
+    }
+  });
+
+  function interceptSpeechRecognition() {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+      return;
+    }
+
+    const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const SpeechRecognitionWrapper = function(...args) {
+      const recognizer = new OriginalSpeechRecognition(...args);
+      const originalStart = recognizer.start.bind(recognizer);
+
+      recognizer.start = function() {
+        requestMediaPermissions({ audio: true }).then(granted => {
+          if (granted) {
+            originalStart();
+          } else {
+            const errorEvent = new SpeechRecognitionErrorEvent('error');
+            errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
+            recognizer.dispatchEvent(errorEvent);
+          }
+        });
+      };
+
+      return recognizer;
+    };
+
+    SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
+    SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
+
+    if (window.SpeechRecognition) {
+      window.SpeechRecognition = SpeechRecognitionWrapper;
+    }
+    if (window.webkitSpeechRecognition) {
+      window.webkitSpeechRecognition = SpeechRecognitionWrapper;
+    }
+  }
+
+  interceptSpeechRecognition();
+
+  window.addEventListener('message', function(event) {
+    if (event.data) {
+      if (event.data.type === 'resolveMediaPermission') {
+        const { promiseId, granted } = event.data;
+        if (pendingMediaResolvers[promiseId]) {
+          pendingMediaResolvers[promiseId](granted);
+        }
+      }
+    }
+  });
+
+})();</script><script ws-interception-config="{&quot;parentOrigin&quot;:&quot;https://gemini.google.com&quot;,&quot;proxiedDomains&quot;:[]}" data-bard-client-injected="true">(function(){'use strict';var u=typeof Object.defineProperties=="function"?Object.defineProperty:function(b,d,e){if(b==Array.prototype||b==Object.prototype)return b;b[d]=e.value;return b};function v(b){b=["object"==typeof globalThis&&globalThis,b,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var d=0;d<b.length;++d){var e=b[d];if(e&&e.Math==Math)return e}throw Error("Cannot find global object");}var w=v(this);
+function y(b,d){if(d)a:{var e=w;b=b.split(".");for(var h=0;h<b.length-1;h++){var k=b[h];if(!(k in e))break a;e=e[k]}b=b[b.length-1];h=e[b];d=d(h);d!=h&&d!=null&&u(e,b,{configurable:!0,writable:!0,value:d})}}function z(b){function d(h){return b.next(h)}function e(h){return b.throw(h)}return new Promise(function(h,k){function m(n){n.done?h(n.value):Promise.resolve(n.value).then(d,e).then(m,k)}m(b.next())})}y("globalThis",function(b){return b||w});/*
+
+ Copyright The Closure Library Authors.
+ SPDX-License-Identifier: Apache-2.0
+*/
+function A(b,d){function e(){}e.prototype=d.prototype;b.j=d.prototype;b.prototype=new e;b.prototype.constructor=b;b.h=function(h,k,m){for(var n=Array(arguments.length-2),p=2;p<arguments.length;p++)n[p-2]=arguments[p];return d.prototype[k].apply(h,n)}};function B(b,d,e="*"){function h(a){if(typeof a==="string")return F.encode(a).buffer;if(a instanceof ArrayBuffer)return a.slice(0);if(ArrayBuffer.isView(a))return a.buffer.slice(a.byteOffset,a.byteOffset+a.byteLength);throw Error("Invalid data type");}function k(a){a=h(a);var f={type:"send",data:new Uint8Array(a)},g;(g=r)==null||g.postMessage(f,[a])}function m(){if(!r)throw Error("Data port not captured yet.");r.onmessage=a=>{if(a.data.type==="message"){a=new MessageEvent("message",{data:G.decode(a.data.data)});
+let f;(f=c.onmessage)==null||f.call(c,a);c.dispatchEvent(a)}}}function n(){if(!t)throw Error("Control port not captured yet.");t.onmessage=a=>{switch(a.data.type){case "open":l=1;var f=new Event("open"),g;(g=c.onopen)==null||g.call(c,f);c.dispatchEvent(f);q.forEach(H=>{k(H)});q=[];break;case "close":g=a.data;l=3;g=new CloseEvent("close",{code:g.code,reason:g.reason,wasClean:g.wasClean});(f=c.onclose)==null||f.call(c,g);c.dispatchEvent(g);break;case "error":l=3;f=new Event("error");let x;(x=c.onerror)==
+null||x.call(c,f);c.dispatchEvent(f)}}}function p(a){return z(function*(){var f=new MessageChannel;t=f.port1;var g=new MessageChannel;r=g.port1;n();m();window.parent.postMessage({type:"websocket_open",portOrdering:["control","data"],url:b,protocols:a||[],connectionId:I},e,[f.port2,g.port2])}())}var c=Reflect.construct(EventTarget,[],new.target);c.CONNECTING=0;c.OPEN=1;c.CLOSING=2;c.CLOSED=3;c.url=b;c.binaryType="arraybuffer";c.protocol="";c.i="";var l=0,t=null,r=null,q=[],F=new TextEncoder,G=new TextDecoder;
+c.onopen=null;c.onmessage=null;c.onclose=null;c.onerror=null;Object.defineProperty(c,"readyState",{get:()=>l,enumerable:!0,configurable:!0});Object.defineProperty(c,"bufferedAmount",{get:()=>{var a=0;q.forEach(f=>{a+=typeof f==="string"?f.length:f.byteLength});return a},enumerable:!0,configurable:!0});var I=function(){var a;return((a=globalThis.crypto)==null?0:a.randomUUID)?globalThis.crypto.randomUUID():"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,f=>{var g=Math.random()*16|0;return(f===
+"x"?g:g&3|8).toString(16)})}();c.send=a=>{if(l===1)a instanceof Blob?a.arrayBuffer().then(f=>{k(f)}):k(a);else if(l===0)if(typeof a==="string")q.push(a);else if(a instanceof ArrayBuffer||ArrayBuffer.isView(a))q.push(h(a));else throw Error("Sending Blob is not supported before the connection is open.");else console.debug("WebSocket send called in CLOSING or CLOSED state; ignored.")};c.close=(a=1E3,f="")=>{if(l!==2&&l!==3){l=2;a={type:"close",code:a,reason:f,wasClean:a===1E3};var g;(g=t)==null||g.postMessage(a)}};
+Promise.resolve().then(()=>p(d));return c}A(B,EventTarget);var C=document.currentScript,D=C==null?void 0:C.getAttribute("ws-interception-config");if(!D)throw Error("WebSocket Interceptor: Missing ws-interception-config attribute in the script tag.");var E=JSON.parse(D);if(!E.parentOrigin||typeof E.parentOrigin!=="string")throw Error("WebSocket Interceptor: Invalid parentOrigin in ws-interception-config");
+(function(b){var d=Object.getOwnPropertyDescriptor(window,"WebSocket");if(!d||d.writable||d.configurable)d=Object.assign(function(e,h){try{let k=(new URL(e)).hostname;if(b.proxiedDomains.some(m=>k===m||k.endsWith(`.${m}`)))return new B(e,h,b.parentOrigin)}catch(k){throw window.parent.postMessage({type:"websocket_blocked",url:e,reason:"blocked_invalid_url"},b.parentOrigin),new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");}window.parent.postMessage({type:"websocket_blocked",
+url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");},{CONNECTING:0,OPEN:1,CLOSING:2,CLOSED:3}),Object.defineProperty(window,"WebSocket",{value:d,writable:!1,configurable:!1})})({proxiedDomains:E.proxiedDomains||[],parentOrigin:E.parentOrigin});}).call(this);
+</script><script data-bard-client-injected="true">((function(modelInformation) {
+  const originalFetch = window.fetch;
+  // TODO: b/421908508 - Move these out of the script and match all generative AI model calls.
+  let googleLlmBaseApiUrls = [
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':streamGenerateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageEditModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageTransformModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.ttsModelName + ':generateContent',
+  ];
+  modelInformation.deprecatedTextModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+    );
+  });
+  modelInformation.deprecatedImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predict',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predictLongRunning',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+  modelInformation.deprecatedGenerateImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+  modelInformation.deprecatedImageTransformModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+
+  const pendingFetchResolvers = {};
+  let nextPromiseId = 0;
+
+  function handleStringInput(input, optionsArgument) {
+    const actualUrl = input;
+    const fetchCallArgs = [actualUrl, optionsArgument];
+    const effectiveOptions = optionsArgument || {};
+    const bodyForApiKeyCheck = effectiveOptions.body;
+    const bodyForPostMessage = effectiveOptions.body;
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  function handleRequestInput(input, optionsArgument) {
+    const actualUrl = input.url;
+    const fetchCallArgs = [input, optionsArgument];
+    const effectiveOptions = { method: input.method, headers: new Headers(input.headers) };
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (optionsArgument) {
+      if (optionsArgument.method) effectiveOptions.method = optionsArgument.method;
+      if (optionsArgument.headers) effectiveOptions.headers = new Headers(optionsArgument.headers);
+      if ('body' in optionsArgument) {
+        bodyForApiKeyCheck = optionsArgument.body;
+        bodyForPostMessage = optionsArgument.body;
+      } else {
+        bodyForApiKeyCheck = undefined;
+        bodyForPostMessage = input.body;
+      }
+    } else {
+      bodyForApiKeyCheck = undefined;
+      bodyForPostMessage = input.body;
+    }
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  window.fetch = function(input, optionsArgument) {
+    let actualUrl;
+    let fetchCallArgs;
+    let effectiveOptions = {};
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (typeof input === 'string') {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleStringInput(input, optionsArgument));
+    } else if (input instanceof Request) {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleRequestInput(input, optionsArgument));
+    } else {
+      return originalFetch.apply(window, [input, optionsArgument]);
+    }
+
+    effectiveOptions.method = effectiveOptions.method || 'GET';
+    if (!effectiveOptions.headers) {
+      effectiveOptions.headers = new Headers();
+    }
+
+
+    if (typeof actualUrl === 'string' && googleLlmBaseApiUrls.some((url) => actualUrl.startsWith(url))) {
+      let apiKeyIsNull = true;
+
+      const regex = new RegExp("models/([^:]+)");
+      const modelNameMatch = actualUrl.match(regex);
+      const modelName = modelNameMatch ? modelNameMatch[1] : 'unspecified';
+
+
+      try {
+        const urlObject = new URL(actualUrl);  // Use URL object for robust parsing
+        const apiKeyParam = urlObject.searchParams.get('key');
+        if (apiKeyParam) {
+          apiKeyIsNull = false;
+        }
+      } catch (e) {
+        // Continue checks even if URL parsing fails
+      }
+
+      if (apiKeyIsNull && effectiveOptions.headers) {
+        const h = new Headers(effectiveOptions.headers);
+        const apiKeyHeaderValue = h.get('X-API-Key') || h.get('x-api-key');
+        if (apiKeyHeaderValue) {
+          apiKeyIsNull = false;
+          return originalFetch.apply(window, fetchCallArgs);
+        }
+      }
+
+      if (apiKeyIsNull && effectiveOptions.method && ['POST', 'PUT', 'PATCH'].includes(effectiveOptions.method.toUpperCase()) && typeof bodyForApiKeyCheck === 'string') {
+        try {
+          const bodyData = JSON.parse(bodyForApiKeyCheck);
+          if (bodyData && bodyData.apiKey) {
+            apiKeyIsNull = false;
+            return originalFetch.apply(window, fetchCallArgs);
+          }
+        } catch (e) {
+          // Ignore JSON parsing errors
+        }
+      }
+
+      if(apiKeyIsNull) {
+        const promiseId = nextPromiseId++;
+        const promise = new Promise((resolve) => {
+          pendingFetchResolvers[promiseId] = (resolvedResponse) => {
+            delete pendingFetchResolvers[promiseId];
+            resolve(resolvedResponse);
+          };
+        });
+
+        let serializedBodyForPostMessage;
+        if (typeof bodyForPostMessage === 'string' || bodyForPostMessage == null) {
+            serializedBodyForPostMessage = bodyForPostMessage;
+        } else if (bodyForPostMessage instanceof ReadableStream) {
+            serializedBodyForPostMessage = null;
+        } else {
+            try {
+                serializedBodyForPostMessage = JSON.stringify(bodyForPostMessage);
+            } catch (e) {
+                serializedBodyForPostMessage = null;
+            }
+        }
+
+        const messageOptions = {
+            method: effectiveOptions.method,
+            headers: Object.fromEntries(new Headers(effectiveOptions.headers).entries()),
+            body: serializedBodyForPostMessage
+        };
+
+        window.parent.postMessage({
+          type: 'requestFetch',
+          url: actualUrl,
+          modelName: modelName,
+          options: messageOptions,
+          promiseId: promiseId,
+        }, '*');
+
+        return promise;
+      }
+      return originalFetch.apply(window, fetchCallArgs);
+    }
+    return originalFetch.apply(window, fetchCallArgs);
+  };
+
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.type === 'resolveFetch') {
+      const { promiseId, response } = event.data;
+      if (pendingFetchResolvers[promiseId]) {
+        try {
+          const reconstructedResponse = new Response(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: new Headers(response.headers),
+          });
+          pendingFetchResolvers[promiseId](reconstructedResponse);
+        } catch (error) {
+          pendingFetchResolvers[promiseId](new Response(null, { status: 500, statusText: "Interceptor Response Reconstruction Error" }));
+        }
+      }
+    }
+  });
+
+}))({"textModelName":"gemini-3-flash-preview","imageModelName":"imagen-4.0-generate-001","imageEditModelName":"gemini-3.1-flash-image","imageTransformModelName":"gemini-3-pro-image","videoModelName":"veo-2.0-generate-001","ttsModelName":"gemini-2.5-flash-preview-tts","deprecatedTextModelNames":["gemini-2.0-flash","gemini-2.5-flash","gemini-2.5-flash-preview-04-17","gemini-2.5-flash-preview-05-20","gemini-2.5-flash-preview-09-2025"],"deprecatedImageModelNames":["imagen-3.0-generate-001","imagen-3.0-generate-002"],"deprecatedGenerateImageModelNames":["gemini-2.5-flash-image-preview","gemini-2.5-flash-image","gemini-3.1-flash-image-preview"],"deprecatedImageTransformModelNames":["gemini-3-pro-image-preview-11-2025"]})</script><script data-bard-client-injected="true">(function() {
+  function normalizeSlug(str) {
+    try {
+      return str
+        .trim()
+        .toLowerCase()
+        .replace(/[^p{L}p{N}s_-]/gu, '')
+        .replace(/s+/g, '-');
+    } catch (e) {
+      return str
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9s_-]/g, '')
+        .replace(/s+/g, '-');
+    }
+  }
+
+  function findTargetElement(hash) {
+    if (!hash || hash === '#') {
+      return null;
+    }
+    const rawId = hash.startsWith('#') ? hash.slice(1) : hash;
+    let decodedId = rawId;
+    try {
+      decodedId = decodeURIComponent(rawId);
+    } catch (e) {
+      // Ignore URI malformed errors.
+    }
+
+    // 1. Direct ID match (raw and decoded).
+    let target = document.getElementById(rawId) || document.getElementById(decodedId);
+    if (target) {
+      return target;
+    }
+
+    // 2. Name attribute match (<a name="...">).
+    try {
+      if (typeof CSS !== 'undefined' && CSS.escape) {
+        target =
+          document.querySelector('[name="' + CSS.escape(rawId) + '"]') ||
+          document.querySelector('[name="' + CSS.escape(decodedId) + '"]');
+      } else {
+        const namedElements = document.getElementsByName(rawId);
+        if (namedElements && namedElements.length > 0) {
+          return namedElements[0];
+        }
+      }
+    } catch (e) {
+      // Ignore querySelector syntax errors.
+    }
+    if (target) {
+      return target;
+    }
+
+    // 3. Match heading text by slug (for Markdown TOCs where headings lack explicit IDs).
+    const targetSlug = normalizeSlug(decodedId);
+    if (targetSlug) {
+      for (const heading of document.querySelectorAll('h1, h2, h3, h4, h5, h6')) {
+        if (normalizeSlug(heading.textContent || '') === targetSlug) {
+          return heading;
+        }
+      }
+    }
+
+    return null;
+  }
+
+  document.addEventListener('click', function(event) {
+    const target = event.target;
+    const anchor = target && typeof target.closest === 'function' ? target.closest('a') : null;
+    if (!anchor) {
+      return;
+    }
+
+    const href = anchor.getAttribute('href');
+    if (
+      !href ||
+      href.trim().toLowerCase().startsWith('javascript:') ||
+      anchor.hasAttribute('download')
+    ) {
+      return;
+    }
+
+    // Check if the link is an in-page hash / anchor link.
+    if (href.startsWith('#')) {
+      event.preventDefault();
+      const targetElement = findTargetElement(href);
+      if (targetElement) {
+        targetElement.scrollIntoView({behavior: 'smooth', block: 'start'});
+      }
+      return;
+    }
+
+    // Check if the URL has the same origin/pathname but with a hash.
+    try {
+      const url = new URL(anchor.href, window.location.href);
+      if (
+        url.hash &&
+        url.origin === window.location.origin &&
+        url.pathname === window.location.pathname
+      ) {
+        event.preventDefault();
+        const targetElement = findTargetElement(url.hash);
+        if (targetElement) {
+          targetElement.scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+        return;
+      }
+    } catch (e) {
+      // Fall through if URL parsing fails.
+    }
+
+    // For all external or full navigation links, prevent iframe-level navigation
+    // (which breaks in AGSA WebView or sandboxed iframes) and ensure they open
+    // safely in a new tab/window.
+    if (anchor.target !== '_blank') {
+      event.preventDefault();
+      window.open(anchor.href, '_blank', 'noopener,noreferrer');
+    }
+  }, {capture: true});
+})();</script><script data-bard-client-injected="true">(function(){'use strict';function a(){window.parent.postMessage({type:"interaction"},"*")}window.addEventListener("click",a,{capture:!0,passive:!0});window.addEventListener("touchstart",a,{capture:!0,passive:!0});window.addEventListener("keydown",a,{capture:!0,passive:!0});}).call(this);
+</script><script data-bard-client-injected="true">(function() {
+  const originalConsoleLog = console.log;
+  const originalConsoleError = console.error;
+
+    /**
+   * Normalizes an error event or a promise rejection reason into a structured error object.
+   * @param {*} errorEventOrReason The error object or reason.
+   * @return {object} Structured error data { message, name, stack }.
+   */
+  function getErrorObject(errorEventOrReason) {
+    if (errorEventOrReason instanceof Error) {
+      return {
+        message: errorEventOrReason.message,
+        name: errorEventOrReason.name,
+        stack: errorEventOrReason.stack,
+      };
+    }
+    // Fallback for non-Error objects.
+    try {
+      return {
+        message: JSON.stringify(errorEventOrReason),
+        name: 'UnknownErrorType',
+        stack: null,
+      };
+    } catch (e) {
+      return {
+        message: String(errorEventOrReason),
+        name: 'UnknownErrorTypeNonStringifiable',
+        stack: null,
+      };
+    }
+  }
+
+  /**
+   * Converts an array of arguments (from log/error) into a single string.
+   * Handles Error objects specially to include their message and stack.
+   * @param {Array<*>} args - Arguments passed to console methods.
+   * @return {string} A string representation of the arguments.
+   */
+  function stringifyArgs(args) {
+    return args
+      .map((arg) => {
+        if (arg instanceof Error) {
+          const {message, stack} = arg;
+          return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
+        }
+        if (typeof arg === 'object' && arg !== null) {
+          try {
+            return JSON.stringify(arg);
+          } catch (error) {
+            return '[Circular Object]';
+          }
+        } else {
+          return String(arg);
+        }
+      })
+      .join(' ');
+  }
+
+  console.log = function(...args) {
+    const logString = stringifyArgs(args);
+    window.parent.postMessage({ type: 'log', message: logString }, '*');
+    originalConsoleLog.apply(console, args);
+  };
+
+  console.error = function(...args) {
+    let errorData;
+    if (args.length > 0 && args[0] instanceof Error) {
+      const err = args[0];
+      // If the first arg is an Error, capture its details.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        ...getErrorObject(err),
+        rawArgsString: stringifyArgs(args.slice(1)),
+        timestamp: new Date().toISOString(),
+      };
+    } else {
+      // If not an Error object, treat all args as a general error message.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        message: stringifyArgs(args),
+        name: 'ConsoleLoggedError',
+        stack: null,
+        timestamp: new Date().toISOString(),
+      };
+    }
+    window.parent.postMessage(errorData, '*');
+    originalConsoleError.apply(console, args);
+  };
+
+  // Listen for global unhandled synchronous errors.
+  window.addEventListener('error', function(event) {
+    const errorDetails = event.error ? getErrorObject(event.error) : {
+      message: event.message,
+      name: 'GlobalError',
+      stack: null,
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+    };
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'global',
+      ...errorDetails,
+      message: errorDetails.message || event.message,
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+  // Listen for unhandled promise rejections (asynchronous errors).
+  window.addEventListener('unhandledrejection', function(event) {
+    const errorDetails = getErrorObject(event.reason);
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'unhandledrejection',
+      ...errorDetails,
+      message: errorDetails.message || 'Unhandled Promise Rejection',
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+})();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英語會話微練習 & 生字備份系統</title>
+    <title>英語會話微練習 &amp; 生字備份系統</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', 'Noto Sans TC', sans-serif;
@@ -17,7 +739,7 @@
             font-weight: 700;
         }
     </style>
-</head>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.sticky{position:sticky}.bottom-5{bottom:1.25rem}.right-5{right:1.25rem}.top-0{top:0px}.z-20{z-index:20}.z-50{z-index:50}.col-span-2{grid-column:span 2 / span 2}.mx-auto{margin-left:auto;margin-right:auto}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.mt-4{margin-top:1rem}.mb-1{margin-bottom:0.25rem}.mt-1\.5{margin-top:0.375rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-6{height:1.5rem}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-2\.5{width:0.625rem}.w-full{width:100%}.min-w-\[200px\]{min-width:200px}.max-w-5xl{max-width:64rem}.max-w-xl{max-width:36rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.border-collapse{border-collapse:collapse}.translate-y-20{--tw-translate-y:5rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.375rem * var(--tw-space-y-reverse))}.space-y-2\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.625rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.divide-y > :not([hidden]) ~ :not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px * var(--tw-divide-y-reverse))}.divide-slate-100 > :not([hidden]) ~ :not([hidden]){--tw-divide-opacity:1;border-color:rgb(241 245 249 / var(--tw-divide-opacity, 1))}.overflow-x-auto{overflow-x:auto}.whitespace-nowrap{white-space:nowrap}.whitespace-pre{white-space:pre}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.rounded-tl-xl{border-top-left-radius:0.75rem}.rounded-tr-xl{border-top-right-radius:0.75rem}.rounded-bl-none{border-bottom-left-radius:0px}.rounded-br-none{border-bottom-right-radius:0px}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-amber-300{--tw-border-opacity:1;border-color:rgb(252 211 77 / var(--tw-border-opacity, 1))}.border-emerald-200{--tw-border-opacity:1;border-color:rgb(167 243 208 / var(--tw-border-opacity, 1))}.border-emerald-300{--tw-border-opacity:1;border-color:rgb(110 231 183 / var(--tw-border-opacity, 1))}.border-sky-200{--tw-border-opacity:1;border-color:rgb(186 230 253 / var(--tw-border-opacity, 1))}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249 / var(--tw-border-opacity, 1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.border-slate-300{--tw-border-opacity:1;border-color:rgb(203 213 225 / var(--tw-border-opacity, 1))}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85 / var(--tw-border-opacity, 1))}.bg-amber-50{--tw-bg-opacity:1;background-color:rgb(255 251 235 / var(--tw-bg-opacity, 1))}.bg-amber-500{--tw-bg-opacity:1;background-color:rgb(245 158 11 / var(--tw-bg-opacity, 1))}.bg-emerald-50{--tw-bg-opacity:1;background-color:rgb(236 253 245 / var(--tw-bg-opacity, 1))}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229 / var(--tw-bg-opacity, 1))}.bg-sky-50{--tw-bg-opacity:1;background-color:rgb(240 249 255 / var(--tw-bg-opacity, 1))}.bg-sky-500{--tw-bg-opacity:1;background-color:rgb(14 165 233 / var(--tw-bg-opacity, 1))}.bg-sky-600{--tw-bg-opacity:1;background-color:rgb(2 132 199 / var(--tw-bg-opacity, 1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-emerald-100{--tw-bg-opacity:1;background-color:rgb(209 250 229 / var(--tw-bg-opacity, 1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.bg-slate-50\/70{background-color:rgb(248 250 252 / 0.7)}.p-3{padding:0.75rem}.p-3\.5{padding:0.875rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-4{padding-left:1rem;padding-right:1rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-3\.5{padding-top:0.875rem;padding-bottom:0.875rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.pb-3\.5{padding-bottom:0.875rem}.pb-4{padding-bottom:1rem}.pt-1{padding-top:0.25rem}.pt-2{padding-top:0.5rem}.pt-3{padding-top:0.75rem}.text-left{text-align:left}.text-center{text-align:center}.text-right{text-align:right}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-\[11px\]{font-size:11px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-wider{letter-spacing:0.05em}.text-amber-900{--tw-text-opacity:1;color:rgb(120 53 15 / var(--tw-text-opacity, 1))}.text-emerald-300{--tw-text-opacity:1;color:rgb(110 231 183 / var(--tw-text-opacity, 1))}.text-emerald-700{--tw-text-opacity:1;color:rgb(4 120 87 / var(--tw-text-opacity, 1))}.text-emerald-800{--tw-text-opacity:1;color:rgb(6 95 70 / var(--tw-text-opacity, 1))}.text-emerald-900{--tw-text-opacity:1;color:rgb(6 78 59 / var(--tw-text-opacity, 1))}.text-emerald-950{--tw-text-opacity:1;color:rgb(2 44 34 / var(--tw-text-opacity, 1))}.text-sky-600{--tw-text-opacity:1;color:rgb(2 132 199 / var(--tw-text-opacity, 1))}.text-sky-700{--tw-text-opacity:1;color:rgb(3 105 161 / var(--tw-text-opacity, 1))}.text-sky-900{--tw-text-opacity:1;color:rgb(12 74 110 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-sky-100{--tw-text-opacity:1;color:rgb(224 242 254 / var(--tw-text-opacity, 1))}.text-rose-600{--tw-text-opacity:1;color:rgb(225 29 72 / var(--tw-text-opacity, 1))}.opacity-0{opacity:0}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:border-sky-300:hover{--tw-border-opacity:1;border-color:rgb(125 211 252 / var(--tw-border-opacity, 1))}.hover\:border-sky-500:hover{--tw-border-opacity:1;border-color:rgb(14 165 233 / var(--tw-border-opacity, 1))}.hover\:bg-amber-100:hover{--tw-bg-opacity:1;background-color:rgb(254 243 199 / var(--tw-bg-opacity, 1))}.hover\:bg-amber-600:hover{--tw-bg-opacity:1;background-color:rgb(217 119 6 / var(--tw-bg-opacity, 1))}.hover\:bg-emerald-700:hover{--tw-bg-opacity:1;background-color:rgb(4 120 87 / var(--tw-bg-opacity, 1))}.hover\:bg-indigo-700:hover{--tw-bg-opacity:1;background-color:rgb(67 56 202 / var(--tw-bg-opacity, 1))}.hover\:bg-sky-100:hover{--tw-bg-opacity:1;background-color:rgb(224 242 254 / var(--tw-bg-opacity, 1))}.hover\:bg-sky-700:hover{--tw-bg-opacity:1;background-color:rgb(3 105 161 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-100:hover{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-200:hover{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-900:hover{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-50:hover{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.hover\:text-slate-800:hover{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.hover\:text-sky-600:hover{--tw-text-opacity:1;color:rgb(2 132 199 / var(--tw-text-opacity, 1))}.hover\:text-sky-700:hover{--tw-text-opacity:1;color:rgb(3 105 161 / var(--tw-text-opacity, 1))}.hover\:underline:hover{-webkit-text-decoration-line:underline;text-decoration-line:underline}.focus\:bg-white:focus{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-emerald-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(16 185 129 / var(--tw-ring-opacity, 1))}.focus\:ring-sky-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(14 165 233 / var(--tw-ring-opacity, 1))}@media (min-width: 640px){.sm\:w-56{width:14rem}.sm\:w-auto{width:auto}.sm\:flex-row{flex-direction:row}.sm\:flex-col{flex-direction:column}.sm\:items-center{align-items:center}.sm\:border-t-0{border-top-width:0px}.sm\:p-5{padding:1.25rem}.sm\:p-6{padding:1.5rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0px}.sm\:text-base{font-size:1rem;line-height:1.5rem}.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}.sm\:text-xl{font-size:1.25rem;line-height:1.75rem}}@media (min-width: 768px){.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}@media (min-width: 1024px){.lg\:col-span-5{grid-column:span 5 / span 5}.lg\:col-span-7{grid-column:span 7 / span 7}.lg\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}}</style><style data-id="immersive-translate-input-injected-css"></style></head>
 <body class="text-slate-800 min-h-screen flex flex-col">
 
     <!-- 頂部導覽列 -->
@@ -28,8 +750,8 @@
                     💬
                 </div>
                 <div>
-                    <h1 class="text-lg sm:text-xl font-bold text-slate-900 leading-tight">英語會話微練習 & 生字備份系統</h1>
-                    <p class="text-xs text-slate-500">中英雙向互轉・真音朗讀・試算表與 CSV/JSON 備份還原</p>
+                    <h1 class="text-lg sm:text-xl font-bold text-slate-900 leading-tight">英語會話微練習 &amp; 生字備份系統</h1>
+                    <p class="text-xs text-slate-500">中英雙向互轉・真音朗讀・雲端與 GitHub 自動同步</p>
                 </div>
             </div>
 
@@ -38,27 +760,27 @@
                     🔊 測試朗讀
                 </button>
                 <span id="cloudSyncBadge" class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1">
-                    ☁️ <span id="cloudSyncText">系統就緒</span>
+                    ☁️ <span id="cloudSyncText">雲端已載入 (4 字)</span>
                 </span>
                 <span class="bg-slate-100 text-slate-700 border border-slate-200 text-xs font-semibold px-3 py-1.5 rounded-full">
-                    📚 已收錄 <span id="totalVocabCount" class="text-sky-700 font-bold">0</span> 字
+                    📚 已收錄 <span id="totalVocabCount" class="text-sky-700 font-bold">4</span> 字
                 </span>
                 <button type="button" onclick="switchTab('backup')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-medium px-3.5 py-1.5 rounded-xl transition shadow-sm">
-                    💾 備份與還原
+                    💾 備份與更新程式
                 </button>
             </div>
         </div>
 
         <!-- 分頁切換列 -->
         <div class="max-w-5xl mx-auto px-4 sm:px-6 flex gap-6 text-sm border-t border-slate-100">
-            <button type="button" id="tabBtn-practice" onclick="switchTab('practice')" class="py-3 px-1 tab-active transition">
+            <button type="button" id="tabBtn-practice" onclick="switchTab('practice')" class="py-3 px-1 transition text-slate-500">
                 🎙️ 1. 情境會話練習
             </button>
             <button type="button" id="tabBtn-vocab" onclick="switchTab('vocab')" class="py-3 px-1 text-slate-500 hover:text-slate-800 transition">
                 📓 2. 我的生字本
             </button>
-            <button type="button" id="tabBtn-backup" onclick="switchTab('backup')" class="py-3 px-1 text-slate-500 hover:text-slate-800 transition">
-                🗂️ 3. 資料備份與還原
+            <button type="button" id="tabBtn-backup" onclick="switchTab('backup')" class="py-3 px-1 hover:text-slate-800 transition tab-active">
+                🗂️ 3. 資料備份與更新 GitHub 程式
             </button>
         </div>
     </header>
@@ -67,22 +789,35 @@
     <main class="max-w-5xl w-full mx-auto px-4 sm:px-6 py-6 flex-1">
 
         <!-- ==================== 分頁 1：情境會話練習 ==================== -->
-        <section id="tab-practice" class="space-y-6">
+        <section id="tab-practice" class="space-y-6 hidden">
             
             <!-- 主題選擇與自訂主題 -->
             <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div class="space-y-1.5">
                         <label class="text-xs font-semibold uppercase tracking-wider text-slate-400 block">選擇今日練習主題</label>
-                        <div class="flex flex-wrap gap-2" id="scenarioButtons"></div>
+                        <div class="flex flex-wrap gap-2" id="scenarioButtons">
+                    <button type="button" onclick="selectScenario('walk')" class="text-xs sm:text-sm px-3.5 py-1.5 rounded-xl font-medium transition bg-sky-600 text-white shadow-sm">
+                        自然與散步
+                    </button>
+                
+                    <button type="button" onclick="selectScenario('music')" class="text-xs sm:text-sm px-3.5 py-1.5 rounded-xl font-medium transition bg-slate-100 hover:bg-slate-200 text-slate-700">
+                        音樂與興趣
+                    </button>
+                
+                    <button type="button" onclick="selectScenario('cafe')" class="text-xs sm:text-sm px-3.5 py-1.5 rounded-xl font-medium transition bg-slate-100 hover:bg-slate-200 text-slate-700">
+                        生活與餐飲
+                    </button>
+                
+                    <button type="button" onclick="selectScenario('plants')" class="text-xs sm:text-sm px-3.5 py-1.5 rounded-xl font-medium transition bg-slate-100 hover:bg-slate-200 text-slate-700">
+                        園藝與植物
+                    </button>
+                </div>
                     </div>
                     <!-- 自訂主題輸入 -->
                     <div class="flex items-center gap-2 border-t sm:border-t-0 pt-3 sm:pt-0 border-slate-100">
-                        <input id="customTopicInput" type="text" placeholder="輸入自訂主題 (如：看海、米索、遛狗)" 
-                            onkeydown="if(event.key==='Enter'){event.preventDefault(); generateCustomScenario();}"
-                            class="text-sm border border-slate-300 rounded-xl px-3 py-2 w-full sm:w-56 focus:outline-none focus:ring-2 focus:ring-sky-500">
-                        <button type="button" id="generateTopicBtn" onclick="generateCustomScenario()" 
-                            class="bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium px-3.5 py-2 rounded-xl transition whitespace-nowrap shadow-sm">
+                        <input id="customTopicInput" type="text" placeholder="輸入自訂主題 (如：看海、米索、遛狗)" onkeydown="if(event.key==='Enter'){event.preventDefault(); generateCustomScenario();}" class="text-sm border border-slate-300 rounded-xl px-3 py-2 w-full sm:w-56 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <button type="button" id="generateTopicBtn" onclick="generateCustomScenario()" class="bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium px-3.5 py-2 rounded-xl transition whitespace-nowrap shadow-sm">
                             ✨ 產生主題
                         </button>
                     </div>
@@ -105,34 +840,79 @@
                                 ➕ 全部存入生字本
                             </button>
                         </div>
-                        <div id="scenarioWordsList" class="space-y-3"></div>
+                        <div id="scenarioWordsList" class="space-y-3">
+                    <div class="p-3.5 rounded-xl border border-slate-200 hover:border-sky-300 bg-slate-50/70 transition flex items-start justify-between gap-2">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <button type="button" onclick="speakText('breeze')" class="font-bold text-base text-slate-900 hover:text-sky-600 flex items-center gap-1">
+                                    <span>breeze</span>
+                                    <span class="text-sky-600 text-sm">🔊</span>
+                                </button>
+                                <span class="text-xs text-slate-400">[briz]</span>
+                                <span class="text-xs font-mono bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded">n.</span>
+                                <span class="text-sm font-medium text-slate-800">微風</span>
+                            </div>
+                            <p class="text-xs text-slate-600 italic cursor-pointer hover:text-sky-700" onclick="speakText('The morning breeze feels very fresh.')">"The morning breeze feels very fresh."</p>
+                        </div>
+                        <button type="button" onclick="saveWordFromScenario(0)" class="shrink-0 text-xs font-medium px-2.5 py-1.5 rounded-lg transition bg-emerald-100 text-emerald-700">
+                            ✓ 已收錄
+                        </button>
+                    </div>
+                
+                    <div class="p-3.5 rounded-xl border border-slate-200 hover:border-sky-300 bg-slate-50/70 transition flex items-start justify-between gap-2">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <button type="button" onclick="speakText('peaceful')" class="font-bold text-base text-slate-900 hover:text-sky-600 flex items-center gap-1">
+                                    <span>peaceful</span>
+                                    <span class="text-sky-600 text-sm">🔊</span>
+                                </button>
+                                <span class="text-xs text-slate-400">[ˈpisfəl]</span>
+                                <span class="text-xs font-mono bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded">adj.</span>
+                                <span class="text-sm font-medium text-slate-800">寧靜的、平靜的</span>
+                            </div>
+                            <p class="text-xs text-slate-600 italic cursor-pointer hover:text-sky-700" onclick="speakText('Walking along the coast is peaceful.')">"Walking along the coast is peaceful."</p>
+                        </div>
+                        <button type="button" onclick="saveWordFromScenario(1)" class="shrink-0 text-xs font-medium px-2.5 py-1.5 rounded-lg transition bg-emerald-100 text-emerald-700">
+                            ✓ 已收錄
+                        </button>
+                    </div>
+                
+                    <div class="p-3.5 rounded-xl border border-slate-200 hover:border-sky-300 bg-slate-50/70 transition flex items-start justify-between gap-2">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <button type="button" onclick="speakText('path')" class="font-bold text-base text-slate-900 hover:text-sky-600 flex items-center gap-1">
+                                    <span>path</span>
+                                    <span class="text-sky-600 text-sm">🔊</span>
+                                </button>
+                                <span class="text-xs text-slate-400">[pæθ]</span>
+                                <span class="text-xs font-mono bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded">n.</span>
+                                <span class="text-sm font-medium text-slate-800">小徑、步道</span>
+                            </div>
+                            <p class="text-xs text-slate-600 italic cursor-pointer hover:text-sky-700" onclick="speakText('We walked along the country path.')">"We walked along the country path."</p>
+                        </div>
+                        <button type="button" onclick="saveWordFromScenario(2)" class="shrink-0 text-xs font-medium px-2.5 py-1.5 rounded-lg transition bg-white border border-slate-300 hover:border-sky-500 text-slate-700">
+                            + 收錄
+                        </button>
+                    </div>
+                </div>
                     </div>
 
                     <!-- 中英雙向自動互轉・新增生字 -->
                     <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
                         <div class="flex items-center justify-between mb-3">
-                            <h3 class="text-sm font-bold text-slate-900">🔄 中英雙向互轉・新增生字</h3>
+                            <h3 class="text-sm font-bold text-slate-900">🔄 中英雙向自動互轉・新增生字</h3>
                             <span class="text-[11px] bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full font-medium">中文⇄英文皆可轉</span>
                         </div>
                         <div class="space-y-2.5 text-sm">
                             <div class="flex gap-2">
-                                <input id="newMeaningInput" type="text" placeholder="1. 輸入中文 (如：米索、海浪) 轉英文" 
-                                    oninput="lastEditedVocabField='zh'"
-                                    onkeydown="if(event.key==='Enter'){event.preventDefault(); autoTranslateBidirectional('auto');}"
-                                    onblur="if(this.value.trim() && lastEditedVocabField==='zh') autoTranslateBidirectional('auto')"
-                                    class="flex-1 border border-slate-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-500">
-                                <button type="button" id="autoTransBtn" onclick="autoTranslateBidirectional('auto')"
-                                    class="bg-amber-500 hover:bg-amber-600 text-white text-xs sm:text-sm font-medium px-3 py-2 rounded-xl transition shrink-0 shadow-sm">
+                                <input id="newMeaningInput" type="text" placeholder="1. 輸入中文 (如：米索、海浪) 轉英文" oninput="lastEditedVocabField='zh'" onkeydown="if(event.key==='Enter'){event.preventDefault(); autoTranslateBidirectional('auto');}" class="flex-1 border border-slate-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                                <button type="button" id="autoTransBtn" onclick="autoTranslateBidirectional('auto')" class="bg-amber-500 hover:bg-amber-600 text-white text-xs sm:text-sm font-medium px-3 py-2 rounded-xl transition shrink-0 shadow-sm">
                                     🌐 中英互轉
                                 </button>
                             </div>
 
                             <div class="grid grid-cols-3 gap-2">
-                                <input id="newWordInput" type="text" placeholder="2. 輸入英文 (如：ocean) 轉中文" 
-                                    oninput="lastEditedVocabField='en'"
-                                    onkeydown="if(event.key==='Enter'){event.preventDefault(); autoTranslateBidirectional('auto');}"
-                                    onblur="if(this.value.trim() && lastEditedVocabField==='en') autoTranslateBidirectional('auto')"
-                                    class="col-span-2 border border-slate-300 bg-slate-50 rounded-xl px-3 py-2 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-500 font-semibold text-sky-900">
+                                <input id="newWordInput" type="text" placeholder="2. 輸入英文 (如：ocean) 轉中文" oninput="lastEditedVocabField='en'" onkeydown="if(event.key==='Enter'){event.preventDefault(); autoTranslateBidirectional('auto');}" class="col-span-2 border border-slate-300 bg-slate-50 rounded-xl px-3 py-2 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-500 font-semibold text-sky-900">
                                 <select id="newPosInput" class="border border-slate-300 rounded-xl px-2 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-sky-500">
                                     <option value="n.">n. 名詞</option>
                                     <option value="v.">v. 動詞</option>
@@ -164,15 +944,48 @@
                         <div>
                             <div class="flex items-center justify-between border-b border-slate-100 pb-3.5 mb-4">
                                 <div>
-                                    <span id="currentScenarioCategory" class="text-xs font-semibold text-sky-700 bg-sky-50 px-2.5 py-0.5 rounded-md"></span>
-                                    <h2 id="currentScenarioTitle" class="text-lg font-bold text-slate-900 mt-1"></h2>
+                                    <span id="currentScenarioCategory" class="text-xs font-semibold text-sky-700 bg-sky-50 px-2.5 py-0.5 rounded-md">自然與散步</span>
+                                    <h2 id="currentScenarioTitle" class="text-lg font-bold text-slate-900 mt-1">晨間散步與微風 (Morning Walk)</h2>
                                 </div>
                                 <button type="button" onclick="playFullDialogue()" class="text-xs sm:text-sm bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-3 py-2 rounded-xl transition">
                                     🔊 朗讀整段對話
                                 </button>
                             </div>
 
-                            <div id="dialogueContainer" class="space-y-4 mb-6"></div>
+                            <div id="dialogueContainer" class="space-y-4 mb-6">
+                    <div class="flex flex-col items-start">
+                        <span class="text-xs font-semibold text-slate-400 mb-1 px-1">AI Partner</span>
+                        <div class="max-w-xl rounded-2xl p-3.5 bg-slate-100 text-slate-800 rounded-bl-none border border-slate-200">
+                            <div class="flex items-start justify-between gap-3">
+                                <p class="text-sm sm:text-base font-medium leading-relaxed">Good morning! How was your walk along the path today?</p>
+                                <button type="button" onclick="speakText('Good morning! How was your walk along the path today?')" class="shrink-0 text-base">🔊</button>
+                            </div>
+                            <p class="text-xs mt-1.5 text-slate-500">早安！今天沿著步道散步覺得如何呢？</p>
+                        </div>
+                    </div>
+                
+                    <div class="flex flex-col items-end">
+                        <span class="text-xs font-semibold text-slate-400 mb-1 px-1">You</span>
+                        <div class="max-w-xl rounded-2xl p-3.5 bg-sky-600 text-white rounded-br-none shadow-sm">
+                            <div class="flex items-start justify-between gap-3">
+                                <p class="text-sm sm:text-base font-medium leading-relaxed">It was very peaceful. I really enjoyed the cool breeze.</p>
+                                <button type="button" onclick="speakText('It was very peaceful. I really enjoyed the cool breeze.')" class="shrink-0 text-base">🔊</button>
+                            </div>
+                            <p class="text-xs mt-1.5 text-sky-100">非常寧靜。我很享受涼爽的微風。</p>
+                        </div>
+                    </div>
+                
+                    <div class="flex flex-col items-start">
+                        <span class="text-xs font-semibold text-slate-400 mb-1 px-1">AI Partner</span>
+                        <div class="max-w-xl rounded-2xl p-3.5 bg-slate-100 text-slate-800 rounded-bl-none border border-slate-200">
+                            <div class="flex items-start justify-between gap-3">
+                                <p class="text-sm sm:text-base font-medium leading-relaxed">That sounds wonderful! Mornings are the best time to go outside.</p>
+                                <button type="button" onclick="speakText('That sounds wonderful! Mornings are the best time to go outside.')" class="shrink-0 text-base">🔊</button>
+                            </div>
+                            <p class="text-xs mt-1.5 text-slate-500">聽起來真棒！早晨是出門走走的最佳時刻。</p>
+                        </div>
+                    </div>
+                </div>
                         </div>
 
                         <!-- 換您試試看：互動問答區 -->
@@ -188,21 +1001,17 @@
                             </div>
 
                             <div class="bg-white p-3 rounded-xl border border-slate-200">
-                                <p id="promptQuestionEn" class="font-semibold text-slate-900 text-sm sm:text-base"></p>
-                                <p id="promptQuestionZh" class="text-xs text-slate-500 mt-0.5"></p>
-                                <p id="promptHint" class="text-xs text-sky-700 bg-sky-50 px-2.5 py-1.5 rounded-lg mt-2 inline-block"></p>
+                                <p id="promptQuestionEn" class="font-semibold text-slate-900 text-sm sm:text-base">What did you see or feel on your walk today?</p>
+                                <p id="promptQuestionZh" class="text-xs text-slate-500 mt-0.5">您今天散步時看到了什麼，或感覺如何呢？</p>
+                                <p id="promptHint" class="text-xs text-sky-700 bg-sky-50 px-2.5 py-1.5 rounded-lg mt-2 inline-block">提示句型：I saw trees and the ocean. / It felt very peaceful.</p>
                             </div>
 
                             <div class="flex gap-2">
-                                <input id="userReplyInput" type="text" placeholder="用英文輸入您的回答，或點擊麥克風..." 
-                                    onkeydown="if(event.key==='Enter'){event.preventDefault(); evaluateUserReply();}"
-                                    class="flex-1 text-sm bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-sky-500">
-                                <button type="button" id="voiceInputBtn" onclick="startSpeechRecognition()" title="語音輸入"
-                                    class="bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 px-3 py-2.5 rounded-xl transition">
+                                <input id="userReplyInput" type="text" placeholder="用英文輸入您的回答，或點擊麥克風..." onkeydown="if(event.key==='Enter'){event.preventDefault(); evaluateUserReply();}" class="flex-1 text-sm bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                                <button type="button" id="voiceInputBtn" onclick="startSpeechRecognition()" title="語音輸入" class="bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 px-3 py-2.5 rounded-xl transition">
                                     🎤
                                 </button>
-                                <button type="button" id="checkReplyBtn" onclick="evaluateUserReply()" 
-                                    class="bg-sky-600 hover:bg-sky-700 text-white text-sm font-medium px-4 py-2.5 rounded-xl transition whitespace-nowrap shadow-sm">
+                                <button type="button" id="checkReplyBtn" onclick="evaluateUserReply()" class="bg-sky-600 hover:bg-sky-700 text-white text-sm font-medium px-4 py-2.5 rounded-xl transition whitespace-nowrap shadow-sm">
                                     送出練習
                                 </button>
                             </div>
@@ -228,8 +1037,7 @@
                         <p class="text-xs text-slate-500">點擊單字或例句皆可聽發音，亦可調整熟練度</p>
                     </div>
                     <div class="flex flex-wrap items-center gap-2">
-                        <input id="searchVocabInput" oninput="renderVocabTable()" type="text" placeholder="🔍 搜尋單字、中文或分類..." 
-                            class="text-sm border border-slate-300 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <input id="searchVocabInput" oninput="renderVocabTable()" type="text" placeholder="🔍 搜尋單字、中文或分類..." class="text-sm border border-slate-300 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-sky-500">
                         <select id="filterMasterySelect" onchange="renderVocabTable()" class="text-sm border border-slate-300 rounded-xl px-3 py-1.5 bg-white">
                             <option value="all">所有熟練度</option>
                             <option value="⭐ 初學">⭐ 初學</option>
@@ -253,7 +1061,119 @@
                                 <th class="py-3 px-3 rounded-tr-xl text-right">操作</th>
                             </tr>
                         </thead>
-                        <tbody id="vocabTableBody" class="divide-y divide-slate-100 text-sm"></tbody>
+                        <tbody id="vocabTableBody" class="divide-y divide-slate-100 text-sm">
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="py-3 px-3 text-xs text-slate-500 whitespace-nowrap">2026-11-06</td>
+                        <td class="py-3 px-3 whitespace-nowrap">
+                            <span class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md">自然與散步</span>
+                        </td>
+                        <td class="py-3 px-3 font-bold text-slate-900 whitespace-nowrap">
+                            <button type="button" onclick="speakText('breeze')" class="hover:text-sky-600 flex items-center gap-1">
+                                <span>breeze</span>
+                                <span class="text-sky-600 text-xs">🔊</span>
+                            </button>
+                        </td>
+                        <td class="py-3 px-3 text-xs font-mono text-slate-500 whitespace-nowrap">n.</td>
+                        <td class="py-3 px-3 font-medium text-slate-800 whitespace-nowrap">微風</td>
+                        <td class="py-3 px-3 text-slate-600 text-xs sm:text-sm min-w-[200px]">
+                            <button type="button" onclick="speakText('The morning breeze feels very fresh.')" class="text-left hover:text-sky-700">The morning breeze feels very fresh.</button>
+                        </td>
+                        <td class="py-3 px-3 whitespace-nowrap">
+                            <select onchange="updateWordMastery('v1', this.value)" class="text-xs border border-slate-200 rounded-lg px-2 py-1 bg-white">
+                                <option value="⭐ 初學" selected="">⭐ 初學</option>
+                                <option value="⭐⭐ 熟悉">⭐⭐ 熟悉</option>
+                                <option value="⭐⭐⭐ 精通">⭐⭐⭐ 精通</option>
+                            </select>
+                        </td>
+                        <td class="py-3 px-3 text-right whitespace-nowrap">
+                            <button type="button" onclick="deleteVocabItem('v1')" class="text-xs text-rose-600 hover:underline px-2 py-1">刪除</button>
+                        </td>
+                    </tr>
+                
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="py-3 px-3 text-xs text-slate-500 whitespace-nowrap">2026-11-06</td>
+                        <td class="py-3 px-3 whitespace-nowrap">
+                            <span class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md">日常感受</span>
+                        </td>
+                        <td class="py-3 px-3 font-bold text-slate-900 whitespace-nowrap">
+                            <button type="button" onclick="speakText('peaceful')" class="hover:text-sky-600 flex items-center gap-1">
+                                <span>peaceful</span>
+                                <span class="text-sky-600 text-xs">🔊</span>
+                            </button>
+                        </td>
+                        <td class="py-3 px-3 text-xs font-mono text-slate-500 whitespace-nowrap">adj.</td>
+                        <td class="py-3 px-3 font-medium text-slate-800 whitespace-nowrap">寧靜的、平靜的</td>
+                        <td class="py-3 px-3 text-slate-600 text-xs sm:text-sm min-w-[200px]">
+                            <button type="button" onclick="speakText('Walking along the coast is peaceful.')" class="text-left hover:text-sky-700">Walking along the coast is peaceful.</button>
+                        </td>
+                        <td class="py-3 px-3 whitespace-nowrap">
+                            <select onchange="updateWordMastery('v2', this.value)" class="text-xs border border-slate-200 rounded-lg px-2 py-1 bg-white">
+                                <option value="⭐ 初學">⭐ 初學</option>
+                                <option value="⭐⭐ 熟悉" selected="">⭐⭐ 熟悉</option>
+                                <option value="⭐⭐⭐ 精通">⭐⭐⭐ 精通</option>
+                            </select>
+                        </td>
+                        <td class="py-3 px-3 text-right whitespace-nowrap">
+                            <button type="button" onclick="deleteVocabItem('v2')" class="text-xs text-rose-600 hover:underline px-2 py-1">刪除</button>
+                        </td>
+                    </tr>
+                
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="py-3 px-3 text-xs text-slate-500 whitespace-nowrap">2026-11-06</td>
+                        <td class="py-3 px-3 whitespace-nowrap">
+                            <span class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md">生活與餐飲</span>
+                        </td>
+                        <td class="py-3 px-3 font-bold text-slate-900 whitespace-nowrap">
+                            <button type="button" onclick="speakText('miso')" class="hover:text-sky-600 flex items-center gap-1">
+                                <span>miso</span>
+                                <span class="text-sky-600 text-xs">🔊</span>
+                            </button>
+                        </td>
+                        <td class="py-3 px-3 text-xs font-mono text-slate-500 whitespace-nowrap">n.</td>
+                        <td class="py-3 px-3 font-medium text-slate-800 whitespace-nowrap">味噌 (米索)</td>
+                        <td class="py-3 px-3 text-slate-600 text-xs sm:text-sm min-w-[200px]">
+                            <button type="button" onclick="speakText('I enjoy having warm miso soup in the morning.')" class="text-left hover:text-sky-700">I enjoy having warm miso soup in the morning.</button>
+                        </td>
+                        <td class="py-3 px-3 whitespace-nowrap">
+                            <select onchange="updateWordMastery('v3', this.value)" class="text-xs border border-slate-200 rounded-lg px-2 py-1 bg-white">
+                                <option value="⭐ 初學" selected="">⭐ 初學</option>
+                                <option value="⭐⭐ 熟悉">⭐⭐ 熟悉</option>
+                                <option value="⭐⭐⭐ 精通">⭐⭐⭐ 精通</option>
+                            </select>
+                        </td>
+                        <td class="py-3 px-3 text-right whitespace-nowrap">
+                            <button type="button" onclick="deleteVocabItem('v3')" class="text-xs text-rose-600 hover:underline px-2 py-1">刪除</button>
+                        </td>
+                    </tr>
+                
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="py-3 px-3 text-xs text-slate-500 whitespace-nowrap">2026-11-06</td>
+                        <td class="py-3 px-3 whitespace-nowrap">
+                            <span class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md">音樂與興趣</span>
+                        </td>
+                        <td class="py-3 px-3 font-bold text-slate-900 whitespace-nowrap">
+                            <button type="button" onclick="speakText('practice')" class="hover:text-sky-600 flex items-center gap-1">
+                                <span>practice</span>
+                                <span class="text-sky-600 text-xs">🔊</span>
+                            </button>
+                        </td>
+                        <td class="py-3 px-3 text-xs font-mono text-slate-500 whitespace-nowrap">v.</td>
+                        <td class="py-3 px-3 font-medium text-slate-800 whitespace-nowrap">練習</td>
+                        <td class="py-3 px-3 text-slate-600 text-xs sm:text-sm min-w-[200px]">
+                            <button type="button" onclick="speakText('I practice the guitar every day.')" class="text-left hover:text-sky-700">I practice the guitar every day.</button>
+                        </td>
+                        <td class="py-3 px-3 whitespace-nowrap">
+                            <select onchange="updateWordMastery('v4', this.value)" class="text-xs border border-slate-200 rounded-lg px-2 py-1 bg-white">
+                                <option value="⭐ 初學">⭐ 初學</option>
+                                <option value="⭐⭐ 熟悉" selected="">⭐⭐ 熟悉</option>
+                                <option value="⭐⭐⭐ 精通">⭐⭐⭐ 精通</option>
+                            </select>
+                        </td>
+                        <td class="py-3 px-3 text-right whitespace-nowrap">
+                            <button type="button" onclick="deleteVocabItem('v4')" class="text-xs text-rose-600 hover:underline px-2 py-1">刪除</button>
+                        </td>
+                    </tr>
+                </tbody>
                     </table>
                 </div>
 
@@ -263,18 +1183,27 @@
             </div>
         </section>
 
-        <!-- ==================== 分頁 3：資料備份與還原 ==================== -->
-        <section id="tab-backup" class="hidden space-y-6">
+        <!-- ==================== 分頁 3：資料備份與更新 GitHub 程式 ==================== -->
+        <section id="tab-backup" class="space-y-6">
 
-            <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div>
+            <!-- 公開版安全更新 GitHub 程式區塊 (免金鑰、免儲存設定) -->
+            <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm">
+                <div class="space-y-1.5">
                     <div class="flex items-center gap-2 flex-wrap">
-                        <h2 class="text-base font-bold text-emerald-950">🛡️ 生字備份與跨平台保護機制</h2>
-                        <span id="lastBackupTimeBadge" class="text-xs bg-white text-emerald-700 border border-emerald-300 px-2.5 py-0.5 rounded-full font-medium">已啟用自動備份</span>
+                        <h2 class="text-base sm:text-lg font-bold text-emerald-950">🚀 更新 GitHub 公開網頁程式（免填帳號與金鑰）</h2>
+                        <span id="lastBackupTimeBadge" class="text-xs bg-white text-emerald-700 border border-emerald-300 px-2.5 py-0.5 rounded-full font-medium">✅ 最近儲存：14:13:10 (複製最新 HTML 程式碼・共 4 筆)</span>
                     </div>
-                    <p class="text-xs sm:text-sm text-emerald-800 mt-1 leading-relaxed">
-                        您可以在下方直接<strong>「一鍵複製備份內容」</strong>貼到 Google 試算表或記事本；要還原時直接貼回下方黑框按<strong>「從上方文字直接還原」</strong>，或選擇 CSV / JSON 檔案還原！
+                    <p class="text-xs sm:text-sm text-emerald-800 leading-relaxed">
+                        此網址對外公開安全無虞！當您新增完生字想更新 GitHub 上的程式時，只需點擊右側<strong>「📋 一鍵複製完整 HTML 程式碼」</strong>去 GitHub 貼上覆蓋 <code class="bg-white px-1.5 py-0.5 rounded border border-emerald-200">index.html</code>（或下載檔案上傳），打開網址就會直接內建您最新的生字庫！
                     </p>
+                </div>
+                <div class="flex flex-wrap sm:flex-col gap-2 shrink-0">
+                    <button type="button" onclick="copySelfContainedHtml()" class="flex-1 sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm transition whitespace-nowrap">
+                        📋 一鍵複製完整 HTML 程式碼 (貼回 GitHub)
+                    </button>
+                    <button type="button" onclick="exportSelfContainedHtml()" class="flex-1 sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm transition whitespace-nowrap">
+                        ⚡ 下載最新 index.html 程式檔
+                    </button>
                 </div>
             </div>
             
@@ -282,7 +1211,7 @@
             <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-sm space-y-4">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div>
-                        <h2 class="text-base sm:text-lg font-bold text-slate-900">方式一：文字複製備份 & 直接貼上還原（支援試算表 / CSV / JSON）</h2>
+                        <h2 class="text-base sm:text-lg font-bold text-slate-900">方式一：文字複製備份 &amp; 直接貼上還原（支援試算表 / CSV / JSON）</h2>
                         <p class="text-xs sm:text-sm text-slate-500">免找檔案最穩定！複製後可直接貼入 Google 試算表；亦可將舊的 CSV 或 JSON 貼在黑框中一鍵還原。</p>
                     </div>
                     <div class="flex flex-wrap items-center gap-2">
@@ -292,7 +1221,7 @@
                             <option value="json">JSON 完整備份格式</option>
                         </select>
                         <label class="flex items-center gap-1.5 text-xs text-slate-600 cursor-pointer">
-                            <input type="checkbox" id="includeHeaderCheckbox" onchange="updateBackupPreview()" checked class="rounded text-sky-600">
+                            <input type="checkbox" id="includeHeaderCheckbox" onchange="updateBackupPreview()" checked="" class="rounded text-sky-600">
                             含標題列
                         </label>
                         <button type="button" onclick="copyTsvToClipboard()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-medium px-3.5 py-2 rounded-xl transition shadow-sm">
@@ -301,8 +1230,7 @@
                     </div>
                 </div>
 
-                <textarea id="tsvBackupTextarea" rows="6" placeholder="在此顯示備份碼，或將您的 CSV / 試算表 / JSON 文字貼在這裡..."
-                    class="w-full font-mono text-xs bg-slate-900 text-emerald-300 p-4 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 overflow-x-auto whitespace-pre"></textarea>
+                <textarea id="tsvBackupTextarea" rows="6" placeholder="在此顯示備份碼，或將您的 CSV / 試算表 / JSON 文字貼在這裡..." class="w-full font-mono text-xs bg-slate-900 text-emerald-300 p-4 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 overflow-x-auto whitespace-pre"></textarea>
 
                 <div class="flex flex-wrap items-center justify-between gap-2">
                     <span class="text-xs text-slate-500">👆 可在上方黑框貼上 CSV、試算表或 JSON 文字直接還原</span>
@@ -357,9 +1285,9 @@
     </main>
 
     <!-- 浮動通知 Toast -->
-    <div id="toastNotification" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div id="toastNotification" class="fixed bottom-5 right-5 z-50 transform transition-all duration-300 pointer-events-none">
         <div class="bg-slate-900 text-white text-sm font-medium px-4 py-3 rounded-xl shadow-lg flex items-center gap-2 border border-slate-700">
-            <span id="toastMessage">已成功加入生字庫！</span>
+            <span id="toastMessage">已複製包含 4 個生字的完整 HTML 程式！可直接貼回 GitHub</span>
         </div>
     </div>
 
@@ -475,94 +1403,123 @@
             }
         ];
 
-        let savedVocabList = [
-            {
-                id: "v1",
-                date: getTodayDateString(),
-                category: "自然與散步",
-                word: "breeze",
-                pos: "n.",
-                meaning: "微風",
-                sentence: "The morning breeze feels very fresh.",
-                mastery: "⭐ 初學"
-            },
-            {
-                id: "v2",
-                date: getTodayDateString(),
-                category: "日常感受",
-                word: "peaceful",
-                pos: "adj.",
-                meaning: "寧靜的、平靜的",
-                sentence: "Walking along the coast is peaceful.",
-                mastery: "⭐⭐ 熟悉"
-            },
-            {
-                id: "v3",
-                date: getTodayDateString(),
-                category: "生活與餐飲",
-                word: "miso",
-                pos: "n.",
-                meaning: "味噌 (米索)",
-                sentence: "I enjoy having warm miso soup in the morning.",
-                mastery: "⭐ 初學"
-            },
-            {
-                id: "v4",
-                date: getTodayDateString(),
-                category: "音樂與興趣",
-                word: "practice",
-                pos: "v.",
-                meaning: "練習",
-                sentence: "I practice the guitar every day.",
-                mastery: "⭐⭐ 熟悉"
-            }
-        ];
+        const defaultInitialVocab = [
+          {
+                    "id": "v1",
+                    "date": "2026-11-06",
+                    "category": "自然與散步",
+                    "word": "breeze",
+                    "pos": "n.",
+                    "meaning": "微風",
+                    "sentence": "The morning breeze feels very fresh.",
+                    "mastery": "⭐ 初學"
+          },
+          {
+                    "id": "v2",
+                    "date": "2026-11-06",
+                    "category": "日常感受",
+                    "word": "peaceful",
+                    "pos": "adj.",
+                    "meaning": "寧靜的、平靜的",
+                    "sentence": "Walking along the coast is peaceful.",
+                    "mastery": "⭐⭐ 熟悉"
+          },
+          {
+                    "id": "v3",
+                    "date": "2026-11-06",
+                    "category": "生活與餐飲",
+                    "word": "miso",
+                    "pos": "n.",
+                    "meaning": "味噌 (米索)",
+                    "sentence": "I enjoy having warm miso soup in the morning.",
+                    "mastery": "⭐ 初學"
+          },
+          {
+                    "id": "v4",
+                    "date": "2026-11-06",
+                    "category": "音樂與興趣",
+                    "word": "practice",
+                    "pos": "v.",
+                    "meaning": "練習",
+                    "sentence": "I practice the guitar every day.",
+                    "mastery": "⭐⭐ 熟悉"
+          }
+];
 
+        let savedVocabList = [...defaultInitialVocab];
         let scenarios = [...defaultScenarios];
         let currentScenario = scenarios[0];
+        let lastEditedVocabField = 'zh';
 
-        // ==================== 3. 穩定語音朗讀引擎 ====================
-        let sharedAudio = null;
-        function getAudioPlayer() {
-            if (!sharedAudio) sharedAudio = new Audio();
-            return sharedAudio;
+        // ==================== 3. 雙軌強效持久儲存引擎 (公開版免設定) ====================
+        const STORAGE_KEY_VOCAB = "english_vocab_app_persistent_v12";
+        let memoryCacheStore = [...defaultInitialVocab];
+
+        function loadSavedVocabFromStorage() {
+            try {
+                const localData = localStorage.getItem(STORAGE_KEY_VOCAB);
+                if (localData) {
+                    const parsed = JSON.parse(localData);
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        savedVocabList = parsed;
+                        memoryCacheStore = [...parsed];
+                        return;
+                    }
+                }
+            } catch (e) {}
+
+            try {
+                const sessionData = sessionStorage.getItem(STORAGE_KEY_VOCAB);
+                if (sessionData) {
+                    const parsed = JSON.parse(sessionData);
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        savedVocabList = parsed;
+                        memoryCacheStore = [...parsed];
+                        return;
+                    }
+                }
+            } catch (e) {}
+
+            if (memoryCacheStore.length > 0) {
+                savedVocabList = [...memoryCacheStore];
+            }
         }
 
+        function saveVocabToStorage() {
+            memoryCacheStore = [...savedVocabList];
+            try {
+                const jsonStr = JSON.stringify(savedVocabList);
+                localStorage.setItem(STORAGE_KEY_VOCAB, jsonStr);
+                sessionStorage.setItem(STORAGE_KEY_VOCAB, jsonStr);
+            } catch (e) {}
+            updateVocabCounterUI();
+        }
+
+        function updateVocabCounterUI() {
+            const el = document.getElementById('totalVocabCount');
+            if (el) el.textContent = savedVocabList.length;
+            const syncText = document.getElementById('cloudSyncText');
+            if (syncText) {
+                const now = new Date();
+                const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+                syncText.textContent = `自動記憶已儲存 (${savedVocabList.length} 字・${timeStr})`;
+            }
+        }
+
+        // ==================== 4. 語音朗讀引擎 ====================
         function playOnlineStreamAudio(text) {
-            const cleanText = String(text || '').trim();
-            if (!cleanText) return;
-            const encoded = encodeURIComponent(cleanText);
-            const urls = [
-                `https://dict.youdao.com/dictvoice?audio=${encoded}&le=en&type=2`,
-                `https://translate.googleapis.com/translate_tts?client=gtx&ie=UTF-8&tl=en&q=${encoded}`
-            ];
-
-            const audio = getAudioPlayer();
-            let index = 0;
-
-            const tryPlay = () => {
-                if (index >= urls.length) return;
-                const url = urls[index++];
-                try {
-                    audio.pause();
-                    audio.src = url;
-                    const p = audio.play();
-                    if (p !== undefined) p.catch(() => tryPlay());
-                } catch (e) {
-                    tryPlay();
-                }
-            };
-            tryPlay();
+            try {
+                const clean = encodeURIComponent(String(text || '').trim());
+                if (!clean) return;
+                const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${clean}&tl=en&client=tw-ob`;
+                const sound = new Audio(audioUrl);
+                sound.play().catch(() => {});
+            } catch (e) {}
         }
 
         function speakText(text) {
             const cleanText = String(text || '').trim();
             if (!cleanText) return;
-
-            try {
-                const audio = getAudioPlayer();
-                audio.pause();
-            } catch (e) {}
 
             if ('speechSynthesis' in window) {
                 try {
@@ -623,23 +1580,19 @@
             speakText(sentence ? `${word}. ${sentence}` : word);
         }
 
-        // ==================== 4. 中英雙向自動互轉與字典 ====================
-        let lastEditedVocabField = 'zh';
-
+        // ==================== 5. 中英雙向自動互轉與字典 ====================
         const quickZhToEnDict = {
             "米索": { word: "miso", pos: "n.", category: "生活與餐飲", sentence: "I really like hot miso soup in the morning." },
             "味噌": { word: "miso", pos: "n.", category: "生活與餐飲", sentence: "I really like hot miso soup in the morning." },
+            "可可果實咖啡": { word: "cocoa fruit coffee", pos: "n.", category: "生活與餐飲", sentence: "Have you ever tried cocoa fruit coffee?" },
+            "掛式咖啡": { word: "drip bag coffee", pos: "n.", category: "生活與餐飲", sentence: "I love having a cup of drip bag coffee." },
+            "濾掛咖啡": { word: "drip bag coffee", pos: "n.", category: "生活與餐飲", sentence: "I love having a cup of drip bag coffee." },
             "微風": { word: "breeze", pos: "n.", category: "自然與散步", sentence: "I really enjoy the cool morning breeze." },
             "散步": { word: "stroll", pos: "n.", category: "自然與散步", sentence: "Let's take a relaxing stroll along the path." },
             "海浪": { word: "ocean wave", pos: "n.", category: "自然與散步", sentence: "Listening to the ocean waves is very peaceful." },
-            "海洋": { word: "ocean", pos: "n.", category: "自然與散步", sentence: "We walked quietly near the blue ocean." },
             "看海": { word: "watch the sea", pos: "phr.", category: "自然與散步", sentence: "I like to sit quietly and watch the sea." },
             "吉他": { word: "guitar", pos: "n.", category: "音樂與興趣", sentence: "I practice playing the acoustic guitar every day." },
-            "音樂": { word: "music", pos: "n.", category: "音樂與興趣", sentence: "Listening to soft music helps me relax." },
-            "澆花": { word: "water the plants", pos: "phr.", category: "園藝與植物", sentence: "I water the plants on the balcony every morning." },
-            "植物": { word: "plant", pos: "n.", category: "園藝與植物", sentence: "This green plant grows well in sunlight." },
-            "咖啡": { word: "coffee", pos: "n.", category: "生活與餐飲", sentence: "I love the aroma of freshly brewed coffee." },
-            "放鬆": { word: "relax", pos: "v.", category: "日常感受", sentence: "I like to relax and listen to music." }
+            "澆花": { word: "water the plants", pos: "phr.", category: "園藝與植物", sentence: "I water the plants on the balcony every morning." }
         };
 
         const quickEnToZhDict = {};
@@ -686,6 +1639,28 @@
 
         async function translateViaPublicApi(text, direction = 'zh2en') {
             const cleanInput = String(text || '').trim();
+            const lowerInput = cleanInput.toLowerCase();
+
+            if (direction === 'en2zh') {
+                if (quickEnToZhDict[lowerInput]) {
+                    const match = quickEnToZhDict[lowerInput];
+                    return { word: match.word, meaning: match.meaning, pos: match.pos, category: match.category, sentence: match.sentence };
+                }
+                const foundInSaved = savedVocabList.find(v => v.word.toLowerCase() === lowerInput);
+                if (foundInSaved) {
+                    return { word: foundInSaved.word, meaning: foundInSaved.meaning, pos: foundInSaved.pos, category: foundInSaved.category, sentence: foundInSaved.sentence };
+                }
+            } else {
+                if (quickZhToEnDict[cleanInput]) {
+                    const match = quickZhToEnDict[cleanInput];
+                    return { word: match.word, meaning: match.meaning, pos: match.pos, category: match.category, sentence: match.sentence };
+                }
+                const foundInSaved = savedVocabList.find(v => v.meaning.includes(cleanInput));
+                if (foundInSaved) {
+                    return { word: foundInSaved.word, meaning: foundInSaved.meaning, pos: foundInSaved.pos, category: foundInSaved.category, sentence: foundInSaved.sentence };
+                }
+            }
+
             const sl = direction === 'zh2en' ? 'zh-TW' : 'en';
             const tl = direction === 'zh2en' ? 'en' : 'zh-TW';
 
@@ -698,30 +1673,11 @@
                     if (translated && translated.trim()) {
                         const out = translated.trim();
                         if (direction === 'zh2en') return buildSmartVocabEntry(cleanInput, out);
-                        if (/[\u4e00-\u9fa5]/.test(out) || out.toLowerCase() !== cleanInput.toLowerCase()) {
-                            return buildSmartVocabEntry(out, cleanInput);
-                        }
+                        return buildSmartVocabEntry(out, cleanInput);
                     }
                 }
             } catch (e) {}
 
-            try {
-                const mUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(cleanInput)}&langpair=${sl}|${tl}`;
-                const res = await fetchWithTimeout(mUrl, {}, 2000);
-                if (res.ok) {
-                    const data = await res.json();
-                    let translated = data?.responseData?.translatedText || '';
-                    if (direction === 'en2zh' && (!/[\u4e00-\u9fa5]/.test(translated)) && Array.isArray(data?.matches)) {
-                        const zhMatch = data.matches.find(m => m?.translation && /[\u4e00-\u9fa5]/.test(m.translation));
-                        if (zhMatch) translated = zhMatch.translation;
-                    }
-                    if (translated && translated.trim()) {
-                        return direction === 'zh2en' ? buildSmartVocabEntry(cleanInput, translated.trim()) : buildSmartVocabEntry(translated.trim(), cleanInput);
-                    }
-                }
-            } catch (e) {}
-
-            // 離線安全備援
             return direction === 'zh2en' ? buildSmartVocabEntry(cleanInput, cleanInput) : buildSmartVocabEntry(cleanInput, cleanInput);
         }
 
@@ -733,82 +1689,42 @@
 
             let direction = mode;
             if (mode === 'auto') {
-                if (zhText && !enText) {
-                    direction = /^[a-zA-Z\s\-']+$/.test(zhText) ? 'en2zh_swap' : 'zh2en';
-                } else if (enText && !zhText) {
-                    direction = /[\u4e00-\u9fa5]/.test(enText) ? 'zh2en_swap' : 'en2zh';
+                if (enText && !zhText) {
+                    direction = 'en2zh';
+                } else if (zhText && !enText) {
+                    direction = /^[a-zA-Z\s\-']+$/.test(zhText) && !/[\u4e00-\u9fa5]/.test(zhText) ? 'en2zh' : 'zh2en';
                 } else if (zhText && enText) {
-                    if (/^[a-zA-Z\s\-']+$/.test(zhText) && !/[\u4e00-\u9fa5]/.test(zhText)) direction = 'en2zh_swap';
-                    else if (lastEditedVocabField === 'en') direction = 'en2zh';
-                    else direction = 'zh2en';
+                    direction = lastEditedVocabField === 'en' ? 'en2zh' : 'zh2en';
                 } else {
-                    showToast("請在第一欄輸入中文，或在第二欄輸入英文！");
+                    showToast("請在中文欄輸入中文，或在英文欄輸入英文！");
                     meaningInput.focus();
                     return;
                 }
             }
 
-            if (direction === 'en2zh_swap') {
-                enText = zhText;
-                zhText = '';
-                wordInput.value = enText;
-                meaningInput.value = '';
-                direction = 'en2zh';
-                lastEditedVocabField = 'en';
-            } else if (direction === 'zh2en_swap') {
-                zhText = enText;
-                enText = '';
-                meaningInput.value = zhText;
-                wordInput.value = '';
-                direction = 'zh2en';
-                lastEditedVocabField = 'zh';
-            }
-
-            if (direction === 'zh2en' && !zhText) return;
-            if (direction === 'en2zh' && !enText) return;
+            const targetInputText = direction === 'en2zh' ? enText : zhText;
+            if (!targetInputText) return;
 
             const btn = document.getElementById('autoTransBtn');
             if (btn) { btn.disabled = true; btn.textContent = "⏳ 轉換中..."; }
 
             try {
-                if (direction === 'zh2en') {
-                    if (quickZhToEnDict[zhText]) {
-                        const m = quickZhToEnDict[zhText];
-                        wordInput.value = m.word;
-                        document.getElementById('newPosInput').value = m.pos;
-                        document.getElementById('newCategoryInput').value = m.category;
-                        document.getElementById('newSentenceInput').value = m.sentence;
-                        showToast(`已轉換：「${zhText}」→ ${m.word}`);
-                        speakText(m.word);
-                        return;
-                    }
-                    const entry = await translateViaPublicApi(zhText, 'zh2en');
-                    wordInput.value = entry.word;
-                    document.getElementById('newPosInput').value = entry.pos || 'n.';
-                    document.getElementById('newCategoryInput').value = entry.category || currentScenario.category;
-                    document.getElementById('newSentenceInput').value = entry.sentence || '';
-                    showToast(`已轉換：「${zhText}」→ ${entry.word}`);
-                    speakText(entry.word);
-                } else {
-                    const lowerEn = enText.toLowerCase();
-                    const found = quickEnToZhDict[lowerEn] || savedVocabList.find(v => v.word.toLowerCase() === lowerEn);
-                    if (found) {
-                        meaningInput.value = found.meaning;
-                        wordInput.value = found.word;
-                        document.getElementById('newPosInput').value = found.pos || 'n.';
-                        document.getElementById('newCategoryInput').value = found.category || currentScenario.category;
-                        document.getElementById('newSentenceInput').value = found.sentence || '';
-                        showToast(`已轉換：「${found.word}」→ ${found.meaning}`);
-                        speakText(found.word);
-                        return;
-                    }
+                if (direction === 'en2zh') {
                     const entry = await translateViaPublicApi(enText, 'en2zh');
                     meaningInput.value = entry.meaning;
                     wordInput.value = entry.word;
                     document.getElementById('newPosInput').value = entry.pos || 'n.';
                     document.getElementById('newCategoryInput').value = entry.category || currentScenario.category;
                     document.getElementById('newSentenceInput').value = entry.sentence || '';
-                    showToast(`已轉換：「${entry.word}」→ ${entry.meaning}`);
+                    showToast(`已成功翻譯：「${enText}」→ ${entry.meaning}`);
+                    speakText(entry.word);
+                } else {
+                    const entry = await translateViaPublicApi(zhText, 'zh2en');
+                    wordInput.value = entry.word;
+                    document.getElementById('newPosInput').value = entry.pos || 'n.';
+                    document.getElementById('newCategoryInput').value = entry.category || currentScenario.category;
+                    document.getElementById('newSentenceInput').value = entry.sentence || '';
+                    showToast(`已成功轉換：「${zhText}」→ ${entry.word}`);
                     speakText(entry.word);
                 }
             } catch (e) {
@@ -818,7 +1734,7 @@
             }
         }
 
-        // ==================== 5. 畫面渲染與分頁 ====================
+        // ==================== 6. 畫面渲染與分頁 ====================
         function switchTab(tabName) {
             ['practice', 'vocab', 'backup'].forEach(t => {
                 const sec = document.getElementById(`tab-${t}`);
@@ -923,16 +1839,10 @@
             document.getElementById('promptQuestionZh').textContent = currentScenario.promptZh;
             document.getElementById('promptHint').textContent = currentScenario.promptHint;
 
-            updateVocabCounter();
+            updateVocabCounterUI();
         }
 
-        // ==================== 6. 生字庫管理 ====================
-        function updateVocabCounter() {
-            const el = document.getElementById('totalVocabCount');
-            if (el) el.textContent = savedVocabList.length;
-            if (typeof window.syncVocabToCloud === 'function') window.syncVocabToCloud();
-        }
-
+        // ==================== 7. 生字庫管理 ====================
         function saveWordFromScenario(idx) {
             const w = currentScenario.words[idx];
             if (!w) return;
@@ -951,6 +1861,7 @@
                 sentence: w.sentence,
                 mastery: "⭐ 初學"
             });
+            saveVocabToStorage();
             renderCurrentScenario();
             showToast(`已收錄生字：${w.word}`);
         }
@@ -973,6 +1884,7 @@
                     addedCount++;
                 }
             });
+            saveVocabToStorage();
             renderCurrentScenario();
             showToast(addedCount > 0 ? `已將 ${addedCount} 個新單字存入生字本！` : "本課單字皆已收錄過囉！");
         }
@@ -1016,7 +1928,7 @@
             document.getElementById('newMeaningInput').value = '';
             document.getElementById('newSentenceInput').value = '';
 
-            updateVocabCounter();
+            saveVocabToStorage();
             renderCurrentScenario();
             showToast(`已新增「${word} (${meaning})」至生字本！`);
         }
@@ -1083,19 +1995,20 @@
             const item = savedVocabList.find(v => v.id === id);
             if (item) {
                 item.mastery = newMastery;
-                updateVocabCounter();
+                saveVocabToStorage();
                 showToast(`已更新「${item.word}」為 ${newMastery}`);
             }
         }
 
         function deleteVocabItem(id) {
             savedVocabList = savedVocabList.filter(v => v.id !== id);
+            saveVocabToStorage();
             renderVocabTable();
             renderCurrentScenario();
             showToast("已刪除該筆生字");
         }
 
-        // ==================== 7. 自訂主題產生器 ====================
+        // ==================== 8. 自訂主題產生器 ====================
         async function generateCustomScenario() {
             const inputEl = document.getElementById('customTopicInput');
             const topic = inputEl.value.trim();
@@ -1182,12 +2095,12 @@
             speakText(reply);
         }
 
-        // ==================== 8. 備份與還原 ====================
+        // ==================== 9. 備份與還原 ====================
         function markBackupSuccess(methodName) {
             const now = new Date();
             const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
             const badge = document.getElementById('lastBackupTimeBadge');
-            if (badge) badge.textContent = `✅ 最近備份：${timeStr} (${methodName}・共 ${savedVocabList.length} 筆)`;
+            if (badge) badge.textContent = `✅ 最近儲存：${timeStr} (${methodName}・共 ${savedVocabList.length} 筆)`;
         }
 
         function buildBackupText(format, includeHeader = true) {
@@ -1238,7 +2151,7 @@
             setTimeout(() => URL.revokeObjectURL(url), 3000);
 
             markBackupSuccess(`匯出 ${format.toUpperCase()}`);
-            showToast(`已下載 ${filename}！`);
+            showToast(`已下載 ${filename} !`);
         }
 
         function parseCsvRow(line, delimiter = ',') {
@@ -1304,11 +2217,11 @@
                         else { savedVocabList.unshift(newEntry); addedCount++; }
                     }
                 }
-                updateVocabCounter();
+                saveVocabToStorage();
                 renderVocabTable();
                 renderCurrentScenario();
                 updateBackupPreview();
-                showToast(`還原成功！新增 ${addedCount} 筆、更新 ${updatedCount} 筆`);
+                showToast(`已從 ${sourceLabel} 同步！新增 ${addedCount} 筆、更新 ${updatedCount} 筆`);
             } catch (e) {
                 showToast("解析格式有誤，請確認內容是否正確");
             }
@@ -1326,11 +2239,176 @@
             reader.readAsText(file, 'UTF-8');
         }
 
+        // 產生已內建最新生字庫的完整 HTML 字串
+        function buildSelfContainedHtmlString() {
+            let rawHtml = document.documentElement.outerHTML;
+            const newJson = JSON.stringify(savedVocabList, null, 12);
+            const regex = /const defaultInitialVocab = \[[\s\S]*?\];/;
+            if (regex.test(rawHtml)) {
+                rawHtml = rawHtml.replace(regex, `const defaultInitialVocab = ${newJson};`);
+            }
+            return "<!DOCTYPE html>\n" + rawHtml;
+        }
+
+        // 一鍵複製完整 HTML 程式碼 (可直接貼到 GitHub 更新 index.html)
+        function copySelfContainedHtml() {
+            try {
+                const fullDoc = buildSelfContainedHtmlString();
+                const tempTa = document.createElement('textarea');
+                tempTa.value = fullDoc;
+                document.body.appendChild(tempTa);
+                tempTa.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempTa);
+                markBackupSuccess("複製最新 HTML 程式碼");
+                showToast(`已複製包含 ${savedVocabList.length} 個生字的完整 HTML 程式！可直接貼回 GitHub`);
+            } catch (e) {
+                showToast("複製失敗，請點選下載最新 index.html 程式檔。");
+            }
+        }
+
+        // 將目前所有生字直接寫死進 HTML 預設陣列並匯出
+        function exportSelfContainedHtml() {
+            try {
+                const fullDoc = buildSelfContainedHtmlString();
+                const blob = new Blob([fullDoc], { type: 'text/html;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `index.html`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                setTimeout(() => URL.revokeObjectURL(url), 3000);
+                markBackupSuccess("下載最新 index.html");
+                showToast(`已下載內建 ${savedVocabList.length} 個生字的 index.html！`);
+            } catch (e) {
+                showToast("匯出失敗，請使用下方複製備份碼功能。");
+            }
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
+            loadSavedVocabFromStorage();
             renderScenarioButtons();
             renderCurrentScenario();
             updateBackupPreview();
         });
     </script>
-</body>
-</html>
+
+    <!-- 10. 雲端資料庫即時同步模組 (解決 Gemini 預覽沙盒無法持久化 localStorage 的問題) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const syncBadgeText = document.getElementById('cloudSyncText');
+
+        async function initCloudPersistence() {
+            if (typeof __firebase_config === 'undefined' || !__firebase_config) {
+                if (syncBadgeText) {
+                    syncBadgeText.textContent = `本機記憶已啟動 (${savedVocabList.length} 字)`;
+                }
+                return;
+            }
+
+            try {
+                const firebaseConfig = JSON.parse(__firebase_config);
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'english-vocab-default';
+                const app = initializeApp(firebaseConfig);
+                const auth = getAuth(app);
+                const db = getFirestore(app);
+
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+
+                onAuthStateChanged(auth, async (user) => {
+                    if (!user) return;
+
+                    const sharedDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'vocab_sync_store', 'main_vocab_sheet');
+
+                    window.syncVocabToCloudNow = async (vocabArray) => {
+                        if (!auth.currentUser) return;
+                        try {
+                            if (syncBadgeText) syncBadgeText.textContent = "雲端同步中...";
+                            await setDoc(sharedDocRef, {
+                                vocabJson: JSON.stringify(vocabArray),
+                                count: vocabArray.length,
+                                updatedAt: new Date().toISOString(),
+                                updatedBy: auth.currentUser.uid
+                            });
+                            const now = new Date();
+                            const tStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+                            if (syncBadgeText) {
+                                syncBadgeText.textContent = `雲端已自動儲存 (${vocabArray.length} 字・${tStr})`;
+                            }
+                        } catch (err) {
+                            if (syncBadgeText) syncBadgeText.textContent = `本機記憶模式 (${vocabArray.length} 字)`;
+                        }
+                    };
+
+                    const originalSave = window.saveVocabToStorage;
+                    window.saveVocabToStorage = function() {
+                        if (originalSave) originalSave();
+                        if (window.syncVocabToCloudNow) {
+                            window.syncVocabToCloudNow(savedVocabList);
+                        }
+                    };
+
+                    const snap = await getDoc(sharedDocRef);
+                    if (snap.exists() && snap.data()?.vocabJson) {
+                        const cloudList = JSON.parse(snap.data().vocabJson);
+                        if (Array.isArray(cloudList) && cloudList.length > 0) {
+                            savedVocabList.splice(0, savedVocabList.length, ...cloudList);
+                            if (originalSave) originalSave();
+                            renderCurrentScenario();
+                            renderVocabTable();
+                            updateBackupPreview();
+                            if (syncBadgeText) {
+                                syncBadgeText.textContent = `雲端已載入 (${savedVocabList.length} 字)`;
+                            }
+                        }
+                    } else {
+                        await window.syncVocabToCloudNow(savedVocabList);
+                    }
+
+                    onSnapshot(
+                        sharedDocRef,
+                        (docSnap) => {
+                            if (!docSnap.exists()) return;
+                            const data = docSnap.data();
+                            if (data && data.vocabJson) {
+                                try {
+                                    const remoteList = JSON.parse(data.vocabJson);
+                                    if (Array.isArray(remoteList) && JSON.stringify(remoteList) !== JSON.stringify(savedVocabList)) {
+                                        savedVocabList.splice(0, savedVocabList.length, ...remoteList);
+                                        renderCurrentScenario();
+                                        renderVocabTable();
+                                        updateBackupPreview();
+                                        const countEl = document.getElementById('totalVocabCount');
+                                        if (countEl) countEl.textContent = savedVocabList.length;
+                                        if (syncBadgeText) {
+                                            syncBadgeText.textContent = `雲端已同步 (${savedVocabList.length} 字)`;
+                                        }
+                                    }
+                                } catch (e) {}
+                            }
+                        },
+                        (err) => {
+                            if (syncBadgeText) syncBadgeText.textContent = `本機記憶 (${savedVocabList.length} 字)`;
+                        }
+                    );
+                });
+            } catch (err) {
+                if (syncBadgeText) {
+                    syncBadgeText.textContent = `本機記憶 (${savedVocabList.length} 字)`;
+                }
+            }
+        }
+
+        initCloudPersistence();
+    </script>
+
+</body></html>
