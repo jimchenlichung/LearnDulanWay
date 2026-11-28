@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌿 生活小事・慢活日誌｜阿鐘的都蘭山海隨筆 - 都蘭共學堂</title>
+  <meta name="description" content="四季八里自然莊園 × 都蘭共學堂《生活小事》每日慢活隨筆部落格。由阿鐘（陳豊鍾）記錄都蘭山海、晨間散步、飛鳥草木與生活藝術的溫柔哲思。">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dulan: {
+              forest: '#1E3F33',
+              dark: '#122820',
+              sand: '#F9F6F0',
+              clay: '#C86D51',
+              teal: '#0D7377'
+            }
+          },
+          fontFamily: {
+            sans: ['Noto Sans TC', 'sans-serif'],
+            serif: ['Noto Serif TC', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-sans text-gray-800 bg-[#F9F6F0] antialiased min-h-screen flex flex-col">
+
+  <!-- Top Navigation -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="https://dulanway.org/" class="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#1E3F33] bg-[#F9F6F0] hover:bg-emerald-50 px-4 py-2 rounded-full border border-[#1E3F33]/15 transition">
+          <i class="fa-solid fa-arrow-left"></i> 返回共學堂首頁
+        </a>
+      </div>
+      <div class="text-right">
+        <span class="font-serif text-lg font-bold text-[#1E3F33] block leading-none">生活小事・慢活日誌</span>
+        <span class="text-[10px] text-[#C86D51] tracking-widest uppercase block mt-1">Dulan Daily Life & Art of Living</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="bg-gradient-to-br from-[#1E3F33] via-[#122820] to-[#0D7377] text-white py-14 sm:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-5">
+      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-emerald-200 text-xs sm:text-sm font-semibold border border-white/20">
+        🌿 四季八里自然莊園 ╳ 每日早晨 09:00 自動同步專欄
+      </span>
+      <h1 class="font-serif text-3xl sm:text-5xl font-bold leading-tight">
+        《生活小事》都蘭慢活日誌
+      </h1>
+      <p class="text-sm sm:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
+        向林語堂《生活的藝術》致敬。在都蘭的晨露、飛鳥、石縫綠葉與太平洋海風之間，記錄阿鐘每天清晨散步的會心一笑與生命感悟。
+      </p>
+      <div class="pt-2 flex flex-wrap items-center justify-center gap-3 text-xs text-emerald-200">
+        <span class="bg-white/10 px-3.5 py-1.5 rounded-full">📚 目前已收錄 <strong>3</strong> 篇隨筆</span>
+        <a href="https://www.facebook.com/LongstayTAITUNG" target="_blank" class="bg-white/15 hover:bg-white/25 text-white px-3.5 py-1.5 rounded-full transition">
+          <i class="fa-brands fa-facebook mr-1"></i> 四季八里自然莊園粉專 ↗
+        </a>
+        <a href="https://www.youtube.com/@%E9%83%BD%E8%98%AD%E5%85%B1%E5%AD%B8%E5%A0%82" target="_blank" class="bg-white/15 hover:bg-white/25 text-white px-3.5 py-1.5 rounded-full transition">
+          <i class="fa-brands fa-youtube mr-1 text-red-400"></i> 都蘭共學堂 YouTube ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search Bar -->
+  <section class="max-w-4xl mx-auto w-full px-4 sm:px-6 -mt-6 relative z-10">
+    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-3 sm:p-4 flex items-center gap-3">
+      <i class="fa-solid fa-magnifying-glass text-gray-400 pl-2"></i>
+      <input id="searchInput" type="text" oninput="filterPosts()" placeholder="搜尋《生活小事》文章關鍵字（例如：石頭、小蜘蛛、北紅尾鴝、都蘭...）" class="w-full text-sm sm:text-base text-gray-700 placeholder-gray-400 focus:outline-none">
+      <button id="clearBtn" onclick="clearSearch()" class="hidden text-xs text-gray-400 hover:text-gray-600 px-2 py-1">清除</button>
+    </div>
+  </section>
+
+  <!-- Articles List -->
+  <main class="max-w-4xl mx-auto w-full px-4 sm:px-6 py-10 space-y-8 flex-1" id="postsContainer">
+    
+        <!-- Article: post-2026-11-28 -->
+        <article id="post-2026-11-28" class="blog-card bg-white rounded-3xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100 overflow-hidden p-6 sm:p-10" data-search="70歲那年，石頭教我的一堂課 大家早安，我是阿鐘！清晨在都蘭散步時，路邊一塊灰撲撲的大石頭上，竟悄悄冒出了三片嫩綠的紅瓜葉子。它還沒開花，也沒急著結果，就只是舒展著這三片綠意，在微涼的晨風裡輕輕晃動。 人到了七十歲，有時還是免不了性子急，看什麼都想立刻見到花開結果。盯著石縫裡這三片小小的綠葉，不禁莞爾一笑，原來大自然從不趕進度，扎穩根、長好葉子，本身就是一件頂快樂的事。 生活裡的許多滋味，往往不在最後的盛開，而在這一點一滴冒出新綠的過程。今天不妨也放慢腳步，好好欣賞自己眼下長出的那三片小綠葉吧！ 你最近在散步或生活裡，有沒有發現什麼剛冒出頭的小綠意呢？歡迎在留言區跟阿鐘分享！ 生活小事 都蘭慢活 四季八里自然莊園 都蘭共學堂 生活的藝術">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#1E3F33]/10 text-[#1E3F33] text-xs font-bold">
+              <span>🌿 生活小事・都蘭慢活隨筆</span>
+              <span>｜</span>
+              <time datetime="2026-11-28">2026-11-28</time>
+            </div>
+            <span class="text-xs text-gray-400 font-medium">✍️ 作者：阿鐘（陳豊鍾）</span>
+          </div>
+
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#1E3F33] leading-snug mb-6">
+            <a href="#post-2026-11-28" class="hover:text-[#C86D51] transition">70歲那年，石頭教我的一堂課</a>
+          </h2>
+
+          
+            <div class="mb-6">
+              <div class="relative w-full overflow-hidden rounded-2xl shadow-md border border-emerald-900/10 bg-black" style="padding-top: 56.25%;">
+                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Zm_LAXS3shQ" title="70歲那年，石頭教我的一堂課" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+              </div>
+              <div class="mt-2 flex items-center justify-between text-xs text-gray-500 px-1">
+                <span>🎬 《生活小事》YouTube 影音故事</span>
+                <a href="https://youtu.be/Zm_LAXS3shQ" target="_blank" class="text-[#0D7377] hover:underline font-semibold">在 YouTube 開啟 ↗</a>
+              </div>
+            </div>
+            <div class="mb-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="overflow-hidden rounded-2xl shadow-sm border border-gray-100 bg-[#F9F6F0]"><img src="images/2026-11-28_70歲那年石頭教我的一堂課_1.jpg" alt="70歲那年，石頭教我的一堂課" class="w-full h-64 sm:h-72 object-cover hover:scale-[1.02] transition duration-500" loading="lazy"></div>
+<div class="overflow-hidden rounded-2xl shadow-sm border border-gray-100 bg-[#F9F6F0]"><img src="images/2026-11-28_70歲那年石頭教我的一堂課_2.jpg" alt="70歲那年，石頭教我的一堂課" class="w-full h-64 sm:h-72 object-cover hover:scale-[1.02] transition duration-500" loading="lazy"></div>
+            </div>
+
+          <div class="prose max-w-none mt-2">
+            <p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">大家早安，我是阿鐘！清晨在都蘭散步時，路邊一塊灰撲撲的大石頭上，竟悄悄冒出了三片嫩綠的紅瓜葉子。它還沒開花，也沒急著結果，就只是舒展著這三片綠意，在微涼的晨風裡輕輕晃動。</p>
+<p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">人到了七十歲，有時還是免不了性子急，看什麼都想立刻見到花開結果。盯著石縫裡這三片小小的綠葉，不禁莞爾一笑，原來大自然從不趕進度，扎穩根、長好葉子，本身就是一件頂快樂的事。</p>
+<p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">生活裡的許多滋味，往往不在最後的盛開，而在這一點一滴冒出新綠的過程。今天不妨也放慢腳步，好好欣賞自己眼下長出的那三片小綠葉吧！</p>
+<p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">你最近在散步或生活裡，有沒有發現什麼剛冒出頭的小綠意呢？歡迎在留言區跟阿鐘分享！</p>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-gray-100 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex flex-wrap gap-2">
+              <span class="inline-block bg-[#F9F6F0] text-[#1E3F33] text-xs font-medium px-3 py-1 rounded-full border border-[#1E3F33]/15">#生活小事</span>
+<span class="inline-block bg-[#F9F6F0] text-[#1E3F33] text-xs font-medium px-3 py-1 rounded-full border border-[#1E3F33]/15">#都蘭慢活</span>
+<span class="inline-block bg-[#F9F6F0] text-[#1E3F33] text-xs font-medium px-3 py-1 rounded-full border border-[#1E3F33]/15">#四季八里自然莊園</span>
+<span class="inline-block bg-[#F9F6F0] text-[#1E3F33] text-xs font-medium px-3 py-1 rounded-full border border-[#1E3F33]/15">#都蘭共學堂</span>
+<span class="inline-block bg-[#F9F6F0] text-[#1E3F33] text-xs font-medium px-3 py-1 rounded-full border border-[#1E3F33]/15">#生活的藝術</span>
+            </div>
+            <button onclick="copyArticleLink('post-2026-11-28')" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#C86D51] hover:text-[#1E3F33] bg-[#F9F6F0] px-3.5 py-2 rounded-full border border-[#C86D51]/20 transition cursor-pointer">
+              <i class="fa-solid fa-link"></i> 複製文章連結
+            </button>
+          </div>
+        </article>
+
+        <!-- Article: post-2026-11-27 -->
+        <article id="post-2026-11-27" class="blog-card bg-white rounded-3xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100 overflow-hidden p-6 sm:p-10" data-search="被晨露逼迫搬家的小蜘蛛 大家早安，我是阿鐘！ 今天早晨的都蘭天空灰濛濛的，少了陽光的催化，整個莊園彷彿按下了靜音鍵，連風吹過樹梢都顯得格外沉靜。我帶著我們家十五歲的老夥計邊境牧羊犬「小湖」出門散步，一人一狗在微涼的晨光裡慢慢晃蕩，倒也別有一番清幽。 散步經過菜園時，一抹小小的身影吸引了我的目光。是隻長得十分標緻的小蜘蛛！照理說，這類織網的蜘蛛平時總愛規規矩矩躲在網子底下守株待兔，偏偏今天晨露太重，網子下方凝結了一排晶瑩剔透的水珠，把牠的「地下室」全給佔滿了。 沒辦法，這位小房東只好委屈自己搬到網子上面來透透氣。看著牠站在水珠上頭一臉無奈又鎮定的模樣，我忍不住掏出手機幫牠拍了張照。生命就是這麼有趣，環境變了，換個位置照樣能安然自處。 你今天早上出門時，有沒有在路邊或陽台發現什麼可愛的小生物呢？歡迎在底下留言跟我分享喔！ 生活小事 都蘭慢活 四季八里自然莊園 都蘭共學堂 生活的藝術">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#1E3F33]/10 text-[#1E3F33] text-xs font-bold">
+              <span>🌿 生活小事・都蘭慢活隨筆</span>
+              <span>｜</span>
+              <time datetime="2026-11-27">2026-11-27</time>
+            </div>
+            <span class="text-xs text-gray-400 font-medium">✍️ 作者：阿鐘（陳豊鍾）</span>
+          </div>
+
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#1E3F33] leading-snug mb-6">
+            <a href="#post-2026-11-27" class="hover:text-[#C86D51] transition">被晨露逼迫搬家的小蜘蛛</a>
+          </h2>
+
+          
+            <div class="mb-6">
+              <div class="relative w-full overflow-hidden rounded-2xl shadow-md border border-emerald-900/10 bg-black" style="padding-top: 56.25%;">
+                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/X63vO_TyHNE" title="被晨露逼迫搬家的小蜘蛛" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+              </div>
+              <div class="mt-2 flex items-center justify-between text-xs text-gray-500 px-1">
+                <span>🎬 《生活小事》YouTube 影音故事</span>
+                <a href="https://youtu.be/X63vO_TyHNE" target="_blank" class="text-[#0D7377] hover:underline font-semibold">在 YouTube 開啟 ↗</a>
+              </div>
+            </div>
+            <div class="mb-6 overflow-hidden rounded-2xl shadow-sm border border-gray-100 bg-[#F9F6F0]">
+              <img src="images/2026-11-27_被晨露逼迫搬家的小蜘蛛_1.jpg" alt="被晨露逼迫搬家的小蜘蛛" class="w-full max-h-[520px] object-cover hover:scale-[1.01] transition duration-500" loading="lazy">
+            </div>
+
+          <div class="prose max-w-none mt-2">
+            <p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">大家早安，我是阿鐘！</p>
+<p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">今天早晨的都蘭天空灰濛濛的，少了陽光的催化，整個莊園彷彿按下了靜音鍵，連風吹過樹梢都顯得格外沉靜。我帶著我們家十五歲的老夥計邊境牧羊犬「小湖」出門散步，一人一狗在微涼的晨光裡慢慢晃蕩，倒也別有一番清幽。</p>
+<p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">散步經過菜園時，一抹小小的身影吸引了我的目光。是隻長得十分標緻的小蜘蛛！照理說，這類織網的蜘蛛平時總愛規規矩矩躲在網子底下守株待兔，偏偏今天晨露太重，網子下方凝結了一排晶瑩剔透的水珠，把牠的「地下室」全給佔滿了。</p>
+<p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">沒辦法，這位小房東只好委屈自己搬到網子上面來透透氣。看著牠站在水珠上頭一臉無奈又鎮定的模樣，我忍不住掏出手機幫牠拍了張照。生命就是這麼有趣，環境變了，換個位置照樣能安然自處。</p>
+<p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">你今天早上出門時，有沒有在路邊或陽台發現什麼可愛的小生物呢？歡迎在底下留言跟我分享喔！</p>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-gray-100 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex flex-wrap gap-2">
+              <span class="inline-block bg-[#F9F6F0] text-[#1E3F33] text-xs font-medium px-3 py-1 rounded-full border border-[#1E3F33]/15">#生活小事</span>
+<span class="inline-block bg-[#F9F6F0] text-[#1E3F33] text-xs font-medium px-3 py-1 rounded-full border border-[#1E3F33]/15">#都蘭慢活</span>
+<span class="inline-block bg-[#F9F6F0] text-[#1E3F33] text-xs font-medium px-3 py-1 rounded-full border border-[#1E3F33]/15">#四季八里自然莊園</span>
+<span class="inline-block bg-[#F9F6F0] text-[#1E3F33] text-xs font-medium px-3 py-1 rounded-full border border-[#1E3F33]/15">#都蘭共學堂</span>
+<span class="inline-block bg-[#F9F6F0] text-[#1E3F33] text-xs font-medium px-3 py-1 rounded-full border border-[#1E3F33]/15">#生活的藝術</span>
+            </div>
+            <button onclick="copyArticleLink('post-2026-11-27')" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#C86D51] hover:text-[#1E3F33] bg-[#F9F6F0] px-3.5 py-2 rounded-full border border-[#C86D51]/20 transition cursor-pointer">
+              <i class="fa-solid fa-link"></i> 複製文章連結
+            </button>
+          </div>
+        </article>
+
+        <!-- Article: post-2026-11-26 -->
+        <article id="post-2026-11-26" class="blog-card bg-white rounded-3xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100 overflow-hidden p-6 sm:p-10" data-search="遠從西伯利亞飛來的專屬模特兒：北紅尾鴝 大家晚安，我是阿鐘！ 這幾天迎來今年第三波寒流，暖冬的關係倒也沒冷到讓人打哆嗦，反倒是莊園欄杆上多了一位稀客——一隻遠從西伯利亞飛來避冬的「北紅尾鴝」。 說來也巧，早在兩年前的十一月我也曾遇過牠的同鄉，無奈當時手腳慢了半拍，照片拍得模模糊糊，只留下一團可愛的影子。沒想到今天這位小貴賓大方得很，乖乖停在欄杆上擺好姿勢，彷彿專程飛來幫我補考攝影學分似的。 💡 帶著星辰與磁場旅行的小生命 我們出門旅遊還得查手機、開導航、擔心迷路，這隻巴掌大的小鳥卻只憑著與生俱來的地球磁場感應與夜空星辰，就這樣跨海千里、準時赴約。 人類總愛把日子過得緊緊繃繃，倒不如學學這位小訪客，順著時節起飛，遇見好風景就停在欄杆上歇歇腳、曬曬太陽。 🌅 同在一片天空下的美好巧合 近距離看著牠靈動的眼神，心裡突然覺得很踏實。原來我們從來不是大自然的旁觀者，而是跟這群遠道而來的候鳥一樣，共享著同一陣海風、同一片冬陽，也共享著這份奇妙的生命連結。 願你今天也能偶遇一件讓你會心一笑的小驚喜！ 💬 【換你跟我分享】 你最近在散步或窗邊，有沒有遇見什麼可愛的小動物或大自然小驚喜呢？歡迎在下方留言跟我聊聊！👇 生活小事 北紅尾鴝 都蘭慢活 四季八里自然莊園 都蘭共學堂 生活的藝術">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#1E3F33]/10 text-[#1E3F33] text-xs font-bold">
+              <span>🌿 生活小事・都蘭慢活隨筆</span>
+              <span>｜</span>
+              <time datetime="2026-11-26">2026-11-26</time>
+            </div>
+            <span class="text-xs text-gray-400 font-medium">✍️ 作者：阿鐘（陳豊鍾）</span>
+          </div>
+
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#1E3F33] leading-snug mb-6">
+            <a href="#post-2026-11-26" class="hover:text-[#C86D51] transition">遠從西伯利亞飛來的專屬模特兒：北紅尾鴝</a>
+          </h2>
+
+          
+            <div class="mb-6 overflow-hidden rounded-2xl shadow-sm border border-gray-100 bg-[#F9F6F0]">
+              <img src="images/2026-11-26_遠從西伯利亞飛來的專屬模特兒北紅尾鴝_1.jpg" alt="遠從西伯利亞飛來的專屬模特兒：北紅尾鴝" class="w-full max-h-[520px] object-cover hover:scale-[1.01] transition duration-500" loading="lazy">
+            </div>
+
+          <div class="prose max-w-none mt-2">
+            <p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">大家晚安，我是阿鐘！</p>
+<p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">這幾天迎來今年第三波寒流，暖冬的關係倒也沒冷到讓人打哆嗦，反倒是莊園欄杆上多了一位稀客——一隻遠從西伯利亞飛來避冬的「北紅尾鴝」。</p>
+<p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">說來也巧，早在兩年前的十一月我也曾遇過牠的同鄉，無奈當時手腳慢了半拍，照片拍得模模糊糊，只留下一團可愛的影子。沒想到今天這位小貴賓大方得很，乖乖停在欄杆上擺好姿勢，彷彿專程飛來幫我補考攝影學分似的。</p>
+<p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">💡 帶著星辰與磁場旅行的小生命</p>
+<p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">我們出門旅遊還得查手機、開導航、擔心迷路，這隻巴掌大的小鳥卻只憑著與生俱來的地球磁場感應與夜空星辰，就這樣跨海千里、準時赴約。</p>
+<p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">人類總愛把日子過得緊緊繃繃，倒不如學學這位小訪客，順著時節起飛，遇見好風景就停在欄杆上歇歇腳、曬曬太陽。</p>
+<p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">🌅 同在一片天空下的美好巧合</p>
+<p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">近距離看著牠靈動的眼神，心裡突然覺得很踏實。原來我們從來不是大自然的旁觀者，而是跟這群遠道而來的候鳥一樣，共享著同一陣海風、同一片冬陽，也共享著這份奇妙的生命連結。</p>
+<p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">願你今天也能偶遇一件讓你會心一笑的小驚喜！</p>
+<p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">💬 【換你跟我分享】</p>
+<p class="text-gray-700 leading-relaxed text-base sm:text-[17px] mb-4">你最近在散步或窗邊，有沒有遇見什麼可愛的小動物或大自然小驚喜呢？歡迎在下方留言跟我聊聊！👇</p>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-gray-100 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex flex-wrap gap-2">
+              <span class="inline-block bg-[#F9F6F0] text-[#1E3F33] text-xs font-medium px-3 py-1 rounded-full border border-[#1E3F33]/15">#生活小事</span>
+<span class="inline-block bg-[#F9F6F0] text-[#1E3F33] text-xs font-medium px-3 py-1 rounded-full border border-[#1E3F33]/15">#北紅尾鴝</span>
+<span class="inline-block bg-[#F9F6F0] text-[#1E3F33] text-xs font-medium px-3 py-1 rounded-full border border-[#1E3F33]/15">#都蘭慢活</span>
+<span class="inline-block bg-[#F9F6F0] text-[#1E3F33] text-xs font-medium px-3 py-1 rounded-full border border-[#1E3F33]/15">#四季八里自然莊園</span>
+<span class="inline-block bg-[#F9F6F0] text-[#1E3F33] text-xs font-medium px-3 py-1 rounded-full border border-[#1E3F33]/15">#都蘭共學堂</span>
+<span class="inline-block bg-[#F9F6F0] text-[#1E3F33] text-xs font-medium px-3 py-1 rounded-full border border-[#1E3F33]/15">#生活的藝術</span>
+            </div>
+            <button onclick="copyArticleLink('post-2026-11-26')" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#C86D51] hover:text-[#1E3F33] bg-[#F9F6F0] px-3.5 py-2 rounded-full border border-[#C86D51]/20 transition cursor-pointer">
+              <i class="fa-solid fa-link"></i> 複製文章連結
+            </button>
+          </div>
+        </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#122820] text-white/80 py-10 border-t border-white/10 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center space-y-3 text-xs sm:text-sm">
+      <p class="font-serif font-bold text-white text-base">都蘭共學堂 ╳ 四季八里自然莊園</p>
+      <p class="text-white/60">服務處：台東縣東河鄉都蘭村舊部 14 之 2 號 ｜ 聯絡電話：0908-853-322</p>
+      <div class="flex justify-center gap-4 pt-2">
+        <a href="https://dulanway.org/" class="text-emerald-300 hover:underline">返回共學堂首頁</a>
+        <span>·</span>
+        <a href="https://www.facebook.com/LongstayTAITUNG" target="_blank" class="text-emerald-300 hover:underline">Facebook 粉專</a>
+        <span>·</span>
+        <a href="https://learndulan.wordpress.com" target="_blank" class="text-white/60 hover:underline">舊版 WordPress 備份</a>
+      </div>
+      <p class="text-white/40 text-xs pt-2">© 2026 都蘭共學堂 LearnDulanWay. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="copyToast" class="fixed bottom-6 right-6 bg-[#1E3F33] text-white text-xs font-bold px-4 py-3 rounded-2xl shadow-xl opacity-0 pointer-events-none transition duration-300 flex items-center gap-2 z-50">
+    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+    <span>已複製文章專屬連結！</span>
+  </div>
+
+  <script>
+    function filterPosts() {
+      const q = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+      const clearBtn = document.getElementById('clearBtn');
+      clearBtn.classList.toggle('hidden', !q);
+      const cards = document.querySelectorAll('.blog-card');
+      cards.forEach(card => {
+        const text = card.getAttribute('data-search') || '';
+        card.style.display = (!q || text.includes(q)) ? '' : 'none';
+      });
+    }
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      filterPosts();
+    }
+    function copyArticleLink(id) {
+      const url = window.location.origin + window.location.pathname + '#' + id;
+      navigator.clipboard.writeText(url);
+      const toast = document.getElementById('copyToast');
+      toast.classList.remove('opacity-0');
+      setTimeout(() => toast.classList.add('opacity-0'), 2200);
+    }
+  </script>
+</body>
+</html>
